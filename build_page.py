@@ -126,7 +126,7 @@ def page(R, S, SC):
     acc = (f'<table class="acc"><thead><tr><th>Stage</th>{"".join(f"<th>{f}</th>" for f in FIELDS)}<th>Overall</th><th></th></tr></thead><tbody>'
            + acc_row("1. Research agent", p1, "single pass, as generated")
            + acc_row("2. + Verifier agent", ver, "independent re-fetch of every cited page, corrections applied")
-           + acc_row("3. + Rule verdict", fin, "verdict computed from verified fields (prompt's own definition)")
+           + acc_row("3. + Recheck + rule verdict", fin, "recheck agent on flagged apps; verdict computed from verified fields")
            + "</tbody></table>")
 
     # --- per-app sample results (final stage), misses first
