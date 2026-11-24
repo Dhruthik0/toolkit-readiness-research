@@ -1,0 +1,40 @@
+{
+  "id": "72",
+  "input": {
+    "id": "72",
+    "category": "Productivity and Project Management",
+    "app": "Airtable",
+    "hint": "airtable.com/developers"
+  },
+  "meta": {
+    "cost_usd": 0.052880325000000006,
+    "turns": 8
+  },
+  "record": {
+    "app": "Airtable",
+    "category": "Database / no-code app platform",
+    "one_liner": "Airtable is a cloud platform combining spreadsheet-style databases with apps and automations for organizing and managing team data.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Personal access tokens (created at airtable.com/create/tokens, scoped to chosen scopes and bases) sent as Authorization: Bearer. Enterprise admins can create service-account tokens. OAuth2 grant flow for third-party integrations; register the integration at airtable.com/create/oauth. The legacy API key was not covered by the pages fetched, so I did not verify its status.",
+    "access": "self_serve_free",
+    "access_notes": "PAT creation is self-serve. The fetched PAT page does not state plan requirements, and the rate-limits page says limits may be tiered by plan, so free-plan API access is inferred, not confirmed. The MCP support page lists availability as \"All plans\". OAuth registration showed no review step, but a privacy policy and ToS URL are needed before other users can authorize the integration.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.airtable.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Rate limits: 5 requests/sec per base and 50/sec per user/token, with a 30s wait after a 429. Airtable may change limits and may tier them by plan. Free-plan API access is not explicitly confirmed. Breadth is inferred from the token scopes and the Metadata API mention, and I did not review the full endpoint list.",
+    "evidence": {
+      "auth": "https://airtable.com/developers/web/guides/personal-access-tokens ; https://airtable.com/developers/web/guides/oauth-integrations",
+      "access": "https://airtable.com/developers/web/guides/personal-access-tokens ; https://support.airtable.com/docs/using-the-airtable-mcp-server",
+      "api": "https://airtable.com/developers/web/api/introduction ; https://airtable.com/developers/web/api/rate-limits",
+      "mcp": "https://support.airtable.com/docs/using-the-airtable-mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

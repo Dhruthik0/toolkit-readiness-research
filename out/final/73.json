@@ -1,0 +1,73 @@
+{
+  "id": "73",
+  "input": {
+    "id": "73",
+    "category": "Productivity and Project Management",
+    "app": "Linear",
+    "hint": "developers.linear.app"
+  },
+  "meta": {
+    "cost_usd": 0.05466164500000001,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "GraphQL page: personal API keys from Security & access sent as `Authorization: <API_KEY>` with no prefix; OAuth2 tokens sent as Bearer. OAuth page confirms auth-code (PKCE optional, actor user/app, 24h tokens with refresh) and client_credentials (app actor, 30-day token, must be enabled in app settings).",
+      "url": "https://linear.app/developers/oauth-2-0-authentication"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "Vendor pages describe self-serve creation of API keys and OAuth apps and mention no app review, but neither page states plan requirements. Free-plan API access appears only in third-party blogs, not on a Linear page.",
+      "url": "https://linear.app/developers/oauth-2-0-authentication"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The GraphQL endpoint is https://api.linear.app/graphql and the OAuth flow calls it. Scopes cover issues, comments, customers, initiatives and more, which fits broad. I did not check a REST API and found no evidence of one.",
+      "url": "https://linear.app/developers/graphql"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Linear's own docs describe a centrally hosted MCP server at https://mcp.linear.app/mcp. It supports OAuth 2.1 and Bearer tokens (OAuth token or API key). The /sse endpoint is deprecated.",
+      "url": "https://linear.app/docs/mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "Auth, API and official MCP are all confirmed. The only open point is free-plan API access, which is unverified. Calling it ready is reasonable, with that caveat noted in the blocker.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Linear",
+    "category": "Project management / issue tracking",
+    "one_liner": "Linear is a project and issue tracking tool for software teams, with issues, projects, cycles and roadmaps.",
+    "auth_methods": [
+      "API key",
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "Personal API keys are created in Security & access settings and sent as `Authorization: <API_KEY>` with no Bearer prefix. OAuth2 authorization-code flow (optional PKCE, actor=user or app) gives 24h access tokens with refresh tokens. OAuth2 client_credentials is also available for server-to-server use (app actor, 30-day token) once enabled on the app. OAuth access tokens are sent as Bearer.",
+    "access": "self_serve_free",
+    "access_notes": "Personal API keys and OAuth2 apps are created self-serve in workspace settings. The OAuth page lists no app review or approval step. Linear's pages do not state plan requirements. Only third-party sources say the free plan has API access, so this is not verified from the vendor. The OAuth page recommends a dedicated workspace for app development.",
+    "api_types": [
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.linear.app/mcp",
+    "verdict": "ready",
+    "blocker": "none. Rate limits not reviewed; free-plan API access not verified on a Linear page.",
+    "evidence": {
+      "auth": "https://linear.app/developers/graphql",
+      "access": "https://linear.app/developers/oauth-2-0-authentication",
+      "api": "https://linear.app/developers/graphql",
+      "mcp": "https://linear.app/docs/mcp"
+    },
+    "confidence": "low"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "66",
+  "input": {
+    "id": "66",
+    "category": "Developer, Infra and Data platforms",
+    "app": "Neo4j",
+    "hint": "neo4j.com/docs/api"
+  },
+  "meta": {
+    "cost_usd": 0.069771315,
+    "turns": 12
+  },
+  "record": {
+    "app": "Neo4j",
+    "category": "Graph database",
+    "one_liner": "Neo4j is a graph database queried with Cypher, offered self-managed and as the managed AuraDB cloud service.",
+    "auth_methods": [
+      "Basic",
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "Two separate surfaces. (1) Aura management API (api.neo4j.io): client ID/secret created in the Aura console, exchanged at /oauth/token (client_credentials, HTTP Basic) for a 1-hour Bearer token. This is a machine-to-machine client-credentials flow, not a third-party-app consent flow. (2) Query API (HTTP, /db/<db>/query/v2) to run Cypher: requires an Authorization header; the fetched page shows only a Basic example (database user/password). Bearer/SSO for the Query API was not confirmed from fetched pages. The official MCP server documents only username/password.",
+    "access": "self_serve_free",
+    "access_notes": "AuraDB Free exists and is covered by the Aura API rate-limit table (25 req/min for Free and Pro trial without billing). I did not fetch a page explicitly stating Free-tier users can create API credentials, so this is inferred. Self-managed Community Edition is also free and exposes the Query API (enabled by default from 5.25).",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://github.com/neo4j/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "No single third-party API: the Aura API only manages instances (and billing); data access goes through the Query API or Bolt against a specific database with that database's own credentials (Basic). No OAuth for end-user delegation. Aura API rate limit is 25 req/min on free/trial, 125 on paid. Full Aura endpoint list was not retrieved.",
+    "evidence": {
+      "auth": "https://neo4j.com/docs/aura/api/authentication/",
+      "access": "https://neo4j.com/docs/aura/platform/api/overview/",
+      "api": "https://neo4j.com/docs/query-api/current/query/",
+      "mcp": "https://github.com/neo4j/mcp"
+    },
+    "confidence": "medium"
+  }
+}

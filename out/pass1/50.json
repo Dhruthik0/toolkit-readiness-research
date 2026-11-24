@@ -1,0 +1,39 @@
+{
+  "id": "50",
+  "input": {
+    "id": "50",
+    "category": "Ecommerce",
+    "app": "fanbasis",
+    "hint": "fanbasis.com"
+  },
+  "meta": {
+    "cost_usd": 0.088794715,
+    "turns": 13
+  },
+  "record": {
+    "app": "fanbasis",
+    "category": "Creator payments / checkout",
+    "one_liner": "Fanbasis is a payments and checkout platform for creators and online businesses, with a public API for products, checkout sessions, payments, customers and webhooks.",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "Search snippets say requests carry an API key in the x-api-key header against https://www.fanbasis.com/public-api/. I could not fetch the vendor page to confirm this. I found no documented OAuth flow.",
+    "access": "self_serve_free",
+    "access_notes": "Unverified. The npm SDK snippet mentions a 'sandbox' environment, which suggests API keys are self-serve from the dashboard. I could not confirm how keys are issued, whether a paid plan is needed, or whether approval is required.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "community",
+    "mcp_url": "https://zapier.com/mcp/fanbasis",
+    "verdict": "ready_with_caveats",
+    "blocker": "I could not fetch any vendor page: fanbasis.com, its docs host, the GitHub repo and npm all returned 403 or 404. Everything above comes from search snippets. Key issuance, plan requirements, rate limits and the full endpoint list are unconfirmed. The Zapier MCP page also returned 404 when fetched, so the community MCP is unverified.",
+    "evidence": {
+      "auth": null,
+      "access": null,
+      "api": null,
+      "mcp": null
+    },
+    "confidence": "low"
+  }
+}

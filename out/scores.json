@@ -1,0 +1,2874 @@
+{
+  "adjudicated": {
+    "pass1": {
+      "hits": 91,
+      "total": 100,
+      "pct": 91.0,
+      "per_field": {
+        "auth": 18,
+        "access": 18,
+        "api": 19,
+        "mcp": 19,
+        "verdict": 17
+      },
+      "rows": [
+        {
+          "id": "75",
+          "app": "Asana",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": false
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "OAuth2",
+              "Other"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST",
+              "WebSocket"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "81",
+          "app": "Stripe",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "Basic",
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "84",
+          "app": "Paygent Connect",
+          "fields": {
+            "auth": false,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "OAuth2"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "none_found",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "92",
+          "app": "Otter AI",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "96",
+          "app": "Devin",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "API key"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST",
+              "WebSocket"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "59",
+          "app": "Waterfall.io",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "none_found",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "60",
+          "app": "Clay",
+          "fields": {
+            "auth": true,
+            "access": false,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "67",
+          "app": "Snowflake",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "JWT / service account",
+              "Bearer token",
+              "Other"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "69",
+          "app": "Datadog",
+          "fields": {
+            "auth": true,
+            "access": false,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "72",
+          "app": "Airtable",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": false
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "9",
+          "app": "Copper",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "10",
+          "app": "DealCloud",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST",
+              "WebSocket"
+            ],
+            "mcp": "official",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "12",
+          "app": "Intercom",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "18",
+          "app": "Help Scout",
+          "fields": {
+            "auth": false,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "22",
+          "app": "Twilio",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Basic"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "24",
+          "app": "Lark (Larksuite)",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token",
+              "Other"
+            ],
+            "access": "approval_required",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "32",
+          "app": "Meta Ads",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": false,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "approval_required",
+            "api": [
+              "REST",
+              "GraphQL"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "40",
+          "app": "SendGrid",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST",
+              "SOAP"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "48",
+          "app": "Gumroad",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": false
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "50",
+          "app": "fanbasis",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": false,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        }
+      ]
+    },
+    "verified": {
+      "hits": 96,
+      "total": 100,
+      "pct": 96.0,
+      "per_field": {
+        "auth": 20,
+        "access": 20,
+        "api": 20,
+        "mcp": 19,
+        "verdict": 17
+      },
+      "rows": [
+        {
+          "id": "75",
+          "app": "Asana",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": false
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "OAuth2",
+              "Other"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "81",
+          "app": "Stripe",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "Basic",
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "84",
+          "app": "Paygent Connect",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "none_found",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "92",
+          "app": "Otter AI",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "96",
+          "app": "Devin",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "API key"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "59",
+          "app": "Waterfall.io",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "none_found",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "60",
+          "app": "Clay",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "67",
+          "app": "Snowflake",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "JWT / service account",
+              "Bearer token",
+              "Other"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "69",
+          "app": "Datadog",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "72",
+          "app": "Airtable",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": false
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "9",
+          "app": "Copper",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "10",
+          "app": "DealCloud",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "12",
+          "app": "Intercom",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "18",
+          "app": "Help Scout",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "API key",
+              "Basic"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "22",
+          "app": "Twilio",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Basic",
+              "OAuth2"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "24",
+          "app": "Lark (Larksuite)",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token",
+              "Other"
+            ],
+            "access": "approval_required",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "32",
+          "app": "Meta Ads",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "approval_required",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "40",
+          "app": "SendGrid",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "48",
+          "app": "Gumroad",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": false
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "50",
+          "app": "fanbasis",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": false,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        }
+      ]
+    },
+    "final": {
+      "hits": 99,
+      "total": 100,
+      "pct": 99.0,
+      "per_field": {
+        "auth": 20,
+        "access": 20,
+        "api": 20,
+        "mcp": 19,
+        "verdict": 20
+      },
+      "rows": [
+        {
+          "id": "75",
+          "app": "Asana",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "OAuth2",
+              "Other"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "81",
+          "app": "Stripe",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "Basic",
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "84",
+          "app": "Paygent Connect",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "none_found",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "92",
+          "app": "Otter AI",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "96",
+          "app": "Devin",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "API key"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "59",
+          "app": "Waterfall.io",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "none_found",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "60",
+          "app": "Clay",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "67",
+          "app": "Snowflake",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "JWT / service account",
+              "Bearer token",
+              "Other"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "69",
+          "app": "Datadog",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "72",
+          "app": "Airtable",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "9",
+          "app": "Copper",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "10",
+          "app": "DealCloud",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "12",
+          "app": "Intercom",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "18",
+          "app": "Help Scout",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "API key",
+              "Basic"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "22",
+          "app": "Twilio",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Basic",
+              "OAuth2"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "24",
+          "app": "Lark (Larksuite)",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token",
+              "Other"
+            ],
+            "access": "approval_required",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "32",
+          "app": "Meta Ads",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "approval_required",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "40",
+          "app": "SendGrid",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "48",
+          "app": "Gumroad",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "50",
+          "app": "fanbasis",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": false,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready"
+          }
+        }
+      ]
+    }
+  },
+  "frozen": {
+    "pass1": {
+      "hits": 88,
+      "total": 100,
+      "pct": 88.0,
+      "per_field": {
+        "auth": 18,
+        "access": 16,
+        "api": 19,
+        "mcp": 19,
+        "verdict": 16
+      },
+      "rows": [
+        {
+          "id": "75",
+          "app": "Asana",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": false
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "OAuth2",
+              "Other"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST",
+              "WebSocket"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "81",
+          "app": "Stripe",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "Basic",
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "84",
+          "app": "Paygent Connect",
+          "fields": {
+            "auth": false,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "OAuth2"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "none_found",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "92",
+          "app": "Otter AI",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "96",
+          "app": "Devin",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "API key"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST",
+              "WebSocket"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "59",
+          "app": "Waterfall.io",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "none_found",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "60",
+          "app": "Clay",
+          "fields": {
+            "auth": true,
+            "access": false,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "67",
+          "app": "Snowflake",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "JWT / service account",
+              "Bearer token",
+              "Other"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "69",
+          "app": "Datadog",
+          "fields": {
+            "auth": true,
+            "access": false,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "72",
+          "app": "Airtable",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": false
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "9",
+          "app": "Copper",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "10",
+          "app": "DealCloud",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST",
+              "WebSocket"
+            ],
+            "mcp": "official",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "12",
+          "app": "Intercom",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "18",
+          "app": "Help Scout",
+          "fields": {
+            "auth": false,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "22",
+          "app": "Twilio",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Basic"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "24",
+          "app": "Lark (Larksuite)",
+          "fields": {
+            "auth": true,
+            "access": false,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token",
+              "Other"
+            ],
+            "access": "approval_required",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "32",
+          "app": "Meta Ads",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": false,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "approval_required",
+            "api": [
+              "REST",
+              "GraphQL"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "40",
+          "app": "SendGrid",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST",
+              "SOAP"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "48",
+          "app": "Gumroad",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": false
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "50",
+          "app": "fanbasis",
+          "fields": {
+            "auth": true,
+            "access": false,
+            "api": true,
+            "mcp": false,
+            "verdict": false
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        }
+      ]
+    },
+    "verified": {
+      "hits": 93,
+      "total": 100,
+      "pct": 93.0,
+      "per_field": {
+        "auth": 20,
+        "access": 18,
+        "api": 20,
+        "mcp": 19,
+        "verdict": 16
+      },
+      "rows": [
+        {
+          "id": "75",
+          "app": "Asana",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": false
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "OAuth2",
+              "Other"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "81",
+          "app": "Stripe",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "Basic",
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "84",
+          "app": "Paygent Connect",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "none_found",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "92",
+          "app": "Otter AI",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "96",
+          "app": "Devin",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "API key"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "59",
+          "app": "Waterfall.io",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "none_found",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "60",
+          "app": "Clay",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "67",
+          "app": "Snowflake",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "JWT / service account",
+              "Bearer token",
+              "Other"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "69",
+          "app": "Datadog",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "72",
+          "app": "Airtable",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": false
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "9",
+          "app": "Copper",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "10",
+          "app": "DealCloud",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "12",
+          "app": "Intercom",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "18",
+          "app": "Help Scout",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "API key",
+              "Basic"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "22",
+          "app": "Twilio",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Basic",
+              "OAuth2"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "24",
+          "app": "Lark (Larksuite)",
+          "fields": {
+            "auth": true,
+            "access": false,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token",
+              "Other"
+            ],
+            "access": "approval_required",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "32",
+          "app": "Meta Ads",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "approval_required",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "40",
+          "app": "SendGrid",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "48",
+          "app": "Gumroad",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": false
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "50",
+          "app": "fanbasis",
+          "fields": {
+            "auth": true,
+            "access": false,
+            "api": true,
+            "mcp": false,
+            "verdict": false
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        }
+      ]
+    },
+    "final": {
+      "hits": 96,
+      "total": 100,
+      "pct": 96.0,
+      "per_field": {
+        "auth": 20,
+        "access": 18,
+        "api": 20,
+        "mcp": 19,
+        "verdict": 19
+      },
+      "rows": [
+        {
+          "id": "75",
+          "app": "Asana",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "OAuth2",
+              "Other"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "81",
+          "app": "Stripe",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "Basic",
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "84",
+          "app": "Paygent Connect",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "none_found",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "92",
+          "app": "Otter AI",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "96",
+          "app": "Devin",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "API key"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "59",
+          "app": "Waterfall.io",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "none_found",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "60",
+          "app": "Clay",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "67",
+          "app": "Snowflake",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "JWT / service account",
+              "Bearer token",
+              "Other"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "69",
+          "app": "Datadog",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "72",
+          "app": "Airtable",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Bearer token",
+              "OAuth2"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "9",
+          "app": "Copper",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key",
+              "OAuth2"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "10",
+          "app": "DealCloud",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "API key"
+            ],
+            "access": "partner_gated",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "blocked"
+          }
+        },
+        {
+          "id": "12",
+          "app": "Intercom",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "18",
+          "app": "Help Scout",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "API key",
+              "Basic"
+            ],
+            "access": "paid_plan",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "22",
+          "app": "Twilio",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "Basic",
+              "OAuth2"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "24",
+          "app": "Lark (Larksuite)",
+          "fields": {
+            "auth": true,
+            "access": false,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token",
+              "Other"
+            ],
+            "access": "approval_required",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "32",
+          "app": "Meta Ads",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "approval_required",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "40",
+          "app": "SendGrid",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_trial",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready_with_caveats"
+          }
+        },
+        {
+          "id": "48",
+          "app": "Gumroad",
+          "fields": {
+            "auth": true,
+            "access": true,
+            "api": true,
+            "mcp": true,
+            "verdict": true
+          },
+          "got": {
+            "auth": [
+              "OAuth2",
+              "Bearer token"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "official",
+            "verdict": "ready"
+          }
+        },
+        {
+          "id": "50",
+          "app": "fanbasis",
+          "fields": {
+            "auth": true,
+            "access": false,
+            "api": true,
+            "mcp": false,
+            "verdict": false
+          },
+          "got": {
+            "auth": [
+              "API key"
+            ],
+            "access": "self_serve_free",
+            "api": [
+              "REST"
+            ],
+            "mcp": "community",
+            "verdict": "ready"
+          }
+        }
+      ]
+    }
+  }
+}

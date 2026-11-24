@@ -1,0 +1,39 @@
+{
+  "id": "85",
+  "input": {
+    "id": "85",
+    "category": "Finance and Fintech",
+    "app": "iPayX",
+    "hint": "ipayx.ai/docs"
+  },
+  "meta": {
+    "cost_usd": 0.06636299000000001,
+    "turns": 9
+  },
+  "record": {
+    "app": "iPayX",
+    "category": "FX audit / Payments",
+    "one_liner": "iPayX Protocol is a FINTRAC-registered FX forensic audit service that scores FX transactions against live mid-market rates to flag hidden markup, spread and fees.",
+    "auth_methods": [
+      "Bearer token"
+    ],
+    "auth_notes": "Static API keys sent as Authorization: Bearer. Prefixes ipx_live_ (production) and ipx_test_ (sandbox). No OAuth documented. Some MCP tools work unauthenticated (per-IP free limits).",
+    "access": "paid_plan",
+    "access_notes": "Homepage says API access is included in paid tiers. Pricing page lists Free (3 lifetime audits, no API listed), Credit Pack 100 at $99 one-time, Unlimited at $299/mo. It does not say which tier includes API keys. The MCP docs say keys are issued from the dashboard and list free-tool limits per key. The sandbox MCP test page and some MCP tools need no signup. The docs conflict on details (see blocker).",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "narrow",
+    "mcp": "official",
+    "mcp_url": "https://mcp.ipayx.ai/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Narrow API (3 REST endpoints: POST /audit, GET /rates, POST /audit/document). The API-key tier is unclear, and the pricing page shows no explicit API plan. The vendor's own docs conflict on MCP endpoint (mcp.ipayx.ai vs a supabase.co URL) and on the price and limits of the forensic report ($297 vs $199). The REST base URL is on supabase.co. The rate limit quota is undocumented.",
+    "evidence": {
+      "auth": "https://ipayx.ai/docs/api (Bearer ipx_live_ keys in Authorization header); https://ipayx.ai/docs/mcp-server (ipx_live_/ipx_test_, keys from dashboard)",
+      "access": "https://ipayx.ai/pricing (Free 3 lifetime audits, $99 pack, $299/mo Unlimited; API tier not stated); https://ipayx.ai (API access included in paid tiers)",
+      "api": "https://ipayx.ai/docs/api (POST /audit, GET /rates, POST /audit/document)",
+      "mcp": "https://github.com/iPAYX-Technologies/mcp-fx-audit (remote MCP at https://mcp.ipayx.ai/mcp, operated by iPayX); https://ipayx.ai (native MCP server listed)"
+    },
+    "confidence": "medium"
+  }
+}

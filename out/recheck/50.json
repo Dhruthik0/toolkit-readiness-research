@@ -1,0 +1,22 @@
+{
+  "id": "50",
+  "input": {
+    "id": "50",
+    "category": "Ecommerce",
+    "app": "fanbasis",
+    "hint": "fanbasis.com"
+  },
+  "meta": {
+    "cost_usd": 0.10623005499999998,
+    "turns": 14
+  },
+  "recheck": {
+    "vendor_docs_url": "https://commasdocs.com/",
+    "access": "self_serve_free",
+    "api_types": [
+      "REST"
+    ],
+    "evidence_quote": "All requests require an API key in the x-api-key header (search-result excerpt of the vendor's FanBasis/fbnewapi GitHub docs; page itself not fetchable)",
+    "notes": "NOT fully settled. Vendor docs exist: FanBasis (rebranded \"Commas\") has a GitHub repo FanBasis/fbnewapi and a docs site commasdocs.com titled \"Commas API Reference\". Neither could be read: www.fanbasis.com/public-api/ and docs.fanbasis.com/llms.txt returned 403, the GitHub repo and raw files returned 404, commasdocs.com is JS-rendered and returned only a title, and support.fanbasis.com failed on SSL. Verified only via search-result excerpts: REST-style API at https://www.fanbasis.com/public-api/, API key in the x-api-key header, and a third-party copy suggesting keys are scoped (checkout-sessions, payments, webhooks, customers). A fanbasis.com marketing page lists \"APIs and SDKs\" under \"Enterprise & APIs\", which could mean plan or sales gating. Inferred, not verified: that keys are self-serve from the dashboard. Where to create a key, plan requirements, rate limits and the endpoint list are all unconfirmed. I set access to self_serve_free as the best guess, but it is low confidence, and approval_required or paid_plan can't be ruled out. Do not use no_public_api, since public docs do exist. Recommend someone with a FanBasis account check the dashboard for an API Keys page, or the docs be viewed in a browser."
+  }
+}

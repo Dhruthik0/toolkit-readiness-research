@@ -1,0 +1,74 @@
+{
+  "id": "67",
+  "input": {
+    "id": "67",
+    "category": "Developer, Infra and Data platforms",
+    "app": "Snowflake",
+    "hint": "docs.snowflake.com"
+  },
+  "meta": {
+    "cost_usd": 0.05173216,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "SQL API page lists OAuth, key-pair JWT and workload identity federation, all sent as Authorization: Bearer. PAT appears only as a token-type value (PROGRAMMATIC_ACCESS_TOKEN) there. The MCP page confirms OAuth (Snowflake OAuth or External OAuth via Okta/Entra) and PAT as a bearer token. OAuth is for API access, not only SSO.",
+      "url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Trial lasts 30 days or until the free balance is used up. The credit amount is not stated. No permanent free tier is described. External network access is unavailable. AI features are disabled until a credit card is added, which matters for Cortex and the MCP server. The page says nothing about API limits.",
+      "url": "https://docs.snowflake.com/en/user-guide/admin-trial-account"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The REST API page covers many resource groups: accounts, users and roles, warehouses, databases, tables, stages, tasks, Cortex and others. It says not all resources cover their SQL command equivalents 100%. REST is correct. Broad is reasonable.",
+      "url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/snowflake-rest-api"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The page describes a Snowflake-managed MCP server, so it is official. It supports OAuth and PAT bearer tokens, and a network policy must allow the client IPs where network policies are enabled.",
+      "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats follows from the other fields: per-account admin-configured credentials, a trial-only free path, and incomplete REST coverage. The blocker should also mention that AI features, and so Cortex MCP use, are disabled on a trial until a credit card is added.",
+      "url": "https://docs.snowflake.com/en/user-guide/admin-trial-account"
+    }
+  ],
+  "corrected": {
+    "app": "Snowflake",
+    "category": "Cloud data platform / data warehouse",
+    "one_liner": "Cloud data platform for storing, querying, and analyzing data with SQL, plus Cortex AI services, running on AWS, Azure, and GCP.",
+    "auth_methods": [
+      "OAuth2",
+      "JWT / service account",
+      "Bearer token",
+      "Other"
+    ],
+    "auth_notes": "SQL API docs list OAuth, key-pair JWT, and workload identity federation (all sent as Authorization: Bearer). PAT appears in the SQL API page only as a token-type value (PROGRAMMATIC_ACCESS_TOKEN). The MCP docs say a PAT can be sent as a bearer token (needs a network policy allowing the client's IPs). OAuth uses Snowflake security integrations the account admin creates; External OAuth via Okta or Entra ID is also supported. Not verified: whether the SQL API itself accepts PATs as a standalone method.",
+    "access": "self_serve_trial",
+    "access_notes": "Trial account lasts 30 days or until the free usage balance runs out. The credit amount is not stated. No permanent free tier is described. External network access is unavailable on trial. AI features are disabled until a credit card is added. After the trial ends the account is suspended, and a paid account (credit card, on-demand billing) is needed.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Credentials are per-account and admin-configured (security integration, key pair, or PAT with a network policy). Free access is trial-only, and each customer needs their own Snowflake account. AI features (Cortex, so Cortex-based MCP tools) are disabled on trial until a credit card is added. The REST API does not fully match SQL command coverage. The trial's API availability and credit amount are not documented.",
+    "evidence": {
+      "auth": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+      "access": "https://docs.snowflake.com/en/user-guide/admin-trial-account",
+      "api": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/snowflake-rest-api",
+      "mcp": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp"
+    },
+    "confidence": "medium"
+  }
+}

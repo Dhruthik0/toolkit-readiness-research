@@ -1,0 +1,39 @@
+{
+  "id": "33",
+  "input": {
+    "id": "33",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "LinkedIn Ads",
+    "hint": "learn.microsoft.com/linkedin/marketing"
+  },
+  "meta": {
+    "cost_usd": 0.135397925,
+    "turns": 7
+  },
+  "record": {
+    "app": "LinkedIn Ads",
+    "category": "Ad platform (B2B advertising)",
+    "one_liner": "LinkedIn Ads (Campaign Manager) lets businesses run paid campaigns targeting professionals, and the Marketing API lets integrations manage campaigns, creatives, reporting, leads, audiences and conversions.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "auth_notes": "3-legged OAuth 2.0 authorization code flow only; the docs state client credentials (2-legged) is not available for marketing use cases. Access tokens last 60 days and the member must re-authorize to refresh. Programmatic refresh tokens are limited to a set of partners. The Developer Portal has a manual token generator for testing. Scopes include r_ads, rw_ads and r_ads_reporting. The member must also hold an ad account role such as CAMPAIGN_MANAGER.",
+    "access": "approval_required",
+    "access_notes": "Create a developer app, then apply for the Advertising API product, which has no stated fee. Every app starts in the Development tier: unlimited reads, edits on up to 5 ad accounts, and 1 test ad account created via the API. Standard tier (unlimited edits and account creation) needs a support ticket, and LinkedIn may decline it at its discretion. Audience Insights and Media Planning are restricted, and Company Intelligence is closed to new applications. I did not fetch the quick-start page, so the Development tier approval timeline and criteria are not verified.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "none_found",
+    "mcp_url": null,
+    "verdict": "ready_with_caveats",
+    "blocker": "Access needs LinkedIn approval for the Advertising API. Writes are capped at 5 ad accounts until a Standard tier upgrade, which LinkedIn can decline. OAuth is member-consent only, with 60-day tokens and no client-credentials flow, so end users must re-authorize periodically. Versioned APIs are sunset on a rolling basis.",
+    "evidence": {
+      "auth": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+      "access": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access",
+      "api": "https://learn.microsoft.com/en-us/linkedin/marketing/overview",
+      "mcp": null
+    },
+    "confidence": "medium"
+  }
+}

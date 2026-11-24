@@ -1,0 +1,40 @@
+{
+  "id": "63",
+  "input": {
+    "id": "63",
+    "category": "Developer, Infra and Data platforms",
+    "app": "Netlify",
+    "hint": "docs.netlify.com/api"
+  },
+  "meta": {
+    "cost_usd": 0.039494169999999995,
+    "turns": 5
+  },
+  "record": {
+    "app": "Netlify",
+    "category": "Web hosting / deployment platform",
+    "one_liner": "Netlify is a cloud platform for building, deploying and hosting web sites and apps, with builds, serverless functions, forms, DNS and CDN.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Personal access tokens (Applications > Personal access tokens) are sent as 'Authorization: Bearer <token>'. OAuth2 is documented for public integrations: register an application for a client key and secret; the user authorization endpoint is https://app.netlify.com/authorize. The OpenAPI spec also shows a ticket-based flow (POST /oauth/tickets, then exchange). SAML SSO teams need an opt-in when the PAT is generated. Resetting the account password invalidates all PATs and OAuth tokens.",
+    "access": "self_serve_free",
+    "access_notes": "Any Netlify account can create a PAT or register an OAuth app. The fetched pages do not state which plans include API access, and I did not verify that the free plan does. Inferred from the docs showing no plan gating. Deploys via the API are limited to 3/min and 100/day.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.netlify.com/mcp",
+    "verdict": "ready",
+    "blocker": "none. Caveat: rate limits are 500 requests/min, and API deploys are limited to 3/min and 100/day. No scope model is documented, so a token has the full access of its owner.",
+    "evidence": {
+      "auth": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+      "access": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+      "api": "https://open-api.netlify.com",
+      "mcp": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/"
+    },
+    "confidence": "medium"
+  }
+}

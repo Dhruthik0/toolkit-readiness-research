@@ -1,0 +1,73 @@
+{
+  "id": "11",
+  "input": {
+    "id": "11",
+    "category": "Support and Helpdesk",
+    "app": "Zendesk",
+    "hint": "zendesk.com"
+  },
+  "meta": {
+    "cost_usd": 0.094033515,
+    "turns": 10
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Security-and-auth page lists OAuth access tokens (Bearer, recommended), API tokens via Basic (marked deprecated), end-user password on closed instances. Global OAuth required for multi-customer apps. No sunset date on the page; the Workato 2026-03-31 claim stays unverified.",
+      "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "The page confirms a free 14-day trial for Support or Sell, and sponsored accounts (up to 5 agents, no expiry, default Suite Enterprise) for Marketplace developers only. It does not state that trials include API access or which plan they use. The record's caveats match.",
+      "url": "https://developer.zendesk.com/documentation/api-basics/getting-started/getting-a-trial-or-sponsored-account-for-development/"
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "The API reference lists many product APIs (Support, Help Center, Conversations, Talk, Chat, Sell and others), which supports 'broad'. No fetched page says 'REST' outright. The Support API examples use JSON over HTTP at /api/v2/*.json, so REST is inferred, not stated. No GraphQL was seen.",
+      "url": "https://developer.zendesk.com/api-reference/"
+    },
+    {
+      "field": "mcp",
+      "status": "contradicted",
+      "note": "Zendesk support docs describe a Zendesk-provided MCP server, reached through Zendesk Bridge / External AI connections (Admin Center > AI > External AI). It is in early access (EAP), not GA. It exposes tools for tickets, users, orgs, help center search and macros. The record's 'none_found' is wrong. Zendesk also has an MCP client (GA), which is a separate thing.",
+      "url": "https://support.zendesk.com/hc/en-us/articles/11400026079130-Connecting-external-AI-agents-to-Zendesk-EAP"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats still holds. Caveats: no permanent free tier, deprecated API-token auth, and the official MCP server is EAP only. The blocker text must drop the claim that no official MCP exists.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Zendesk",
+    "category": "Helpdesk / Customer Support",
+    "one_liner": "Zendesk is a customer service platform covering ticketing, help center, messaging, voice, chat and sales CRM, with APIs for each.",
+    "auth_methods": [
+      "OAuth2",
+      "API key",
+      "Basic"
+    ],
+    "auth_notes": "Per the Zendesk security-and-auth page: OAuth access tokens are sent as Bearer. Global OAuth tokens are required if distributing an app to multiple Zendesk customers. API tokens use Basic auth as {email}/token:{api_token}; the page labels this method deprecated and recommends migrating to OAuth, but gives no sunset date. End-user email/password works on closed instances only, and anonymous access on open instances only. A third-party report (Workato) says new Basic auth connections were blocked from 2026-03-31; not verified on a Zendesk page.",
+    "access": "self_serve_trial",
+    "access_notes": "Zendesk's developer docs offer a free 14-day trial (Support or Sell). Free sponsored accounts (up to 5 agents, no expiry, default Suite Enterprise) are for Marketplace partner developers only and need an application. Customer developers are pointed to their own instances or sandboxes (sandboxes are an Enterprise-plan feature per search only, not fetched from a vendor page). No permanent free developer tier found. The fetched pages do not say which plan a standard trial uses or that a trial includes API access. After the trial, API use needs a paid Zendesk subscription (plan not verified).",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://support.zendesk.com/hc/en-us/articles/11400026079130-Connecting-external-AI-agents-to-Zendesk-EAP",
+    "verdict": "ready_with_caveats",
+    "blocker": "No permanent free tier, only a 14-day trial. The API token (Basic) method is deprecated, so a multi-customer toolkit should use OAuth (global OAuth tokens). Zendesk's official MCP server (via Zendesk Bridge / External AI) is in early access, so it is not a general-availability option yet. 'REST' is inferred from the JSON-over-HTTP /api/v2 examples, not stated outright.",
+    "evidence": {
+      "auth": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+      "access": "https://developer.zendesk.com/documentation/api-basics/getting-started/getting-a-trial-or-sponsored-account-for-development/",
+      "api": "https://developer.zendesk.com/api-reference/",
+      "mcp": "https://support.zendesk.com/hc/en-us/articles/11400026079130-Connecting-external-AI-agents-to-Zendesk-EAP"
+    },
+    "confidence": "low"
+  }
+}

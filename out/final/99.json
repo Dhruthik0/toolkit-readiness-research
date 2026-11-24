@@ -1,0 +1,73 @@
+{
+  "id": "99",
+  "input": {
+    "id": "99",
+    "category": "AI, Research and Media-native",
+    "app": "YouTube Transcript",
+    "hint": "transcriptapi.com"
+  },
+  "meta": {
+    "cost_usd": 0.048370369999999996,
+    "turns": 5
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "API docs confirm Bearer API key from /dashboard/api-keys. MCP docs confirm OAuth 2.1 (Claude and ChatGPT, scope mcp:access) plus Bearer sk_ key. The 'dynamic registration for Claude; static client ID/secret for ChatGPT' detail was not on the fetched page, so I removed it. OAuth2 is legitimately for MCP access, not REST.",
+      "url": "https://transcriptapi.com/docs/mcp/"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Homepage: 100 free credits, no card; Monthly $5 for 1,000 credits at 200 RPM; Annual $4.50/mo billed $54/yr at 300 RPM; top-ups need an active subscription. Docs confirm free endpoints still need at least one active credit. Self-serve free holds for evaluation.",
+      "url": "https://transcriptapi.com"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Docs list 13 REST endpoints (10 credit-based, 3 free) covering transcript, video metadata, search, channel and playlist reads. REST only. Breadth 'moderate' is a judgment call: read-only and YouTube-only, but a full read set. The /api/v2/ path prefix was not shown on the fetched page.",
+      "url": "https://transcriptapi.com/docs/api/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "MCP docs: server at https://transcriptapi.com/mcp, 12 tools, hosted and operated by TranscriptAPI, so official.",
+      "url": "https://transcriptapi.com/docs/mcp/"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits: credit-metered, read-only, rate-limited. Claim that MCP tool names are inconsistent between doc pages was not verified, so I dropped it. ToS and reliability risk remains unassessed.",
+      "url": "https://transcriptapi.com/docs/api/"
+    }
+  ],
+  "corrected": {
+    "app": "YouTube Transcript",
+    "category": "Data API (YouTube transcripts)",
+    "one_liner": "TranscriptAPI is a hosted REST API and MCP server that returns YouTube video transcripts, search results, and channel and playlist data without a YouTube Data API key.",
+    "auth_methods": [
+      "Bearer token",
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "REST API: API key from the dashboard (/dashboard/api-keys), sent as 'Authorization: Bearer <key>'. The MCP server also supports OAuth 2.1 (scope mcp:access) for Claude and ChatGPT, or the same API key as a Bearer token. OAuth applies to the MCP connector, not a general third-party app OAuth flow on the REST API.",
+    "access": "self_serve_free",
+    "access_notes": "The free tier gives 100 credits with no card required, per the homepage. Paid plans: Monthly at $5/month for 1,000 credits (200 RPM); Annual at $4.50/month billed $54/year (300 RPM). Keys come from /dashboard/api-keys. Free endpoints still need at least one active credit. Top-up credits require an active subscription.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://transcriptapi.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API is read-only and credit-metered (1 credit per successful call on paid endpoints, 100 free credits). Rate limits are 200-300 RPM per account. The service is a third-party YouTube data layer, so YouTube ToS risk and reliability were not assessed. Scope is YouTube transcripts and metadata only.",
+    "evidence": {
+      "auth": "https://transcriptapi.com/docs/api/ (Bearer API key in Authorization header); https://transcriptapi.com/docs/mcp/ (OAuth 2.1 or Bearer API key for MCP)",
+      "access": "https://transcriptapi.com (Free: 100 credits, no card required; $5/month for 1,000 credits; annual $54/yr; top-ups need active subscription)",
+      "api": "https://transcriptapi.com/docs/api/ (13 REST endpoints: transcript, info, video metadata, search, channel and playlist endpoints)",
+      "mcp": "https://transcriptapi.com/docs/mcp/ (server at https://transcriptapi.com/mcp, 12 tools, OAuth 2.1 or Bearer API key; run by the vendor)"
+    },
+    "confidence": "medium"
+  }
+}

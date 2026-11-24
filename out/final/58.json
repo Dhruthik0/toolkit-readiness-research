@@ -1,0 +1,71 @@
+{
+  "id": "58",
+  "input": {
+    "id": "58",
+    "category": "Data, SEO and Scraping",
+    "app": "Sherlock",
+    "hint": "github.com/sherlock-project/sherlock"
+  },
+  "meta": {
+    "cost_usd": 0.051732205,
+    "turns": 5
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "README documents only local CLI usage (`sherlock user123`) and no credentials. This rests on absence, but there is no vendor API to authenticate to.",
+      "url": "https://github.com/sherlock-project/sherlock"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "README gives MIT license and self-run installs (pipx/pip/uv, Docker, dnf). It describes no hosted service. The project website is only linked.",
+      "url": "https://github.com/sherlock-project/sherlock"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "README documents CLI usage only. It has no REST API or library docs. The `--json` flag loads site data and is not an API.",
+      "url": "https://github.com/sherlock-project/sherlock"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The Glama page shows Burnsedia's third-party FastMCP server with one tool, search_username, that requires the Sherlock CLI. A search found no official sherlock-project MCP server. I did not inspect the GitHub org directly. The server's maintenance status is shown as outdated.",
+      "url": "https://glama.ai/mcp/servers/Burnsedia/sherlock-mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "This is consistent with the other fields. There is no API, so the verdict only holds under a local-CLI-wrapper reading. The blocker states that caveat. The community MCP server is stale per Glama.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Sherlock",
+    "category": "OSINT / username search",
+    "one_liner": "Open-source (MIT) Python command-line tool that checks whether a username exists across 400+ social networks and sites.",
+    "auth_methods": [
+      "None"
+    ],
+    "auth_notes": "No API and no authentication. It is a local CLI that makes unauthenticated requests to the target sites. There are no vendor credentials.",
+    "access": "no_public_api",
+    "access_notes": "No hosted or public API. You install it yourself (pipx/pip/uv, Docker, dnf) and run it locally, which is free. The README does not mention a library API or a hosted service.",
+    "api_types": [
+      "CLI / library only"
+    ],
+    "api_breadth": "none",
+    "mcp": "community",
+    "mcp_url": "https://glama.ai/mcp/servers/Burnsedia/sherlock-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "There is no API. A toolkit would have to run the CLI as a subprocess. A community MCP server (Burnsedia/sherlock-mcp) does this with one search_username tool, but Glama lists it as outdated and it is not verified as maintained. It needs a runtime that can execute the CLI. Results depend on per-site checks and can include false positives and negatives. Searching people by username raises privacy and ToS concerns. Under a strict hosted-API definition this is no_public_api, so switch it to blocked if you require a hosted API.",
+    "evidence": {
+      "auth": "https://github.com/sherlock-project/sherlock (README documents CLI-only usage and no authentication; absence only, not an explicit statement)",
+      "access": "https://github.com/sherlock-project/sherlock (MIT license; install via pipx/pip/uv/Docker/dnf; no hosted service described)",
+      "api": "https://github.com/sherlock-project/sherlock (usage is `sherlock user123`; no API or library docs)",
+      "mcp": "https://glama.ai/mcp/servers/Burnsedia/sherlock-mcp (third-party server by Burnsedia wrapping the Sherlock CLI, one search_username tool). A search found no official sherlock-project MCP server."
+    },
+    "confidence": "medium"
+  }
+}

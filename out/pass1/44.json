@@ -1,0 +1,39 @@
+{
+  "id": "44",
+  "input": {
+    "id": "44",
+    "category": "Ecommerce",
+    "app": "Salesforce Commerce Cloud",
+    "hint": "developer.salesforce.com/docs/commerce"
+  },
+  "meta": {
+    "cost_usd": 0.12793485500000001,
+    "turns": 15
+  },
+  "record": {
+    "app": "Salesforce Commerce Cloud",
+    "category": "E-commerce platform",
+    "one_liner": "Salesforce B2C Commerce (Commerce Cloud) is a hosted enterprise e-commerce platform whose storefront, catalog, basket, order and promotion data is exposed through SCAPI and OCAPI.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "auth_notes": "Taken from search-result summaries of vendor docs, because developer.salesforce.com returned 403 to every fetch. Admin APIs use an Account Manager API client with the OAuth2 client_credentials grant only. Shopper APIs use SLAS clients (public or private) with 30-minute tokens. A SCAPI API client cannot be used with OCAPI, and the reverse also holds. The official MCP/CLI docs (fetched) also mention Account Manager browser sign-in and an access key or API client for CI.",
+    "access": "partner_gated",
+    "access_notes": "Unverified, from search summaries only. On-demand sandboxes need purchased sandbox credits via an Account Executive. An Account Manager API client needs a realm and admin roles. I found no free or trial tier, so access appears to need an existing B2C Commerce contract or realm. I could not confirm this on a fetched vendor page.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp",
+    "verdict": "blocked",
+    "blocker": "No self-serve credentials found. Access appears to need a B2C Commerce realm and contract, and sandboxes need purchased credits through an Account Executive. This is unverified because developer.salesforce.com blocked my fetches. The API is broad (the MCP page cites nearly 600 SCAPI operations). The official MCP server (@salesforce/b2c-dx-mcp) is developer-focused. Its docs say it works with an instance hostname and Account Manager sign-in.",
+    "evidence": {
+      "auth": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/ (fetched): browser sign-in with an Account Manager account by default, and an access key or API client for CI or scripts. The OAuth2 client_credentials detail is from search summaries only.",
+      "access": null,
+      "api": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp (fetched): SCAPI code mode covers nearly 600 operations, with Admin APIs and Shopper APIs run as a guest shopper via a SLAS client.",
+      "mcp": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp (fetched): the page is on Salesforce's docs site, the package is under the @salesforce npm scope, and the repo is in the SalesforceCommerceCloud GitHub org. Developer Preview status comes from search summaries."
+    },
+    "confidence": "low"
+  }
+}

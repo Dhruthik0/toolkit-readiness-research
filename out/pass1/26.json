@@ -1,0 +1,42 @@
+{
+  "id": "26",
+  "input": {
+    "id": "26",
+    "category": "Communications and Messaging",
+    "app": "Discord",
+    "hint": "discord.com"
+  },
+  "meta": {
+    "cost_usd": 0.06329937000000001,
+    "turns": 9
+  },
+  "record": {
+    "app": "Discord",
+    "category": "Messaging / Community platform",
+    "one_liner": "Discord is a chat, voice and community platform organized into servers (guilds) and channels, with a developer platform for bots and apps.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2",
+      "Other"
+    ],
+    "auth_notes": "Bot token sent as `Authorization: Bot <token>` (from app settings; a static credential). OAuth2 for user-delegated access: authorization code (with PKCE), implicit (not recommended), client credentials (bearer for bot owner), bot authorization flow, and webhook flow. Access tokens are sent as `Authorization: Bearer`. Basic auth (client_id:client_secret) applies only to the OAuth2 token endpoints. Incoming webhooks are an additional URL-based mechanism.",
+    "access": "self_serve_free",
+    "access_notes": "Anyone with a free Discord account can create an application and bot in the developer portal. I did not fetch the portal page itself, so this is inferred from the docs' bot-token and OAuth2 flows. Some scopes need partner approval: dm_channels.read, rpc*, voice, identify.premium and applications.builds.upload. relationships.read needs an access request. Verified-bot status is needed to grow past the guild cap, and the docs page doesn't state the cap number or the criteria.",
+    "api_types": [
+      "REST",
+      "WebSocket"
+    ],
+    "api_breadth": "broad",
+    "mcp": "community",
+    "mcp_url": "https://github.com/SaseQ/discord-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Bot actions work only in guilds where the bot is installed, and the user must add it. User-token actions are limited by OAuth scopes. Some scopes (DM channel reads, RPC, voice) are partner-only. Rate limits apply, and the docs say apps that ignore them can have their credentials revoked. Bots must send a DiscordBot User-Agent. A \"docs.discord.com/mcp\" docs-search endpoint was reported by a third party, but I couldn't confirm it on a Discord page, so I classed MCP as community.",
+    "evidence": {
+      "auth": "https://docs.discord.com/developers/topics/oauth2",
+      "access": "https://docs.discord.com/developers/topics/oauth2",
+      "api": "https://docs.discord.com/developers/reference",
+      "mcp": null
+    },
+    "confidence": "medium"
+  }
+}

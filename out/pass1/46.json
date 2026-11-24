@@ -1,0 +1,40 @@
+{
+  "id": "46",
+  "input": {
+    "id": "46",
+    "category": "Ecommerce",
+    "app": "Squarespace",
+    "hint": "developers.squarespace.com"
+  },
+  "meta": {
+    "cost_usd": 0.05075686,
+    "turns": 7
+  },
+  "record": {
+    "app": "Squarespace",
+    "category": "Website builder / Ecommerce",
+    "one_liner": "Hosted website builder and ecommerce platform whose Commerce APIs expose store data (products, orders, inventory, profiles/contacts, transactions, discounts, webhooks).",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "Both sent as Authorization: Bearer. Merchant-generated API key (Settings > Advanced > Developer API Keys, shown once, never expires while site is active) for custom single-site apps; OAuth client (account.squarespace.com/developer-apps) for multi-site/commercial apps. Webhook Subscriptions API is OAuth-only. User-Agent header required.",
+    "access": "paid_plan",
+    "access_notes": "API keys require a site on the Commerce Advanced plan (per vendor auth page). OAuth client registration requires Squarespace review and approval; approval allows OAuth connections but is separate from Extensions listing. OAuth plan requirement for developers not stated.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "community",
+    "mcp_url": "https://glama.ai/mcp/servers/integrations/squarespace",
+    "verdict": "ready_with_caveats",
+    "blocker": "API-key access needs the Commerce Advanced plan on the user's site; OAuth (needed for webhooks and multi-tenant toolkit) needs Squarespace approval. Rate-limit numbers not verified. API covers commerce data, not page/content editing.",
+    "evidence": {
+      "auth": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+      "access": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+      "api": "https://developers.squarespace.com/commerce-apis/overview",
+      "mcp": "https://github.com/anthropics/claude-ai-mcp/issues/372"
+    },
+    "confidence": "medium"
+  }
+}

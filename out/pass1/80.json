@@ -1,0 +1,40 @@
+{
+  "id": "80",
+  "input": {
+    "id": "80",
+    "category": "Productivity and Project Management",
+    "app": "Harvest",
+    "hint": "harvestapp.com (help.getharvest.com/api-v2)"
+  },
+  "meta": {
+    "cost_usd": 0.062711635,
+    "turns": 8
+  },
+  "record": {
+    "app": "Harvest",
+    "category": "Time tracking & invoicing",
+    "one_liner": "Harvest is a cloud time-tracking, expense, invoicing and project-budget tool for teams and agencies, with a companion Forecast scheduling product.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Personal access token created in Harvest ID Developers (default 'all' scope), sent as 'Authorization: Bearer' plus a 'Harvest-Account-Id' header, or as access_token and account_id query params. OAuth2 for third-party integrations: Authorization Code flow with refresh tokens, and Implicit flow. Scopes are harvest:{id}, forecast:{id}, harvest:all, forecast:all, all. Every request needs a User-Agent with an app name and a link or email, or it returns 400.",
+    "access": "self_serve_free",
+    "access_notes": "The pricing page lists a $0 Free plan (1 seat, 2 projects) and a 30-day trial of paid plans. Tokens and OAuth apps are created in Harvest ID Developers. I did not find any vendor page stating API access by plan, so whether the Free plan includes API access is inferred, not verified. OAuth apps are created without a documented review step.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://api.harvestapp.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Rate limits: 100 requests per 15 seconds for general calls, 100 per 15 minutes for Reports. Free-plan API entitlement is unconfirmed. A User-Agent header and an account ID are required on every request.",
+    "evidence": {
+      "auth": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+      "access": "https://www.getharvest.com/pricing",
+      "api": "https://help.getharvest.com/api-v2/",
+      "mcp": "Search result only: https://support.getharvest.com/hc/en-us/articles/46293697226381-Harvest-MCP. Fetch returned 403, so the endpoint URL is unverified."
+    },
+    "confidence": "medium"
+  }
+}

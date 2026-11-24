@@ -1,0 +1,72 @@
+{
+  "id": "48",
+  "input": {
+    "id": "48",
+    "category": "Ecommerce",
+    "app": "Gumroad",
+    "hint": "gumroad.com/api"
+  },
+  "meta": {
+    "cost_usd": 0.09731569,
+    "turns": 14
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Third-party pages (Nango, n8n) state Gumroad supports OAuth2 for API access (app id/secret, redirect URI) and an access token generated for an app. Gumroad's own API page renders empty, so Bearer and scope names are unverified from the vendor. The scope list in the record differs from other sources (e.g. view_payouts, edit_sales appear elsewhere), so I removed the specific scope list.",
+      "url": "https://docs.n8n.io/integrations/builtin/credentials/gumroad/"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "n8n confirms apps are created in Settings > Advanced and no approval step is mentioned. Nango marks paid plan and app review as unknown. Vendor help article 280 returned only its title. self_serve_free is the best-supported value but unverified.",
+      "url": "https://docs.n8n.io/integrations/builtin/credentials/gumroad/"
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "gumroad.com/api and app.gumroad.com/api returned only the title. REST and the breadth rating are inferred from third-party integrations and not stated by a fetched vendor page.",
+      "url": null
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "gumroad.com/claude, a Gumroad page, gives the server URL https://gumroad.com/claude/v1/mcp. gumroad.com/mcp is a Gumroad-branded page that describes an OAuth-style sign-in with permission review. The page does not literally name OAuth. The server is hosted by Gumroad, so it is official. Community servers such as keithah/gumroad-mcp are separate.",
+      "url": "https://gumroad.com/claude"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is reasonable given a hosted official MCP and OAuth/token auth confirmed by third parties. The blocker is accurate: the vendor API docs could not be read, so scopes, endpoints and rate limits are unverified.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Gumroad",
+    "category": "E-commerce / Creator Commerce",
+    "one_liner": "Gumroad is a platform for creators to sell digital products, memberships and subscriptions directly to customers.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "Third-party sources (n8n, Nango) confirm OAuth2 for API access (application ID and secret, redirect URI) and an access token generated for a registered application. Gumroad's API page could not be read, so Bearer transport and the exact scope list are not verified from the vendor. Sources disagree on scopes: view_public, view_profile, edit_products, view_sales, mark_sales_as_shipped, refund_sales, and also view_payouts and edit_sales. Check the live authorize page before relying on any of them.",
+    "access": "self_serve_free",
+    "access_notes": "Per n8n, apps are created in Settings > Advanced in Gumroad (help article 280). No paid tier or approval step is mentioned in any source I read. Nango marks paid plan and app review as unknown, and the vendor help article could not be read, so this is unverified.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://gumroad.com/claude/v1/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Gumroad's API docs (gumroad.com/api, help article 280) render empty, so auth details, scopes, endpoints and rate limits are unverified against the vendor. The official MCP server is listed on gumroad.com/claude, but it is not yet in Claude's connector directory and has to be added as a custom connector.",
+    "evidence": {
+      "auth": "https://docs.n8n.io/integrations/builtin/credentials/gumroad/ (third party; states OAuth2 and access token options). https://nango.dev/docs/integrations/all/gumroad.md (third party; OAuth).",
+      "access": "https://docs.n8n.io/integrations/builtin/credentials/gumroad/ (third party; apps created in Settings > Advanced). https://nango.dev/docs/integrations/all/gumroad.md (paid plan and app review marked unknown).",
+      "api": null,
+      "mcp": "https://gumroad.com/claude (official Gumroad page; gives server URL https://gumroad.com/claude/v1/mcp). https://gumroad.com/mcp (official page; sign-in with permission review; reads products, sales and payouts; creates and publishes products)."
+    },
+    "confidence": "low"
+  }
+}

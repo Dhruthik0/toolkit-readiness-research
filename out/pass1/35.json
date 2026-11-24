@@ -1,0 +1,41 @@
+{
+  "id": "35",
+  "input": {
+    "id": "35",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "Mailchimp",
+    "hint": "mailchimp.com/developer"
+  },
+  "meta": {
+    "cost_usd": 0.08969044499999998,
+    "turns": 12
+  },
+  "record": {
+    "app": "Mailchimp",
+    "category": "Email marketing",
+    "one_liner": "Email and marketing automation platform for managing audiences, campaigns, automations and reporting.",
+    "auth_methods": [
+      "API key",
+      "Basic",
+      "OAuth2"
+    ],
+    "auth_notes": "API key sent as HTTP Basic auth password (any string as username). OAuth2 authorization-code flow for third-party apps (login.mailchimp.com/oauth2/authorize and /token); apps registered via a self-service Registered Apps form. API keys give full account access; keys created on/after 2026-06-22 expire after one year.",
+    "access": "self_serve_free",
+    "access_notes": "Any user with Manager role or higher can generate an API key in the account profile; OAuth app registration needs only a Mailchimp account. The fetched pages do not state which plan tiers include API access, so whether a Free plan works is not verified here. The fetched OAuth page does not mention an approval step (inferred self-serve). Rate limits were not verified.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "community",
+    "mcp_url": "https://pypi.org/project/mailchimp-mcp/",
+    "verdict": "ready_with_caveats",
+    "blocker": "Plan-tier requirement for API access and rate limits not confirmed from vendor pages. API keys are full-account scope and now expire yearly, so OAuth2 is preferable for multi-user toolkit. A hosted endpoint (ai-inc.mailchimp.com/claude/mcp/v2) appeared in a third-party listing but I could not confirm it on Mailchimp's own docs, so it is not counted as official.",
+    "evidence": {
+      "auth": "https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2/ (OAuth2 flow, self-service app registration); https://mailchimp.com/help/about-api-keys/ (API key creation, Manager role, expiry); https://mailchimp.com/developer/marketing/guides/quick-start/ (Basic auth with API key)",
+      "access": "https://mailchimp.com/help/about-api-keys/ (Manager+ can create keys; no plan requirement stated)",
+      "api": "https://mailchimp.com/developer/marketing/docs/fundamentals/ (REST, root https://api.mailchimp.com/3.0/, OpenAPI schema linked)",
+      "mcp": "No vendor page found. Third-party only: https://pypi.org/project/mailchimp-mcp/ (appeared in search results, not fetched)"
+    },
+    "confidence": "medium"
+  }
+}

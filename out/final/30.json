@@ -1,0 +1,76 @@
+{
+  "id": "30",
+  "input": {
+    "id": "30",
+    "category": "Communications and Messaging",
+    "app": "Vonage",
+    "hint": "developer.vonage.com"
+  },
+  "meta": {
+    "cost_usd": 0.04273826,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page confirms API key/secret as Basic, JWT RS256, Digest for SIP trunking, and message signatures with a separate signature secret. No OAuth. Messages and Verify v2 support both JWT and Basic. Basic does not support webhooks. The record's claim that JWT is used for Voice is only partly shown (Video and Client SDK confirmed). Per-API table did not render.",
+      "url": "https://developer.vonage.com/en/getting-started/concepts/authentication"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Overview page says signing up gives an API key and secret and 'some free credit', with the amount unstated. Self-serve is consistent. Production use is paid, which is a caveat but not a gate.",
+      "url": "https://developer.vonage.com/en/getting-started/overview"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The overview page does not state protocol types. The Voice WebSocket docs confirm WebSocket audio streaming. Each API has an OpenAPI 3 spec, consistent with REST. Breadth is broad by the APIs named (Voice, Messages, Verify, Number Insight). Evidence URL for api_types should include the WebSocket page.",
+      "url": "https://developer.vonage.com/en/voice/voice-api/concepts/websockets"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The MCP page is on Vonage's own developer site and describes a Documentation MCP and a Server API Bindings MCP. It does not use the word 'official', but vendor-hosted docs make official a reasonable reading.",
+      "url": "https://developer.vonage.com/en/mcp-server/overview"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats follows: self-serve signup, broad REST API, vendor MCP. Caveats are paid usage and auth that varies by API. The blocker text is accurate.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Vonage",
+    "category": "Communications API (CPaaS)",
+    "one_liner": "Vonage (Ericsson) provides programmable communications APIs for SMS, voice, messaging channels (WhatsApp, RCS), video, verification and number intelligence.",
+    "auth_methods": [
+      "API key",
+      "Basic",
+      "JWT / service account",
+      "HMAC signature",
+      "Other"
+    ],
+    "auth_notes": "API key and secret sent as Basic auth (Base64 in the Authorization header). JWT (RS256), signed with an application private key, is supported for Messages and Verify v2 (alongside Basic) and is used for Video and the Client SDK. JWT is needed for webhooks and ACLs, which Basic does not support. Digest auth is used for SIP trunking. A separate signature secret is used for signed messages and webhooks. No OAuth for third-party apps is mentioned. The per-API support table did not render, so per-API method for the remaining APIs is unverified.",
+    "access": "self_serve_free",
+    "access_notes": "Signing up gives an API key and secret in the dashboard, plus some free starting credit. The amount is not stated. Real production use (virtual numbers, volume sending) consumes paid balance. Some regions and channels may need number or sender registration (unverified).",
+    "api_types": [
+      "REST",
+      "WebSocket"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://developer.vonage.com/en/mcp-server/overview",
+    "verdict": "ready_with_caveats",
+    "blocker": "Usage is billed from prepaid credit and the free credit amount is unstated. Auth varies by API (JWT per application versus API key and secret). Credentials are per account, with no OAuth flow for acting on behalf of other users' accounts.",
+    "evidence": {
+      "auth": "https://developer.vonage.com/en/getting-started/concepts/authentication",
+      "access": "https://developer.vonage.com/en/getting-started/overview",
+      "api": "https://developer.vonage.com/en/voice/voice-api/concepts/websockets",
+      "mcp": "https://developer.vonage.com/en/mcp-server/overview"
+    },
+    "confidence": "medium"
+  }
+}

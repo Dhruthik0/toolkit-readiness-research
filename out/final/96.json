@@ -1,0 +1,72 @@
+{
+  "id": "96",
+  "input": {
+    "id": "96",
+    "category": "AI, Research and Media-native",
+    "app": "Devin",
+    "hint": "docs.devin.ai (MCP)"
+  },
+  "meta": {
+    "cost_usd": 0.057883245,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page: service user keys (cog_) and PATs (cog_) sent as Bearer; legacy apk_/apk_user_ keys for deprecated v1/v2. No OAuth documented. The 7/30/90-day expiry detail was not on the pages I fetched, so I removed it from the notes. Enterprise PAT policy was not checked either. I also fixed the note that PATs are not a separate prefix.",
+      "url": "https://docs.devin.ai/api-reference/authentication"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "Neither the overview nor the authentication page says which plans include API access. The overview links Teams and Enterprise quick starts and says the Enterprise API requires Enterprise. The pricing search found Free, Pro, Max, Teams and Enterprise plans but nothing on API entitlement. paid_plan is kept as the best-supported value.",
+      "url": "https://docs.devin.ai/api-reference/overview"
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "REST is supported: the overview documents /v3/organizations/* (sessions, knowledge, playbooks, secrets) and /v3/enterprise/* (analytics, audit logs, users, billing). WebSocket is not mentioned on the overview page, so I removed it. Moderate breadth is a judgment from the listed endpoint groups.",
+      "url": "https://docs.devin.ai/api-reference/overview"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The page calls it the official Devin MCP server. URL is https://mcp.devin.ai/mcp (Streamable HTTP; /sse is deprecated). Requires a Devin API key as Bearer; Enterprise keys and PATs also need an X-Org-Id header.",
+      "url": "https://docs.devin.ai/work-with-devin/devin-mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats follows from the other fields: REST API and official MCP exist, but plan entitlement is unconfirmed, there is no OAuth, rate limits are undocumented, and the Enterprise API needs an enterprise contract. Blocker text was edited to match what was verified.",
+      "url": "https://docs.devin.ai/api-reference/overview"
+    }
+  ],
+  "corrected": {
+    "app": "Devin",
+    "category": "AI software engineering agent",
+    "one_liner": "Devin (Cognition) is an autonomous AI software engineer that takes tasks as sessions, works in repos, and opens PRs.",
+    "auth_methods": [
+      "Bearer token",
+      "API key"
+    ],
+    "auth_notes": "v3 API: service user API keys (cog_ prefix) and personal access tokens (also cog_ prefix, authenticate as the user) are sent as a Bearer token in the Authorization header. Service users have RBAC roles and are created in Settings > Devin API (org) or Enterprise settings. Legacy keys (apk_ / apk_user_) work only with deprecated v1/v2. No OAuth flow for third-party apps is documented.",
+    "access": "paid_plan",
+    "access_notes": "Service users are created in Settings > Devin API (org) or Enterprise settings. The docs do not say which plans include API access. They link Teams and Enterprise quick starts, and the Enterprise API requires an Enterprise plan. Plans are Free, Pro, Max, Teams and Enterprise (per Cognition's April 2026 post as surfaced in search). API entitlement per plan is unverified; check devin.ai pricing or try a free account.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://mcp.devin.ai/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The plan tier that grants API access is unconfirmed and may be paid-only. The Enterprise API requires an Enterprise plan. Rate limits are not documented (only an HTTP 429 response is listed). Legacy v1/v2 are deprecated. No OAuth, so users must hand over service user keys or PATs.",
+    "evidence": {
+      "auth": "https://docs.devin.ai/api-reference/authentication",
+      "access": "https://docs.devin.ai/api-reference/overview",
+      "api": "https://docs.devin.ai/api-reference/overview",
+      "mcp": "https://docs.devin.ai/work-with-devin/devin-mcp"
+    },
+    "confidence": "low"
+  }
+}

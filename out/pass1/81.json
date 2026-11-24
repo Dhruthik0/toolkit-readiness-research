@@ -1,0 +1,42 @@
+{
+  "id": "81",
+  "input": {
+    "id": "81",
+    "category": "Finance and Fintech",
+    "app": "Stripe",
+    "hint": "stripe.com/docs/api"
+  },
+  "meta": {
+    "cost_usd": 0.1421834,
+    "turns": 6
+  },
+  "record": {
+    "app": "Stripe",
+    "category": "Payments",
+    "one_liner": "Stripe provides payment processing, billing, invoicing, payouts, tax, fraud and related financial infrastructure for online businesses via a REST API.",
+    "auth_methods": [
+      "API key",
+      "Basic",
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Secret (sk_) and restricted (rk_) API keys are sent as HTTP Basic username, or as \"Authorization: Bearer <key>\". Restricted keys are recommended for live mode. Workload Identity Federation exchanges a cloud identity token for a Stripe access token that expires after 1 hour. Connect OAuth (connect.stripe.com/oauth/authorize and /oauth/token, scope read_write) lets third-party platforms connect Standard accounts. Its returned access_token and refresh_token are marked deprecated; Stripe says to use the platform secret key plus the Stripe-Account header instead. The MCP server supports OAuth and agent API keys.",
+    "access": "self_serve_free",
+    "access_notes": "Creating a Stripe account puts you in a sandbox with test API keys on the Dashboard, at no stated cost. Up to 5 additional sandboxes are available. Live keys require setting up and activating the account (per the test-mode page). I did not fetch the activation requirements or the pricing page, so processing fees and activation details are unverified.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.stripe.com",
+    "verdict": "ready",
+    "blocker": "No hard blocker. Caveats: live mode needs an activated account. Stripe's MCP server stops accepting full-access secret keys and non-agent restricted keys on 11 Jan 2027, so use OAuth or agent keys there. MCP OAuth refresh tokens expire after 14 days. Some actions, such as refunds, need human confirmation through the MCP server. Connect OAuth read_write cannot connect accounts controlled by another platform.",
+    "evidence": {
+      "auth": "https://docs.stripe.com/api/authentication",
+      "access": "https://docs.stripe.com/test-mode",
+      "api": "https://docs.stripe.com/mcp",
+      "mcp": "https://docs.stripe.com/mcp"
+    },
+    "confidence": "medium"
+  }
+}

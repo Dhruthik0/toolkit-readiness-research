@@ -1,0 +1,42 @@
+{
+  "id": "56",
+  "input": {
+    "id": "56",
+    "category": "Data, SEO and Scraping",
+    "app": "Firecrawl",
+    "hint": "firecrawl.dev"
+  },
+  "meta": {
+    "cost_usd": 0.032535770000000006,
+    "turns": 5
+  },
+  "record": {
+    "app": "Firecrawl",
+    "category": "Web scraping / data extraction API",
+    "one_liner": "Firecrawl is an API that searches, scrapes, crawls and maps websites and returns clean Markdown or structured JSON for use by LLMs and agents.",
+    "auth_methods": [
+      "API key",
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "The REST API takes an API key in the header `Authorization: Bearer $FIRECRAWL_API_KEY`, and the docs describe the key as optional, needed for higher limits. The hosted MCP server also offers a browser sign-in OAuth flow at /v2/mcp-oauth. I did not find a documented OAuth flow for third-party apps calling the REST API, so OAuth2 applies to the MCP server only.",
+    "access": "self_serve_free",
+    "access_notes": "The free plan gives 1,000 credits per month with no credit card. Limits are 10 requests per minute on scrape, map and search, 2 per minute on crawl, agent and interact, and 2 concurrent requests. The Hobby plan is $19 per month for 5,000 credits. The intro page says some calls work without any key, within limits.",
+    "api_types": [
+      "REST",
+      "WebSocket"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://mcp.firecrawl.dev/v2/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The free tier is small (1,000 credits per month, 10 requests per minute), so real use needs a paid plan. Auth is a static API key, not per-user OAuth for the REST API. I saw only 4 endpoint paths on the intro page (scrape, search, interact create and delete). Map, crawl, agent, parse and webhooks are listed but I did not fetch their reference pages. The \"WebSocket\" API type is not confirmed by any page I fetched; I listed it from background knowledge, so treat it as unverified.",
+    "evidence": {
+      "auth": "https://docs.firecrawl.dev/introduction",
+      "access": "https://www.firecrawl.dev/pricing",
+      "api": "https://docs.firecrawl.dev/introduction",
+      "mcp": "https://docs.firecrawl.dev/mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

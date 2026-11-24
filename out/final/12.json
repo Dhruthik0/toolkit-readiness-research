@@ -1,0 +1,72 @@
+{
+  "id": "12",
+  "input": {
+    "id": "12",
+    "category": "Support and Helpdesk",
+    "app": "Intercom",
+    "hint": "intercom.com"
+  },
+  "meta": {
+    "cost_usd": 0.03947927,
+    "turns": 5
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Page states Access Tokens (private apps, tied to installing teammate) and OAuth (public apps for others' data), both sent as bearer tokens; apps must use OAuth rather than asking users for tokens.",
+      "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Dev workspaces are free, US-only, dev-only, 20 user/lead cap, not convertible to production. Private apps use a paid workspace. App Store review is not covered on the page, so that stays unverified (the record already says so).",
+      "url": "https://developers.intercom.com/docs/build-an-integration/getting-started"
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "REST is confirmed (POST api.intercom.io/contacts). The cited page does not establish 'broad' coverage; that rating is inferred.",
+      "url": "https://developers.intercom.com/docs/build-an-integration/getting-started"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Intercom's own docs say Intercom hosts a remote MCP server at https://mcp.intercom.com/mcp (US); EU is mcp.eu.intercom.com/mcp. AU workspaces are not supported. OAuth or bearer token. The page does not use the word 'official', but it is vendor-hosted, so official holds.",
+      "url": "https://developers.intercom.com/docs/guides/mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent with the verified facts: the free dev workspace is limited, private apps need a paid workspace, AU is unsupported by the MCP. The claim that custom redirect URIs beyond localhost need Intercom support to allowlist was not in the fetched pages. Rate limits and App Store review remain unverified.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Intercom",
+    "category": "Customer messaging / Helpdesk",
+    "one_liner": "Intercom is a customer service platform combining a messenger, shared inbox, help center and the Fin AI agent for support, engagement and sales conversations.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "Access Token (static, tied to the installing teammate) for private apps on your own workspace, sent as Authorization: Bearer. OAuth is required for public apps accessing other people's workspaces; asking users for tokens violates ToS.",
+    "access": "self_serve_free",
+    "access_notes": "A free development workspace (US only, dev-only, 20 user/lead cap, cannot convert to production) lets you build a public OAuth app and get an access token. Private apps against your own production data need a paid Intercom workspace. EU/AU accounts are advised against using a dev workspace for private apps. Not verified: whether a public OAuth app needs App Store review before installs by other customers; rate limits.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.intercom.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Private-app tokens need a paid workspace; the free dev workspace is limited (US only, 20 contacts, no conversion to production). Public OAuth app review requirements and rate limits not verified. The hosted MCP does not support AU workspaces (US and EU only). The claim that custom OAuth redirect URIs beyond localhost need Intercom support to allowlist is unverified.",
+    "evidence": {
+      "auth": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication",
+      "access": "https://developers.intercom.com/docs/build-an-integration/getting-started",
+      "api": "https://developers.intercom.com/docs/build-an-integration/getting-started",
+      "mcp": "https://developers.intercom.com/docs/guides/mcp"
+    },
+    "confidence": "low"
+  }
+}

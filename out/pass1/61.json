@@ -1,0 +1,42 @@
+{
+  "id": "61",
+  "input": {
+    "id": "61",
+    "category": "Developer, Infra and Data platforms",
+    "app": "GitHub",
+    "hint": "docs.github.com/rest"
+  },
+  "meta": {
+    "cost_usd": 0.030558270000000002,
+    "turns": 5
+  },
+  "record": {
+    "app": "GitHub",
+    "category": "Developer platform / source control",
+    "one_liner": "Hosted Git repository platform with issues, pull requests, CI (Actions), and collaboration tools for software teams.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2",
+      "JWT / service account"
+    ],
+    "auth_notes": "The fetched auth page lists fine-grained and classic personal access tokens, GitHub App tokens, OAuth app tokens, and GITHUB_TOKEN for Actions. All are sent as \"Authorization: Bearer TOKEN\". Username and password are not supported. GitHub Apps and OAuth apps support third-party flows. The auth page doesn't mention the app-JWT step (GitHub Apps sign a JWT to get installation tokens), so I listed JWT from background knowledge.",
+    "access": "self_serve_free",
+    "access_notes": "Inferred, not verified on a fetched page: a free account can create a PAT, GitHub App, or OAuth app with no review. I didn't fetch a page on plan requirements or rate limits.",
+    "api_types": [
+      "REST",
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://github.com/github/github-mcp-server",
+    "verdict": "ready",
+    "blocker": "none. Rate limits apply, and organization resources may need org-owner approval of apps or tokens. Neither was verified on a fetched page.",
+    "evidence": {
+      "auth": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+      "access": null,
+      "api": "https://docs.github.com/en/rest/about-the-rest-api/about-the-rest-api",
+      "mcp": "https://github.com/github/github-mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

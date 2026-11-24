@@ -1,0 +1,71 @@
+{
+  "id": "78",
+  "input": {
+    "id": "78",
+    "category": "Productivity and Project Management",
+    "app": "Coda",
+    "hint": "coda.io/developers"
+  },
+  "meta": {
+    "cost_usd": 0.07997148,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Fetched API page shows Authorization: Bearer <API token>. Page does not mention OAuth for the REST API. Search results suggest OAuth exists only for Packs/MCP, not the REST API, but I could not confirm that from vendor docs. Bearer-only is consistent with the fetched evidence.",
+      "url": "https://coda.io/developers/apis/v1"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Page says the API is available to all users free of charge, in free and paid workspaces. Role limits apply (e.g., Doc Maker for creating docs). Rate limits match the record: 100 reads/6s, 10 writes/6s, 5 doc-content writes/10s, 4 doc listings/6s. Token-generation steps are not on the fetched page. Search snippets point to account settings, which I did not verify from vendor docs.",
+      "url": "https://coda.io/developers/apis/v1"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The fetched page is the REST v1 reference. The object coverage listed in the record (docs, tables, rows, etc.) was not itemized in my fetch, so 'broad' rests on the vendor's reference scope and not on a page I read in full.",
+      "url": "https://coda.io/developers/apis/v1"
+    },
+    {
+      "field": "mcp",
+      "status": "unsupported",
+      "note": "The Superhuman product page says Superhuman Docs runs its own MCP server, with free-plan read-only access capped at 30 requests/week and 60/month. It does not give the MCP URL or auth method. docs.superhuman.com/apis/mcp returned 401. Search shows a Coda help page citing https://coda.io/apis/mcp and a Superhuman help snippet citing https://docs.superhuman.com/apis/mcp. The help.coda.io and help.superhuman.com pages returned 403. 'Official' is plausible but the URL is unconfirmed.",
+      "url": "https://superhuman.com/docs/features/docs-mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats follows from the supported fields: free self-serve bearer token, REST API, per-user tokens, tight write limits, and an MCP with an unconfirmed URL and auth flow. The blocker's 'about 100 writes per minute' is the correct conversion of 10 per 6s (=100/min). The doc-content figure is 5 per 10s (=30/min), also correct.",
+      "url": "https://coda.io/developers/apis/v1"
+    }
+  ],
+  "corrected": {
+    "app": "Coda",
+    "category": "Docs / Collaborative workspace",
+    "one_liner": "Coda (now Superhuman Docs) is a collaborative document and workspace tool that combines docs, relational tables, and automations.",
+    "auth_methods": [
+      "Bearer token"
+    ],
+    "auth_notes": "API reference shows `Authorization: Bearer <your API token>`. OAuth for third-party REST API access is not documented on the fetched page. Token-generation steps were not on the fetched page; secondary sources point to account settings. The Docs MCP connection flow (OAuth vs PAT) is not confirmed from vendor docs.",
+    "access": "self_serve_free",
+    "access_notes": "The API reference says the API is available to all users free of charge, in free and paid workspaces. Actions depend on the token owner's role (for example, creating docs requires Doc Maker or Admin). Rate limits per user: 100 reads per 6s, 10 writes per 6s, 5 doc-content writes per 10s, 4 doc listings per 6s, 100 analytics reads per 6s. Not verified: the exact steps to generate a token.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://docs.superhuman.com/apis/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Per-user token with tight write rate limits (about 100 writes per minute, about 30 doc-content writes per minute). OAuth for third-party apps is not documented, so a multi-user toolkit would need users to supply their own tokens. The vendor MCP is limited on the free plan (read-only, 30 requests per week, 60 per month). Its URL is unconfirmed: sources cite both https://docs.superhuman.com/apis/mcp and https://coda.io/apis/mcp. The product is mid-rebrand from Coda to Superhuman Docs, so docs and URLs are moving.",
+    "evidence": {
+      "auth": "https://coda.io/developers/apis/v1 (shows Bearer API token header; OAuth not mentioned; Authentication section not retrieved)",
+      "access": "https://coda.io/developers/apis/v1 (states the API is free in free and paid workspaces; lists rate limits)",
+      "api": "https://coda.io/developers/apis/v1 (REST v1 reference)",
+      "mcp": "https://superhuman.com/docs/features/docs-mcp (Superhuman Docs runs an MCP server; free plan read-only, 30 requests/week, 60/month). MCP URL not stated on this page; help-center pages returned 403 and docs.superhuman.com/apis/mcp returned 401."
+    },
+    "confidence": "low"
+  }
+}

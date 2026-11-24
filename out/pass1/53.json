@@ -1,0 +1,40 @@
+{
+  "id": "53",
+  "input": {
+    "id": "53",
+    "category": "Data, SEO and Scraping",
+    "app": "Ahrefs",
+    "hint": "ahrefs.com/api"
+  },
+  "meta": {
+    "cost_usd": 0.09634824,
+    "turns": 14
+  },
+  "record": {
+    "app": "Ahrefs",
+    "category": "SEO analytics",
+    "one_liner": "Ahrefs is an SEO platform for backlink analysis, keyword research, site auditing, rank tracking and competitor analysis, with data exposed through a REST API (v3).",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "API v3 uses a workspace-level API key sent as \"Authorization: Bearer YOUR_API_KEY\". Only workspace owners and admins can create keys. Ahrefs Connect offers OAuth for apps acting on behalf of Ahrefs users: you register to get a client ID, redirect URI and (for web apps) a client secret, and access tokens last about 1 year. The OAuth page doesn't say \"third-party\", so that part is inferred. The OAuth page also mentions an approval process for secure token handling, but I didn't see that process described. The MCP server uses its own OAuth-created or manually generated MCP-scoped keys.",
+    "access": "paid_plan",
+    "access_notes": "API access needs an \"eligible paid plan\". Pay-as-you-go beyond the monthly unit allowance is only allowed on some plans. The docs I fetched don't say which tier is the minimum for the API. The docs home page describes the free test queries as \"without an Enterprise plan\", which hints that Enterprise may be needed for full access, but that is not stated directly. Free test queries work on any paid plan after you create an API key. They are limited to ahrefs.com, yep.com, firehose.com targets and the keywords ahrefs, yep and firehose. I found no free tier. Ahrefs Connect (OAuth) plan requirements are also unconfirmed.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://api.ahrefs.com/mcp/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API needs a paid plan, and the minimum tier is unconfirmed (Enterprise may be required). Most requests use API units, at least 50 per request, drawn from a monthly allowance. The default rate limit is 60 requests per minute. The official MCP server needs a Lite or higher plan, and Ahrefs says custom scripts, bridges or standalone HTTP clients are not permitted against it. A toolkit built on the REST API would still be allowed. The legacy API v2 was deprecated on Nov 1, 2025.",
+    "evidence": {
+      "auth": "https://docs.ahrefs.com/api/docs/api-keys-creation-and-management.md (Bearer header; only owners and admins create keys). Also https://docs.ahrefs.com/ahrefs-connect/docs/oauth-guide.md (OAuth client registration).",
+      "access": "https://docs.ahrefs.com/api/docs/free-test-queries.md (any paid plan can run free test queries; full-access tier not stated). Also https://docs.ahrefs.com/api/docs/introduction.md (eligible paid plans, units, 60 requests per minute).",
+      "api": "https://docs.ahrefs.com/api/docs/introduction.md (API key required, units and rate limits). The docs home page https://docs.ahrefs.com/ links an endpoint reference and /openapi.json. I did not fetch the openapi.json or the endpoint list, so 'broad' is inferred from the docs home and search results.",
+      "mcp": "https://docs.ahrefs.com/mcp/docs/introduction.md (hosted Streamable HTTP endpoint at https://api.ahrefs.com/mcp/mcp, Lite plan or higher, OAuth or MCP-scoped keys, custom clients not permitted)."
+    },
+    "confidence": "medium"
+  }
+}

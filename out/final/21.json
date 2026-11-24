@@ -1,0 +1,73 @@
+{
+  "id": "21",
+  "input": {
+    "id": "21",
+    "category": "Communications and Messaging",
+    "app": "Slack",
+    "hint": "slack.com"
+  },
+  "meta": {
+    "cost_usd": 0.067318915,
+    "turns": 9
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "OAuth 2.0 with bot/user/app-level tokens and scopes confirmed on docs.slack.dev/authentication and /authentication/tokens. The Bearer header was not stated on the pages fetched. It is Slack's standard convention, but I did not verify it from a vendor page.",
+      "url": "https://docs.slack.dev/authentication"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "The cited changelog does not mention free workspace or app creation. A search of Slack docs says non-workflow custom apps can be developed on a Free plan, and automations need a paid plan. The Free plan's app cap is unconfirmed. The Developer Program sandbox is free but needs a payment method on file. The rate-limit changelog confirms the Marketplace caveat for commercially distributed apps. I kept self_serve_free, but the access evidence URL should be changed to a page that states free-plan app development.",
+      "url": "https://slack.com/help/articles/13345326945043-Custom-apps-for-Slack"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The Web API has over 200 HTTP RPC methods. Socket Mode uses WebSockets (apps.connections.open). The WebSocket claim comes from the Socket Mode page, not the cited Web API page.",
+      "url": "https://docs.slack.dev/apis/events-api/using-socket-mode"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "An official Slack MCP server is documented at docs.slack.dev with the endpoint https://mcp.slack.com/mcp. Only directory-published or internal apps are allowed, and workspace admins approve them.",
+      "url": "https://docs.slack.dev/ai/mcp-server"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits. The blocker matches the changelog: Tier 1 (1 request/min) and a 15-object max on conversations.history and conversations.replies for non-Marketplace commercially distributed apps created on or after 2025-05-29. Internal apps are unaffected. The MCP restrictions are also confirmed.",
+      "url": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps"
+    }
+  ],
+  "corrected": {
+    "app": "Slack",
+    "category": "Team messaging / collaboration",
+    "one_liner": "Slack is a workplace messaging platform with channels, DMs, files, and app integrations.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "OAuth 2.0 (v2) yields bot (xoxb), user (xoxp), and app-level (xapp) tokens. Scopes are attached to tokens, and rotating tokens exist. Bearer-header transport is Slack's standard convention but was not confirmed on the vendor pages fetched. Requests from Slack are verified by signing secret (not fetched).",
+    "access": "self_serve_free",
+    "access_notes": "Register apps at api.slack.com/apps. Slack's help docs say non-workflow custom apps can be developed on a Free plan, and automations need a paid plan. The Free plan's app-count cap was not confirmed for custom apps. The Developer Program sandbox is free but needs a payment method on file. Marketplace approval is needed to lift rate limits on commercially distributed apps. The MCP server requires a directory-published or internal app plus admin approval.",
+    "api_types": [
+      "REST",
+      "WebSocket"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.slack.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Commercially distributed apps outside the Marketplace (created on or after 2025-05-29, and new installs of older unlisted apps) are limited to Tier 1 (1 request/minute) on conversations.history and conversations.replies, with a maximum of 15 objects per request. Internal apps are unaffected. Marketplace approval removes the limit. The official MCP server only allows directory-published or internal apps, and admins must approve it.",
+    "evidence": {
+      "auth": "https://docs.slack.dev/authentication",
+      "access": "https://slack.com/help/articles/13345326945043-Custom-apps-for-Slack",
+      "api": "https://docs.slack.dev/apis/web-api",
+      "mcp": "https://docs.slack.dev/ai/mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "9",
+  "input": {
+    "id": "9",
+    "category": "CRM and Sales",
+    "app": "Copper",
+    "hint": "copper.com"
+  },
+  "meta": {
+    "cost_usd": 0.07448656,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Authentication page lists API keys and OAuth2.0; OAuth2.0 is preferred for partner integrations. Key generated under System settings > API Keys. Headers confirmed on the requests page. OAuth flow detail not verified.",
+      "url": "https://developer.copper.com/introduction/authentication.html"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "Neither the auth nor the requests page states a plan requirement. Copper has no free plan but offers a 14-day trial per secondary sources. Which plan includes API access is not confirmed. The cited requests URL does not state an access claim, so it fits poorly as evidence; the auth page is better, since it covers key generation.",
+      "url": "https://developer.copper.com/introduction/authentication.html"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Developer docs describe a RESTful JSON API covering most Copper resources (leads, people, companies, opportunities, projects, tasks, activities, custom fields, webhooks). Broad is reasonable.",
+      "url": "https://developer.copper.com/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "No official Copper MCP found. The StackOne page says it is built by StackOne, so community/third-party is right. Evidence mcp was null; it should point to the StackOne page.",
+      "url": "https://www.stackone.com/connectors/copper/mcp/"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent. The rate limit (180/min, bulk 3/sec) is confirmed on the requests page. The plan requirement for API access remains unconfirmed.",
+      "url": "https://developer.copper.com/introduction/requests.html"
+    }
+  ],
+  "corrected": {
+    "app": "Copper",
+    "category": "CRM",
+    "one_liner": "Copper is a CRM for small and mid-size businesses, built around Google Workspace, that manages leads, contacts, companies, opportunities, projects and tasks.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "API key is generated in the Copper web app (System settings > API Keys). It is sent in the X-PW-AccessToken header, together with X-PW-Application: developer_api and X-PW-UserEmail (the key owner's email). The auth page lists OAuth 2.0 as the preferred method for partner integrations. The OAuth flow and any app registration requirements were not verified. Whether non-admin users can generate keys is not stated (admins can see and generate tokens).",
+    "access": "paid_plan",
+    "access_notes": "Unverified. Developer docs state no plan requirement. Copper has no free plan; secondary sources report a 14-day free trial (no card). Which plan tier includes API access is not confirmed. Treat the cheapest path as a paid account or trial, and confirm on the pricing page.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "community",
+    "mcp_url": "https://www.stackone.com/connectors/copper/mcp/",
+    "verdict": "ready_with_caveats",
+    "blocker": "Rate limit of 180 requests/min (bulk APIs also capped at 3 requests/sec). API keys are per-user and require the owner's email header. Plan or tier needed for API access is not documented. OAuth details unverified. The docs say they cover \"most\" resources, not all. MCP options are third-party only (e.g., StackOne, which requires a StackOne account).",
+    "evidence": {
+      "auth": "https://developer.copper.com/introduction/authentication.html",
+      "access": "https://developer.copper.com/introduction/authentication.html",
+      "api": "https://developer.copper.com/",
+      "mcp": "https://www.stackone.com/connectors/copper/mcp/"
+    },
+    "confidence": "low"
+  }
+}

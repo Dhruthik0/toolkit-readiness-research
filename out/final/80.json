@@ -1,0 +1,72 @@
+{
+  "id": "80",
+  "input": {
+    "id": "80",
+    "category": "Productivity and Project Management",
+    "app": "Harvest",
+    "hint": "harvestapp.com (help.getharvest.com/api-v2)"
+  },
+  "meta": {
+    "cost_usd": 0.09173267000000002,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page lists PATs (Bearer header or access_token param), OAuth2 Authorization Code and Implicit flows, and the stated scopes. OAuth2 is for API access, not just SSO. Overview page confirms the User-Agent requirement and the 400 on omission.",
+      "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "Pricing page confirms the $0 Free plan (1 seat, 2 projects) and the 30-day trial on Teams/Enterprise with no card. No vendor page states API access by plan, so self_serve_free is inferred. Tokens are created in Harvest ID Developers.",
+      "url": "https://www.getharvest.com/pricing"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Overview page states the API is REST/JSON. The doc index covers clients, invoices, estimates, expenses, time entries, projects, users, reports, PTO, approvals and Forecast, so broad is fair. Rate limits (100 per 15s, Reports 100 per 15min) are confirmed.",
+      "url": "https://help.getharvest.com/api-v2/introduction/overview/general/"
+    },
+    {
+      "field": "mcp",
+      "status": "unsupported",
+      "note": "Direct fetch of the support article returned 403. A search summary attributes an official hosted MCP at https://api.harvestapp.com/mcp to Harvest's support article, but I did not read the page. The other results are third-party servers. Official status is likely but not verified from a fetched page.",
+      "url": "https://support.getharvest.com/hc/en-us/articles/46293697226381-Harvest-MCP"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats follows from the other fields. The blocker's rate limits, User-Agent and account ID are supported. The Free-plan API entitlement is correctly flagged as unconfirmed.",
+      "url": "https://help.getharvest.com/api-v2/introduction/overview/general/"
+    }
+  ],
+  "corrected": {
+    "app": "Harvest",
+    "category": "Time tracking & invoicing",
+    "one_liner": "Harvest is a cloud time-tracking, expense, invoicing and project-budget tool for teams and agencies, with a companion Forecast scheduling product.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Personal access token created in Harvest ID Developers (default 'all' scope), sent as 'Authorization: Bearer' plus a 'Harvest-Account-Id' header, or as access_token and account_id query params. OAuth2 for third-party integrations: Authorization Code flow with refresh tokens, and Implicit flow. Scopes are harvest:{id}, forecast:{id}, harvest:all, forecast:all, all. Every request needs a User-Agent with an app name and a link or email, or it returns 400.",
+    "access": "self_serve_free",
+    "access_notes": "The pricing page lists a $0 Free plan (1 seat, 2 projects) and a 30-day trial of paid plans. Tokens and OAuth apps are created in Harvest ID Developers. No vendor page states API access by plan, so whether the Free plan includes API access is inferred, not verified. OAuth apps are created without a documented review step.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://api.harvestapp.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Rate limits: 100 requests per 15 seconds for general calls, 100 per 15 minutes for Reports. Free-plan API entitlement is unconfirmed. A User-Agent header and an account ID are required on every request.",
+    "evidence": {
+      "auth": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+      "access": "https://www.getharvest.com/pricing",
+      "api": "https://help.getharvest.com/api-v2/introduction/overview/general/",
+      "mcp": "https://support.getharvest.com/hc/en-us/articles/46293697226381-Harvest-MCP (fetch returned 403; endpoint URL taken from a search summary of this article, unverified)"
+    },
+    "confidence": "low"
+  }
+}

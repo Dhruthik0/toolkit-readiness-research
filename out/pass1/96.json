@@ -1,0 +1,41 @@
+{
+  "id": "96",
+  "input": {
+    "id": "96",
+    "category": "AI, Research and Media-native",
+    "app": "Devin",
+    "hint": "docs.devin.ai (MCP)"
+  },
+  "meta": {
+    "cost_usd": 0.051848544999999996,
+    "turns": 6
+  },
+  "record": {
+    "app": "Devin",
+    "category": "AI software engineering agent",
+    "one_liner": "Devin (Cognition) is an autonomous AI software engineer that takes tasks as sessions, works in repos, and opens PRs.",
+    "auth_methods": [
+      "Bearer token",
+      "API key"
+    ],
+    "auth_notes": "v3 API: service user credentials (cog_ prefix) sent as Bearer token, org- or enterprise-scoped, with RBAC roles and expiry (7/30/90 days, or never where allowed). Personal access tokens are also supported (enterprise PATs are governed by a policy that is disabled by default). Legacy personal API keys (apk_) are used by deprecated v1/v2. No OAuth flow for third-party apps is documented.",
+    "access": "paid_plan",
+    "access_notes": "Service users are created in Settings > Devin API (org) or Enterprise settings. The docs I fetched do not say which plans include API access. Third-party pre-April-2026 sources say API was limited to Team/Enterprise. Cognition's April 2026 blog says plans are now Free, Pro, Max, Teams and Enterprise, but I did not fetch it. Current plan entitlement is unverified. The Enterprise API is documented as available to enterprise customers only. Check devin.ai pricing or try on a free account.",
+    "api_types": [
+      "REST",
+      "WebSocket"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://mcp.devin.ai/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The plan tier that grants API access is unconfirmed, and it may be paid-only. The enterprise API requires an enterprise contract. Rate limits are not documented in the pages I fetched. Legacy v1/v2 are deprecated. No OAuth, so users must hand over service user keys.",
+    "evidence": {
+      "auth": "https://docs.devin.ai/api-reference/overview",
+      "access": "https://docs.devin.ai/api-reference/authentication",
+      "api": "https://docs.devin.ai/api-reference/overview",
+      "mcp": "https://docs.devin.ai/work-with-devin/devin-mcp"
+    },
+    "confidence": "medium"
+  }
+}

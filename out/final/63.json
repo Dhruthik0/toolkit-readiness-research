@@ -1,0 +1,72 @@
+{
+  "id": "63",
+  "input": {
+    "id": "63",
+    "category": "Developer, Infra and Data platforms",
+    "app": "Netlify",
+    "hint": "docs.netlify.com/api"
+  },
+  "meta": {
+    "cost_usd": 0.065612495,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Get-started page documents PATs as 'Authorization: Bearer', OAuth2 for public integrations (client key/secret, https://app.netlify.com/authorize), SAML opt-in, and password-reset invalidation. The ticket flow is not on that page but appears in the OpenAPI spec (POST /oauth/tickets, GET /oauth/tickets/{id}, POST .../exchange).",
+      "url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "No fetched page says which plans include API/PAT access. The pricing page says the Free plan supports deploys via API, which is indirect. The 500/min and 3/min, 100/day deploy limits are confirmed. self_serve_free is the best-supported value, not directly confirmed.",
+      "url": "https://netlify.com/pricing.md"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The OpenAPI reference documents a REST API (base https://api.netlify.com/api/v1) with about 170 operations across sites, deploys, builds, DNS, forms, env vars, teams, functions and more. That supports broad. No GraphQL was seen.",
+      "url": "https://open-api.netlify.com"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Netlify's own docs say 'Netlify offers an MCP server', with source at github.com/netlify/netlify-mcp. The recommended remote endpoint is https://mcp.netlify.com/mcp, and the local package is @netlify/mcp.",
+      "url": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "Auth, API and MCP all check out and there is no sign of a hard blocker. Plan gating for access is unverified, so 'ready' is reasonable but carries a minor caveat. The no-scope-model claim is not contradicted by anything fetched, though I did not verify it.",
+      "url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/"
+    }
+  ],
+  "corrected": {
+    "app": "Netlify",
+    "category": "Web hosting / deployment platform",
+    "one_liner": "Netlify is a cloud platform for building, deploying and hosting web sites and apps, with builds, serverless functions, forms, DNS and CDN.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Personal access tokens (Applications > Personal access tokens) are sent as 'Authorization: Bearer <token>'. OAuth2 is documented for public integrations: register an application for a client key and secret; the user authorization endpoint is https://app.netlify.com/authorize. The OpenAPI spec also shows a ticket-based flow (POST /oauth/tickets, then exchange). SAML SSO teams need an opt-in when the PAT is generated. Resetting the account password invalidates all PATs and OAuth tokens.",
+    "access": "self_serve_free",
+    "access_notes": "Any Netlify account can create a PAT or register an OAuth app. No fetched page states which plans include API access, and this was not verified for the free plan. The pricing page says the Free plan supports deploys via API. Deploys via the API are limited to 3/min and 100/day.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.netlify.com/mcp",
+    "verdict": "ready",
+    "blocker": "none. Caveat: rate limits are 500 requests/min, and API deploys are limited to 3/min and 100/day. Plan gating for API access is unverified. No scope model is documented, so a token likely has the full access of its owner.",
+    "evidence": {
+      "auth": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+      "access": "https://netlify.com/pricing.md",
+      "api": "https://open-api.netlify.com",
+      "mcp": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/"
+    },
+    "confidence": "low"
+  }
+}

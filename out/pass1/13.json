@@ -1,0 +1,39 @@
+{
+  "id": "13",
+  "input": {
+    "id": "13",
+    "category": "Support and Helpdesk",
+    "app": "Freshdesk",
+    "hint": "freshdesk.com"
+  },
+  "meta": {
+    "cost_usd": 0.08429601,
+    "turns": 8
+  },
+  "record": {
+    "app": "Freshdesk",
+    "category": "Helpdesk",
+    "one_liner": "Freshworks' cloud customer-support helpdesk for ticketing, contacts, SLAs, automations and knowledge base.",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "Personal API key sent via HTTP Basic (key as username, any string as password). Service accounts with their own API keys are documented in the changelog. The API reference lists OAuth 2.0 scopes per endpoint (e.g. freshdesk.tickets.view), but the page I read did not describe an OAuth flow for third-party apps, so I did not list OAuth2.",
+    "access": "self_serve_trial",
+    "access_notes": "14-day no-card trial (fetched from the Freshworks pricing page); trial API rate limit is 50 calls/min (from search snippet, not fetched). Search results indicate API key is not available on the Free program and is available on all paid plans (Growth/Pro/Enterprise); I did not fetch a page stating this. The API docs page does not state plan eligibility. Rate limits are per plan (100/400/700 per min for Growth/Pro/Enterprise per the docs, though the page had a per-minute vs per-hour inconsistency), with per-endpoint sublimits.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "community",
+    "mcp_url": "https://github.com/effytech/freshdesk_mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "No free tier with API access: it needs a 14-day trial or a paid plan. Rate limits are plan-based with per-endpoint sublimits. No official MCP server found. OAuth flow for third-party apps not confirmed, so users must supply their own API key and domain.",
+    "evidence": {
+      "auth": "https://developers.freshdesk.com/api/ - API key via basic auth; per-endpoint OAuth 2.0 scopes listed but no flow described; service accounts with API keys in changelog.",
+      "access": "https://www.freshworks.com/freshdesk/pricing/free/ - 14-day trial, no credit card. The free-plan-has-no-API claim comes from a search result only, not a fetched page.",
+      "api": "https://developers.freshdesk.com/api/ - REST reference covering tickets, contacts, companies, agents, groups, solutions, SLA, automations, time entries, custom objects, etc. Page read only up to character 100000 of 243069.",
+      "mcp": "https://github.com/effytech/freshdesk_mcp - third-party MIT server using API key and domain; no official Freshworks MCP server found in search."
+    },
+    "confidence": "medium"
+  }
+}

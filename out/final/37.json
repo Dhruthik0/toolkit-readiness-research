@@ -1,0 +1,71 @@
+{
+  "id": "37",
+  "input": {
+    "id": "37",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "systeme.io",
+    "hint": "systeme.io (funnel builder)"
+  },
+  "meta": {
+    "cost_usd": 0.05139484,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "API reference says the API key in X-API-Key is the only option; no OAuth. Help article confirms 3 keys max, optional expiry, and the Settings > MCP & API keys path. The MCP docs confirm X-MCP-Key and the mcpKey query parameter. The MCP help article confirms a 90-day max expiry, 2 MCP keys, and OAuth planned.",
+      "url": "https://developer.systeme.io/reference/api"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "A free plan with no credit card is confirmed, and MCP is included in all plans including Free. No fetched page says whether the Public API itself is on the Free plan. The pricing page lists an 'API requests per minute' row, but the per-plan values were not readable.",
+      "url": "https://systeme.io/pricing"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "REST over api.systeme.io/api with rate-limit headers; the base URL is inferred from code examples. The help article lists broad areas: contacts, tags, funnels, courses, products, webhooks, automations, subscriptions, and more. That list appears in an MCP-oriented article, so the area list may describe MCP tools rather than REST endpoints. I did not read the full endpoint reference.",
+      "url": "https://help.systeme.io/article/2323-how-to-use-systeme-io-public-api"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The vendor's own systeme.io/mcp page, help center article and developer docs describe the MCP server, so it is official. No page states the server endpoint URL; the cited URL is the docs page, not the endpoint.",
+      "url": "https://systeme.io/mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits the evidence: static key only, shared rate limit with no published number, Free-plan API access unconfirmed, and no MCP endpoint URL on the pages read.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "systeme.io",
+    "category": "Funnel builder / marketing automation",
+    "one_liner": "All-in-one platform for building sales funnels, email campaigns, online courses, and automations, with a free tier.",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "Public API: static key in the X-API-Key header, which the docs call the only option. Up to 3 keys per account, with optional expiry. Keys are created under Settings > MCP & API keys. The MCP server uses a separate MCP key (X-MCP-Key header or mcpKey query parameter). MCP keys expire after at most 90 days, and you can hold 2. There is no OAuth yet; the vendor says it is planned.",
+    "access": "self_serve_free",
+    "access_notes": "A free plan exists with no credit card and never expires. The MCP page says the MCP server is included in all plans, including Free. Public API availability on the Free plan is unconfirmed. The pricing page has an 'API requests per minute' row whose per-plan values were unreadable, and the help article lists no plan requirement. Verify by creating a key on a free account.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://developer.systeme.io/docs/mcp-server",
+    "verdict": "ready_with_caveats",
+    "blocker": "Static API key only, with no OAuth, so each user must paste their own key. Rate limits are shared across all keys, and the numeric limit is not published on the pages checked. Free-plan Public API access is unconfirmed. The full endpoint reference was not reviewed, and breadth comes from the help article. The MCP server endpoint URL is not stated on the vendor pages checked; mcp_url points to the docs page.",
+    "evidence": {
+      "auth": "https://developer.systeme.io/reference/api (X-API-Key only option); https://help.systeme.io/article/2323-how-to-use-systeme-io-public-api (max 3 keys, expiry, key path); https://help.systeme.io/article/9489-how-to-use-systeme-ios-mcp (MCP keys, 90-day max, 2 keys, OAuth planned); https://developer.systeme.io/docs/mcp-server (X-MCP-Key / mcpKey)",
+      "access": "https://systeme.io/pricing (free plan, no credit card, never expires); https://systeme.io/mcp (MCP included in all plans)",
+      "api": "https://help.systeme.io/article/2323-how-to-use-systeme-io-public-api (endpoint areas); https://developer.systeme.io/reference/api (REST examples, rate-limit headers)",
+      "mcp": "https://systeme.io/mcp; https://help.systeme.io/article/9489-how-to-use-systeme-ios-mcp; https://developer.systeme.io/docs/mcp-server"
+    },
+    "confidence": "low"
+  }
+}

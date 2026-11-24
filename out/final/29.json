@@ -1,0 +1,72 @@
+{
+  "id": "29",
+  "input": {
+    "id": "29",
+    "category": "Communications and Messaging",
+    "app": "Aircall",
+    "hint": "aircall.io"
+  },
+  "meta": {
+    "cost_usd": 0.05785468,
+    "turns": 5
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Page lists Basic Auth (api_id/api_token, own account) and OAuth 2.0 for Technology Partners building multi-company apps. Bearer token, non-expiring, and client_id/secret issued by Aircall after an application form are all stated. OAuth is a requirement for Marketplace listing.",
+      "url": "https://developers.aircall.io/api-references"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "The page confirms keys are created in Company Settings > API Keys and OAuth credentials need partner signup. It states no plan requirement, free tier or sandbox. 'paid_plan' is an inference, not a documented fact.",
+      "url": "https://developers.aircall.io/api-references"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "REST. The page covers a broad set of resources: Users, Teams, Calls, Conversations, Contacts, Numbers, Messages, Tags, Webhooks, Campaigns, Analytics, AI Voice Agents. Rate limit of 120 requests/min per company and the 10,000-item cap on Calls and Contacts are stated. The page does not state that the Users V1 deprecation is under way.",
+      "url": "https://developers.aircall.io/api-references"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The MCP FAQ (updated 2026-09-04) says 'As of this writting we don't offer an MCP servier but stay tuned.' This is time-bound. Search shows only third-party servers (e.g. the Allo/@allo/aircall-mcp-server npm package, StackOne, Zapier, CData), so 'community' fits. I did not fetch those pages individually. The FAQ lives on developer.aircall.io, a different host than the api-references page.",
+      "url": "https://developer.aircall.io/docs/mcp-faqs"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats follows from the fields. The caveats (admin-created keys, partner approval for OAuth, 120/min limit, 10k caps, entitlement-gated endpoints) are documented. The 'no free or sandbox path' wording is an absence of evidence, not a stated fact.",
+      "url": "https://developers.aircall.io/api-references"
+    }
+  ],
+  "corrected": {
+    "app": "Aircall",
+    "category": "Cloud phone system / contact center",
+    "one_liner": "Aircall is a cloud-based business phone and call center platform that integrates with CRMs and helpdesks for calling, SMS, and conversation analytics.",
+    "auth_methods": [
+      "Basic",
+      "OAuth2"
+    ],
+    "auth_notes": "Basic Auth (api_id as username, api_token as password) for customers accessing their own account. OAuth 2.0 for Technology Partners building multi-company apps; tokens are sent as Bearer and don't expire. OAuth client_id/secret must be requested from Aircall via the partner signup form.",
+    "access": "paid_plan",
+    "access_notes": "Basic Auth keys are created in Company Settings > API Keys, which requires an existing Aircall account. The docs state no minimum plan, free tier or sandbox, so the 'paid_plan' label is inferred from needing an Aircall account and is unverified. OAuth requires partner signup and Aircall issuing credentials. Some endpoints need entitlements (Analytics+, AI Assist, Conversations enabled by Aircall).",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "community",
+    "mcp_url": null,
+    "verdict": "ready_with_caveats",
+    "blocker": "Needs an Aircall account with admin rights for Basic Auth keys (no free or sandbox path documented). Multi-tenant OAuth needs partner approval. Rate limit is 120 requests/min per company. Calls and Contacts lists cap at 10,000 items. Aircall has no official MCP server per its FAQ (updated 2026-09-04, time-bound wording); only third-party ones exist.",
+    "evidence": {
+      "auth": "https://developers.aircall.io/api-references",
+      "access": "https://developers.aircall.io/api-references",
+      "api": "https://developers.aircall.io/api-references",
+      "mcp": "https://developer.aircall.io/docs/mcp-faqs"
+    },
+    "confidence": "low"
+  }
+}

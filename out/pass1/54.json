@@ -1,0 +1,41 @@
+{
+  "id": "54",
+  "input": {
+    "id": "54",
+    "category": "Data, SEO and Scraping",
+    "app": "MrScraper",
+    "hint": "docs.mrscraper.com"
+  },
+  "meta": {
+    "cost_usd": 0.077584075,
+    "turns": 9
+  },
+  "record": {
+    "app": "MrScraper",
+    "category": "Web scraping / data extraction",
+    "one_liner": "MrScraper is an AI-powered web scraping platform that fetches pages as HTML, Markdown, screenshots or structured JSON, runs web searches, and runs configurable scraper workflows.",
+    "auth_methods": [
+      "API key",
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "The REST API takes a dashboard-created API token in the `x-api-token` header. Marketplace endpoints use `Authorization: Bearer <token>`, which is the same token. The auth page also calls the scheme \"HTTP Basic Auth\", which conflicts with the header example. The hosted MCP server supports OAuth 2.1 browser sign-in with scopes `scrape:read` and `account:read`. I found no documented OAuth flow for third-party apps on the REST API itself, so OAuth2 applies to the MCP server only.",
+    "access": "self_serve_trial",
+    "access_notes": "The pricing page shows a 7-day trial with 1,000 tokens. The trial requires a card, and billing starts at day 7 or when the tokens run out. The paid plans listed are Essential at $99/month and Enterprise (custom). I found no free tier. The pricing page does not say whether trial accounts get API access, though it says all API requests use a dashboard token. A Startup Program (50,000 free tokens) is mentioned, but its eligibility is not described.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://mcp.mrscraper.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Credentials come only from a card-required 7-day trial or the paid plan (Essential, $99/month). Docs are inconsistent on the auth scheme and the V1 vs V3 API, and I found no rate limit details. The API overview does not state base URLs or the full Platform endpoint list. Only the token-verify host (api.app.mrscraper.com) was confirmed.",
+    "evidence": {
+      "auth": "https://docs.mrscraper.com/docs/api/authentication",
+      "access": "https://mrscraper.com/pricing",
+      "api": "https://docs.mrscraper.com/docs/api/overview",
+      "mcp": "https://docs.mrscraper.com/docs/getting-started/mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

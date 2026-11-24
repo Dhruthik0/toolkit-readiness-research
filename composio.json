@@ -1,0 +1,405 @@
+{
+ "source": "https://composio.dev/toolkits (catalog embedded in page, fetched 2026-11-24, 1755 toolkits)",
+ "apps": {
+  "1": {
+   "slug": "salesforce",
+   "note": null
+  },
+  "2": {
+   "slug": "hubspot",
+   "note": null
+  },
+  "3": {
+   "slug": "pipedrive",
+   "note": null
+  },
+  "4": {
+   "slug": "attio",
+   "note": null
+  },
+  "5": {
+   "slug": "twenty",
+   "note": null
+  },
+  "6": {
+   "slug": "podio",
+   "note": null
+  },
+  "7": {
+   "slug": "zoho",
+   "note": null
+  },
+  "8": {
+   "slug": "close",
+   "note": null
+  },
+  "9": {
+   "slug": "copper",
+   "note": null
+  },
+  "10": {
+   "slug": null,
+   "note": null
+  },
+  "11": {
+   "slug": "zendesk",
+   "note": null
+  },
+  "12": {
+   "slug": "intercom",
+   "note": null
+  },
+  "13": {
+   "slug": "freshdesk",
+   "note": null
+  },
+  "14": {
+   "slug": "front",
+   "note": null
+  },
+  "15": {
+   "slug": "pylon_mcp",
+   "note": null
+  },
+  "16": {
+   "slug": null,
+   "note": null
+  },
+  "17": {
+   "slug": "plain",
+   "note": null
+  },
+  "18": {
+   "slug": "help_scout",
+   "note": null
+  },
+  "19": {
+   "slug": "gorgias",
+   "note": null
+  },
+  "20": {
+   "slug": null,
+   "note": null
+  },
+  "21": {
+   "slug": "slack",
+   "note": null
+  },
+  "22": {
+   "slug": "twilio",
+   "note": null
+  },
+  "23": {
+   "slug": "zoho_cliq",
+   "note": null
+  },
+  "24": {
+   "slug": "lark",
+   "note": null
+  },
+  "25": {
+   "slug": "pumble",
+   "note": null
+  },
+  "26": {
+   "slug": "discord",
+   "note": null
+  },
+  "27": {
+   "slug": "telegram",
+   "note": null
+  },
+  "28": {
+   "slug": "whatsapp",
+   "note": null
+  },
+  "29": {
+   "slug": "aircall",
+   "note": null
+  },
+  "30": {
+   "slug": null,
+   "note": null
+  },
+  "31": {
+   "slug": "googleads",
+   "note": null
+  },
+  "32": {
+   "slug": "metaads",
+   "note": null
+  },
+  "33": {
+   "slug": "linkedin_ads",
+   "note": null
+  },
+  "34": {
+   "slug": "highlevel",
+   "note": null
+  },
+  "35": {
+   "slug": "mailchimp",
+   "note": null
+  },
+  "36": {
+   "slug": "klaviyo",
+   "note": null
+  },
+  "37": {
+   "slug": null,
+   "note": null
+  },
+  "38": {
+   "slug": "pinterest",
+   "note": null
+  },
+  "39": {
+   "slug": "threads",
+   "note": null
+  },
+  "40": {
+   "slug": "sendgrid",
+   "note": null
+  },
+  "41": {
+   "slug": "shopify",
+   "note": null
+  },
+  "42": {
+   "slug": null,
+   "note": null
+  },
+  "43": {
+   "slug": "bigcommerce",
+   "note": null
+  },
+  "44": {
+   "slug": null,
+   "note": null
+  },
+  "45": {
+   "slug": null,
+   "note": null
+  },
+  "46": {
+   "slug": null,
+   "note": "'square' is Square payments, not Squarespace"
+  },
+  "47": {
+   "slug": null,
+   "note": null
+  },
+  "48": {
+   "slug": "gumroad",
+   "note": null
+  },
+  "49": {
+   "slug": "amazon",
+   "note": "'amazon' toolkit is described as the marketplace; not confirmed to be SP-API"
+  },
+  "50": {
+   "slug": null,
+   "note": null
+  },
+  "51": {
+   "slug": "dataforseo",
+   "note": null
+  },
+  "52": {
+   "slug": null,
+   "note": null
+  },
+  "53": {
+   "slug": "ahrefs",
+   "note": null
+  },
+  "54": {
+   "slug": "mrscraper",
+   "note": null
+  },
+  "55": {
+   "slug": "apify",
+   "note": null
+  },
+  "56": {
+   "slug": "firecrawl",
+   "note": null
+  },
+  "57": {
+   "slug": "brightdata",
+   "note": null
+  },
+  "58": {
+   "slug": null,
+   "note": null
+  },
+  "59": {
+   "slug": null,
+   "note": null
+  },
+  "60": {
+   "slug": "clay",
+   "note": null
+  },
+  "61": {
+   "slug": "github",
+   "note": null
+  },
+  "62": {
+   "slug": "vercel",
+   "note": null
+  },
+  "63": {
+   "slug": "netlify_mcp",
+   "note": null
+  },
+  "64": {
+   "slug": "cloudflare",
+   "note": null
+  },
+  "65": {
+   "slug": "supabase",
+   "note": null
+  },
+  "66": {
+   "slug": "neo4j",
+   "note": null
+  },
+  "67": {
+   "slug": "snowflake",
+   "note": null
+  },
+  "68": {
+   "slug": "mongodb",
+   "note": "'mongodb' toolkit; not confirmed to cover the Atlas Admin API"
+  },
+  "69": {
+   "slug": "datadog",
+   "note": null
+  },
+  "70": {
+   "slug": "sentry",
+   "note": null
+  },
+  "71": {
+   "slug": "notion",
+   "note": null
+  },
+  "72": {
+   "slug": "airtable",
+   "note": null
+  },
+  "73": {
+   "slug": "linear",
+   "note": null
+  },
+  "74": {
+   "slug": "jira",
+   "note": null
+  },
+  "75": {
+   "slug": "asana",
+   "note": null
+  },
+  "76": {
+   "slug": "monday",
+   "note": null
+  },
+  "77": {
+   "slug": "clickup",
+   "note": null
+  },
+  "78": {
+   "slug": "coda",
+   "note": null
+  },
+  "79": {
+   "slug": "smartsheet",
+   "note": null
+  },
+  "80": {
+   "slug": "harvest",
+   "note": null
+  },
+  "81": {
+   "slug": "stripe",
+   "note": null
+  },
+  "82": {
+   "slug": "plaid",
+   "note": null
+  },
+  "83": {
+   "slug": null,
+   "note": null
+  },
+  "84": {
+   "slug": null,
+   "note": null
+  },
+  "85": {
+   "slug": null,
+   "note": null
+  },
+  "86": {
+   "slug": "quickbooks",
+   "note": null
+  },
+  "87": {
+   "slug": "xero",
+   "note": null
+  },
+  "88": {
+   "slug": "brex",
+   "note": null
+  },
+  "89": {
+   "slug": "ramp",
+   "note": null
+  },
+  "90": {
+   "slug": "pitchbook",
+   "note": null
+  },
+  "91": {
+   "slug": "notebooklm",
+   "note": null
+  },
+  "92": {
+   "slug": "otter_ai_mcp",
+   "note": null
+  },
+  "93": {
+   "slug": "fathom",
+   "note": null
+  },
+  "94": {
+   "slug": "consensus",
+   "note": null
+  },
+  "95": {
+   "slug": null,
+   "note": null
+  },
+  "96": {
+   "slug": "devin_mcp",
+   "note": null
+  },
+  "97": {
+   "slug": "higgsfield",
+   "note": null
+  },
+  "98": {
+   "slug": null,
+   "note": "only 'mermaid_chart_mcp' (Mermaid Chart SaaS), not the CLI"
+  },
+  "99": {
+   "slug": "youtube_transcript",
+   "note": "'youtube_transcript' exists; not confirmed to be transcriptapi.com"
+  },
+  "100": {
+   "slug": "grain",
+   "note": null
+  }
+ }
+}

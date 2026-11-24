@@ -1,0 +1,75 @@
+{
+  "id": "41",
+  "input": {
+    "id": "41",
+    "category": "Ecommerce",
+    "app": "Shopify",
+    "hint": "shopify.dev"
+  },
+  "meta": {
+    "cost_usd": 0.05976333000000001,
+    "turns": 9
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Access-tokens page confirms OAuth token endpoint grants (authorization code, token exchange, client credentials), X-Shopify-Access-Token header, expiring offline tokens (1h + 90-day refresh), Dec 1 2026 rule, and legacy custom app tokens no longer creatable. Storefront/Customer Account/Partner API claims not on this page and not verified.",
+      "url": "https://shopify.dev/docs/apps/build/authentication-authorization/access-tokens"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Distribution page confirms public needs approval + one-time fee (amount unstated) and custom needs no approval, usable on dev stores or same-org stores. Dev Dashboard and free dev stores not stated on fetched pages; free access remains unconfirmed but is the best-supported value.",
+      "url": "https://shopify.dev/docs/apps/launch/distribution"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "GraphQL Admin API confirmed. REST confirmed as existing but legacy since Oct 1 2024; new public apps (from Apr 1 2025) must use GraphQL only. Rate limit sample (1000 max, 50 restore) confirmed. Breadth 'broad' not enumerated on the page.",
+      "url": "https://shopify.dev/docs/api/admin-rest"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Dev MCP (@shopify/dev-mcp) is official, runs locally with no auth, for developer resources. The Storefront MCP catalog/cart tools were removed, replaced by UCP/Checkout MCP. So the record's claim about storefront/customer MCP servers is outdated. Dev MCP docs do not say it performs Admin API store management.",
+      "url": "https://shopify.dev/docs/apps/build/devmcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent with the fields. Blocker text needs the REST legacy note and a correction on the storefront MCP.",
+      "url": "https://shopify.dev/docs/apps/launch/distribution"
+    }
+  ],
+  "corrected": {
+    "app": "Shopify",
+    "category": "E-commerce platform",
+    "one_liner": "Shopify is a commerce platform for merchants to run online and retail stores, with APIs for products, orders, customers, inventory and checkout.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token",
+      "API key",
+      "Other"
+    ],
+    "auth_notes": "Admin API: access token sent in X-Shopify-Access-Token. Tokens come from authorization code grant (standalone apps), token exchange (embedded apps), or client credentials (client secret for your own org's stores, 24h token; client assertion JWT for public apps). Offline tokens are expiring (1h + 90-day refresh token) and are required for apps created on or after Dec 1, 2026; public apps had to move by Apr 1, 2026. Legacy admin-created custom app tokens (shpat_) can no longer be created, only maintained. Storefront API and Customer Account API (OAuth 2.0 with PKCE) and Partner API token claims were not verified against fetched pages.",
+    "access": "self_serve_free",
+    "access_notes": "Create an app and install it on a development store, or on stores in your own organization via the client credentials grant. Custom distribution needs no approval. Public App Store distribution requires Shopify approval and a one-time registration fee (amount not stated). Distribution method cannot be changed after selection. Free Partner accounts and dev stores were not confirmed from fetched pages. Dev stores are for testing only.",
+    "api_types": [
+      "GraphQL",
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://shopify.dev/docs/apps/build/devmcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Each merchant store must install the app. Public distribution needs App Store approval, and the legacy admin-created custom app route is closed. Tokens are expiring and need refresh handling. REST Admin API is legacy (since Oct 2024) and new public apps must use GraphQL only. Query-cost rate limits apply (sample: 1000 points max, 50 restore rate). The official Dev MCP server (local, no auth) covers developer docs/resources, not Admin API store management. The older Storefront MCP catalog/cart tools were removed in favor of UCP/Checkout MCP.",
+    "evidence": {
+      "auth": "https://shopify.dev/docs/apps/build/authentication-authorization/access-tokens",
+      "access": "https://shopify.dev/docs/apps/launch/distribution",
+      "api": "https://shopify.dev/docs/api/admin-graphql",
+      "mcp": "https://shopify.dev/docs/apps/build/devmcp"
+    },
+    "confidence": "medium"
+  }
+}

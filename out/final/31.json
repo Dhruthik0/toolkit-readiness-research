@@ -1,0 +1,73 @@
+{
+  "id": "31",
+  "input": {
+    "id": "31",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "Google Ads",
+    "hint": "developers.google.com/google-ads"
+  },
+  "meta": {
+    "cost_usd": 0.064832835,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "OAuth overview says the API uses OAuth 2.0 with multi-user, service account and single-user workflows. Same-Cloud-project guidance is stated as 'should'. Headers are not on that page.",
+      "url": "https://developers.google.com/google-ads/api/docs/oauth/overview"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "The dev-token page states Test 15,000 ops/day on test accounts only, and Explorer up to 2,880 ops/day with an application and mostly automated review. Basic needs brand verification with automated review. Standard needs manual review. Developer tokens were sunset on 2026-09-09 and access is now tied to the Cloud project. Free-trial or suspended-billing projects are rejected (fix in progress). Basic and Standard limits are not stated.",
+      "url": "https://developers.google.com/google-ads/api/docs/get-started/dev-token"
+    },
+    {
+      "field": "api",
+      "status": "contradicted",
+      "note": "The record lists REST only. Google's docs say the Google Ads API is a gRPC API with REST bindings, gRPC is the preferred transport, and all official client libraries except Perl use gRPC. Breadth 'broad' is supported by the start page (accounts, campaigns, budgets, assets, GAQL reporting, conversions, bidding).",
+      "url": "https://developers.google.com/google-ads/api/docs/client-libs/php/transport"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The page on developers.google.com documents the server, with the repo at github.com/googleads/google-ads-mcp. Read tools plus partial mutate (assets, labels) match the record. The page itself does not use the word 'official', so this is inferred from Google hosting and the googleads org.",
+      "url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits: self-serve via Cloud project, but production needs an access-level application and brand verification, with Explorer capped at 2,880 ops/day. The MCP limits are accurate.",
+      "url": "https://developers.google.com/google-ads/api/docs/get-started/dev-token"
+    }
+  ],
+  "corrected": {
+    "app": "Google Ads",
+    "category": "Advertising",
+    "one_liner": "Google's online advertising platform; the Google Ads API lets developers manage accounts, campaigns, budgets, assets and run GAQL reporting programmatically.",
+    "auth_methods": [
+      "OAuth2",
+      "JWT / service account"
+    ],
+    "auth_notes": "OAuth 2.0 (single-user or multi-user) or service account. Credentials should be created in the same Google Cloud project where the Google Ads API is enabled. Per the dev-token page, developer tokens were sunset on 2026-09-09 and access is now tied to the Cloud project (App Conversion Tracking API is the exception). Required request headers were not confirmed from a fetched page.",
+    "access": "approval_required",
+    "access_notes": "Enabling the API in a Cloud project gives Test access (test accounts only, 15,000 ops/day). Production accounts need Explorer (apply, mostly automated review, up to 2,880 ops/day), Basic (brand verification, automated review) or Standard (brand verification, manual review). Free-trial or suspended-billing projects are rejected (Google says a fix is in progress). Rate limits for Basic and Standard were not stated on the fetched page.",
+    "api_types": [
+      "gRPC",
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://github.com/googleads/google-ads-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Production use requires applying for an access level (Explorer/Basic/Standard) per Cloud project, with brand verification for Basic/Standard. Explorer is capped at about 2,880 ops/day. Free-trial billing projects may be rejected. The official MCP server is only read plus partial mutate (assets, labels). It cannot create or edit campaigns, ad groups, ads, budgets or bids.",
+    "evidence": {
+      "auth": "https://developers.google.com/google-ads/api/docs/oauth/overview",
+      "access": "https://developers.google.com/google-ads/api/docs/get-started/dev-token",
+      "api": "https://developers.google.com/google-ads/api/docs/client-libs/php/transport",
+      "mcp": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

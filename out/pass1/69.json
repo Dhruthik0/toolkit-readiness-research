@@ -1,0 +1,41 @@
+{
+  "id": "69",
+  "input": {
+    "id": "69",
+    "category": "Developer, Infra and Data platforms",
+    "app": "Datadog",
+    "hint": "docs.datadoghq.com/api"
+  },
+  "meta": {
+    "cost_usd": 0.078021655,
+    "turns": 10
+  },
+  "record": {
+    "app": "Datadog",
+    "category": "Observability / Monitoring",
+    "one_liner": "Cloud observability and security platform for infrastructure metrics, logs, APM traces, monitors, dashboards, and incidents.",
+    "auth_methods": [
+      "API key",
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "REST API: API key in DD-API-KEY header, plus an application key in DD-APPLICATION-KEY for endpoints that read data or manage resources. Application keys can be scoped. OAuth2 (authorization code with PKCE) is documented for partner integrations, with the client created in a Partner Sandbox Account. PATs and service account tokens are documented as bearer tokens for the MCP server; I did not confirm they work on the REST API.",
+    "access": "paid_plan",
+    "access_notes": "Keys are created in any org by users with the right permissions. A 14-day trial (no card, per search snippet of Datadog's trial page, which I did not fetch directly) and a Free tier (Infrastructure Monitoring only, up to 5 Basic hosts, 1-day retention) exist. I could not verify that the Free tier includes API access, so the classification is uncertain: it could be self_serve_free for limited use. Third-party OAuth needs a Partner Sandbox Account; the partner program terms were not described on the page I fetched.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.datadoghq.com/v1/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Users need a Datadog org (the free tier is limited to Infra Monitoring, 5 hosts). Per-site regional endpoints are required. Third-party OAuth is tied to the partner sandbox/integration program. Rate limits were not confirmed. Unscoped application keys inherit the creator's full permissions.",
+    "evidence": {
+      "auth": "https://docs.datadoghq.com/developers/authorization/oauth2_in_datadog/ (OAuth2 auth code + PKCE for partner integrations); https://docs.datadoghq.com/account_management/api-app-keys/ (API keys, scoped application keys); https://docs.datadoghq.com/api/latest/ (DD-API-KEY / DD-APPLICATION-KEY headers)",
+      "access": "https://www.datadoghq.com/pricing/ (Free tier: Infrastructure Monitoring, up to 5 Basic hosts; API access on free tier not stated)",
+      "api": "https://docs.datadoghq.com/api/latest/ (REST, v1 and v2, many resources, official client libraries)",
+      "mcp": "https://docs.datadoghq.com/mcp_server/setup.md (official endpoints per site, OAuth 2.0, PAT/SAT, API+app keys; US1-FED/US2-FED unsupported)"
+    },
+    "confidence": "medium"
+  }
+}

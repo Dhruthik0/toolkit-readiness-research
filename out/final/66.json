@@ -1,0 +1,73 @@
+{
+  "id": "66",
+  "input": {
+    "id": "66",
+    "category": "Developer, Infra and Data platforms",
+    "app": "Neo4j",
+    "hint": "neo4j.com/docs/api"
+  },
+  "meta": {
+    "cost_usd": 0.066307485,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Aura auth page confirms OAuth2 client-credentials: client ID/secret via HTTP Basic to https://api.neo4j.io/oauth/token, 3600s Bearer token. Query API auth page (found via search) confirms Bearer (SSO-issued token) in addition to Basic, so the record's 'not confirmed' caveat on Bearer is now resolved. Basic, OAuth2 and Bearer are all correct.",
+      "url": "https://neo4j.com/docs/aura/api/authentication/"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Auth page states 'All tiers can create Aura API credentials', which covers Free. The overview page only gives the 25 req/min rate limit for Free/trial. The original evidence URL (overview) does not state credential creation, so I moved the evidence to the auth page.",
+      "url": "https://neo4j.com/docs/aura/api/authentication/"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Query API is HTTP/REST at POST /db/<db>/query/v2 (default port 7474). The Aura API is also REST. 'moderate' breadth is not fully verified because the full Aura endpoint list was not retrieved. The record already flags this.",
+      "url": "https://neo4j.com/docs/query-api/current/query/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "github.com/neo4j/mcp is under the neo4j org and described as 'Neo4j official MCP Server'. It exposes get-schema, read-cypher, write-cypher and list-gds-procedures, and documents username/password config.",
+      "url": "https://github.com/neo4j/mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent. Two separate surfaces (Aura management vs per-database Query API). The Query API supports Bearer/SSO tokens, so the blocker's 'No OAuth for end-user delegation' should be softened: tokens come from your own SSO provider. Rate limits 25/125 req/min confirmed.",
+      "url": "https://neo4j.com/docs/aura/platform/api/overview/"
+    }
+  ],
+  "corrected": {
+    "app": "Neo4j",
+    "category": "Graph database",
+    "one_liner": "Neo4j is a graph database queried with Cypher, offered self-managed and as the managed AuraDB cloud service.",
+    "auth_methods": [
+      "Basic",
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "Two separate surfaces. (1) Aura management API (api.neo4j.io): client ID/secret created in the Aura console, exchanged at /oauth/token (client_credentials, HTTP Basic) for a 1-hour Bearer token. This is a machine-to-machine client-credentials flow, not a third-party-app consent flow. (2) Query API (HTTP, /db/<db>/query/v2) to run Cypher: requires an Authorization header; accepts Basic (database user/password) or Bearer tokens issued by your own SSO provider. The official MCP server documents only username/password.",
+    "access": "self_serve_free",
+    "access_notes": "AuraDB Free exists, and the Aura API auth page states 'All tiers can create Aura API credentials'. Free and Pro trial without billing are rate-limited to 25 req/min. Self-managed Community Edition is also free and exposes the Query API.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://github.com/neo4j/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "No single API: the Aura API only manages instances (and billing); data access goes through the Query API or Bolt against a specific database, using that database's credentials (Basic) or an SSO-issued Bearer token. No third-party-app OAuth consent flow. Aura API rate limit is 25 req/min on free/trial, 125 on paid. Full Aura endpoint list was not retrieved.",
+    "evidence": {
+      "auth": "https://neo4j.com/docs/aura/api/authentication/",
+      "access": "https://neo4j.com/docs/aura/api/authentication/",
+      "api": "https://neo4j.com/docs/query-api/current/query/",
+      "mcp": "https://github.com/neo4j/mcp"
+    },
+    "confidence": "medium"
+  }
+}

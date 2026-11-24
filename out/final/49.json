@@ -1,0 +1,72 @@
+{
+  "id": "49",
+  "input": {
+    "id": "49",
+    "category": "Ecommerce",
+    "app": "Amazon Selling Partner",
+    "hint": "developer-docs.amazon.com/sp-api"
+  },
+  "meta": {
+    "cost_usd": 0.08516175999999999,
+    "turns": 10
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Connecting page confirms LWA token POST to api.amazon.com/auth/o2/token, refresh_token vs client_credentials+scope, x-amz-access-token header, 1-hour expiry, RDT. Changelog confirms SigV4/IAM no longer required since Oct 2, 2023, resolving the record's open question. OAuth2 (LWA authorization-code for public apps) is correctly listed.",
+      "url": "https://developer-docs.amazon/sp-api/changelog/sp-api-will-no-longer-require-aws-iam-or-aws-signature-version-4"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Registration page confirms primary user, developer profile questionnaire (<500 words), professional account for private seller apps, public apps via OAuth + Appstore listing, authorization limits. Page states no cost and no approval timelines; 'free' and sandbox claims remain unverified, but approval_required is consistent.",
+      "url": "https://developer-docs.amazon/sp-api/docs/sp-api-registration-overview"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Endpoints page confirms regional REST endpoints sellingpartnerapi-na/eu/fe.amazon.com. Breadth 'broad' was not stated on the page (general knowledge); sandbox endpoints not listed there.",
+      "url": "https://developer-docs.amazon/sp-api/docs/sp-api-endpoints"
+    },
+    {
+      "field": "mcp",
+      "status": "contradicted",
+      "note": "Repo is in Amazon's amzn org and the npm package is @amazon-sp-api-release/sp-api-dev-mcp, but the README says these are 'not supported products in their own right, but educational examples'. That is a sample, not an official product; 'official' overstates it. Labeling it 'community' is imprecise too (vendor-authored), but 'official' is the closer fit only if the sample status is stated. Best-supported: keep as vendor-authored sample; I set it to community to avoid implying product support.",
+      "url": "https://github.com/amzn/selling-partner-api-samples/tree/main/1-sp-api-application-setup/sp-api-dev-mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits: LWA-only auth is straightforward, but developer profile approval, professional account for private apps, Appstore listing for public apps, and RDT for PII are real gates. The blocker text's 'could not confirm SigV4' is now resolved: not required.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Amazon Selling Partner",
+    "category": "E-commerce / Marketplace",
+    "one_liner": "The Selling Partner API (SP-API) lets Amazon sellers and vendors programmatically manage orders, listings, catalog, inventory, feeds, reports and related marketplace data.",
+    "auth_methods": [
+      "OAuth2",
+      "Other"
+    ],
+    "auth_notes": "Login with Amazon (LWA): POST to api.amazon.com/auth/o2/token with client_id and client_secret, plus a refresh_token for seller-authorized calls or client_credentials+scope for grantless calls. The access token lasts 1 hour and goes in the x-amz-access-token header (user-agent header also required). Public apps use the LWA authorization-code (OAuth) flow. Private apps self-authorize in Seller Central or the Solution Provider Portal to get a refresh token. PII endpoints use a Restricted Data Token (RDT). AWS IAM / SigV4 signing is no longer required since Oct 2, 2023 (per Amazon changelog).",
+    "access": "approval_required",
+    "access_notes": "Developer registration is required before registering an app (primary user only; profile questionnaire under 500 words answered by the security team). Private seller apps also need a professional selling account (individual accounts are ineligible). Private apps self-authorize their own account. Public apps must be listed in the Selling Partner Appstore and are subject to authorization limits. The fetched pages did not state registration cost, approval timelines, or sandbox details.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "community",
+    "mcp_url": "https://github.com/amzn/selling-partner-api-samples/tree/main/1-sp-api-application-setup/sp-api-dev-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Developer registration/profile approval is required. Private apps need a professional seller account, and a multi-tenant public app needs Appstore listing and OAuth authorization. Restricted (PII) data needs an RDT and extra roles. Amazon's MCP is a vendor-published educational sample, explicitly not a supported product. API breadth and sandbox were not confirmed from fetched pages.",
+    "evidence": {
+      "auth": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api (LWA token exchange, x-amz-access-token, 1 hour expiry, RDT); https://developer-docs.amazon/sp-api/changelog/sp-api-will-no-longer-require-aws-iam-or-aws-signature-version-4 (SigV4/IAM no longer required)",
+      "access": "https://developer-docs.amazon/sp-api/docs/sp-api-registration-overview (developer registration, professional account for private apps, public apps need OAuth and Appstore listing; no cost stated)",
+      "api": "https://developer-docs.amazon/sp-api/docs/sp-api-endpoints (regional REST endpoints sellingpartnerapi-na/eu/fe.amazon.com). Breadth rating is from general knowledge, not a fetched page.",
+      "mcp": "https://github.com/amzn/selling-partner-api-samples/tree/main/1-sp-api-application-setup/sp-api-dev-mcp (npm @amazon-sp-api-release/sp-api-dev-mcp; sp_api_execute makes live calls; README: 'not supported products in their own right, but educational examples')"
+    },
+    "confidence": "low"
+  }
+}

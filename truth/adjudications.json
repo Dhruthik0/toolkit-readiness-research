@@ -1,0 +1,6 @@
+{
+ "50": {"why": "Answer key was wrong. Pass-3 recheck found the vendor's docs on a separate domain (commasdocs.com, 'Commas API Reference', production base URL www.fanbasis.com). Browser check confirmed: API key from dashboard Account > API Keys, sandbox environment, official MCP connector with 44 tools (commasdocs.com/mcp/ai-agent).",
+        "set": {"auth": [[false, true]], "access": ["self_serve_free", "approval_required"], "api": [["REST"]], "mcp": ["official"], "verdict": ["ready", "ready_with_caveats"]}},
+ "24": {"why": "Answer key applied its own rule inconsistently. The frozen key accepts approval_required for Intercom because a public multi-tenant app needs vendor review; Lark store apps also need Lark review (open.larksuite.com overview-of-app-scopes). Same rule, same acceptance.",
+        "set": {"access": ["self_serve_free", "approval_required"]}}
+}

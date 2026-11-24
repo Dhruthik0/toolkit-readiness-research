@@ -1,0 +1,41 @@
+{
+  "id": "73",
+  "input": {
+    "id": "73",
+    "category": "Productivity and Project Management",
+    "app": "Linear",
+    "hint": "developers.linear.app"
+  },
+  "meta": {
+    "cost_usd": 0.04617837,
+    "turns": 7
+  },
+  "record": {
+    "app": "Linear",
+    "category": "Project management / issue tracking",
+    "one_liner": "Linear is a project and issue tracking tool for software teams, with issues, projects, cycles and roadmaps.",
+    "auth_methods": [
+      "API key",
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "Personal API keys are created in Security & access settings and sent as `Authorization: <API_KEY>` with no Bearer prefix. OAuth2 authorization-code flow (optional PKCE, actor=user or app) gives 24h access tokens with refresh tokens. OAuth2 client_credentials is also available for server-to-server use (app actor, 30-day token) once enabled on the app. OAuth access tokens are sent as Bearer.",
+    "access": "self_serve_free",
+    "access_notes": "Personal API keys and OAuth2 apps are created self-serve in workspace settings. The fetched OAuth page lists no app review or approval step. I did not fetch a page on plan requirements, so whether the free plan gets full API access is not verified. The OAuth page recommends a dedicated workspace for app development.",
+    "api_types": [
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.linear.app/mcp",
+    "verdict": "ready",
+    "blocker": "none. Rate limits not reviewed; free-plan API access not explicitly verified.",
+    "evidence": {
+      "auth": "https://linear.app/developers/graphql",
+      "access": "https://linear.app/developers/oauth-2-0-authentication",
+      "api": "https://linear.app/developers/graphql",
+      "mcp": "https://linear.app/docs/mcp"
+    },
+    "confidence": "medium"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "86",
+  "input": {
+    "id": "86",
+    "category": "Finance and Fintech",
+    "app": "QuickBooks",
+    "hint": "developer.intuit.com"
+  },
+  "meta": {
+    "cost_usd": 0.09418692000000001,
+    "turns": 13
+  },
+  "record": {
+    "app": "QuickBooks",
+    "category": "Accounting",
+    "one_liner": "Intuit's cloud accounting software for small businesses (invoicing, expenses, payroll, reporting), with a public developer platform for QuickBooks Online.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "auth_notes": "OAuth 2.0 with an app registered on the Intuit Developer Portal, using client ID and secret. The only method I found. Refresh tokens rotate, and the intuit-org repo README mentions a 100-day refresh window. The repo says Intuit does not offer per-user API keys. Production needs a public HTTPS redirect URI, while sandbox accepts localhost. Not verified on Intuit's own OAuth docs: developer.intuit.com pages return only a title through WebFetch, so token lifetimes are unconfirmed.",
+    "access": "approval_required",
+    "access_notes": "Sandbox is reportedly available with a free Intuit developer account (not verified on a fetched vendor page). Production keys require a per-app self-assessment questionnaire, which applies to private apps too. This comes from search-result snippets of Intuit's publish docs, not a fetched page. Any fees (such as an App Partner Program tier) are unconfirmed. I found no Intuit pricing page.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://github.com/intuit/quickbooks-online-mcp-server",
+    "verdict": "ready_with_caveats",
+    "blocker": "Production use needs Intuit's app assessment/questionnaire and the OAuth app registration. Possible partner-program fees are unconfirmed. Intuit's developer docs could not be fetched (JS-rendered), so most claims rest on secondary sources. The MCP server's official status is inferred from the intuit GitHub org and search results citing an Intuit blog, and the README is inconsistent (placeholder clone URL, conflicting MIT/Apache-2.0 license).",
+    "evidence": {
+      "auth": "https://github.com/intuit/quickbooks-online-mcp-server (fetched; README says OAuth 2.0 via an app registered on the Intuit Developer Portal, no per-user API keys, 100-day refresh window mentioned)",
+      "access": null,
+      "api": "https://github.com/intuit/quickbooks-online-mcp-server (fetched; indirect: the MCP server wraps 29 entity types with CRUD/search and 11 reports via QBO's API; developer.intuit.com pages returned no body text)",
+      "mcp": "https://github.com/intuit/quickbooks-online-mcp-server (fetched; repo under the intuit org, local stdio server, 29 entities and 11 reports; the page does not itself state that it is official)"
+    },
+    "confidence": "low"
+  }
+}

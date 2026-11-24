@@ -1,0 +1,71 @@
+{
+  "id": "85",
+  "input": {
+    "id": "85",
+    "category": "Finance and Fintech",
+    "app": "iPayX",
+    "hint": "ipayx.ai/docs"
+  },
+  "meta": {
+    "cost_usd": 0.07322244,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "API docs: Bearer token in Authorization header, ipx_live_ prefix; MCP docs add ipx_test_ sandbox and dashboard keys. OAuth2 mentioned only for planned QuickBooks/Stripe integrations, not API auth. Per-IP unauthenticated MCP use confirmed on GitHub README.",
+      "url": "https://ipayx.ai/docs/api"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Homepage: 'Upgrade to the 100-audit Credit Pack or Unlimited for API access'. Pricing page does not say which tier includes API, as the record states. Prices ($99 pack, $299/mo) match. Forensic report is $297 on pricing vs $199 in MCP docs, as the record notes.",
+      "url": "https://ipayx.ai"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "API docs list exactly 3 REST endpoints (POST /audit, GET /rates, POST /audit/document) on a supabase.co base URL; no quota stated, only 429 on 60s window. Narrow is correct.",
+      "url": "https://ipayx.ai/docs/api"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "GitHub README (iPAYX-Technologies/mcp-fx-audit) declares iPayX as operator with remote endpoint https://mcp.ipayx.ai/mcp; homepage lists a native MCP server. MCP docs list a supabase.co endpoint instead, so the conflict is real. Operator claim is self-declared in the README.",
+      "url": "https://github.com/iPAYX-Technologies/mcp-fx-audit"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent: the API works with keys but the plan that includes API is unstated, docs conflict on MCP endpoint and report price ($297 vs $199), and no rate limit quota is documented.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "iPayX",
+    "category": "FX audit / Payments",
+    "one_liner": "iPayX Protocol is a FINTRAC-registered FX forensic audit service that scores FX transactions against live mid-market rates to flag hidden markup, spread and fees.",
+    "auth_methods": [
+      "Bearer token"
+    ],
+    "auth_notes": "Static API keys sent as Authorization: Bearer. Prefixes ipx_live_ (production) and ipx_test_ (sandbox). No OAuth documented for API access (OAuth2 appears only for planned QuickBooks/Stripe integrations). Some MCP tools work unauthenticated (per-IP free limits).",
+    "access": "paid_plan",
+    "access_notes": "Homepage says API access comes with the Credit Pack or Unlimited tiers. Pricing page lists Free (3 lifetime audits), Credit Pack 100 at $99 one-time, Unlimited at $299/mo, and a Full Forensic FX Report at $297 one-time; it does not say which tier includes API keys. Keys are generated in the dashboard after sign-in. Some MCP tools need no signup.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "narrow",
+    "mcp": "official",
+    "mcp_url": "https://mcp.ipayx.ai/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Narrow API (3 REST endpoints: POST /audit, GET /rates, POST /audit/document). The API-key tier is unclear, and the pricing page shows no explicit API plan. The vendor's own docs conflict on MCP endpoint (mcp.ipayx.ai vs a supabase.co URL) and on the forensic report price ($297 vs $199). The REST base URL is on supabase.co. The rate limit quota is undocumented.",
+    "evidence": {
+      "auth": "https://ipayx.ai/docs/api (Bearer ipx_live_ keys in Authorization header); https://ipayx.ai/docs/mcp-server (ipx_live_/ipx_test_, keys from dashboard)",
+      "access": "https://ipayx.ai (API access via Credit Pack or Unlimited); https://ipayx.ai/pricing (tiers and prices; API tier not stated)",
+      "api": "https://ipayx.ai/docs/api (POST /audit, GET /rates, POST /audit/document)",
+      "mcp": "https://github.com/iPAYX-Technologies/mcp-fx-audit (remote MCP at https://mcp.ipayx.ai/mcp, operated by iPayX); https://ipayx.ai (native MCP server listed)"
+    },
+    "confidence": "medium"
+  }
+}

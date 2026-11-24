@@ -1,0 +1,41 @@
+{
+  "id": "32",
+  "input": {
+    "id": "32",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "Meta Ads",
+    "hint": "developers.facebook.com/docs/marketing-apis"
+  },
+  "meta": {
+    "cost_usd": 0.062383140000000004,
+    "turns": 9
+  },
+  "record": {
+    "app": "Meta Ads",
+    "category": "Advertising platform",
+    "one_liner": "Meta's Marketing API and ads MCP server let developers create, manage and report on ad campaigns, ad sets, creatives and ads across Facebook, Instagram, Messenger and WhatsApp.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "Marketing API: OAuth dialog (Facebook Login) with scopes ads_read / ads_management. The MCP blog says OAuth via Facebook Login for Business, or a pre-obtained access token. System user tokens are a known Meta mechanism, but I did not verify them on a fetched page.",
+    "access": "approval_required",
+    "access_notes": "A free Meta developer app gives Limited access (the old Standard tier) right away. That tier is heavily rate-limited and meant for development, and it is enough for your own ad accounts. Managing other people's accounts or serving live advertisers needs App Review for Advanced/Full access, the Marketing API Access Tier feature, and possibly business verification. Full access requires at least 500 successful calls in 15 days with an error rate under 15%. For the MCP server, agency/partner use needs Advanced Access on ads_mcp_management. MCP tool rollout is gradual. Pricing for the MCP server is not stated on the pages I fetched. A third-party post claims it was free during open beta, which I did not verify.",
+    "api_types": [
+      "REST",
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.facebook.com/ads",
+    "verdict": "ready_with_caveats",
+    "blocker": "Serving other advertisers' accounts in production requires App Review/Advanced access, and the Limited tier is heavily rate-limited. MCP tool availability is rolling out gradually.",
+    "evidence": {
+      "auth": "https://developers.facebook.com/docs/marketing-api/overview/authorization",
+      "access": "https://developers.facebook.com/docs/marketing-api/overview/authorization",
+      "api": "https://developers.facebook.com/docs/marketing-api/overview",
+      "mcp": "https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-overview"
+    },
+    "confidence": "medium"
+  }
+}

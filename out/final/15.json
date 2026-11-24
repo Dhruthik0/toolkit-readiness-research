@@ -1,0 +1,72 @@
+{
+  "id": "15",
+  "input": {
+    "id": "15",
+    "category": "Support and Helpdesk",
+    "app": "Pylon",
+    "hint": "usepylon.com"
+  },
+  "meta": {
+    "cost_usd": 0.04941535,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "contradicted",
+      "note": "Bearer token, no expiry, no scopes, admin-only creation, IP allowlist and US/EU base URLs are all confirmed. But the MCP page says OAuth 2.0 is supported for the MCP server, so auth_methods should include OAuth2. The record's claim that OAuth is only for the MCP server is consistent with the pages. The cited auth page does not mention OAuth. For third-party REST apps only the Bearer token is documented.",
+      "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "The pricing page confirms Professional $89/seat and Advanced $139/seat, annual. Enterprise is custom. It lists no free plan. Trials are set up by a sales rep, and the page is sales-led (Book a demo). REST API is on all three tiers, so paid_plan holds. The pricing page also lists scoped API tokens, but the auth docs say there are no scopes. That is a minor inconsistency in the vendor's own pages.",
+      "url": "https://www.usepylon.com/pricing"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The API reference lists about 23 endpoint groups, including accounts, issues, contacts, knowledge base, messages, tasks, custom objects and users. This supports broad. The docs read and write data, and SDKs exist for TS, Python and Go. The pages never use the word REST explicitly. Resource-based endpoints with Bearer auth and SDKs make REST a reasonable inference.",
+      "url": "https://docs.usepylon.com/pylon-docs/developer/api/api-reference"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The vendor's own docs describe the Pylon MCP Server at https://mcp.usepylon.com (EU: https://mcp.eu.usepylon.com). It supports OAuth 2.0 and API tokens, and requires the MCP Access permission.",
+      "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent with the fields: a paid, sales-led workspace is needed, tokens have no scopes, and there are two regions. Minor wording fix: the pricing page lists REST API on all tiers, so the blocker is a paid workspace rather than Professional by inference.",
+      "url": "https://www.usepylon.com/pricing"
+    }
+  ],
+  "corrected": {
+    "app": "Pylon",
+    "category": "B2B Helpdesk / Customer Support",
+    "one_liner": "Pylon is a B2B customer support platform that unifies issues from Slack, Teams, email and chat with account management, a knowledge base, and AI agents.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "REST API: static admin-created API token sent as Authorization Bearer. Tokens don't expire and have no scopes; access is set by the identity's role (older tokens with no role act as Admin), with an optional IP allowlist of up to 20 entries. US (api.usepylon.com) and EU (api.eu.usepylon.com) regions have separate base URLs, and a token sent to the wrong region returns 401. OAuth 2.0 is documented only for the official MCP server (interactive AI clients), not for third-party REST apps.",
+    "access": "paid_plan",
+    "access_notes": "Only Admins can create tokens (Settings > Integrations & dev > API). The pricing page lists REST API on Professional ($89/seat, annual), Advanced ($139/seat, annual) and Enterprise (custom), so the API is on paid tiers only. No free plan is listed. Free trials exist for prospects, but a sales rep sets them up, and I found no self-serve signup. A developer without an existing Pylon customer account will likely need to contact sales.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.usepylon.com (EU: https://mcp.eu.usepylon.com)",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API requires a paid Pylon workspace. There is no self-serve or free signup, so a developer needs an existing customer or a sales-led trial. Tokens have no scopes, so each token carries its role's full access. The user must also pick the US or EU region.",
+    "evidence": {
+      "auth": "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
+      "access": "https://www.usepylon.com/pricing",
+      "api": "https://docs.usepylon.com/pylon-docs/developer/api/api-reference",
+      "mcp": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp"
+    },
+    "confidence": "medium"
+  }
+}

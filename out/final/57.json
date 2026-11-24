@@ -1,0 +1,73 @@
+{
+  "id": "57",
+  "input": {
+    "id": "57",
+    "category": "Data, SEO and Scraping",
+    "app": "Bright Data",
+    "hint": "brightdata.com"
+  },
+  "meta": {
+    "cost_usd": 0.04616005,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page confirms API key sent as Bearer token; admin-only creation, one key per user, permission levels, expiry; Native Access uses proxy username:password; no OAuth mentioned. 'Basic' is only loosely supported (proxy user:pass).",
+      "url": "https://docs.brightdata.com/api-reference/authentication"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Free tier page confirms 5,000 credits/month, reset on 1st, products covered, proxies excluded with $2 trial and $5 bonus after adding payment method, 1,000 req/min limit for unfunded accounts, and the card ambiguity.",
+      "url": "https://docs.brightdata.com/general/account/billing-and-pricing/free-tier"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Intro page shows REST POST https://api.brightdata.com/request; lists Web Unlocker, SERP, Browsers, Scrapers, Functions, Marketplace. No other API types shown. Moderate breadth is reasonable but only one endpoint was verified; rate limits not stated.",
+      "url": "https://docs.brightdata.com/api-reference/introduction"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Docs describe a fully managed Bright Data Remote MCP at mcp.brightdata.com with token as URL query param. GitHub repo is under the brightdata org, MIT (c) Bright Data Ltd, consistent with official. Quickstart page has no repo link; GitHub repo is the better evidence for mcp_url.",
+      "url": "https://github.com/brightdata/brightdata-mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent: self-serve free tier, Bearer REST API, official MCP; caveats are credit cap, paid proxies, admin-only keys, no OAuth, token in URL.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Bright Data",
+    "category": "Web data / scraping platform",
+    "one_liner": "Web data platform offering proxies, Web Unlocker, SERP and Web Scraper APIs, browser automation, and datasets for collecting public web data.",
+    "auth_methods": [
+      "API key",
+      "Bearer token",
+      "Basic"
+    ],
+    "auth_notes": "REST API uses an account API key sent as `Authorization: Bearer <token>`. Keys are created in the control panel (admin only) with a permission level and expiry, one per user. Proxy access uses a zone username:password (native access). No OAuth documented. The remote MCP passes the token as a URL query parameter.",
+    "access": "self_serve_free",
+    "access_notes": "A new account gets a free tier of 5,000 credits per month, reset on the 1st, covering Web Unlocker, SERP, Web Scraper API, Scraper Studio, Browser API, and MCP. Residential, ISP and datacenter proxies are not covered; they get only a one-time $2 trial, plus a $5 bonus after adding a payment method. Unfunded accounts are limited to 1,000 requests/min. The docs are inconsistent on whether a card is needed (intro says no card; a later note calls adding a card a verification step), but card entry is not required for the monthly credits.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://github.com/brightdata/brightdata-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Free tier is limited to 5,000 credits/month, and paid proxy products need funds. API keys are admin-created in the dashboard, with no OAuth for delegated per-user access. MCP token is passed in the URL query string. Only one endpoint (POST /request) was verified; other product endpoints and per-endpoint rate limits are not confirmed.",
+    "evidence": {
+      "auth": "https://docs.brightdata.com/api-reference/authentication",
+      "access": "https://docs.brightdata.com/general/account/billing-and-pricing/free-tier",
+      "api": "https://docs.brightdata.com/api-reference/introduction",
+      "mcp": "https://github.com/brightdata/brightdata-mcp"
+    },
+    "confidence": "medium"
+  }
+}

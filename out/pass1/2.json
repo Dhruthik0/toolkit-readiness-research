@@ -1,0 +1,43 @@
+{
+  "id": "2",
+  "input": {
+    "id": "2",
+    "category": "CRM and Sales",
+    "app": "HubSpot",
+    "hint": "hubspot.com"
+  },
+  "meta": {
+    "cost_usd": 0.08409600000000002,
+    "turns": 9,
+    "searches": 0,
+    "fetches": 0
+  },
+  "record": {
+    "app": "HubSpot",
+    "category": "CRM",
+    "one_liner": "HubSpot is a CRM platform with marketing, sales, service, content and commerce hubs, plus a developer platform for building integrations.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token",
+      "API key"
+    ],
+    "auth_notes": "Fetched auth doc lists: OAuth (Bearer access token per installed account, for multi-account/Marketplace apps); static auth (single-account app with a static access token, the successor to private apps); service keys (scoped Bearer keys); client-credentials tokens (webhooks journal API only). Developer API keys (hapikey query param) are not a general API auth method and apply only to certain app features.",
+    "access": "self_serve_free",
+    "access_notes": "Developer test accounts are free (90-day trial of many enterprise features; they expire unless API calls are made, and can be renewed). Standard accounts can be free or paid. I did not find a fetched page that states whether a free standard account has full API access, so that is unconfirmed. Some endpoints and features need paid hubs (e.g. custom pipelines are not on free tools; MCP quotes and AEO tools need Professional/Enterprise).",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.hubspot.com",
+    "verdict": "ready_with_caveats",
+    "blocker": "Plan-tier limits on some features, and a multi-account integration needs an OAuth backend (and a Marketplace listing if distributed there). Rate limits and free-account API scope were not verified. Date-based API versioning (e.g. 2026-09) requires tracking versions.",
+    "evidence": {
+      "auth": "https://developers.hubspot.com/docs/api/intro-to-auth",
+      "access": "https://developers.hubspot.com/docs/getting-started/account-types",
+      "api": "https://developers.hubspot.com/docs/api-reference/crm-contacts-v3/guide",
+      "mcp": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/integrate-with-the-remote-hubspot-mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

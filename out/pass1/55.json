@@ -1,0 +1,40 @@
+{
+  "id": "55",
+  "input": {
+    "id": "55",
+    "category": "Data, SEO and Scraping",
+    "app": "Apify",
+    "hint": "docs.apify.com"
+  },
+  "meta": {
+    "cost_usd": 0.03208807,
+    "turns": 5
+  },
+  "record": {
+    "app": "Apify",
+    "category": "Web scraping / automation platform",
+    "one_liner": "Apify is a cloud platform for running web scrapers and automation programs (\"Actors\"), with storage, scheduling, proxies and a store of prebuilt Actors.",
+    "auth_methods": [
+      "Bearer token",
+      "API key"
+    ],
+    "auth_notes": "API token sent as `Authorization: Bearer <token>` (recommended) or as a `?token=` query parameter (less secure). The API v2 page doesn't document an OAuth flow for third-party apps. The hosted MCP server does support OAuth sign-in. The API docs also describe agentic payment auth (x402, Skyfire) and temporary capped tokens.",
+    "access": "self_serve_free",
+    "access_notes": "The free plan is $0/month with $5 of platform usage, no credit card, 5 concurrent runs and 16 GB max RAM. Runs are blocked once the $5 is used until the next cycle. The pricing page doesn't explicitly say the free plan includes API access. It says the free plan has \"most of the features\", so API token access on free is inferred, not verified.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.apify.com",
+    "verdict": "ready",
+    "blocker": "none. Minor caveats: no documented OAuth for third-party apps on the REST API (user tokens only), a free-tier usage cap, and rate limits (250k requests/min global, 60/s per resource by default).",
+    "evidence": {
+      "auth": "https://docs.apify.com/api/v2",
+      "access": "https://apify.com/pricing",
+      "api": "https://docs.apify.com/api/v2",
+      "mcp": "https://docs.apify.com/platform/integrations/mcp"
+    },
+    "confidence": "medium"
+  }
+}

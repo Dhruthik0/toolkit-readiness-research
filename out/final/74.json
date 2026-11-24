@@ -1,0 +1,75 @@
+{
+  "id": "74",
+  "input": {
+    "id": "74",
+    "category": "Productivity and Project Management",
+    "app": "Jira",
+    "hint": "developer.atlassian.com"
+  },
+  "meta": {
+    "cost_usd": 0.08163389000000001,
+    "turns": 9
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Basic-auth page confirms email+API token basic auth, passwords deprecated, OAuth 2.0 (3LO) for developer-console apps, Forge OAuth2, Connect JWT, and the single-distributable-3LO-app requirement. 3LO page confirms 90-day rotating refresh token expiry. Scoped tokens and Data Center PATs not confirmed, but the record already flags that.",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "3LO page confirms self-serve app creation in the developer console, private by default, sharing via Distribution toggle, and unreviewed warning for unapproved apps. The rate-limit page lists a Free edition. The free-plan API access claim is inferred from this, not stated outright.",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The rate-limit page confirms REST and says GraphQL uses the same points model, with GraphQL enforcement coming later. The Atlassian GraphQL gateway page confirms Jira projects are accessible via GraphQL with OAuth and API token auth. Beta fields exist, so GraphQL is not clearly GA. Search results confirm REST v3 at /rest/api/3/. Breadth 'broad' is inferred from the many REST API groups (issues, workflows, permissions, users, avatars). The intro page itself was truncated.",
+      "url": "https://developer.atlassian.com/platform/atlassian-graphql-api/graphql/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Atlassian's own support page documents the remote MCP server at https://mcp.atlassian.com/v2/mcp, with Jira search and create/update work items, OAuth 2.1 and optional API token. Plan requirements are not stated on the page.",
+      "url": "https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "The rate-limit page confirms the 65,000 points/hour shared global pool, per-second burst limits, per-issue write caps and HTTP 429. The 3LO page confirms the unreviewed warning and the 90-day refresh expiry. ready_with_caveats is consistent with these.",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/rate-limiting/"
+    }
+  ],
+  "corrected": {
+    "app": "Jira",
+    "category": "Project management / Issue tracking",
+    "one_liner": "Atlassian's issue and project tracking product for software and business teams, with a cloud REST API for issues, projects, workflows, users and more.",
+    "auth_methods": [
+      "OAuth2",
+      "Basic",
+      "JWT / service account",
+      "Other"
+    ],
+    "auth_notes": "Basic auth with Atlassian account email + API token (Authorization: Basic base64(email:token)); passwords deprecated. OAuth 2.0 (3LO) is documented for third-party apps (scopes, offline_access refresh tokens rotating, 90-day inactivity expiry). Forge apps use OAuth 2.0 and Connect apps use JWT. Per the docs, apps that collect customers' API tokens or have customers create individual 3LO apps violate Atlassian's security requirements; use a single distributable 3LO app. Not confirmed: Jira Data Center PATs and scoped API tokens.",
+    "access": "self_serve_free",
+    "access_notes": "An Atlassian account can generate an API token, and a developer can create an OAuth 2.0 (3LO) app in the developer console, both self-serve. The API runs against a Jira Cloud site; the rate-limit page lists a Free edition, but free-plan API access is inferred, not stated outright. Distributing a 3LO app to other users works without Marketplace listing, but users see an 'unreviewed integration' warning until Atlassian approves it.",
+    "api_types": [
+      "REST",
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.atlassian.com/v2/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Points-based hourly quota (65,000 points/hour shared global pool for most apps) plus per-second and per-issue write limits; HTTP 429 on exceed. Distributable OAuth apps show an unreviewed warning until Atlassian approves. Customer-supplied API tokens in a multi-tenant app are against Atlassian's requirements, so use one 3LO app. 3LO refresh tokens expire after 90 days of inactivity. GraphQL gateway has beta fields that can change without notice.",
+    "evidence": {
+      "auth": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/ (email + API token basic auth; Forge OAuth2, Connect JWT); https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/ (3LO flow, refresh token 90-day expiry)",
+      "access": "https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/ (create app in developer console, private by default, share via Distribution; unreviewed warning)",
+      "api": "https://developer.atlassian.com/cloud/jira/platform/rate-limiting/ (REST limits, GraphQL uses same points model); https://developer.atlassian.com/platform/atlassian-graphql-api/graphql/ (Atlassian GraphQL gateway, Jira projects, beta fields); https://developer.atlassian.com/cloud/jira/platform/rest/v3/ (REST v3 reference)",
+      "mcp": "https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/ (server URL mcp.atlassian.com/v2/mcp, Jira search and create/update work items, OAuth 2.1, optional API token)"
+    },
+    "confidence": "medium"
+  }
+}

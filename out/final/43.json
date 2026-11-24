@@ -1,0 +1,76 @@
+{
+  "id": "43",
+  "input": {
+    "id": "43",
+    "category": "Ecommerce",
+    "app": "BigCommerce",
+    "hint": "developer.bigcommerce.com"
+  },
+  "meta": {
+    "cost_usd": 0.08992635,
+    "turns": 9
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page confirms X-Auth-Token OAuth API accounts (store/app/account-level), Bearer JWT for GraphQL Storefront, and legacy-only basic auth. MCP uses OAuth 2.1 PKCE per MCP page. OAuth2, API key-style token, Bearer, Basic (legacy), Other all justified.",
+      "url": "https://docs.bigcommerce.com/docs/start/authentication"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Quick-start page says to sign up for a free BigCommerce trial store to test API calls. Sandbox page only describes Partner Portal creation and gives no pricing, so it was a weak citation. Production plan requirement is still not verified.",
+      "url": "https://docs.bigcommerce.com/developer/docs/overview/quick-start"
+    },
+    {
+      "field": "api",
+      "status": "contradicted",
+      "note": "API page confirms REST and GraphQL with broad coverage (catalog, orders, customers, carts, checkouts). WebSocket appears nowhere in the docs. Searches turned up only HTTP webhooks. Remove WebSocket.",
+      "url": "https://docs.bigcommerce.com/docs/api"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "MCP overview confirms an official Store Management MCP at https://api.bigcommerce.com/mcp. It is early access, needs the store owner to enable it, and uses OAuth 2.1 with PKCE. There is also a GA Storefront MCP and a docs MCP.",
+      "url": "https://docs.bigcommerce.com/developer/api-reference/mcp/overview"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits: self-serve trial store, broad REST/GraphQL API, official MCP in early access. The blocker text needs updating because the free trial store is now confirmed on a vendor page. The WebSocket claim was wrong.",
+      "url": "https://docs.bigcommerce.com/developer/docs/overview/quick-start"
+    }
+  ],
+  "corrected": {
+    "app": "BigCommerce",
+    "category": "E-commerce platform",
+    "one_liner": "BigCommerce is a hosted SaaS e-commerce platform for building and running online stores, with catalog, cart, checkout, order, and customer management.",
+    "auth_methods": [
+      "OAuth2",
+      "API key",
+      "Bearer token",
+      "Basic",
+      "Other"
+    ],
+    "auth_notes": "Store-level API accounts give a static access token sent in the X-Auth-Token header. App-level credentials use an OAuth grant code flow (client ID, secret, code), and each installing store gets its own token. Account-level tokens reach all stores under a parent account. Storefront GraphQL uses a BigCommerce-generated JWT as a Bearer token. Legacy HTTP basic auth only works on existing legacy accounts. The Store Management MCP uses OAuth 2.1 with PKCE.",
+    "access": "self_serve_trial",
+    "access_notes": "The quick-start page says to sign up for a free BigCommerce trial store to test API calls. A store-level API token is then created in the store control panel (Settings > Store-level API Accounts). Partner sandboxes are created via the Partner Portal. Pricing and duration of sandboxes and trials are not stated on the pages fetched. Production use needs a paid store plan (inferred, not verified). Public marketplace apps need listing review (not verified).",
+    "api_types": [
+      "REST",
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://api.bigcommerce.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Trial length and terms are not stated on the vendor pages fetched. Store-level token scopes can't be edited after creation. The official Store Management MCP is early access and needs the store owner to enable it (Settings > API and MCP > MCP) and an admin to grant scopes per user.",
+    "evidence": {
+      "auth": "https://docs.bigcommerce.com/docs/start/authentication",
+      "access": "https://docs.bigcommerce.com/developer/docs/overview/quick-start",
+      "api": "https://docs.bigcommerce.com/docs/api",
+      "mcp": "https://docs.bigcommerce.com/developer/api-reference/mcp/overview"
+    },
+    "confidence": "medium"
+  }
+}

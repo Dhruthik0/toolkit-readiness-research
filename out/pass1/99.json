@@ -1,0 +1,41 @@
+{
+  "id": "99",
+  "input": {
+    "id": "99",
+    "category": "AI, Research and Media-native",
+    "app": "YouTube Transcript",
+    "hint": "transcriptapi.com"
+  },
+  "meta": {
+    "cost_usd": 0.04465866,
+    "turns": 6
+  },
+  "record": {
+    "app": "YouTube Transcript",
+    "category": "Data API (YouTube transcripts)",
+    "one_liner": "TranscriptAPI is a hosted REST API and MCP server that returns YouTube video transcripts, search results, and channel and playlist data without a YouTube Data API key.",
+    "auth_methods": [
+      "Bearer token",
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "REST API: API key from the dashboard, sent as 'Authorization: Bearer <key>'. The MCP server also supports OAuth 2.1 (dynamic registration for Claude; static client ID/secret for ChatGPT). The OAuth applies to the MCP connector, not a general third-party app OAuth flow on the REST API.",
+    "access": "self_serve_free",
+    "access_notes": "The free tier gives 100 credits with no card required, according to the homepage. Paid plans are Monthly at $5/month for 1,000 credits (200 RPM) and Annual at $4.50/month billed $54/year (300 RPM). The API docs page did not describe the signup steps; keys come from /dashboard/api-keys. Free endpoints still need at least one active credit. Top-up credits require an active subscription.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://transcriptapi.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API is read-only and credit-metered (1 credit per call, 100 free credits). Rate limits are 200-300 RPM. The service is a third-party scraper-style layer, so YouTube ToS risk and reliability were not assessed. MCP tool names are inconsistent between doc pages. The API breadth is narrow in object type (transcripts and metadata only), though it covers a full set of read endpoints.",
+    "evidence": {
+      "auth": "https://transcriptapi.com/docs/api/ (Bearer API key in Authorization header, 401 on invalid key)",
+      "access": "https://transcriptapi.com (Free: 100 credits, no card required; $5/month for 1,000 credits)",
+      "api": "https://transcriptapi.com/docs/api/ (13 REST v2 endpoints under /api/v2/youtube/: transcript, info, video metadata, search, channel and playlist endpoints)",
+      "mcp": "https://transcriptapi.com/docs/mcp/ (server at https://transcriptapi.com/mcp, 12 tools, OAuth 2.1 or Bearer API key; run by the vendor)"
+    },
+    "confidence": "medium"
+  }
+}

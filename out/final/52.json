@@ -1,0 +1,71 @@
+{
+  "id": "52",
+  "input": {
+    "id": "52",
+    "category": "Data, SEO and Scraping",
+    "app": "SE Ranking",
+    "hint": "seranking.com/api"
+  },
+  "meta": {
+    "cost_usd": 0.062448050000000005,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Getting-started page confirms `Authorization: Token KEY` and `?apikey=` query param (header recommended). Key is created in the API Dashboard (API icon in left nav, + CREATE API KEY), not 'Settings > API' as the record says. No OAuth for the REST API is mentioned. OAuth 2.1 and the no-read-only-keys statement are on the MCP page, not the getting-started page. API key as the only REST method is correct.",
+      "url": "https://seranking.com/api/data/getting-started/"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "API page confirms API access in every plan (Core $129, Growth $279 as examples), API add-on from $149/mo, pay-as-you-go with $50 minimum deposit, and a free trial with no credit card that can test the API. The '100K free credits' offer is not stated on the page; remove that claim. Rate limits: the FAQ says defaults can be raised via support, and the page mentions 'up to 10 requests per second'. Pricing not checked against the pricing page.",
+      "url": "https://seranking.com/api/"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Endpoint reference shows resource-style paths on api.seranking.com/v1 with GET/POST and JSON. The vendor never uses the word 'REST', so that label is an inference. Overview lists Data, Project, Local Marketing and SE Visible (beta) APIs with many read and write groups, which supports broad.",
+      "url": "https://seranking.com/api/data/keyword-research/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "MCP page calls it the official SE Ranking connector. URL is https://api.seranking.com/mcp (Streamable HTTP). It supports OAuth 2.1 by default or an X-Api-Key header. Read-only keys are not available. Sub-accounts can't use the OAuth sign-in and must paste the admin's key. The 'dynamic client registration' detail was not confirmed.",
+      "url": "https://seranking.com/api/integrations/mcp/"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent with the verified fields. Caveats: full-account keys with no read-only scope, no OAuth for third-party REST apps, and paid or trial access. The rate-limit numbers are partly stated (up to 10 requests per second mentioned, the default is not clear). The 'no free tier' claim is accurate apart from the trial.",
+      "url": "https://seranking.com/api/"
+    }
+  ],
+  "corrected": {
+    "app": "SE Ranking",
+    "category": "SEO platform",
+    "one_liner": "SE Ranking is an SEO and AI-search visibility platform covering keyword research, rank tracking, backlinks, site audits and competitor analysis.",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "Data API key is sent as `Authorization: Token YOUR_API_KEY` (an `apikey` query parameter also works but the header is recommended). Keys are created in the API Dashboard (API icon in left nav, + CREATE API KEY), and you can create multiple keys. The hosted MCP server also supports OAuth 2.1 (default) or an X-Api-Key header. No OAuth flow for third-party apps is documented for the REST API. The MCP page says keys have full account access and read-only keys aren't available yet.",
+    "access": "self_serve_trial",
+    "access_notes": "API access is included in every plan (examples: Core $129/mo, Growth $279/mo). A free trial with no credit card can be used to test the API, though the trial's credit allowance isn't stated. Pay-as-you-go is available with a $50 minimum deposit (shown as From $50 / 250K credits). An API add-on starts at $149/mo. No free tier. Prices come from the API marketing page and were not checked against the pricing page.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://api.seranking.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "No free tier: access needs a trial, a paid plan, or a $50 pay-as-you-go deposit. API keys are full-account with no read-only scope. Rate limits: the page mentions up to 10 requests per second, defaults can be raised via support, and the exact default wasn't confirmed. Sub-accounts can't use OAuth on MCP and need the admin's key. No documented OAuth for third-party REST apps, so users must paste in their own keys.",
+    "evidence": {
+      "auth": "https://seranking.com/api/data/getting-started/",
+      "access": "https://seranking.com/api/",
+      "api": "https://seranking.com/api/data/",
+      "mcp": "https://seranking.com/api/integrations/mcp/"
+    },
+    "confidence": "medium"
+  }
+}

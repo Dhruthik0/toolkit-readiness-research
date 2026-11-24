@@ -1,0 +1,72 @@
+{
+  "id": "19",
+  "input": {
+    "id": "19",
+    "category": "Support and Helpdesk",
+    "app": "Gorgias",
+    "hint": "gorgias.com"
+  },
+  "meta": {
+    "cost_usd": 0.07023616499999999,
+    "turns": 9
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Authentication page: private apps use API key, public apps must use OAuth2 (\"mandatory\"). Basic is not named on the page (inference stays flagged). Scopes page not opened.",
+      "url": "https://developers.gorgias.com/reference/authentication"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Pricing page FAQ states a 7-day trial with all features and no payment info needed; no free plan found (lowest is Starter, paid). API tier availability is not stated on the vendor page, so that caveat stays open. Rate limits page: API key 40 req/20s (=2/s), OAuth2 80 req/20s.",
+      "url": "https://www.gorgias.com/pricing"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "llms.txt lists 23 REST resource groups plus Reporting Statistics (Tickets, Customers, Macros, Rules, Tags, Teams, Users, Views, Voice Calls, etc.). Broad is reasonable.",
+      "url": "https://developers.gorgias.com/llms.txt"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Official help article gives https://mcp.gorgias.com/mcp with browser auth and all Helpdesk plans. Open beta is confirmed on the vendor changelog; reads live, macro edits and AI Agent config writes gated.",
+      "url": "https://updates.gorgias.com/publications/gorgias-mcp-is-now-in-open-beta"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits: trial-only access with no free tier, an unconfirmed API plan tier, and an MCP in beta with some writes gated. The rate limit caveat is now vendor-verified (API key 40/20s).",
+      "url": "https://developers.gorgias.com/reference/limitations"
+    }
+  ],
+  "corrected": {
+    "app": "Gorgias",
+    "category": "Helpdesk (ecommerce customer support)",
+    "one_liner": "Gorgias is a helpdesk for ecommerce merchants that centralizes support tickets from email, chat, social and voice alongside Shopify/store order data, with automation and AI agents.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "Private apps use an API key (account email as username plus API key; HTTP Basic is an inference, not named on the page). Public apps must use OAuth2. The vendor MCP server uses browser OAuth.",
+    "access": "self_serve_trial",
+    "access_notes": "Vendor pricing page FAQ: 7-day free trial with all features, no payment info required. No free plan found; the lowest paid plan is Starter. The vendor page does not say which plans include API access. Rate limits (vendor page): API key 40 requests per 20 seconds (about 2/s); OAuth2 apps 80 per 20 seconds; HTTP 429 on excess.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.gorgias.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "No free tier; credentials come from a 7-day trial and then a paid plan. API plan tier is unconfirmed. Rate limit is about 2 req/s for API keys. Public multi-tenant apps must use OAuth2. The official MCP server is in open beta, with macro edits and AI Agent configuration writes gated.",
+    "evidence": {
+      "auth": "https://developers.gorgias.com/reference/authentication",
+      "access": "https://www.gorgias.com/pricing (7-day trial, no payment info); https://developers.gorgias.com/reference/limitations (rate limits)",
+      "api": "https://developers.gorgias.com/llms.txt",
+      "mcp": "https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-gorgias-6310546 (URL, auth, plans); https://updates.gorgias.com/publications/gorgias-mcp-is-now-in-open-beta (open beta, gated writes)"
+    },
+    "confidence": "medium"
+  }
+}

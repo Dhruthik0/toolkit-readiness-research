@@ -1,0 +1,40 @@
+{
+  "id": "94",
+  "input": {
+    "id": "94",
+    "category": "AI, Research and Media-native",
+    "app": "Consensus",
+    "hint": "consensus.app (OAuth requested)"
+  },
+  "meta": {
+    "cost_usd": 0.086783855,
+    "turns": 8
+  },
+  "record": {
+    "app": "Consensus",
+    "category": "Academic research search",
+    "one_liner": "AI-powered search engine over 400M+ peer-reviewed papers that returns summaries, study metadata, citations and a Consensus Meter of supporting vs. refuting findings.",
+    "auth_methods": [
+      "OAuth2",
+      "API key"
+    ],
+    "auth_notes": "Per Consensus's llms-full.txt: the MCP server uses OAuth 2.1 Authorization Code with PKCE and dynamic client registration (recommended for multi-user agents). The REST API uses an API key sent as a bearer token, tied to an organization subscription. There is also an anonymous, heavily rate-limited MCP tier for evaluation. I could not fetch docs.consensus.app (403), so the key-issuance flow is unverified.",
+    "access": "paid_plan",
+    "access_notes": "Two routes. (1) MCP via OAuth: a Free account works (limited quota, 1 QPS, 10 papers per search by default), and an anonymous tier exists for evaluation. (2) REST API: the key is tied to an organization subscription. Which plan includes it, and whether it is self-serve, is not verified because docs.consensus.app returned 403 and the pricing page showed no plan details. I classed it paid_plan for REST on inference only. Treat it as unconfirmed. An unverified third-party guide gives the REST base URL as api.consensus.app/v1.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "narrow",
+    "mcp": "official",
+    "mcp_url": "https://mcp.consensus.app/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API is read-only search (search, paper detail, synthesis, Consensus Meter), so it is narrow. The REST key needs an organization subscription, and the plan and self-serve status are unverified. MCP quotas are limited on the Free plan, and exceeding a limit returns HTTP 429. The official docs returned 403, so endpoint details are unconfirmed.",
+    "evidence": {
+      "auth": "https://consensus.app/llms-full.txt",
+      "access": "https://consensus.app/llms-full.txt",
+      "api": "https://consensus.app/llms-full.txt",
+      "mcp": "https://consensus.app/llms-full.txt"
+    },
+    "confidence": "medium"
+  }
+}

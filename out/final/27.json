@@ -1,0 +1,73 @@
+{
+  "id": "27",
+  "input": {
+    "id": "27",
+    "category": "Communications and Messaging",
+    "app": "Telegram",
+    "hint": "core.telegram.org"
+  },
+  "meta": {
+    "cost_usd": 0.07632282500000001,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Bot API page confirms token in URL path (https://api.telegram.org/bot<token>/METHOD), no OAuth mentioned. api_id/api_hash for user authorization confirmed on obtaining_api_id. SRP/QR/passkey details not re-checked.",
+      "url": "https://core.telegram.org/bots/api"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "/newbot steps on bots/features show no fee; obtaining_api_id shows form only, no approval or fee, and ban/observation warnings are confirmed. Absence of fee is inferred from silence, not an explicit 'free' statement for the api_id.",
+      "url": "https://core.telegram.org/api/obtaining_api_id"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Bot API is HTTP-based, GET/POST with JSON responses. MTProto is a separate non-REST protocol; 'CLI / library only' is the closest enum fit. Breadth 'broad' is reasonable but I read only the first 100k of 640k characters.",
+      "url": "https://core.telegram.org/bots/api"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "No official Telegram MCP found. sparfenyuk/mcp-telegram is an individually maintained unofficial MTProto server, so 'community' is right.",
+      "url": "https://github.com/sparfenyuk/mcp-telegram"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "Rate limits (1 msg/s per chat, 20/min per group, about 30/s bulk) confirmed on the Bot FAQ, which the record did not cite. Whether a bot can message users who have not started it was not settled. ready_with_caveats is consistent with the other fields.",
+      "url": "https://core.telegram.org/bots/faq"
+    }
+  ],
+  "corrected": {
+    "app": "Telegram",
+    "category": "Messaging",
+    "one_liner": "Cloud-based messaging platform with an HTTP Bot API for automating bots and an MTProto API for building full clients.",
+    "auth_methods": [
+      "API key",
+      "Other"
+    ],
+    "auth_notes": "Bot API: static bot token from @BotFather, placed in the URL path (https://api.telegram.org/bot<token>/METHOD). Not a header bearer and not OAuth. MTProto API: api_id/api_hash from my.telegram.org plus user login (phone number, code, 2FA via SRP; QR and passkey also listed). No documented OAuth flow for third-party API access, so OAuth2 is not listed.",
+    "access": "self_serve_free",
+    "access_notes": "Bot token: free, via /newbot in @BotFather (no fee stated). MTProto: api_id from my.telegram.org with no documented fee or approval step. The page warns of permanent bans for misuse, and accounts on unofficial clients are placed under observation.",
+    "api_types": [
+      "REST",
+      "CLI / library only"
+    ],
+    "api_breadth": "broad",
+    "mcp": "community",
+    "mcp_url": "https://github.com/sparfenyuk/mcp-telegram",
+    "verdict": "ready_with_caveats",
+    "blocker": "A bot can only act in chats it has been added to or that have messaged it, so it cannot act as the user across their own chats. Acting as the user requires MTProto userbot access, which carries ban risk and has no OAuth. Bot rate limits: about 1 msg/s per chat, 20 msg/min per group, about 30 msg/s bulk. No official MCP server was found.",
+    "evidence": {
+      "auth": "https://core.telegram.org/bots/api (bot token in URL); https://core.telegram.org/bots/features#botfather (token via /newbot); https://core.telegram.org/api/obtaining_api_id (api_id steps)",
+      "access": "https://core.telegram.org/api/obtaining_api_id (form only, no fee or approval described; ban and observation warnings); https://core.telegram.org/bots/features#botfather (steps, no fee stated)",
+      "api": "https://core.telegram.org/bots/api (HTTP-based, GET/POST, JSON responses); https://core.telegram.org/api (MTProto API); https://core.telegram.org/bots/faq (rate limits)",
+      "mcp": "No official server found. Community example: https://github.com/sparfenyuk/mcp-telegram (individually maintained, unofficial MTProto server)"
+    },
+    "confidence": "medium"
+  }
+}

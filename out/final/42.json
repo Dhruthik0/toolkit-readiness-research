@@ -1,0 +1,74 @@
+{
+  "id": "42",
+  "input": {
+    "id": "42",
+    "category": "Ecommerce",
+    "app": "WooCommerce",
+    "hint": "woocommerce.com/document/woocommerce-rest-api"
+  },
+  "meta": {
+    "cost_usd": 0.04912407,
+    "turns": 5
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "contradicted",
+      "note": "Docs show REST keys with Basic auth over HTTPS, OAuth 1.0a one-legged (HMAC-SHA1/SHA256) and the /wc-auth/v1/authorize key flow. OAuth 2.0 is not documented, so 'OAuth2' should be removed. 'Other' covers wc-auth and other WP auth plugins. Application Passwords are not on the REST docs page, but the MCP page confirms them for MCP.",
+      "url": "https://woocommerce.github.io/woocommerce-rest-api-docs/"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Keys are generated in WooCommerce > Settings > Advanced > REST API with Read/Write/Read-Write and a WP user; permalinks must not be Plain. Core is free but self-hosted.",
+      "url": "https://woocommerce.com/document/woocommerce-rest-api/"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "REST resources span coupons, customers, orders, products, variations, refunds, reports, tax, shipping, webhooks, settings, payment gateways and system status. Broad coverage holds. I read only the first 100k of 299k characters of the page, so write-method claims rest on the resource list.",
+      "url": "https://woocommerce.github.io/woocommerce-rest-api-docs/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The page is on WooCommerce's own developer docs. It describes an integration in developer preview that registers abilities for products and orders. It requires the separate MCP Adapter plugin, uses a WP username plus an Application Password, and the endpoint is /wp-json/mcp/mcp-adapter-default-server. REST API keys are not accepted. Marking it official is reasonable.",
+      "url": "https://developer.woocommerce.com/docs/features/mcp/"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits: self-hosted with a per-store URL, no OAuth2, developer-preview MCP. The blocker text is consistent with the fetched pages. Rate limits were not found in the first 100k characters of the REST docs.",
+      "url": "https://developer.woocommerce.com/docs/features/mcp/"
+    }
+  ],
+  "corrected": {
+    "app": "WooCommerce",
+    "category": "E-commerce platform",
+    "one_liner": "Open-source WordPress e-commerce plugin for running online stores (products, orders, customers, coupons, shipping, taxes), with a REST API built on the WordPress REST API.",
+    "auth_methods": [
+      "API key",
+      "Basic",
+      "HMAC signature",
+      "Other"
+    ],
+    "auth_notes": "Per the REST API reference: (1) Consumer Key/Secret generated in WooCommerce > Settings > Advanced > REST API (Read/Write/Read-Write, tied to a WP user), or obtained via the /wc-auth/v1/authorize user-approval flow for third-party apps (not OAuth2); (2) HTTP Basic Auth over HTTPS with key as username and secret as password (query-string fallback consumer_key/consumer_secret); (3) OAuth 1.0a one-legged over HTTP with HMAC-SHA1/SHA256 signing. Other WP REST auth plugins/methods can be used. OAuth 2.0 is not documented. Application Passwords are documented only for the MCP integration.",
+    "access": "self_serve_free",
+    "access_notes": "WooCommerce core is free, but it is self-hosted: the developer needs a WordPress site with WooCommerce installed (permalinks not set to Plain), then generates keys in the admin. No vendor approval. Cost is only hosting (can be local/dev). Each store is its own endpoint, so an agent toolkit needs a per-store site URL plus keys.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://developer.woocommerce.com/docs/features/mcp/",
+    "verdict": "ready_with_caveats",
+    "blocker": "Self-hosted: no central API host or tenant; each user supplies their own store URL and keys, and the store must be reachable (HTTPS recommended). No OAuth2 (OAuth 1.0a and Basic only). Rate limits not found in the portion of the docs read. Official MCP is in developer preview, needs the separate MCP Adapter plugin, uses WP Application Passwords rather than REST keys, and exposes only products/orders abilities.",
+    "evidence": {
+      "auth": "https://woocommerce.github.io/woocommerce-rest-api-docs/ (fetched): REST keys, wc-auth endpoint, Basic Auth over HTTPS, OAuth 1.0a one-legged with HMAC-SHA1/SHA256; OAuth 2.0 not present.",
+      "access": "https://woocommerce.com/document/woocommerce-rest-api/ (fetched): keys generated in WooCommerce > Settings > Advanced > REST API; Read/Write/Read-Write per WP user; permalinks must not be Plain.",
+      "api": "https://woocommerce.github.io/woocommerce-rest-api-docs/ (fetched): resources include coupons, customers, orders, products, variations, refunds, reports, tax, shipping, webhooks, settings, payment gateways, system status.",
+      "mcp": "https://developer.woocommerce.com/docs/features/mcp/ (fetched): developer preview via the WordPress MCP Adapter at /wp-json/mcp/mcp-adapter-default-server; auth via WP username + Application Password; abilities for products and orders."
+    },
+    "confidence": "medium"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "49",
+  "input": {
+    "id": "49",
+    "category": "Ecommerce",
+    "app": "Amazon Selling Partner",
+    "hint": "developer-docs.amazon.com/sp-api"
+  },
+  "meta": {
+    "cost_usd": 0.079924865,
+    "turns": 11
+  },
+  "record": {
+    "app": "Amazon Selling Partner",
+    "category": "E-commerce / Marketplace",
+    "one_liner": "The Selling Partner API (SP-API) lets Amazon sellers and vendors programmatically manage orders, listings, catalog, inventory, feeds, reports and related marketplace data.",
+    "auth_methods": [
+      "OAuth2",
+      "Other"
+    ],
+    "auth_notes": "Login with Amazon (LWA): POST to api.amazon.com/auth/o2/token with client_id and client_secret, plus a refresh_token for seller-authorized calls or client_credentials+scope for grantless calls. The access token lasts 1 hour and goes in the x-amz-access-token header. Public apps use the LWA authorization-code (OAuth) flow. Private apps self-authorize in Seller Central or the Solution Provider Portal to get a refresh token. PII endpoints use a Restricted Data Token (RDT). The fetched connection page showed no AWS IAM/SigV4 signing, but I could not confirm from a fetched page whether SigV4 is still required. The MCP README does mention \"auth and signing\".",
+    "access": "approval_required",
+    "access_notes": "Registration is free but needs a developer profile approved by Amazon (security questionnaire, under 500 words, Primary User only). Private seller apps also need a professional selling account (individual accounts are ineligible). Private apps self-authorize their own account. Public apps must be listed in the Selling Partner Appstore and have authorization limits. The fetched pages did not state approval timelines, cost, or sandbox details, and I did not verify them.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://github.com/amzn/selling-partner-api-samples/tree/main/1-sp-api-application-setup/sp-api-dev-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Developer profile approval is required. Private apps need a professional seller account, and a multi-tenant public app needs Appstore listing and OAuth authorization. Restricted (PII) data needs an RDT and extra roles. Amazon's MCP is labeled as an unsupported sample, not a product. I could not confirm the SigV4/IAM requirement, API breadth or sandbox from fetched pages.",
+    "evidence": {
+      "auth": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api (LWA token exchange, x-amz-access-token header, 1 hour expiry, RDT); https://developer-docs.amazon/sp-api/docs/self-authorization (Authorize app generates refresh token)",
+      "access": "https://developer-docs.amazon/sp-api/docs/sp-api-registration-overview (developer registration, professional account for private apps, public apps need OAuth and Appstore listing)",
+      "api": "https://developer-docs.amazon/sp-api/docs/sp-api-endpoints (regional REST endpoints sellingpartnerapi-na/eu/fe.amazon.com). The breadth rating is from general knowledge, not a fetched page.",
+      "mcp": "https://github.com/amzn/selling-partner-api-samples/tree/main/1-sp-api-application-setup/sp-api-dev-mcp (in the amzn org; npm @amazon-sp-api-release/sp-api-dev-mcp; sp_api_execute makes live calls; README says not a supported product)"
+    },
+    "confidence": "medium"
+  }
+}

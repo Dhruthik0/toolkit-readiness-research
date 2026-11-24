@@ -1,0 +1,43 @@
+{
+  "id": "42",
+  "input": {
+    "id": "42",
+    "category": "Ecommerce",
+    "app": "WooCommerce",
+    "hint": "woocommerce.com/document/woocommerce-rest-api"
+  },
+  "meta": {
+    "cost_usd": 0.060929819999999996,
+    "turns": 6
+  },
+  "record": {
+    "app": "WooCommerce",
+    "category": "E-commerce platform",
+    "one_liner": "Open-source WordPress e-commerce plugin for running online stores (products, orders, customers, coupons, shipping, taxes), with a REST API built on the WordPress REST API.",
+    "auth_methods": [
+      "API key",
+      "Basic",
+      "OAuth2",
+      "HMAC signature",
+      "Other"
+    ],
+    "auth_notes": "Per the REST API reference: (1) Consumer Key/Secret generated in WooCommerce > Settings > Advanced > REST API (Read/Write/Read-Write, tied to a WP user), or obtained via the /wc-auth/v1/authorize endpoint (user-approval flow for third-party apps; not standard OAuth2, so I listed OAuth2 loosely and flag it as an inference); (2) HTTP Basic Auth over HTTPS with key as username, secret as password (query-string fallback consumer_key/consumer_secret); (3) OAuth 1.0a one-legged over HTTP with HMAC-SHA1/SHA256 signing. Any WP REST auth plugin/method can also be used (e.g. Application Passwords; not confirmed in a fetched page for the REST API). True OAuth2 is NOT documented.",
+    "access": "self_serve_free",
+    "access_notes": "WooCommerce core is free, but it is self-hosted: the developer needs a WordPress site with WooCommerce installed (permalinks not set to Plain), then generates keys in the admin. No vendor approval. Cost is only hosting (can be local/dev). Merchants' stores must be reachable and ideally HTTPS; each store is its own endpoint, so an agent toolkit needs a per-store site URL plus keys.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://developer.woocommerce.com/docs/features/mcp/",
+    "verdict": "ready_with_caveats",
+    "blocker": "Self-hosted: no central API host or tenant; each user supplies their own store URL and keys, and the store needs to be publicly reachable (HTTPS recommended). No true OAuth2. Rate limits not documented in what I read. Official MCP is developer preview, needs the separate MCP Adapter plugin, and uses WP Application Passwords rather than REST keys, and exposes only products/orders abilities.",
+    "evidence": {
+      "auth": "https://woocommerce.github.io/woocommerce-rest-api-docs/ (fetched; first 100k of ~299k chars read): REST keys / wc-auth endpoint, Basic Auth over HTTPS, OAuth 1.0a one-legged with HMAC-SHA1/SHA256.",
+      "access": "https://woocommerce.com/document/woocommerce-rest-api/ (fetched): keys generated in WooCommerce > Settings > Advanced > REST API; Read/Write/Read-Write per WP user; permalinks must not be Plain.",
+      "api": "https://woocommerce.github.io/woocommerce-rest-api-docs/ (fetched): resources include coupons, customers, orders, products, variations, refunds, reports, tax, shipping, webhooks, settings, payment gateways, system status; most support POST/PUT/PATCH/DELETE and /batch.",
+      "mcp": "https://developer.woocommerce.com/docs/features/mcp/ (fetched): WooCommerce MCP integration in developer preview via the WordPress MCP Adapter at /wp-json/mcp/mcp-adapter-default-server; auth via WP username + Application Password; abilities for products and orders."
+    },
+    "confidence": "medium"
+  }
+}

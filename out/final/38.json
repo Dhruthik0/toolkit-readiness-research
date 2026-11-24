@@ -1,0 +1,72 @@
+{
+  "id": "38",
+  "input": {
+    "id": "38",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "Pinterest",
+    "hint": "developers.pinterest.com"
+  },
+  "meta": {
+    "cost_usd": 0.062554435,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "connect-app page documents an OAuth 2 flow (auth code exchanged for access token, refreshed as needed) and 24h product-limited test tokens. Scopes and OAuth token lifetimes are not on that page. Search snippets say each endpoint lists OAuth scopes. Bearer is a reasonable label for the tokens, but this page doesn't use that word.",
+      "url": "https://developers.pinterest.com/docs/getting-started/connect-app/"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Access-tiers page confirms Trial requires approval and has daily per-app limits, with Pins and boards visible only to the creator. Standard needs a video demo showing OAuth and live integration, and it is reviewed with an emailed decision. It confirms the Sept 14, 2026 PINNER_DATA_ACCESS_DENIED note. It gives no review timeline. Multi-week-wait claims are unverified.",
+      "url": "https://developers.pinterest.com/docs/key-concepts/access-tiers/"
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "The access-tiers page does not say the API is REST. The v5 reference page fetched had only navigation text. Search snippets for the v5 docs describe broad coverage: pins, boards, ad accounts, campaigns, catalogs, with read and write scopes. That supports the breadth but doesn't say 'REST'. REST is not directly confirmed by a fetched page. Evidence URL should be the v5 reference.",
+      "url": "https://developers.pinterest.com/docs/api/v5/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Pinterest's own developer site describes the official Pinterest MCP Server (repo pinterest/mcp-server). It is not yet launched ('Be the first to know when it launches'). The sample config lists https://api.pinterest.com/mcp, but the page doesn't confirm that it is active.",
+      "url": "https://developers.pinterest.com/about-pinterest-mcp/"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent: approval gating and the Trial-to-Standard review are real. The MCP is announced but not live, which the blocker already states. Arguably 'blocked' until approval, but it is a free developer account with documented REST-style endpoints, so the caveats label stands.",
+      "url": "https://developers.pinterest.com/docs/key-concepts/access-tiers/"
+    }
+  ],
+  "corrected": {
+    "app": "Pinterest",
+    "category": "Social media / Visual discovery & advertising",
+    "one_liner": "Pinterest is a visual discovery platform where users save and organize Pins on boards, with advertising and catalog tools for businesses.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "Documented OAuth 2 authorization-code flow (redirect URI must match app profile; code exchanged for access token, refreshed as needed). Product-limited test tokens (expire after 24h) skip the OAuth flow and are usable only after Trial approval. Scope list and OAuth token lifetimes not verified from the fetched pages.",
+    "access": "approval_required",
+    "access_notes": "Developer account is free, but the app must be approved by Pinterest for Trial access before credentials/test tokens work. Trial is limited (Pins/boards visible only to creator as sandbox entities; daily per-app rate limits). Production use requires an upgrade to Standard via video demo of the OAuth flow plus live integration; the vendor page says requests are reviewed regularly, with an emailed decision and no published timeline. Community reports of multi-week waits are unverified. Apps registered on or after Sept 14, 2026 may get 403 PINNER_DATA_ACCESS_DENIED on boards/Pins for non-business users without Pinterest authorization.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://api.pinterest.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Manual app approval for Trial, then manual Standard-upgrade review (video demo) needed for real production use; Trial is rate limited and restricted. Official MCP is announced (repo pinterest/mcp-server) but not launched; the endpoint is only shown in a sample config.",
+    "evidence": {
+      "auth": "https://developers.pinterest.com/docs/getting-started/connect-app/",
+      "access": "https://developers.pinterest.com/docs/key-concepts/access-tiers/",
+      "api": "https://developers.pinterest.com/docs/api/v5/",
+      "mcp": "https://developers.pinterest.com/about-pinterest-mcp/"
+    },
+    "confidence": "low"
+  }
+}

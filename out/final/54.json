@@ -1,0 +1,73 @@
+{
+  "id": "54",
+  "input": {
+    "id": "54",
+    "category": "Data, SEO and Scraping",
+    "app": "MrScraper",
+    "hint": "docs.mrscraper.com"
+  },
+  "meta": {
+    "cost_usd": 0.05019716,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page: x-api-token header on standard/analytics endpoints, Authorization: Bearer on marketplace endpoints. OAuth 2.1 is documented only on the MCP page (browser sign-in), not for the REST API. Keeping OAuth2 is defensible as MCP-only. The record's claim that the auth page calls the scheme 'HTTP Basic Auth' is NOT on the page I fetched (it doesn't mention Basic), so I removed that from the notes.",
+      "url": "https://docs.mrscraper.com/docs/api/authentication"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Pricing page: 7-day trial with 1,000 tokens, card required, billing at day 7 or when tokens run out. Essential $99/month, Enterprise contact sales. No free tier. Startup program is 50,000 free tokens and 30% off, with no eligibility stated. The page does not say whether the trial includes API access.",
+      "url": "https://mrscraper.com/pricing"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Overview: REST with JSON. Web Search, Scraper API (HTML, Markdown, Screenshot, JSON) and Platform (workflow rerun/management, bulk cancel, result, analytics). Base URLs and rate limits are not stated. 'Moderate' breadth is a judgment, consistent with the listed endpoints.",
+      "url": "https://docs.mrscraper.com/docs/api/overview"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "MCP page describes an official server at https://mcp.mrscraper.com/mcp (Streamable HTTP), source mrscraper-com/mrscraper-mcp, npm @mrscraper/mcp, OAuth 2.1 with scopes scrape:read and account:read, API key bearer fallback. Seven tools.",
+      "url": "https://docs.mrscraper.com/docs/getting-started/mcp-server"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits: self-serve, but card-required trial or paid plan, unconfirmed trial API access, missing base URLs and rate limits. The blocker text is consistent with the fetched pages.",
+      "url": "https://docs.mrscraper.com/docs/api/overview"
+    }
+  ],
+  "corrected": {
+    "app": "MrScraper",
+    "category": "Web scraping / data extraction",
+    "one_liner": "MrScraper is an AI-powered web scraping platform that fetches pages as HTML, Markdown, screenshots or structured JSON, runs web searches, and runs configurable scraper workflows.",
+    "auth_methods": [
+      "API key",
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "The REST API takes a dashboard-created API token in the `x-api-token` header. Marketplace endpoints use `Authorization: Bearer <token>` (RFC 6750); the page does not say whether the two headers are interchangeable. The auth page does not mention Basic auth or OAuth. The hosted MCP server supports OAuth 2.1 browser sign-in with scopes `scrape:read` and `account:read`, with an API key as bearer fallback. No documented OAuth flow for third-party apps on the REST API, so OAuth2 applies to the MCP server only.",
+    "access": "self_serve_trial",
+    "access_notes": "The pricing page shows a 7-day trial with 1,000 tokens. The trial requires a card, and billing starts at day 7 or when the tokens run out. The paid plans listed are Essential at $99/month (200,000 tokens, 20 concurrent requests) and Enterprise (custom). No free tier. The pricing page does not say whether trial accounts get API access, though it says all API requests use a dashboard token. A Startup Program (50,000 free tokens, 30% off) is mentioned, but eligibility is not described.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://mcp.mrscraper.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Credentials come only from a card-required 7-day trial or the paid plan (Essential, $99/month). Trial API access is not confirmed. The API overview does not state base URLs, rate limits, or details of the Platform endpoints, and its description of the Scraper endpoints is inconsistent with its navigation.",
+    "evidence": {
+      "auth": "https://docs.mrscraper.com/docs/api/authentication",
+      "access": "https://mrscraper.com/pricing",
+      "api": "https://docs.mrscraper.com/docs/api/overview",
+      "mcp": "https://docs.mrscraper.com/docs/getting-started/mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

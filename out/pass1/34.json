@@ -1,0 +1,40 @@
+{
+  "id": "34",
+  "input": {
+    "id": "34",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "GoHighLevel",
+    "hint": "highlevel.stoplight.io"
+  },
+  "meta": {
+    "cost_usd": 0.09708487,
+    "turns": 12
+  },
+  "record": {
+    "app": "GoHighLevel",
+    "category": "CRM / Marketing automation",
+    "one_liner": "All-in-one CRM and marketing automation platform for agencies and small businesses (contacts, conversations, calendars, pipelines, payments, funnels, white-label SaaS).",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "OAuth 2.0 authorization-code flow for Marketplace apps (access token about 24h, rotating refresh token, agency and location token types, no PKCE). Private Integration Tokens (static, scope-limited, shown once) for internal use, sent as a Bearer token. Legacy API keys (V1) are being phased out, and V1 reached end-of-support on 2025-12-31. The remote MCP server uses a HighLevel login sign-in and no token.",
+    "access": "paid_plan",
+    "access_notes": "A developer account for building Marketplace apps is a sign-up with phone and email verification. The fetched page does not say whether it needs a paid plan, and I found no free-tier statement. HighLevel's support article lists API access on Starter ($97/mo), Unlimited ($297/mo) and Founder ($497/mo). OAuth and PIT are available on all three. Some endpoints are restricted on lower tiers, and Create Sub-Account and Enable SaaS are Founder-only. I did not confirm whether a free developer account can call the API against a live sub-account, or whether a free trial exists. Public Marketplace listing requires approval, but the approval criteria were not on the fetched pages. Private apps and PITs avoid that. Rate limits: 100 requests per 10 seconds and 200,000 per day, per app per resource.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://services.leadconnectorhq.com/mcp/anthropic/v2",
+    "verdict": "ready_with_caveats",
+    "blocker": "API access needs a paid HighLevel plan (Starter or higher). I could not confirm any free or trial path. Higher-tier endpoints are restricted by plan. Public distribution needs Marketplace app approval. Rate limits apply. Legacy V1 and API keys are end-of-support.",
+    "evidence": {
+      "auth": "https://marketplace.gohighlevel.com/docs/Authorization/OAuth2.0",
+      "access": "https://gohighlevelassist.freshdesk.com/support/solutions/articles/48001060529-highlevel-api-documentation",
+      "api": "https://marketplace.gohighlevel.com/docs/oauth/Faqs",
+      "mcp": "https://marketplace.gohighlevel.com/docs/other/mcp.md"
+    },
+    "confidence": "medium"
+  }
+}

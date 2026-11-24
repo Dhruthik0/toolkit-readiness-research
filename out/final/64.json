@@ -1,0 +1,75 @@
+{
+  "id": "64",
+  "input": {
+    "id": "64",
+    "category": "Developer, Infra and Data platforms",
+    "app": "Cloudflare",
+    "hint": "developers.cloudflare.com/api"
+  },
+  "meta": {
+    "cost_usd": 0.05417003,
+    "turns": 9
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Bearer tokens with cfut_ prefix confirmed on the create-token page. The oauth page confirms OAuth for third-party apps to access Cloudflare resources. The Global API key is described as the legacy scheme. The organizations-endpoint claim and OAuth grant types were not confirmed.",
+      "url": "https://developers.cloudflare.com/fundamentals/oauth/"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "The OAuth page lists availability on Free, Pro, Business and Enterprise. Tokens are created self-serve in the dashboard, and no plan requirement is stated. Public-app approval was not found.",
+      "url": "https://developers.cloudflare.com/fundamentals/oauth/"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "REST is confirmed on the api page, with 28+ product areas and TypeScript, Python, Go and Terraform SDKs. GraphQL is confirmed at the Analytics GraphQL endpoint, which the original record cited nowhere. The api URL does not mention GraphQL, so the evidence URL is changed to the GraphQL page.",
+      "url": "https://developers.cloudflare.com/analytics/graphql-api/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The page describes a catalog of managed remote MCP servers run by Cloudflare. The Cloudflare API MCP server is at https://mcp.cloudflare.com/mcp.",
+      "url": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "The limits page confirms 1,200 requests per 5 minutes per token and a 5-minute block, and also a GraphQL cap of 320 per 5 minutes. The claim that many endpoints are deprecated and the organizations Global-key requirement were not verified. ready_with_caveats is reasonable.",
+      "url": "https://developers.cloudflare.com/fundamentals/api/reference/limits/"
+    }
+  ],
+  "corrected": {
+    "app": "Cloudflare",
+    "category": "CDN / Edge Platform & Security",
+    "one_liner": "Cloudflare provides CDN, DNS, security, zero trust networking and developer platform (Workers, R2, etc.) services managed through a single account and API.",
+    "auth_methods": [
+      "Bearer token",
+      "API key",
+      "OAuth2",
+      "Other"
+    ],
+    "auth_notes": "API tokens (user or account-owned, scoped permissions, cfut_ prefix) sent as 'Authorization: Bearer'. Legacy Global API key (full-permission, previous auth scheme; docs recommend tokens). Origin CA keys for a separate purpose. OAuth 2.0 is available for third-party apps to access Cloudflare resources. Grant types and public-app approval requirements were not verified.",
+    "access": "self_serve_free",
+    "access_notes": "Tokens are created in the dashboard (My Profile > API Tokens; account tokens under Manage Account > API Tokens). The token docs state no plan requirement, and the OAuth page lists availability on Free, Pro, Business and Enterprise. Individual products may need paid plans (not checked per product).",
+    "api_types": [
+      "REST",
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.cloudflare.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Rate limit of 1,200 requests per 5 minutes per user/token, with a 5-minute block on exceeding it. GraphQL is capped at 320 per 5 minutes. Global API key may be needed for some endpoints (e.g. organizations; not verified). Deprecated endpoints exist (not verified). OAuth grant types and public-app approval were not verified.",
+    "evidence": {
+      "auth": "https://developers.cloudflare.com/fundamentals/api/get-started/create-token/",
+      "access": "https://developers.cloudflare.com/fundamentals/oauth/",
+      "api": "https://developers.cloudflare.com/analytics/graphql-api/",
+      "mcp": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/"
+    },
+    "confidence": "medium"
+  }
+}

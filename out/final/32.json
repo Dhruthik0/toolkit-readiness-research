@@ -1,0 +1,72 @@
+{
+  "id": "32",
+  "input": {
+    "id": "32",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "Meta Ads",
+    "hint": "developers.facebook.com/docs/marketing-apis"
+  },
+  "meta": {
+    "cost_usd": 0.078966965,
+    "turns": 9
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Authorization page shows an OAuth dialog with ads_read/ads_management scopes. The MCP get-started page lists OAuth (Facebook Login for Business), user access tokens, and system user tokens (Employee role only). The old note that system user tokens were unverified can now be resolved.",
+      "url": "https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-get-started"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Authorization page: Limited tier is default and automatic, heavily rate-limited, development only, not for live advertisers. Full needs App Review, with 500+ calls in 15 days and an error rate under 15%. Advanced access is needed for other people's accounts. Business verification applies if the app accesses sensitive data. The page says the tier was 'Limited (default)'; the 'old Standard tier' wording is not on the page. The ads_mcp_management Advanced Access claim, MCP rollout and MCP pricing are not stated on the fetched MCP pages, so those sub-claims are unverified.",
+      "url": "https://developers.facebook.com/docs/marketing-api/overview/authorization"
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "The Marketing API overview lists campaigns, ad sets, creatives and ads across Facebook, Instagram, Messenger and WhatsApp, but names no API type. The Graph API overview says it is HTTP-based (REST-like, using GET/POST/DELETE on nodes and edges) and does not mention GraphQL. GraphQL is unsupported, so it is dropped. Breadth 'broad' is plausible but not explicitly stated.",
+      "url": "https://developers.facebook.com/docs/graph-api/overview"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The overview page calls it 'a Meta-hosted Model Context Protocol server' and 'one of Meta's ads AI connectors', at https://mcp.facebook.com/ads. Community servers such as pipeboard-co/meta-ads-mcp also exist but are not the official one.",
+      "url": "https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-overview"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats follows from the other fields. Own-account use works on the free Limited tier, and serving other advertisers needs App Review. MCP rollout and pricing could not be verified, so that part of the blocker text is softened.",
+      "url": "https://developers.facebook.com/docs/marketing-api/overview/authorization"
+    }
+  ],
+  "corrected": {
+    "app": "Meta Ads",
+    "category": "Advertising platform",
+    "one_liner": "Meta's Marketing API and ads MCP server let developers create, manage and report on ad campaigns, ad sets, creatives and ads across Facebook, Instagram, Messenger and WhatsApp.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "Marketing API: OAuth dialog (Facebook Login) with scopes ads_read / ads_management. The MCP server accepts OAuth via Facebook Login for Business, a user access token, or a system user access token (Employee-role only; Admin-role tokens are rejected). Minimum MCP token permissions: ads_mcp_management plus ads_read or ads_management.",
+    "access": "approval_required",
+    "access_notes": "A free Meta developer app gets the Marketing API Access Tier 'Limited' by default. It is heavily rate-limited, for development only, and not for live advertisers. Standard access is enough for your own ad account; managing other people's accounts needs Advanced access via App Review. Full tier (lighter rate limits, more system users) needs App Review and at least 500 successful calls in the last 15 days with an error rate under 15%. Business verification applies if the app accesses sensitive data. For the MCP server, the fetched pages do not state Advanced Access requirements for ads_mcp_management, rollout status or pricing (unverified).",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.facebook.com/ads",
+    "verdict": "ready_with_caveats",
+    "blocker": "Serving other advertisers' accounts in production requires App Review/Advanced access, and the Limited tier is heavily rate-limited. MCP access requirements beyond token permissions, and pricing, are not documented on pages checked.",
+    "evidence": {
+      "auth": "https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-get-started",
+      "access": "https://developers.facebook.com/docs/marketing-api/overview/authorization",
+      "api": "https://developers.facebook.com/docs/graph-api/overview",
+      "mcp": "https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-overview"
+    },
+    "confidence": "low"
+  }
+}

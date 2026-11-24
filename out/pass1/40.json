@@ -1,0 +1,40 @@
+{
+  "id": "40",
+  "input": {
+    "id": "40",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "SendGrid",
+    "hint": "sendgrid.com"
+  },
+  "meta": {
+    "cost_usd": 0.062039960000000005,
+    "turns": 10
+  },
+  "record": {
+    "app": "SendGrid",
+    "category": "Email delivery",
+    "one_liner": "Twilio SendGrid is a cloud email delivery platform for transactional and marketing email, via SMTP relay and a REST v3 Web API.",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "API key sent as 'Authorization: Bearer <API_KEY>'. Keys can be scoped with per-area permissions. The fetched auth page does not mention OAuth, so I found no documented OAuth flow for third-party apps.",
+    "access": "self_serve_trial",
+    "access_notes": "The fetched product page states a free trial of 100 emails/day for 60 days, then a paid plan. It covers the Web API and SMTP. I could not fetch the pricing page, so I could not confirm whether a permanent free tier exists, whether a credit card is needed, or the paid tier prices. Account vetting or sender verification may apply but I did not verify that.",
+    "api_types": [
+      "REST",
+      "SOAP"
+    ],
+    "api_breadth": "broad",
+    "mcp": "community",
+    "mcp_url": "https://github.com/Garoth/sendgrid-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Only a 60-day, 100/day trial was confirmed. Ongoing use needs a paid plan, and a permanent free tier is unconfirmed. There is no official SendGrid MCP server, and Twilio's official Alpha MCP covers Twilio's APIs, not confirmed for SendGrid. Rate limits are not verified.",
+    "evidence": {
+      "auth": "https://www.twilio.com/docs/sendgrid/api-reference/how-to-use-the-sendgrid-v3-api/authentication",
+      "access": "https://www.twilio.com/en-us/sendgrid/email-api",
+      "api": "https://www.twilio.com/docs/sendgrid/api-reference",
+      "mcp": "https://github.com/twilio-labs/mcp"
+    },
+    "confidence": "medium"
+  }
+}

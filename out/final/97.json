@@ -1,0 +1,72 @@
+{
+  "id": "97",
+  "input": {
+    "id": "97",
+    "category": "AI, Research and Media-native",
+    "app": "higgsfield",
+    "hint": "higgsfield.ai/cli (content suite)"
+  },
+  "meta": {
+    "cost_usd": 0.04714497,
+    "turns": 5
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "contradicted",
+      "note": "Docs page states a static key ID and secret sent as `Authorization: Key ID:SECRET`, with legacy hf-api-key/hf-secret headers. It says it is not OAuth and does not mention OAuth. OAuth2 was only inferred, so it is removed. The MCP page says 'no API key required' but does not describe the sign-in flow.",
+      "url": "https://docs.higgsfield.ai/docs/authentication"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Help center: create an API account, register a payment method, fund the balance (minimum $5, pay-as-you-go). No Higgsfield plan is required. Funds expire after 1 year. Console is at open.higgsfield.ai. MCP and CLI deduct plan credits from the user's own account. The 20 concurrent requests apply on key creation, and the page does not say whether per key or per account. The docs host console.higgsfield.ai was not verified.",
+      "url": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api"
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "REST at api.higgsfield.ai, async with polling or webhook, and Python/TypeScript SDKs are confirmed. A CLI is mentioned. The 'moderate' breadth rating could not be settled because the endpoint list was not read.",
+      "url": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The vendor's own page at higgsfield.ai/mcp lists the server URL https://mcp.higgsfield.ai/mcp, published by Higgsfield.",
+      "url": "https://higgsfield.ai/mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent with the verified facts: the API needs a funded balance, generation is async, and MCP/CLI use plan credits.",
+      "url": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api"
+    }
+  ],
+  "corrected": {
+    "app": "higgsfield",
+    "category": "Generative AI (image/video)",
+    "one_liner": "Higgsfield is an AI image and video generation platform offering 50+ models, with a pay-as-you-go REST API, a CLI, and a hosted MCP server.",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "REST API: key ID plus secret sent as `Authorization: Key KEY_ID:KEY_SECRET`. Legacy `hf-api-key` and `hf-secret` headers are still accepted. Docs describe a static key, not OAuth. The MCP server and CLI use a Higgsfield account sign-in with no API key. That flow is not documented as OAuth for third-party apps.",
+    "access": "paid_plan",
+    "access_notes": "API: create an API account in the Console (open.higgsfield.ai per the help center), register a payment method, and fund a balance (minimum $5 top-up, pay-as-you-go, funds expire after 1 year). No Higgsfield plan or subscription is required and no free tier was found. The API balance is separate from higgsfield.ai plan credits. Creating a key unlocks 20 concurrent requests, and the source does not say whether that is per key or per account. Output files are kept at least 7 days. MCP and CLI deduct plan credits from the user's own account, and the required plan tier was not confirmed.",
+    "api_types": [
+      "REST",
+      "CLI / library only"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://mcp.higgsfield.ai/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API needs a funded pay-as-you-go balance (minimum $5), with no free tier found. It is generation-focused and asynchronous (poll or webhook). The MCP and CLI route runs on the user's plan credits through account sign-in. The full endpoint list was not read.",
+    "evidence": {
+      "auth": "https://docs.higgsfield.ai/docs/authentication",
+      "access": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api",
+      "api": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api",
+      "mcp": "https://higgsfield.ai/mcp"
+    },
+    "confidence": "low"
+  }
+}

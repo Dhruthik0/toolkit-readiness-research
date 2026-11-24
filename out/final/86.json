@@ -1,0 +1,72 @@
+{
+  "id": "86",
+  "input": {
+    "id": "86",
+    "category": "Finance and Fintech",
+    "app": "QuickBooks",
+    "hint": "developer.intuit.com"
+  },
+  "meta": {
+    "cost_usd": 0.09577432000000001,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "The fetched GitHub README says OAuth 2.0 with an app registered on the Intuit Developer Portal, no per-user API keys, a 100-day refresh window and refresh-token rotation. The refresh window is described as rolling in a search summary of Intuit's FAQ; I could not fetch that page (it returns only a title). A claimed 5-year cap is unverified.",
+      "url": "https://github.com/intuit/quickbooks-online-mcp-server"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "No fetched Intuit page confirms the free sandbox or the production questionnaire. The Apideck article (fetched, secondary) says App Partner Program fees range from no charge (Builder) to $4,500 per month (Platinum), and that Builder apps are blocked after 500k CorePlus calls per month. This conflicts with the record's 'fees unconfirmed' note. The approval_required value is kept as the best-supported guess.",
+      "url": "https://www.apideck.com/blog/intuit-connect-2026-quickbooks-integrations.md"
+    },
+    {
+      "field": "api",
+      "status": "contradicted",
+      "note": "REST is plausible but only indirectly shown, via the MCP wrapper (29 entities, 11 reports). The fetched Apideck article says Intuit also has a GraphQL API (Sales Order, announced 2026-10-20, requires Silver tier or above), so the api_types list is incomplete. Breadth 'broad' is consistent with the 29 entities.",
+      "url": "https://www.apideck.com/blog/intuit-connect-2026-quickbooks-integrations.md"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The repo is under the intuit GitHub org and is a local stdio server. The README does not itself say it is official. Search results and the Apideck article describe it as Intuit-owned. A hosted MCP server also exists as an invitation-only pilot for App Partner Program partners. No Intuit page was fetched that states 'official' outright. The README's license is inconsistent (MIT vs Apache-2.0).",
+      "url": "https://github.com/intuit/quickbooks-online-mcp-server"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats follows from the fields: OAuth2 plus REST works, but production needs app registration and likely review. The MCP server is an early-preview local server, and the hosted server is gated. The blocker text should mention partner tier fees and the gated hosted MCP server.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "QuickBooks",
+    "category": "Accounting",
+    "one_liner": "Intuit's cloud accounting software for small businesses (invoicing, expenses, payroll, reporting), with a public developer platform for QuickBooks Online.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "auth_notes": "OAuth 2.0 with an app registered on the Intuit Developer Portal, using client ID and secret. Refresh tokens rotate (each refresh returns a new one, which must be stored). The README cites a 100-day refresh window, described in a search summary of Intuit's FAQ as rolling. Intuit does not offer per-user API keys. Production needs a public HTTPS redirect URI, while sandbox accepts localhost. Intuit's own OAuth docs could not be fetched (JS-rendered), so token lifetimes are not confirmed there. A possible 5-year cap is unverified.",
+    "access": "approval_required",
+    "access_notes": "Sandbox is reportedly available with a free Intuit developer account (not verified on a vendor page). Production keys reportedly require a per-app assessment questionnaire (from search snippets, not a fetched page). Per the secondary Apideck article, the App Partner Program has tiers from Builder (no charge) to Platinum ($4,500 per month), Builder apps are capped at 500k CorePlus calls per month, and some APIs (such as GraphQL Sales Order) need Silver or above. Not confirmed on an Intuit pricing page.",
+    "api_types": [
+      "REST",
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://github.com/intuit/quickbooks-online-mcp-server",
+    "verdict": "ready_with_caveats",
+    "blocker": "Production use needs OAuth app registration and Intuit's app assessment, and possibly an App Partner Program tier (fees range from no charge to $4,500 per month per a secondary source). Intuit's developer docs could not be fetched, so most claims rest on secondary sources. The local MCP server is an early-preview repo whose README has inconsistent license info (MIT vs Apache-2.0). The hosted MCP server is an invitation-only pilot for partners.",
+    "evidence": {
+      "auth": "https://github.com/intuit/quickbooks-online-mcp-server",
+      "access": "https://www.apideck.com/blog/intuit-connect-2026-quickbooks-integrations.md",
+      "api": "https://www.apideck.com/blog/intuit-connect-2026-quickbooks-integrations.md",
+      "mcp": "https://github.com/intuit/quickbooks-online-mcp-server"
+    },
+    "confidence": "low"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "65",
+  "input": {
+    "id": "65",
+    "category": "Developer, Infra and Data platforms",
+    "app": "Supabase",
+    "hint": "supabase.com/docs"
+  },
+  "meta": {
+    "cost_usd": 0.04268776,
+    "turns": 6
+  },
+  "record": {
+    "app": "Supabase",
+    "category": "Backend-as-a-Service / Postgres database platform",
+    "one_liner": "Supabase is a hosted Postgres development platform that provides a database, auth, storage, Edge Functions, realtime and auto-generated REST APIs, plus a Management API for administering projects.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2",
+      "API key"
+    ],
+    "auth_notes": "Management API: personal access token (scoped or legacy) or OAuth2 access token, sent in the Authorization header. Third-party OAuth2 apps are registered in org settings (authorization code flow with PKCE, refresh tokens, endpoints on api.supabase.com/v1/oauth). Per-project data APIs (REST, Auth, Storage): publishable (sb_publishable_) and secret (sb_secret_) keys sent in the apikey header, plus legacy anon/service_role JWTs (planned deprecation by end of 2026), plus end-user JWTs.",
+    "access": "self_serve_free",
+    "access_notes": "PATs are created in account settings and OAuth apps in org settings. The pages I fetched do not state plan requirements for the Management API. The free tier gives API access, but I did not fetch a page that confirms this, so it is an assumption. Branching via the MCP server is a paid-plan feature. The OAuth integration page does not mention an approval or review step; this is unconfirmed.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.supabase.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Management API rate limit is 120 requests per minute per user per project or organization per endpoint, with stricter limits on some endpoints. Legacy API keys are being deprecated. The OAuth app approval process is not documented. The project data API is per-project, so an agent needs per-project keys.",
+    "evidence": {
+      "auth": "https://supabase.com/docs/reference/api/introduction ; https://supabase.com/docs/guides/api/api-keys ; https://supabase.com/docs/guides/integrations/build-a-supabase-oauth-integration",
+      "access": "https://supabase.com/docs/guides/integrations/build-a-supabase-oauth-integration",
+      "api": "https://supabase.com/docs/reference/api/introduction",
+      "mcp": "https://supabase.com/docs/guides/getting-started/mcp"
+    },
+    "confidence": "medium"
+  }
+}

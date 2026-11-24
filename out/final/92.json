@@ -1,0 +1,72 @@
+{
+  "id": "92",
+  "input": {
+    "id": "92",
+    "category": "AI, Research and Media-native",
+    "app": "Otter AI",
+    "hint": "help.otter.ai (MCP server)"
+  },
+  "meta": {
+    "cost_usd": 0.05400178,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Scalekit states REST uses a Bearer API key from Developer settings, no OAuth for REST, two keys per user; MCP uses OAuth 2.1 with browser consent. The record's lists (API key, OAuth2) match, with OAuth scoped to MCP. Third-party source only; Otter's own page returned 403.",
+      "url": "https://www.scalekit.com/blog/otter-mcp-vs-api"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "Scalekit says Public API is Enterprise workspaces only and MCP works from a standard account. Not verified on an Otter page (help.otter.ai 403); the Claude connector page does not state plans.",
+      "url": "https://www.scalekit.com/blog/otter-mcp-vs-api"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Scalekit lists REST at api.otter.ai/v1 with channels, conversations (list/retrieve/ingest POST), audio links, workspace, webhooks, 10 req/s. Narrow breadth is consistent. Third-party only.",
+      "url": "https://www.scalekit.com/blog/otter-mcp-vs-api"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Claude connector page lists Otter.ai as the developer, URL https://mcp.otter.ai/mcp, tools get_user_info/search/fetch. Scalekit says all are read-only. The 'official' label rests on vendor-hosted domain and vendor-listed connector.",
+      "url": "https://claude.com/connectors/otter-ai"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is reasonable: the MCP server is usable from a standard account, while the REST API is Enterprise-gated and narrow. The blocker text is consistent with the sources. Plan details are not vendor-verified.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Otter AI",
+    "category": "Meeting transcription / notes",
+    "one_liner": "Otter.ai records and transcribes meetings and produces summaries, action items and searchable meeting notes.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "Public REST API: a Bearer API key created under the workspace Developer settings (max two keys per user, per the Scalekit blog). No OAuth for the REST API. The official MCP server uses OAuth 2.1 with browser consent (per Scalekit; the Claude connector page only says sign-in required). The OAuth flow is for the MCP server, not a documented third-party OAuth app flow for the REST API.",
+    "access": "paid_plan",
+    "access_notes": "The REST Public API is reported as Enterprise workspaces only, so it needs the Enterprise plan. This comes from a third-party blog, not an Otter page (help.otter.ai returned 403). The MCP server reportedly works from a standard Otter account; plans not confirmed by Otter docs.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "narrow",
+    "mcp": "official",
+    "mcp_url": "https://mcp.otter.ai/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The REST API is Enterprise-only (per third-party source). It is mostly read-oriented: channels, conversations with a file-ingest POST, audio links, workspace details, webhooks. Rate limit reported as 10 requests per second. The official MCP server is read-only with three tools: get_user_info, search and fetch. Otter's help.otter.ai pages returned 403, so plan and auth details are not verified against the vendor.",
+    "evidence": {
+      "auth": "https://www.scalekit.com/blog/otter-mcp-vs-api",
+      "access": "https://www.scalekit.com/blog/otter-mcp-vs-api",
+      "api": "https://www.scalekit.com/blog/otter-mcp-vs-api",
+      "mcp": "https://claude.com/connectors/otter-ai"
+    },
+    "confidence": "low"
+  }
+}

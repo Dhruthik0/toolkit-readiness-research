@@ -1,0 +1,71 @@
+{
+  "id": "33",
+  "input": {
+    "id": "33",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "LinkedIn Ads",
+    "hint": "learn.microsoft.com/linkedin/marketing"
+  },
+  "meta": {
+    "cost_usd": 0.128485725,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "The authorization-code-flow page describes 3-legged OAuth 2.0 for API access on behalf of a member. Access tokens last 60 days, programmatic refresh tokens are limited to a set of partners, and the Developer Portal has a manual token generator. The increasing-access page lists r_ads, rw_ads and r_ads_reporting as 3-legged scopes and names CAMPAIGN_MANAGER among the required ad account roles. Neither page states that client credentials (2-legged) is unavailable for marketing use, so I removed that sentence from auth_notes.",
+      "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "The increasing-access page confirms the following. All apps start in the Development tier, with unlimited reads, edits on up to 5 ad accounts and 1 test ad account via the API. Standard tier is requested through a support ticket. LinkedIn may decline an upgrade at its discretion. Audience Insights and Media Planning are restricted, and Company Intelligence is closed to new applications. The page does not state fees, so 'no stated fee' is only an absence of evidence.",
+      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The overview page lists the Advertising (campaigns, creatives, reporting), Lead Sync, Conversions, Matched Audiences, Audience Insights, Media Planning, Events and Community Management APIs, which supports a broad rating. It does not use the word REST. The OAuth page shows plain HTTPS calls to api.linkedin.com with a Bearer token, which is consistent with REST.",
+      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/overview"
+    },
+    {
+      "field": "mcp",
+      "status": "contradicted",
+      "note": "No MCP server from LinkedIn turned up, so 'official' is not supported. However, 'none_found' is wrong because several third-party servers exist, such as the PyPI package linkedin-ads-mcp, AdKit, AdPlug and CData. The PyPI package says it is not an official LinkedIn MCP. The correct value is 'community'.",
+      "url": "https://pypi.org/project/linkedin-ads-mcp/"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits the other fields. Access needs approval and the Development tier caps edits at 5 ad accounts. Standard tier is at LinkedIn's discretion. Tokens are member-consent only with a 60-day life. The overview and increasing-access pages carry a version sunset notice (Marketing 202601 sunsets on January 15, 2027).",
+      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access"
+    }
+  ],
+  "corrected": {
+    "app": "LinkedIn Ads",
+    "category": "Ad platform (B2B advertising)",
+    "one_liner": "LinkedIn Ads (Campaign Manager) lets businesses run paid campaigns targeting professionals, and the Marketing API lets integrations manage campaigns, creatives, reporting, leads, audiences and conversions.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "auth_notes": "3-legged OAuth 2.0 authorization code flow; all Marketing API scopes are member permissions that require member consent. Access tokens last 60 days, and refreshing means sending the member through the authorization flow again. Programmatic refresh tokens are limited to a set of partners. The Developer Portal has a manual token generator for testing. Scopes include r_ads, rw_ads and r_ads_reporting. The member must also hold an ad account role such as CAMPAIGN_MANAGER. The docs fetched do not mention a client-credentials (2-legged) flow for marketing use.",
+    "access": "approval_required",
+    "access_notes": "Create a developer app, then apply for the Advertising API product; the pages fetched state no fee. Every app starts in the Development tier: unlimited reads, edits on up to 5 ad accounts, and 1 test ad account created via the API. Standard tier (unlimited edits and account creation) needs a support ticket, and LinkedIn may decline it at its discretion. Audience Insights and Media Planning are restricted, and Company Intelligence is closed to new applications. The quick-start page was not fetched, so the Development tier approval timeline and criteria are not verified.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "community",
+    "mcp_url": "https://pypi.org/project/linkedin-ads-mcp/",
+    "verdict": "ready_with_caveats",
+    "blocker": "Access needs LinkedIn approval for the Advertising API. Writes are capped at 5 ad accounts until a Standard tier upgrade, which LinkedIn can decline. OAuth is member-consent only with 60-day tokens, so end users must re-authorize periodically. Versioned APIs are sunset on a rolling basis (Marketing 202601 sunsets January 15, 2027). No official MCP server exists, only community ones.",
+    "evidence": {
+      "auth": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+      "access": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access",
+      "api": "https://learn.microsoft.com/en-us/linkedin/marketing/overview",
+      "mcp": "https://pypi.org/project/linkedin-ads-mcp/"
+    },
+    "confidence": "medium"
+  }
+}

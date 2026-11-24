@@ -1,0 +1,71 @@
+{
+  "id": "7",
+  "input": {
+    "id": "7",
+    "category": "CRM and Sales",
+    "app": "Zoho CRM",
+    "hint": "zoho.com/crm"
+  },
+  "meta": {
+    "cost_usd": 0.06566634,
+    "turns": 9
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "OAuth-overview page states the Zoho CRM API uses OAuth 2.0. The auth-request page lists Self Client and a Client Credentials grant (both OAuth2 variants). No API key or JWT method was found. Token lifetimes (1h/refresh) were not confirmed on fetched pages, but they don't affect auth_methods.",
+      "url": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "The limits page lists a Free edition (5,000 credits, concurrency 5) and says trials use the paid-edition limits. It does not say Free has API access or that console registration is free. Zoho's free-edition page links to signup but says nothing about API. A search snippet of Zoho's China pricing page lists Developer API under Free, which is weak evidence. Self-serve free is plausible but not settled.",
+      "url": "https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The v8 API index describes RESTful Core APIs plus Metadata, Composite, Bulk, Notification and Query (COQL) APIs. It mentions no SOAP or GraphQL. Breadth is broad: CRUD on CRM module entities, plus bulk, composite and query APIs.",
+      "url": "https://www.zoho.com/crm/developer/docs/api/v8/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Zoho's developer docs describe four pre-built Zoho CRM MCP servers (Data Insights, Data Operations, Module Customization, Workflow & Process Automation), using OAuth. It is on the vendor's own docs domain, so it is official.",
+      "url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats follows from the other fields. Caveats are credit and concurrency limits, region-specific data centers, and unconfirmed Free-edition API access. The first two caveats are only partly verified in the fetched pages (the data-center point was not fetched).",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Zoho CRM",
+    "category": "CRM",
+    "one_liner": "Zoho CRM is a cloud CRM for managing leads, contacts, deals, accounts, and sales automation.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "auth_notes": "Zoho CRM API v8 uses OAuth 2.0. Clients are registered in the Zoho API/Developer Console as server-based/web apps or as a Self Client, which supports a grant token or Client Credentials flow for single-org use. Access token and refresh token lifetimes (1 hour and until revoked) were not confirmed on the fetched pages. No API key or JWT method was found.",
+    "access": "self_serve_free",
+    "access_notes": "The API limits page lists a Free edition with 5,000 daily credits and concurrency of 5, and says trial editions use the same limits as their paid equivalents. Zoho's free-edition page has signup links, and the China pricing page snippet lists Developer API under Free. No fetched page explicitly states that the Free edition has API access or that console registration is free. Sandbox availability was not verified.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API is credit-limited per edition (Free is 5,000 per day, 5 concurrent). Free-edition API access is inferred, not stated. Zoho uses separate regional data centers, so tokens and API domains must match the region (not verified on fetched pages).",
+    "evidence": {
+      "auth": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html",
+      "access": "https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html",
+      "api": "https://www.zoho.com/crm/developer/docs/api/v8/",
+      "mcp": "https://www.zoho.com/crm/developer/docs/mcp/overview.html"
+    },
+    "confidence": "low"
+  }
+}

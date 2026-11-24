@@ -1,0 +1,40 @@
+{
+  "id": "88",
+  "input": {
+    "id": "88",
+    "category": "Finance and Fintech",
+    "app": "Brex",
+    "hint": "developer.brex.com"
+  },
+  "meta": {
+    "cost_usd": 0.079431485,
+    "turns": 9
+  },
+  "record": {
+    "app": "Brex",
+    "category": "Spend management / Corporate cards & fintech",
+    "one_liner": "Brex is a spend platform combining corporate cards, expense management, reimbursements, travel, and bill pay/payments for businesses.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Customer-side: user token (created in dashboard Developer settings, scoped, sent as Bearer; expires after 90 days without use). Third-party/partner apps: OAuth2 authorization code grant (client credentials grant for the onboarding/referrals API), but client ID/secret and scopes are issued by Brex developer support, not self-serve. The MCP server also supports OAuth (browser login) and the Bearer API token.",
+    "access": "self_serve_free",
+    "access_notes": "An account admin or card admin of an existing Brex company accepts the Developer API agreement and creates a user token in dashboard Developer settings. This is self-serve for a customer's own account. It requires being a Brex customer; I did not find a pricing tier gate or a free sandbox. Brex only offers a production server (api.brex.com). Multi-tenant OAuth for a public integration requires contacting Brex developer support for a client ID/secret. Whether a Brex account itself is free to open was not verified.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://api.brex.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Requires a Brex customer account with an admin to accept the developer agreement; no sandbox (production only); OAuth for multi-user third-party apps requires Brex-issued client credentials via support; tokens expire after 90 days of inactivity; the official MCP is Beta.",
+    "evidence": {
+      "auth": "https://developer.brex.com/docs/authentication/ (user token as Bearer; admin creates in Developer settings; production-only server). https://developer.brex.com/guides/partner_authentication (OAuth2 auth code + client credentials; client ID/secret from developer support).",
+      "access": "https://developer.brex.com/docs/authentication/ (account/card admin, accept developer API agreement, Create Token).",
+      "api": "https://developer.brex.com (REST, OpenAPI; Accounting, Budgets, Expenses, Fields, Onboarding, Payments, Team, Transactions, Travel, Webhooks).",
+      "mcp": "https://developer.brex.com/docs/mcp (hosted at api.brex.com/mcp, Beta, OAuth or API key, 44 tools; approvals and card management not available)."
+    },
+    "confidence": "medium"
+  }
+}

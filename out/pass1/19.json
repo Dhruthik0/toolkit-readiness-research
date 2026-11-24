@@ -1,0 +1,40 @@
+{
+  "id": "19",
+  "input": {
+    "id": "19",
+    "category": "Support and Helpdesk",
+    "app": "Gorgias",
+    "hint": "gorgias.com"
+  },
+  "meta": {
+    "cost_usd": 0.09949891000000001,
+    "turns": 11
+  },
+  "record": {
+    "app": "Gorgias",
+    "category": "Helpdesk (ecommerce customer support)",
+    "one_liner": "Gorgias is a helpdesk for ecommerce merchants that centralizes support tickets from email, chat, social and voice alongside Shopify/store order data, with automation and AI agents.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "Developer docs list two methods: private apps use an API key (account email as username plus API key; HTTP Basic is my inference, since the page doesn't use the term), and public apps must use OAuth2. An OAuth2 Scopes page and an OAuth2 tutorial exist, but I did not open them. The vendor MCP server uses browser OAuth.",
+    "access": "self_serve_trial",
+    "access_notes": "Third-party sources (not vendor pages I fetched) report a 7-day free trial with no card, and no free plan. After the trial a paid helpdesk plan is needed. I could not confirm from a vendor page whether the API is available on every tier or only on higher ones. Building a public OAuth2 app may need extra steps, which I did not verify. A rate limit of about 2 requests/sec is reported, from search results only.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.gorgias.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "No free tier. Credentials come from a 7-day trial and then a paid plan. Rate limits are low (about 2 requests/sec, unverified). The plan tier needed for API access is unconfirmed. Public multi-tenant apps must use OAuth2. The official MCP server is labeled open beta by Gorgias's changelog.",
+    "evidence": {
+      "auth": "https://developers.gorgias.com/reference/authentication \u2014 lists Private app: API key; Public app: OAuth2 (required for public apps).",
+      "access": "No vendor page fetched confirms trial or tier terms. The 7-day trial and pricing come from third-party search results only. Vendor MCP help page says all Helpdesk plans are supported: https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-gorgias-6310546",
+      "api": "https://developers.gorgias.com/llms.txt \u2014 index lists 23 REST resource groups (Tickets, Customers, Macros, Rules, Tags, Teams, Users, Views, Voice Calls, Statistics and others). https://developers.gorgias.com/reference/introduction \u2014 describes a REST API with JSON.",
+      "mcp": "https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-gorgias-6310546 \u2014 official help article gives server URL https://mcp.gorgias.com/mcp, browser authorization, and the assistant acting with the user's role permissions. The open-beta status comes from a search result for updates.gorgias.com, which I did not fetch."
+    },
+    "confidence": "medium"
+  }
+}

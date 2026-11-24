@@ -1,0 +1,71 @@
+{
+  "id": "16",
+  "input": {
+    "id": "16",
+    "category": "Support and Helpdesk",
+    "app": "LiveAgent",
+    "hint": "liveagent.com"
+  },
+  "meta": {
+    "cost_usd": 0.04595826,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "API key page confirms a static key in the `apikey` header, per-key permissions on v3 keys, and admin-managed keys. It does not mention OAuth for the REST API. The OAuth 2.1 + PKCE and Bearer token options appear only on the MCP page.",
+      "url": "https://support.liveagent.com/741982-API-key"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Pricing page: no free plan, 30-day trial on every plan with no credit card, upgrade needed after trial. API keys per plan are Starter 1, Team 5, Business 10, Enterprise unlimited. Starter is $15 annual regular, $9 promo, $19 monthly. Rate limits are noted on the documentation page.",
+      "url": "https://www.liveagent.com/pricing/"
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "REST and API v3 are confirmed. Breadth 'moderate' cannot be verified: the docs page lists no endpoints and the full docs sit behind a customer account. It names only objects such as agents and tickets with get/post/delete methods.",
+      "url": "https://support.liveagent.com/567924-Documentation"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The vendor's support site describes a built-in MCP server at https://<domain>/api/mcp using Streamable HTTP. Auth is OAuth 2.1 Authorization Code + PKCE or a Bearer token. Calls draw on a shared AI budget. The page does not use the word 'official', but a vendor-hosted built-in server qualifies.",
+      "url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats follows from the other fields: self-serve trial then paid plan, REST API key auth, vendor MCP. The caveats listed (no free tier, docs behind an account, rate limits, shared AI budget) match the pages.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "LiveAgent",
+    "category": "Helpdesk",
+    "one_liner": "Help desk and live chat software that manages tickets, calls, chat, email and social channels in one agent panel.",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "API v3 uses an admin-created key sent in the `apikey` header. Keys can have per-key permissions, and v1 and v3 keys are separate. No OAuth for the REST API is documented. OAuth 2.1 (Authorization Code + PKCE) and bearer tokens are documented only for the MCP endpoint, not the REST API.",
+    "access": "self_serve_trial",
+    "access_notes": "No free plan. There is a 30-day free trial on every plan with no credit card required. Every plan includes API keys (Starter 1, Team 5, Business 10, Enterprise unlimited), so the lowest paid tier (Starter, about $9-15 per agent per month) is enough after the trial. An admin must create the key. Rate limits apply on all plans.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+    "verdict": "ready_with_caveats",
+    "blocker": "No permanent free tier, so credentials come from a 30-day trial and then a paid plan. The API docs sit inside each customer account (/docs/api/v3/), so the endpoint list could not be verified publicly. Rate limits apply. The official MCP endpoint is per-tenant and its tool calls draw on a shared AI budget.",
+    "evidence": {
+      "auth": "https://support.liveagent.com/741982-API-key",
+      "access": "https://www.liveagent.com/pricing/",
+      "api": "https://support.liveagent.com/567924-Documentation",
+      "mcp": "https://support.liveagent.com/647358-MCP-Integration-for-Agents"
+    },
+    "confidence": "low"
+  }
+}

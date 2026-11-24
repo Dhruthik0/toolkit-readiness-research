@@ -1,0 +1,73 @@
+{
+  "id": "18",
+  "input": {
+    "id": "18",
+    "category": "Support and Helpdesk",
+    "app": "Help Scout",
+    "hint": "helpscout.com"
+  },
+  "meta": {
+    "cost_usd": 0.051739339999999995,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Mailbox API uses OAuth 2.0 (Authorization Code and Client Credentials), Bearer header, 2-day (172800s) tokens, refresh tokens for Auth Code only, apps under Your Profile > My apps. Docs API separately uses an API key over HTTP Basic, so API key and Basic should also be listed.",
+      "url": "https://developer.helpscout.com/mailbox-api/overview/authentication/"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Free plan has no API; Standard 200/min without reporting, Plus 400, Pro 800 with reporting. Page dated Jan 2025. The 15-day trial is not on the fetched page and stays unconfirmed.",
+      "url": "https://docs.helpscout.com/article/1140-mailbox-api"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Broad resource coverage (conversations, customers, inboxes, orgs, users, tags, teams, webhooks, workflows, reports). The page does not use the word REST, but it is HTTPS/JSON resource-based. Rate-limit page confirms account-wide limits and that writes and v3 searches count double.",
+      "url": "https://developer.helpscout.com/mailbox-api/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Help Scout's own support article describes an official MCP at https://mcp.helpscout.net/mcp. It is read-only for new connections, uses OAuth sign-in, and needs Standard or higher (reports need Plus or Pro).",
+      "url": "https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent: paid plan required, no reporting on Standard, shared account-wide limits with double-counted writes and searches, MCP read-only.",
+      "url": "https://developer.helpscout.com/mailbox-api/overview/rate-limiting/"
+    }
+  ],
+  "corrected": {
+    "app": "Help Scout",
+    "category": "Helpdesk",
+    "one_liner": "Help Scout is a shared-inbox customer support platform with email, chat, a knowledge base (Docs) and reporting.",
+    "auth_methods": [
+      "OAuth2",
+      "API key",
+      "Basic"
+    ],
+    "auth_notes": "Mailbox API 2.0 uses OAuth 2.0 only. Authorization Code is for third-party integrations other users authorize. Client Credentials is for internal integrations. Apps are created under Your Profile > My apps. Tokens are sent as Bearer headers and expire after 2 days (172800s). Authorization Code also issues refresh tokens. The separate Docs API uses an API key sent over HTTP Basic (key as username, dummy password).",
+    "access": "paid_plan",
+    "access_notes": "The Free plan has no API access. Standard is the cheapest paid tier, with up to 200 calls/min and all endpoints except reporting. Plus allows 400 calls/min and Pro 800, and both include reporting. The limits table comes from a docs page last updated Jan 2025. A 15-day no-card trial was seen only in a search snippet and is unconfirmed. Prices were not checked.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.helpscout.net/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API needs a paid plan (Standard or higher), and Standard has no reporting endpoints. Rate limits are shared account-wide, and writes and v3 searches count double. The official MCP server is read-only for new connections, and its Docs tools need a separate Docs API key.",
+    "evidence": {
+      "auth": "https://developer.helpscout.com/mailbox-api/overview/authentication/",
+      "access": "https://docs.helpscout.com/article/1140-mailbox-api",
+      "api": "https://developer.helpscout.com/mailbox-api/",
+      "mcp": "https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports"
+    },
+    "confidence": "medium"
+  }
+}

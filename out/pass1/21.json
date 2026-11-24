@@ -1,0 +1,41 @@
+{
+  "id": "21",
+  "input": {
+    "id": "21",
+    "category": "Communications and Messaging",
+    "app": "Slack",
+    "hint": "slack.com"
+  },
+  "meta": {
+    "cost_usd": 0.03759725,
+    "turns": 7
+  },
+  "record": {
+    "app": "Slack",
+    "category": "Team messaging / collaboration",
+    "one_liner": "Slack is a workplace messaging platform with channels, DMs, files, and app integrations.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "OAuth 2.0 (v2) yields bot, user, and app-level tokens. Tokens are sent as Bearer headers. Scopes are attached to tokens, and tokens can be rotated or expire. Requests from Slack are verified by signing secret (not fetched in detail).",
+    "access": "self_serve_free",
+    "access_notes": "Apps are registered at api.slack.com/apps, and internal apps can be installed in a workspace. I did not fetch a page confirming that a free workspace can create apps and install them, so that is inferred. The access tier is therefore not fully verified. Marketplace or directory approval is needed for full rate limits on commercially distributed apps. The MCP server requires a directory-published or internal app plus workspace admin approval.",
+    "api_types": [
+      "REST",
+      "WebSocket"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.slack.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Commercially distributed apps outside the Marketplace (created on or after 2025-05-29) are limited to Tier 1 (1 request/minute) on conversations.history and conversations.replies, with a maximum of 15 objects per request. Internal apps are unaffected. Marketplace approval removes the limit. The official MCP server only allows directory-published or internal apps, and admins must approve it.",
+    "evidence": {
+      "auth": "https://docs.slack.dev/authentication",
+      "access": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps",
+      "api": "https://docs.slack.dev/apis/web-api",
+      "mcp": "https://docs.slack.dev/ai/mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

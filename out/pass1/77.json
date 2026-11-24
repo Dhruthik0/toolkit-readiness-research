@@ -1,0 +1,40 @@
+{
+  "id": "77",
+  "input": {
+    "id": "77",
+    "category": "Productivity and Project Management",
+    "app": "ClickUp",
+    "hint": "clickup.com/api"
+  },
+  "meta": {
+    "cost_usd": 0.05137528500000001,
+    "turns": 7
+  },
+  "record": {
+    "app": "ClickUp",
+    "category": "Project management",
+    "one_liner": "ClickUp is a work-management platform for tasks, docs, goals, time tracking and team collaboration.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "Personal API token (starts pk_, never expires) is sent raw in the Authorization header with no Bearer prefix. OAuth 2.0 Authorization Code grant is documented for third-party apps; its access token is sent as 'Authorization: Bearer', and currently doesn't expire. I classified the personal token as \"API key\" because it is sent as a raw header value.",
+    "access": "self_serve_free",
+    "access_notes": "Personal token is generated in Settings > Apps. Rate limits are listed for the FreeForever plan (100/min), and the docs state no plan restriction on API access. I did not check the pricing page. Creating an OAuth app requires a Workspace owner or admin. The docs describe no app review step, though they don't explicitly rule one out.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.clickup.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Rate limits are per token and depend on plan: 100/min on Free, Unlimited and Business; 1,000 on Business Plus; 10,000 on Enterprise. The official MCP server supports OAuth only (no personal tokens). I did not verify API breadth against the full endpoint list, and I did not confirm that no plan excludes API access.",
+    "evidence": {
+      "auth": "https://developer.clickup.com/docs/authentication",
+      "access": "https://developer.clickup.com/docs/rate-limits",
+      "api": "https://developer.clickup.com/reference/gettasks",
+      "mcp": "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "id": "4",
+  "input": {
+    "id": "4",
+    "category": "CRM and Sales",
+    "app": "Attio",
+    "hint": "attio.com"
+  },
+  "meta": {
+    "cost_usd": 0.06968445000000001,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page confirms OAuth 2.0 Authorization Code for multi-workspace apps, an API key for a single workspace, Basic (token as username, blank password) accepted but Bearer recommended, and PKCE required for user-level tokens. OAuth2 is for API access, not only login.",
+      "url": "https://docs.attio.com/rest-api/guides/authentication"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Plans page says API access is available on all Attio plans, and the Free plan allows up to three seats. No paid-tier or review gate is mentioned. The exact UI path for creating a token and the developer-workspace question were not confirmed. The auth page only says 'developer settings'.",
+      "url": "https://attio.com/help/reference/workspace-settings-billing/attio-plans-and-features"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Overview confirms a public REST API with JSON over HTTPS. The endpoint reference tag list covers Objects, Records, Lists, Entries, Notes, Tasks, Meetings, Emails, Comments, Webhooks, Deals, People, Companies, SQL and more, so 'broad' is reasonable. Write endpoints were not individually verified. The MCP tool list does show create, update and delete.",
+      "url": "https://docs.attio.com/rest-api/endpoint-reference/objects/list-objects"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Attio's own docs describe a hosted MCP server at https://mcp.attio.com/mcp with OAuth login. It has 53 tools and the listed rate limits. The SQL tool is not on every plan.",
+      "url": "https://docs.attio.com/mcp/overview"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "Free self-serve API access, OAuth2 and API key auth, a broad REST API and an official MCP server support 'ready'. The caveats in the blocker field are accurate. The MCP rate limits are confirmed and the page says Read and Write match the REST limits.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Attio",
+    "category": "CRM",
+    "one_liner": "Attio is a customizable, data-model-flexible CRM for managing contacts, companies, deals and custom objects, with lists, notes, tasks and email/meeting sync.",
+    "auth_methods": [
+      "OAuth2",
+      "API key",
+      "Bearer token",
+      "Basic"
+    ],
+    "auth_notes": "OAuth 2.0 Authorization Code (workspace-level tokens by default; user-level tokens need PKCE) for multi-workspace apps. A single-workspace access token (API key) generated in the app's developer settings. Both sent as Bearer; Basic (token as username, blank password) is also accepted but Bearer is recommended.",
+    "access": "self_serve_free",
+    "access_notes": "Attio's help center says API access is available on all plans, including Free (up to 3 seats). API keys are generated in developer settings. Shared OAuth apps are built via the developer dashboard. I did not sign up, so whether a separate developer workspace is needed is unconfirmed.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.attio.com/mcp",
+    "verdict": "ready",
+    "blocker": "none. Minor caveats: rate limits apply (the MCP docs list 100 read/s and 25 write/s per workspace, matching REST read/write limits). The MCP SQL tool is not on every plan.",
+    "evidence": {
+      "auth": "https://docs.attio.com/rest-api/guides/authentication",
+      "access": "https://attio.com/help/reference/workspace-settings-billing/attio-plans-and-features",
+      "api": "https://docs.attio.com/rest-api/endpoint-reference/objects/list-objects",
+      "mcp": "https://docs.attio.com/mcp/overview"
+    },
+    "confidence": "medium"
+  }
+}

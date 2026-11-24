@@ -1,0 +1,39 @@
+{
+  "id": "90",
+  "input": {
+    "id": "90",
+    "category": "Finance and Fintech",
+    "app": "PitchBook",
+    "hint": "pitchbook.com (research API)"
+  },
+  "meta": {
+    "cost_usd": 0.07847958000000001,
+    "turns": 10
+  },
+  "record": {
+    "app": "PitchBook",
+    "category": "Financial data / Market intelligence",
+    "one_liner": "PitchBook is a subscription database of private and public capital markets data (companies, deals, investors, funds) delivered via a web platform, data feeds and an API (Direct Data).",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "Static API key sent as `Authorization: PB-Token <key>`, per a third-party (Frontegg) connector page; not verified on PitchBook's own docs (pitchbook.com returned 403). No OAuth flow for third-party apps found. The MCP connector uses a separate sign-in (method not stated on the fetched page).",
+    "access": "partner_gated",
+    "access_notes": "Search snippets of PitchBook's help page say the Direct Data team provisions the key and existing customers start the request from Plugins & Apps in the platform. This implies a paid subscription plus a Direct Data entitlement, with no self-serve signup. The endpoint reference is reportedly behind platform login. I could not fetch the official page (403), so this is unverified by fetch.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://premium.mcp.pitchbook.com/mcp",
+    "verdict": "blocked",
+    "blocker": "No self-serve API access. Direct Data requires a PitchBook subscription and provisioning by PitchBook, with API docs behind login. The official MCP server (Premium) is available only to PitchBook clients.",
+    "evidence": {
+      "auth": "https://developers.frontegg.com/agen-for-work/connectors/marketplace/pitchbook.md (third-party; states static API key, Authorization: PB-Token header, no OAuth)",
+      "access": null,
+      "api": null,
+      "mcp": "https://claude.com/marketplace/connectors/pitchbook (publisher PitchBook, verified badge, URL https://premium.mcp.pitchbook.com/mcp, 24 tools, for PitchBook clients)"
+    },
+    "confidence": "low"
+  }
+}

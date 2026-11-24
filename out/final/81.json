@@ -1,0 +1,74 @@
+{
+  "id": "81",
+  "input": {
+    "id": "81",
+    "category": "Finance and Fintech",
+    "app": "Stripe",
+    "hint": "stripe.com/docs/api"
+  },
+  "meta": {
+    "cost_usd": 0.18723340000000002,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page confirms API keys via HTTP Basic (key as username) and Bearer alternative, sk_/rk_ keys, restricted recommended for live, and Workload Identity Federation with 1-hour access token. Connect OAuth reference confirms connect.stripe.com/oauth/authorize and /oauth/token, read_write scope, and access_token/refresh_token marked deprecated in favor of platform key plus Stripe-Account header. MCP page confirms OAuth and agent API keys. OAuth2 is real API access for third-party platforms, not just SSO. The cited auth URL does not cover the Connect OAuth claims, so the OAuth reference URL was added.",
+      "url": "https://docs.stripe.com/connect/oauth-reference"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Test-mode page: after creating an account you are placed in a sandbox with test API keys on the Dashboard; up to five general sandboxes; live keys require setting up the account. No paid plan or app review is stated for test keys. Pricing and activation requirements were not verified, as the record already admits.",
+      "url": "https://docs.stripe.com/test-mode"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The API reference states the API is organized around REST, with resource-oriented URLs, form-encoded bodies and JSON responses. The cited URL (docs.stripe.com/mcp) is the wrong page for this claim, so the evidence is repointed to docs.stripe.com/api. Breadth is broad: the MCP page lists a wide range of objects (customers, payments, invoices, subscriptions, tax, issuing, payouts, and more) with read and write.",
+      "url": "https://docs.stripe.com/api"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The Stripe MCP docs describe Stripe's own server at https://mcp.stripe.com and refer to an official Stripe connector and plugin. OAuth refresh tokens expire after 14 days. From 11 Jan 2027 full-access secret keys and non-agent restricted keys are no longer accepted. Refunds carry a human-confirmation requirement.",
+      "url": "https://docs.stripe.com/mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "Consistent with the verified fields: self-serve test keys, broad REST API, official MCP. The listed caveats (live activation, MCP key change on 11 Jan 2027, 14-day MCP OAuth refresh expiry, human confirmation on refunds, Connect read_write limit on accounts controlled by another platform) are all supported by the fetched pages and none is a hard blocker.",
+      "url": "https://docs.stripe.com/mcp"
+    }
+  ],
+  "corrected": {
+    "app": "Stripe",
+    "category": "Payments",
+    "one_liner": "Stripe provides payment processing, billing, invoicing, payouts, tax, fraud and related financial infrastructure for online businesses via a REST API.",
+    "auth_methods": [
+      "API key",
+      "Basic",
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Secret (sk_) and restricted (rk_) API keys are sent as HTTP Basic username, or as \"Authorization: Bearer <key>\". Restricted keys are recommended for live mode. Workload Identity Federation exchanges a cloud identity token for a Stripe access token that expires after 1 hour. Connect OAuth (connect.stripe.com/oauth/authorize and /oauth/token, scope read_write) lets third-party platforms connect Standard accounts. Its returned access_token and refresh_token are marked deprecated; Stripe says to use the platform secret key plus the Stripe-Account header instead. The MCP server supports OAuth and agent API keys.",
+    "access": "self_serve_free",
+    "access_notes": "Creating a Stripe account puts you in a sandbox with test API keys on the Dashboard, at no stated cost. Up to 5 additional sandboxes are available. Live keys require setting up and activating the account (per the test-mode page). Pricing and activation requirements were not verified.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.stripe.com",
+    "verdict": "ready",
+    "blocker": "No hard blocker. Caveats: live mode needs an activated account. Stripe's MCP server stops accepting full-access secret keys and non-agent restricted keys on 11 Jan 2027, so use OAuth or agent keys there. MCP OAuth refresh tokens expire after 14 days. Some actions, such as refunds, need human confirmation through the MCP server. Connect OAuth read_write cannot connect accounts controlled by another platform.",
+    "evidence": {
+      "auth": "https://docs.stripe.com/api/authentication (API keys, Basic, Bearer, Workload Identity Federation); https://docs.stripe.com/connect/oauth-reference (Connect OAuth)",
+      "access": "https://docs.stripe.com/test-mode",
+      "api": "https://docs.stripe.com/api",
+      "mcp": "https://docs.stripe.com/mcp"
+    },
+    "confidence": "medium"
+  }
+}

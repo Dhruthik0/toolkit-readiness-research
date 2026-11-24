@@ -1,0 +1,40 @@
+{
+  "id": "92",
+  "input": {
+    "id": "92",
+    "category": "AI, Research and Media-native",
+    "app": "Otter AI",
+    "hint": "help.otter.ai (MCP server)"
+  },
+  "meta": {
+    "cost_usd": 0.11737618500000001,
+    "turns": 13
+  },
+  "record": {
+    "app": "Otter AI",
+    "category": "Meeting transcription / notes",
+    "one_liner": "Otter.ai records and transcribes meetings and produces summaries, action items and searchable meeting notes.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "Public REST API: a Bearer API key created under the workspace Developer settings (max two keys per user, per the Scalekit blog). No OAuth for the REST API. The official MCP server uses OAuth 2.1 with browser consent (per Scalekit, not confirmed on Otter's own page). The OAuth flow is for the MCP server, not a documented third-party OAuth app flow for the REST API.",
+    "access": "paid_plan",
+    "access_notes": "The REST Public API is reported as Enterprise workspaces only, so it needs the Enterprise plan. This comes from a third-party blog and a search snippet of Otter's help article, not a fetched Otter page. The MCP server reportedly works from a standard Otter account, but I could not confirm which plans from Otter's own docs.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "narrow",
+    "mcp": "official",
+    "mcp_url": "https://mcp.otter.ai/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The REST API is Enterprise-only. It is mostly read-oriented: channels, conversations with a file-ingest POST, audio links, and workspace details. The rate limit is reported as 10 requests per second. The official MCP server is read-only, with three tools: get_user_info, search and fetch. Otter's help.otter.ai pages returned 403, so the plan and auth details are not verified against the vendor.",
+    "evidence": {
+      "auth": "https://www.scalekit.com/blog/otter-mcp-vs-api (third-party; says REST uses Bearer API key from Developer settings, MCP uses OAuth 2.1)",
+      "access": "https://www.scalekit.com/blog/otter-mcp-vs-api (third-party; says Public API is Enterprise workspaces only, MCP works on a standard account)",
+      "api": "https://www.scalekit.com/blog/otter-mcp-vs-api (third-party; base URL api.otter.ai/v1, conversations, channels, workspace, webhooks, 10 req/s)",
+      "mcp": "https://claude.com/connectors/otter-ai (lists Otter.ai as developer, URL https://mcp.otter.ai/mcp, tools get_user_info/search/fetch, Anthropic verified)"
+    },
+    "confidence": "medium"
+  }
+}

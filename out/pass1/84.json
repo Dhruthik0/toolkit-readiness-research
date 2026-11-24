@@ -1,0 +1,40 @@
+{
+  "id": "84",
+  "input": {
+    "id": "84",
+    "category": "Finance and Fintech",
+    "app": "Paygent Connect",
+    "hint": "paygent (NMI-powered)"
+  },
+  "meta": {
+    "cost_usd": 0.100725365,
+    "turns": 8
+  },
+  "record": {
+    "app": "Paygent Connect",
+    "category": "Payments",
+    "one_liner": "Unverified: I could not find a product called \"Paygent Connect\"; the hint suggests an NMI-powered payment gateway, so this likely white-labels NMI's gateway.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "Applies to NMI, not confirmed for Paygent. NMI documents security keys / public and private API keys for the Payment API. OAuth (60-minute tokens with scopes) applies only to NMI's partner Merchant Sign-Up API. I could not confirm that Paygent exposes any of this.",
+    "access": "partner_gated",
+    "access_notes": "No Paygent Connect developer page found. paygent.com redirects to a GoDaddy for-sale page (the redirect was not followed). Search surfaced only unrelated Paygent entities: IXOPAY's Paygent PCI adapter, a Solana project, and PayGate. If it is a white-label NMI gateway, credentials normally come from a merchant account with the reseller, and NMI's own public sandbox signup was not verified. Paygent's own signup path and pricing are unknown.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "none_found",
+    "mcp_url": null,
+    "verdict": "blocked",
+    "blocker": "I could not identify Paygent Connect or find any Paygent-specific public API docs or signup. The underlying NMI API is documented (REST v5 for payments, customers, subscriptions, invoices, plus classic transact.php), and NMI lists an MCP server in its docs index. That does not show Paygent customers get access. Ask the user which Paygent they mean and whether they hold an NMI merchant account; if they do, treat this as NMI.",
+    "evidence": {
+      "auth": "https://docs.nmi.com/llms.txt (NMI, not Paygent): security keys, public/private API keys, OAuth only for Merchant Sign-Up API",
+      "access": null,
+      "api": "https://docs.nmi.com/llms.txt (NMI, not Paygent): REST v5 payments, invoicing, subscriptions, customers; classic transact.php",
+      "mcp": "https://docs.nmi.com/llms.txt lists NMI docs MCP and account MCP servers; no Paygent MCP found"
+    },
+    "confidence": "low"
+  }
+}

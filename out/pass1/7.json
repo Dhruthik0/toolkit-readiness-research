@@ -1,0 +1,39 @@
+{
+  "id": "7",
+  "input": {
+    "id": "7",
+    "category": "CRM and Sales",
+    "app": "Zoho CRM",
+    "hint": "zoho.com/crm"
+  },
+  "meta": {
+    "cost_usd": 0.05855045,
+    "turns": 8
+  },
+  "record": {
+    "app": "Zoho CRM",
+    "category": "CRM",
+    "one_liner": "Zoho CRM is a cloud CRM for managing leads, contacts, deals, accounts, and sales automation.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "auth_notes": "Zoho CRM API v8 uses OAuth 2.0. Access tokens last 1 hour and refresh tokens last until revoked. Clients are registered in the Zoho API console as web-based apps or as a Self Client, which generates a grant token for single-org use. The auth page also links to a Client Credentials Flow page, which I did not fetch. No API key or JWT method is mentioned on the pages I fetched.",
+    "access": "self_serve_free",
+    "access_notes": "The API limits page lists a Free edition with 5,000 daily credits and concurrency of 5, which implies API access on Free. Clients are registered in the Zoho Developer Console using a Zoho CRM login, and Self Client is available. The fetched pages do not explicitly say that console registration is free or that the Free edition has full API access. The Free edition is also not confirmed to be available for new signups. Not verified: whether there is a trial or sandbox.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API is credit-limited per edition (Free is 5,000 per day, 5 concurrent). Zoho runs separate data centers by region, so tokens and API domains must be region-specific. Free edition availability and API access are inferred from the limits table, not stated outright.",
+    "evidence": {
+      "auth": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html",
+      "access": "https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html",
+      "api": "https://www.zoho.com/crm/developer/docs/api/v8/",
+      "mcp": "https://www.zoho.com/crm/developer/docs/mcp/overview.html"
+    },
+    "confidence": "medium"
+  }
+}

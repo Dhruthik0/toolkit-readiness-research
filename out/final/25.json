@@ -1,0 +1,73 @@
+{
+  "id": "25",
+  "input": {
+    "id": "25",
+    "category": "Communications and Messaging",
+    "app": "Pumble",
+    "hint": "pumble.com"
+  },
+  "meta": {
+    "cost_usd": 0.04303407,
+    "turns": 5
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "SDK authorization page confirms the consent URL, the code exchange at api-ga.pumble.com/oauth2/access, and user and bot tokens that don't need refreshing. The MCP page confirms the token and x-app-token headers. API keys are confirmed on the help page. The API-key header name is not stated anywhere I fetched. The SDK site's official status is unconfirmed, though it is in the CAKE-com namespace.",
+      "url": "https://cake-com.github.io/pumble-node-sdk/authorization.html"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "The help page says the API Keys add-on is 'Available on all plans', with a limit of 1000 requests/min per user. Who may install it is not stated. The page lists Owner, Admin and Member under 'Who can use this feature'. Whether the free plan can create custom apps is not stated.",
+      "url": "https://pumble.com/help/integrations/api-keys-integration"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "REST via Swagger. The help page lists send, reply, delete, react, create channel, list messages and list channels/DMs. Moderate breadth is a reasonable judgment. The Swagger page itself was not fetched.",
+      "url": "https://pumble.com/help/integrations/api-keys-integration"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The Pumble help center documents a hosted MCP server at https://mcp.pumble.com/mcp with 19 tools and 4 prompts. The page does not use the word 'official', but it is first-party documentation. No plan requirement is stated.",
+      "url": "https://pumble.com/help/integrations/automation-workflow-integrations/how-to-use-the-pumble-mcp-server/"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent with the other fields: documentation is fragmented, the key header is unstated, and plan requirements for apps and MCP are unconfirmed.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Pumble",
+    "category": "Team chat / messaging",
+    "one_liner": "Pumble is a team messaging and collaboration app (Slack alternative) from CAKE.com with channels, DMs, threads and calls.",
+    "auth_methods": [
+      "API key",
+      "OAuth2",
+      "Other"
+    ],
+    "auth_notes": "Three routes. (1) API Keys add-on: user installs the add-on and generates a personal key in Pumble; the key is entered in Swagger \"Authorize\". The header name is not stated on the fetched help pages. (2) Custom Pumble app: install gives an app key, a user token and a bot token, sent as `token` and `x-app-token` headers (per the MCP help page). (3) Third-party OAuth-style flow per the CAKE-com SDK docs: consent at app.pumble.com/access-request, then code exchange at api-ga.pumble.com/oauth2/access with client-id/secret, returning user and bot tokens that don't need refreshing. The SDK docs are on cake-com.github.io, which is likely but not confirmed official.",
+    "access": "self_serve_free",
+    "access_notes": "The API Keys add-on is stated to be available on all plans, and custom apps are created in Workspace settings > Configure apps. The fetched pages don't say whether the free plan can create apps, and they state no plan requirement for the MCP server. The help page lists Owner, Admin and Member as able to use the feature, but it does not say who can install it. Rate limit for API keys is 1,000 requests/min per user.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://mcp.pumble.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The docs are fragmented. The API-key header isn't on the help page (check Swagger), and the OAuth-style flow is documented only in the SDK docs. Public API coverage looks centered on messaging: send, reply, delete, react, channels and listing. The MCP server lists 19 tools. Plan requirements for apps and MCP are unconfirmed.",
+    "evidence": {
+      "auth": "https://cake-com.github.io/pumble-node-sdk/authorization.html \u2014 consent URL, code exchange at api-ga.pumble.com/oauth2/access, bot and user tokens. https://pumble.com/help/integrations/automation-workflow-integrations/how-to-use-the-pumble-mcp-server/ \u2014 app key, user/bot tokens, token and x-app-token headers.",
+      "access": "https://pumble.com/help/integrations/api-keys-integration \u2014 API Keys add-on available on all plans; 1,000 requests/min per user.",
+      "api": "https://pumble.com/help/integrations/api-keys-integration \u2014 lists actions (send, reply, delete, react, create channel, list messages/channels) and links Swagger at https://pumble-api-keys.addons.marketplace.cake.com/api-docs/ (Swagger itself not fetched).",
+      "mcp": "https://pumble.com/help/integrations/automation-workflow-integrations/how-to-use-the-pumble-mcp-server/ \u2014 hosted MCP at https://mcp.pumble.com/mcp, 19 tools, 4 prompts."
+    },
+    "confidence": "medium"
+  }
+}

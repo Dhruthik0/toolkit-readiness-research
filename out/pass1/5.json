@@ -1,0 +1,42 @@
+{
+  "id": "5",
+  "input": {
+    "id": "5",
+    "category": "CRM and Sales",
+    "app": "Twenty",
+    "hint": "twenty.com (open-source CRM)"
+  },
+  "meta": {
+    "cost_usd": 0.054732185,
+    "turns": 7
+  },
+  "record": {
+    "app": "Twenty",
+    "category": "CRM",
+    "one_liner": "Twenty is an open-source CRM (cloud or self-hosted) for managing people, companies, opportunities and custom objects, with workflows and AI features.",
+    "auth_methods": [
+      "API key",
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "API keys are created in Settings \u2192 Developers \u2192 API, shown once, can be scoped to a role, and are sent as `Authorization: Bearer KEY`. OAuth is documented for external apps acting on behalf of users, but I did not fetch the OAuth flow page, so the grant details are unverified. The MCP server accepts OAuth (recommended) or an API key.",
+    "access": "self_serve_trial",
+    "access_notes": "The pricing page shows no free Cloud plan, only a 30-day free trial with no credit card. Self-hosting the open-source core is free and gives the same API. Pro ($9/user/mo), Organization ($39/user/mo) and Enterprise (from $50k/yr) include the REST and GraphQL API. I did not confirm that API keys work during the trial, though that is likely. The pricing page was fetched through a summarizer, so confirm the figures on the live page.",
+    "api_types": [
+      "REST",
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://docs.twenty.com/developers/extend/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "There is no permanent free Cloud tier. Cloud needs a paid plan after the 30-day trial, or you self-host. Rate limits are inconsistent across pages: the API docs say 100 requests/min with 60 records per batch, while the pricing page says 50/min on Pro, 100/min on Organization, and custom on Enterprise. I did not verify the OAuth flow details for third-party apps.",
+    "evidence": {
+      "auth": "https://docs.twenty.com/developers/extend/api.md (API key sent as a Bearer token, role-scoped; OAuth for external apps, flow not described on that page)",
+      "access": "https://twenty.com/pricing (30-day free trial, no free Cloud plan, self-hosting is free, Pro/Organization/Enterprise include the API)",
+      "api": "https://docs.twenty.com/developers/extend/api.md (Core REST and GraphQL for People, Companies, Opportunities and custom objects; Metadata API for objects, fields and relations)",
+      "mcp": "https://docs.twenty.com/developers/extend/mcp (built-in MCP server at https://{workspace}/mcp with OAuth or API key; tools for records, metadata, workflows and more). The page does not use the word official, but it is vendor documentation and the config is generated in Settings \u2192 AI \u2192 MCP."
+    },
+    "confidence": "medium"
+  }
+}

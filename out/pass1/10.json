@@ -1,0 +1,41 @@
+{
+  "id": "10",
+  "input": {
+    "id": "10",
+    "category": "CRM and Sales",
+    "app": "DealCloud",
+    "hint": "api.docs.dealcloud.com"
+  },
+  "meta": {
+    "cost_usd": 0.08483724999999999,
+    "turns": 10
+  },
+  "record": {
+    "app": "DealCloud",
+    "category": "CRM / Deal management (Intapp)",
+    "one_liner": "DealCloud (now part of Intapp) is a configurable CRM and deal/relationship management platform for financial services and professional services firms.",
+    "auth_methods": [
+      "OAuth2",
+      "API key"
+    ],
+    "auth_notes": "REST API: each user generates an API key (client id/secret) in their profile, exchanged at {site}/api/rest/v1/oauth/token via client_credentials with scopes (data, user_management, publish, ri_import, backup); bearer token lasts 900s, no refresh token. MCP server uses interactive per-user OAuth 2.0 with .well-known discovery; no client ID/secret to configure. The docs mix 'apiKey' and 'client_secret' wording, so that detail is unclear.",
+    "access": "partner_gated",
+    "access_notes": "No free or trial signup found. The API requires an existing DealCloud tenant (enterprise product). An admin must enable the 'API' site area for the user's group, then the user enables an API key in their profile. Docs point to the admin or Customer Success Manager for help. The docs do not say whether API access needs a specific license or add-on, and I did not find a public sandbox or free account. Classification as partner_gated is an inference from the enterprise-only product.",
+    "api_types": [
+      "REST",
+      "WebSocket"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://api.docs.dealcloud.com/mcp",
+    "verdict": "blocked",
+    "blocker": "No self-serve way to get credentials: you need an existing DealCloud customer tenant and an admin to enable API access. Docs are public and the API is broad, so it is buildable for a customer. Publications (real-time events) transport not verified, so WebSocket is a guess. The MCP server URL was not stated on the pages fetched.",
+    "evidence": {
+      "auth": "https://api.docs.dealcloud.com/docs/token",
+      "access": "https://api.docs.dealcloud.com/docs/apikeys",
+      "api": "https://api.docs.dealcloud.com",
+      "mcp": "https://api.docs.dealcloud.com/mcp"
+    },
+    "confidence": "medium"
+  }
+}

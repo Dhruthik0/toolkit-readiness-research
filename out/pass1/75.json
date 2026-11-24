@@ -1,0 +1,42 @@
+{
+  "id": "75",
+  "input": {
+    "id": "75",
+    "category": "Productivity and Project Management",
+    "app": "Asana",
+    "hint": "developers.asana.com"
+  },
+  "meta": {
+    "cost_usd": 0.04321564,
+    "turns": 8
+  },
+  "record": {
+    "app": "Asana",
+    "category": "Work management / project management",
+    "one_liner": "Asana is a work management platform for organizing tasks, projects, and goals across teams.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2",
+      "Other"
+    ],
+    "auth_notes": "Personal access token (long-lived, sent as a Bearer token, acts as the generating user). OAuth 2.0 authorization code flow with PKCE and refresh tokens (access token valid 1 hour), with resource:action scopes. Service accounts (Enterprise tier only, created by super admins) are listed under Other. OIDC is for sign-in only.",
+    "access": "self_serve_free",
+    "access_notes": "PATs and OAuth apps are created in the developer console. The overview page says you can test with a free account and offers a developer sandbox for premium features. No page I fetched states outright that free accounts get full API access. The rate-limits page does list a free-domain tier (150 req/min), which implies free-tier API use. Service accounts need Enterprise. I did not read the \"manage distribution\" page, so I can't say whether OAuth apps need approval to be used in other workspaces.",
+    "api_types": [
+      "REST",
+      "WebSocket"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.asana.com/v2/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Rate limits: 150 req/min on free domains, 1,500 on paid, and 60 req/min for search. Admins can block MCP clients. The OAuth app distribution/approval rules for other workspaces weren't verified. Premium-only endpoints may need a paid plan. The deprecated v1 MCP SSE endpoint shuts down 05/11/2026.",
+    "evidence": {
+      "auth": "https://developers.asana.com/docs/authentication",
+      "access": "https://developers.asana.com/docs/overview",
+      "api": "https://developers.asana.com/docs/overview",
+      "mcp": "https://developers.asana.com/docs/using-asanas-mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

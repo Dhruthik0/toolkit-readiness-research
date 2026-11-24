@@ -1,0 +1,71 @@
+{
+  "id": "90",
+  "input": {
+    "id": "90",
+    "category": "Finance and Fintech",
+    "app": "PitchBook",
+    "hint": "pitchbook.com (research API)"
+  },
+  "meta": {
+    "cost_usd": 0.04828117999999999,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Frontegg page (third-party) states static API key, Authorization: PB-Token header, no OAuth. Not confirmed on PitchBook's own pages (403).",
+      "url": "https://developers.frontegg.com/agen-for-work/connectors/marketplace/pitchbook.md"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Search result of PitchBook help page (not fetchable, 403) says the API needs a standalone contract, requested via the Direct Data team. This supports gated/contract access, not self-serve. 'partner_gated' vs 'approval_required' is a judgment call; contract plus provisioning is closer to approval_required/paid. Kept as is. The fetch itself was not possible, so evidence is from search snippet only.",
+      "url": "https://pitchbook.com/help/pitchbook-api"
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "No fetchable page confirms REST or the breadth of the endpoints. The Frontegg page implies HTTP with a token header only. Docs are behind login.",
+      "url": null
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Claude marketplace page shows publisher PitchBook, URL https://premium.mcp.pitchbook.com/mcp, for PitchBook clients. Tool count on fetch is 23, not 24.",
+      "url": "https://claude.com/marketplace/connectors/pitchbook"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "Blocked is consistent with contract-only access and no self-serve key. Blocker text holds. Tool count in evidence should be 23.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "PitchBook",
+    "category": "Financial data / Market intelligence",
+    "one_liner": "PitchBook is a subscription database of private and public capital markets data (companies, deals, investors, funds) delivered via a web platform, data feeds and an API (Direct Data).",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "Static API key sent as `Authorization: PB-Token <key>`, per a third-party (Frontegg) connector page; not verified on PitchBook's own docs (pitchbook.com returned 403). No OAuth flow for third-party apps found. The MCP connector uses a separate sign-in (method not stated).",
+    "access": "partner_gated",
+    "access_notes": "Search results from PitchBook's help page say the API is a separate offering requiring a standalone contract; existing clients start the request from Plugins & Apps in the platform, non-customers contact the Direct Data team. No self-serve signup. A sandbox may be available. Official page not fetchable (403), so this rests on search snippets.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://premium.mcp.pitchbook.com/mcp",
+    "verdict": "blocked",
+    "blocker": "No self-serve API access. Direct Data requires a separate contract and provisioning by PitchBook, with API docs behind login. The official MCP server (Premium) is for PitchBook clients.",
+    "evidence": {
+      "auth": "https://developers.frontegg.com/agen-for-work/connectors/marketplace/pitchbook.md (third-party; states static API key, Authorization: PB-Token header, no OAuth)",
+      "access": "https://pitchbook.com/help/pitchbook-api (search snippet only; fetch returned 403)",
+      "api": null,
+      "mcp": "https://claude.com/marketplace/connectors/pitchbook (publisher PitchBook, URL https://premium.mcp.pitchbook.com/mcp, 23 tools, for PitchBook clients, sign-in required)"
+    },
+    "confidence": "low"
+  }
+}

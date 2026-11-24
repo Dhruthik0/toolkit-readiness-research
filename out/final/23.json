@@ -1,0 +1,71 @@
+{
+  "id": "23",
+  "input": {
+    "id": "23",
+    "category": "Communications and Messaging",
+    "app": "Zoho Cliq",
+    "hint": "zoho.com/cliq"
+  },
+  "meta": {
+    "cost_usd": 0.07966023500000001,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "v2 docs show OAuth 2.0 authorization code and refresh_token grants as the only documented API auth. The register-client page also lists Self Client as a client type (the record said this was unverified); this does not change the method list.",
+      "url": "https://www.zoho.com/cliq/help/restapi/v2/registerclient/"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "Neither the REST docs nor the register-client page states a plan restriction. The REST page says 'no usage limit on the API', yet it also lists per-endpoint per-minute quotas. No page confirms free-plan API access. self_serve_free is the best-supported value, but low confidence.",
+      "url": "https://www.zoho.com/cliq/help/restapi/v2/"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "REST only. The nav lists Users, Departments, Roles, Chats, Channels, Threads, Teams, Messages, Scheduled Messages, Bots, Files, Calls & Meetings, Events, Reminders, Cliq Database, Widget Map Tickers, Custom Domain, Custom Email and Maintenance. That is broad. Endpoint details beyond the first 100k characters were not read.",
+      "url": "https://www.zoho.com/cliq/help/restapi/v2/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The page says 'our official MCP server' and links to the Zoho MCP product page. No endpoint URL is given. The 'appropriate plan' wording is on the configure page and no plan is named.",
+      "url": "https://www.zoho.com/cliq/help/platform/zoho-cliq-mcp.html"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits: OAuth2 is self-serve and the API is broad. Caveats are the unconfirmed free-plan access, the per-endpoint quotas, admin-only endpoints and the unnamed MCP plan.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Zoho Cliq",
+    "category": "Team chat / collaboration",
+    "one_liner": "Zoho Cliq is a team messaging and collaboration platform with channels, chats, bots, calls and a developer platform.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "auth_notes": "REST API v2 docs document OAuth 2.0 only. Requests send \"Authorization: Zoho-oauthtoken {token}\". Documented grants are authorization_code and refresh_token (access token about 1 hour; access_type=offline for a refresh token). Scopes are granular, e.g. ZohoCliq.Channels.READ and ZohoCliq.Users.READ. Clients are registered in the Zoho API console, and the register-client page lists Self Client as a client type. The data-center domain (.com, .eu, etc.) must match. Client-credentials grant is not named on the Cliq pages.",
+    "access": "self_serve_free",
+    "access_notes": "Inferred: clients are registered in the Zoho API console and no Cliq docs page states a plan restriction. The REST page says 'There is no usage limit on the API'. No page confirms free-plan API access, and pricing was not checked. Maintenance (bulk export) APIs are org-admin only. Department and designation APIs do not work for orgs integrated with Zoho People. The MCP docs mention 'the appropriate plan' without naming one.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://www.zoho.com/cliq/help/platform/zoho-cliq-mcp.html",
+    "verdict": "ready_with_caveats",
+    "blocker": "OAuth2 only, and the data-center domain must match the user's. Per-endpoint per-user per-minute quotas are low (5-30/min on the endpoints read), and the docs contradict themselves by also saying there is no usage limit. Some endpoints are admin-only. Free-plan API access is unconfirmed. The MCP server is set up through mcp.zoho.com, no endpoint URL is documented on the Cliq page, and its plan requirement is unclear.",
+    "evidence": {
+      "auth": "https://www.zoho.com/cliq/help/restapi/v2/ - OAuth 2.0, Zoho-oauthtoken header, authorization_code and refresh_token grants. https://www.zoho.com/cliq/help/restapi/v2/registerclient/ - client registration, Self Client type.",
+      "access": "https://www.zoho.com/cliq/help/restapi/v2/registerclient/ - no plan requirement stated. https://www.zoho.com/cliq/help/platform/configure-zoho-cliq-mcp.html - 'appropriate plan' for MCP, not named.",
+      "api": "https://www.zoho.com/cliq/help/restapi/v2/ - nav categories: Users, Departments, Roles, Chats, Channels, Threads, Teams, Messages, Scheduled Messages, Bots, Files, Calls & Meetings, Events, Reminders, Cliq Database, Maintenance and others.",
+      "mcp": "https://www.zoho.com/cliq/help/platform/zoho-cliq-mcp.html - 'our official MCP server'; links to https://www.zoho.com/mcp/. No endpoint URL stated."
+    },
+    "confidence": "low"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "8",
+  "input": {
+    "id": "8",
+    "category": "CRM and Sales",
+    "app": "Close",
+    "hint": "close.com"
+  },
+  "meta": {
+    "cost_usd": 0.063693005,
+    "turns": 10
+  },
+  "record": {
+    "app": "Close",
+    "category": "CRM",
+    "one_liner": "Close is a sales CRM for SMB teams that combines leads, contacts, calling, email/SMS, sequences and pipeline reporting.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "API keys are sent via HTTP Basic Auth and are created in Settings > Developer > API Keys (tied to a user and organization). OAuth 2.0 is documented for user-facing integrations. You create an OAuth app in Settings > Developer > OAuth Apps and receive a Client ID and Secret. Apps get all.full_access and offline_access scopes by default; other scopes need support contact. The hosted MCP server also accepts a Close-API-Key header.",
+    "access": "self_serve_trial",
+    "access_notes": "Close offers a 14-day free trial with no credit card. I found no free tier. Pricing page lists Solo $9/mo annual ($19 monthly), Essentials $35, Growth $99 and Scale $139 per user per month on annual billing. High-volume API access is listed as included on Essentials and above and not on Solo. What basic API access Solo gets is not stated on the pages I fetched. Which plan the trial covers is unstated. Whether API keys need a particular plan is not stated in the docs I fetched. OAuth app creation is self-serve and private by default. Publishing an app for other Close customers goes through a publishing review. I did not fetch that page, so the process is unverified.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.close.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "No permanent free tier: the trial lasts 14 days, then a paid plan is needed. Solo's API limits are unclear. Rate limits vary by endpoint, and the docs give no numbers. Publishing a public OAuth app involves a review that I did not verify. Non-default OAuth scopes require contacting support.",
+    "evidence": {
+      "auth": "https://developer.close.com/integrations/create-an-oauth-app.md",
+      "access": "https://www.close.com/pricing",
+      "api": "https://developer.close.com/",
+      "mcp": "https://developer.close.com/mcp.md"
+    },
+    "confidence": "medium"
+  }
+}

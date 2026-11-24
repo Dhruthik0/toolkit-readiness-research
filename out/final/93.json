@@ -1,0 +1,72 @@
+{
+  "id": "93",
+  "input": {
+    "id": "93",
+    "category": "AI, Research and Media-native",
+    "app": "Fathom",
+    "hint": "fathom.video"
+  },
+  "meta": {
+    "cost_usd": 0.04318765,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Quickstart confirms X-Api-Key header, generated in User Settings > API Access, scoped to the creating user. OAuth for third-party apps is confirmed by the OAuth guide (app registration at marketplace_applications/new, credentials issued) and the FAQ (HTTPS redirect URIs, refresh token rotation). Quickstart notes OAuth apps must use /recordings endpoints.",
+      "url": "https://developers.fathom.ai/oauth.md"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "FAQ says API access (keys and webhooks) is included on all plans. A named Free plan is not confirmed, so this is inferred. OAuth registration is self-serve; the review is tied to marketplace visibility and the docs don't say it gates credentials.",
+      "url": "https://developers.fathom.ai/faq"
+    },
+    {
+      "field": "api",
+      "status": "contradicted",
+      "note": "REST is confirmed (endpoints for meetings, meeting types, summary, transcript, downloads, teams, users, webhooks, plus an OpenAPI spec). No WebSocket appears anywhere in the docs. Only webhooks are used for push. TypeScript and Python SDKs exist. Narrow-to-moderate breadth is a judgment call. I kept 'narrow'.",
+      "url": "https://developers.fathom.ai/llms.txt"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The MCP docs describe an official Fathom MCP server at https://api.fathom.ai/mcp, with ChatGPT and Claude setup pages.",
+      "url": "https://developers.fathom.ai/mcp-docs"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits. The API is read-oriented and rate limited per account (increases are reviewed case by case, not standard), and the OAuth review criteria are not documented. The FAQ confirms the rate limit details.",
+      "url": "https://developers.fathom.ai/faq"
+    }
+  ],
+  "corrected": {
+    "app": "Fathom",
+    "category": "AI meeting assistant",
+    "one_liner": "Fathom records, transcribes and summarizes video meetings (Zoom, Meet, Teams) and exposes the meeting data via API, webhooks and MCP.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "API key generated in User Settings > API Access, sent in X-Api-Key header; scoped to meetings the user recorded or that were shared with them/their team. OAuth2 for apps other Fathom users install; app registered via fathom.video/marketplace_applications/new; HTTPS redirect URIs; single-use refresh tokens. OAuth apps cannot use include_transcript/include_summary on /meetings and must use /recordings endpoints.",
+    "access": "self_serve_free",
+    "access_notes": "FAQ says API keys and webhooks are included on all plans. A free plan is not named specifically, so coverage of it is inferred from \"all plans\". OAuth app registration is self-serve (~2 min per docs); docs say OAuth apps are \"subject to review\" but tie it to marketplace visibility, and do not say whether review gates credential issuance.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "narrow",
+    "mcp": "official",
+    "mcp_url": "https://api.fathom.ai/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "API is narrow and mostly read-oriented (list meetings, meeting types, summary, transcript, download request, teams, users, create/delete webhook); cannot be assumed to start recordings. Rate limits are per account/key, and no increases are offered as standard (case-by-case review via support). OAuth review/approval impact on production use is unclear.",
+    "evidence": {
+      "auth": "https://developers.fathom.ai/quickstart",
+      "access": "https://developers.fathom.ai/faq",
+      "api": "https://developers.fathom.ai/llms.txt",
+      "mcp": "https://developers.fathom.ai/mcp-docs"
+    },
+    "confidence": "medium"
+  }
+}

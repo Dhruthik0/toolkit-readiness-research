@@ -1,0 +1,71 @@
+{
+  "id": "51",
+  "input": {
+    "id": "51",
+    "category": "Data, SEO and Scraping",
+    "app": "DataForSEO",
+    "hint": "docs.dataforseo.com"
+  },
+  "meta": {
+    "cost_usd": 0.053283460000000005,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page: \"Basic authentication is the only way to access DataForSEO API.\" Credentials come from the API Access tab, and the API password is auto-generated and differs from the account password. No OAuth is mentioned.",
+      "url": "https://docs.dataforseo.com/v3/auth/"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Pricing page confirms the $50 minimum top-up, no subscriptions, funds that don't expire, $1 trial credit and a free sandbox with sample data. The page says the trial credit is usable in the Playground, via MCP, and with templates and integrations. It does not say the credit works for direct API calls, so the record's phrase \"works for paid API functions\" is slightly loose. paid_plan (prepaid balance) is a reasonable classification.",
+      "url": "https://dataforseo.com/pricing"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "REST, JSON by default. Many API groups: SERP, Keywords Data, Labs, Backlinks, OnPage, Domain Analytics, Content Analysis, Merchant, App Data, Business Data, AI Optimization. Broad coverage.",
+      "url": "https://docs.dataforseo.com/v3/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "DataForSEO's own MCP page links to the repo github.com/dataforseo/mcp-server-typescript, which is under the vendor's GitHub org. It also lists a remote endpoint, an npm package and a Docker image. The page does not state the maintainer explicitly, but a vendor-hosted page and endpoint make \"official\" well supported.",
+      "url": "https://dataforseo.com/model-context-protocol"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent with the verified facts: Basic auth with one account-level credential, a $50 minimum prepaid balance for real data, and per-request metering.",
+      "url": "https://dataforseo.com/pricing"
+    }
+  ],
+  "corrected": {
+    "app": "DataForSEO",
+    "category": "SEO data API",
+    "one_liner": "Pay-as-you-go REST API provider for SEO data: SERP results, keyword data, backlinks, on-page analysis, domain analytics, and related datasets.",
+    "auth_methods": [
+      "Basic"
+    ],
+    "auth_notes": "HTTP Basic only, with an API login and an auto-generated API password (separate from the account password) taken from the dashboard's API Access tab. The docs say it is the only way to access the API. No OAuth or tokens documented.",
+    "access": "paid_plan",
+    "access_notes": "A free account gives $1 of trial credit, which the pricing page says can be used in the Playground, via MCP, and with templates and integrations. The sandbox is free and returns sample data only. Real use needs a prepaid balance with a $50 minimum top-up. There are no subscriptions and funds don't expire. The help article on the \"free unlimited trial\" was not checked.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://github.com/dataforseo/mcp-server-typescript",
+    "verdict": "ready_with_caveats",
+    "blocker": "Basic auth with a single account-level credential, so no per-user OAuth. Real data needs a $50 minimum prepaid top-up; the free tier is only $1 of credit plus a sandbox with sample data. Costs are metered per request.",
+    "evidence": {
+      "auth": "https://docs.dataforseo.com/v3/auth/",
+      "access": "https://dataforseo.com/pricing",
+      "api": "https://docs.dataforseo.com/v3/",
+      "mcp": "https://dataforseo.com/model-context-protocol"
+    },
+    "confidence": "high"
+  }
+}

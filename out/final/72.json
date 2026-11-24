@@ -1,0 +1,72 @@
+{
+  "id": "72",
+  "input": {
+    "id": "72",
+    "category": "Productivity and Project Management",
+    "app": "Airtable",
+    "hint": "airtable.com/developers"
+  },
+  "meta": {
+    "cost_usd": 0.044043950000000005,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "PAT page confirms tokens created at /create/tokens with scopes and base access, plus Enterprise service-account PATs. OAuth page confirms third-party apps can access the API on users' behalf. The 'Authorization: Bearer' header wording was not in the fetched summary, but PAT tokens are standard bearer tokens. Legacy API key status is not covered.",
+      "url": "https://airtable.com/developers/web/guides/oauth-integrations"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "PAT creation is self-serve, and the MCP page says 'All plans' with no extra charge. No fetched page states that the REST API or PATs are available on the free plan. The rate-limits page says limits may be tiered by plan. OAuth needs privacy policy and ToS URLs before sharing, with no review step described. self_serve_free is the best-supported value but is unconfirmed.",
+      "url": "https://support.airtable.com/docs/using-the-airtable-mcp-server"
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "REST is confirmed ('closely follows REST semantics'). The introduction page does not state endpoint breadth. The PAT page says PATs reach all public endpoints, including Metadata API endpoints, which suggests broad coverage but does not prove it.",
+      "url": "https://airtable.com/developers/web/api/introduction"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The Airtable Help Center page documents an Airtable-hosted MCP server at https://mcp.airtable.com/mcp. It is available on all plans and uses OAuth, with a PAT as an alternative.",
+      "url": "https://support.airtable.com/docs/using-the-airtable-mcp-server"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats follows from the other fields. The rate limits (5 requests/sec per base, 50/sec per user or service account, 30s wait after a 429) match the rate-limits page. The unconfirmed free-plan access and breadth caveats are fairly stated.",
+      "url": "https://airtable.com/developers/web/api/rate-limits"
+    }
+  ],
+  "corrected": {
+    "app": "Airtable",
+    "category": "Database / no-code app platform",
+    "one_liner": "Airtable is a cloud platform combining spreadsheet-style databases with apps and automations for organizing and managing team data.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Personal access tokens (created at airtable.com/create/tokens, scoped to chosen scopes and bases) sent as Authorization: Bearer. Enterprise admins can create service-account tokens. OAuth2 for third-party integrations; register the integration at airtable.com/create/oauth. Legacy API key status was not verified.",
+    "access": "self_serve_free",
+    "access_notes": "PAT creation is self-serve. No fetched page states plan requirements for the REST API, and the rate-limits page says limits may be tiered by plan, so free-plan API access is inferred, not confirmed. The MCP support page lists 'All plans'. OAuth registration shows no review step, but a privacy policy and ToS URL are needed before other users can authorize the integration.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.airtable.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Rate limits: 5 requests/sec per base and 50/sec per user or service account, with a 30s wait after a 429. Airtable may change limits and tier them by plan. Free-plan API access is not explicitly confirmed. Breadth is inferred from the PAT page saying PATs reach all public endpoints including Metadata API endpoints; the full endpoint list was not reviewed.",
+    "evidence": {
+      "auth": "https://airtable.com/developers/web/guides/personal-access-tokens ; https://airtable.com/developers/web/guides/oauth-integrations",
+      "access": "https://airtable.com/developers/web/guides/personal-access-tokens ; https://support.airtable.com/docs/using-the-airtable-mcp-server ; https://airtable.com/developers/web/api/rate-limits",
+      "api": "https://airtable.com/developers/web/api/introduction ; https://airtable.com/developers/web/guides/personal-access-tokens",
+      "mcp": "https://support.airtable.com/docs/using-the-airtable-mcp-server"
+    },
+    "confidence": "low"
+  }
+}

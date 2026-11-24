@@ -1,0 +1,39 @@
+{
+  "id": "87",
+  "input": {
+    "id": "87",
+    "category": "Finance and Fintech",
+    "app": "Xero",
+    "hint": "developer.xero.com"
+  },
+  "meta": {
+    "cost_usd": 0.08129333,
+    "turns": 11
+  },
+  "record": {
+    "app": "Xero",
+    "category": "Accounting",
+    "one_liner": "Cloud accounting software for small businesses, with invoicing, bank reconciliation, payroll, and reporting.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "auth_notes": "OAuth2 authorization code flow, and PKCE per the MCP README, for multi-org apps. Custom Connections (client credentials for a single org) is a paid, separate option. The OAuth and Custom Connections doc pages returned only titles when fetched. These details come from the MCP README and search results, not from fetched vendor docs.",
+    "access": "self_serve_free",
+    "access_notes": "The fetched developer.xero.com/pricing page shows a Starter plan with no fee, no payment method, 5 connections, and 1,000 API calls per day per org. Core is A$35/month for 50 connections and needs a payment method. Plus and above need App Certification. Advanced and Enterprise need a security assessment. The Journals endpoint, XPM API, and Bulk Connections are listed as premium and need a security assessment and approval. Custom Connections cost about US$5/month per connection, per a secondary source that I did not verify on Xero's site. I did not confirm whether Starter allows a normal data pull. The page lists its egress as n/a. I also did not confirm whether a demo company is free.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://github.com/XeroAPI/xero-mcp-server",
+    "verdict": "ready_with_caveats",
+    "blocker": "Starter is capped at 5 connections, so a multi-tenant agent toolkit needs a paid plan (Core and up). Plus and above need App Certification. Some endpoints need a security assessment. Pricing has changed recently (tiers from March 2026, per secondary sources).",
+    "evidence": {
+      "auth": "https://raw.githubusercontent.com/XeroAPI/xero-mcp-server/HEAD/README.md (fetched; describes Custom Connections and bearer token/PKCE modes only for the MCP server). The OAuth doc page returned only its title.",
+      "access": "https://developer.xero.com/pricing",
+      "api": null,
+      "mcp": "https://raw.githubusercontent.com/XeroAPI/xero-mcp-server/HEAD/README.md (fetched; the package is @xeroapi/xero-mcp-server under the XeroAPI GitHub org, but the page does not itself say 'official')"
+    },
+    "confidence": "low"
+  }
+}

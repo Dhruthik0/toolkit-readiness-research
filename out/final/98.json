@@ -1,0 +1,71 @@
+{
+  "id": "98",
+  "input": {
+    "id": "98",
+    "category": "AI, Research and Media-native",
+    "app": "Mermaid CLI",
+    "hint": "github.com/mermaid-js/mermaid-cli"
+  },
+  "meta": {
+    "cost_usd": 0.03001048,
+    "turns": 4
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "README describes no authentication; local CLI.",
+      "url": "https://github.com/mermaid-js/mermaid-cli"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "MIT license, npm install, Docker/Podman all confirmed. Browser dependency only indirect (puppeteer-config.json, chromium known issues).",
+      "url": "https://github.com/mermaid-js/mermaid-cli"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "CLI mmdc and Node run() API confirmed; README states Node API is not covered by semver. Outputs SVG/PNG/PDF.",
+      "url": "https://github.com/mermaid-js/mermaid-cli"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "mermaid-cli README has no MCP mention; hustcc/mcp-mermaid is an independent community repo by user hustcc, with no stated mermaid-js affiliation. peng-shawn server not fetched.",
+      "url": "https://github.com/hustcc/mcp-mermaid"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent: local CLI, no auth, needs Node plus headless browser in a sandbox, no official MCP.",
+      "url": "https://github.com/mermaid-js/mermaid-cli"
+    }
+  ],
+  "corrected": {
+    "app": "Mermaid CLI",
+    "category": "Developer tool / diagram rendering",
+    "one_liner": "Open-source command-line tool (mmdc) that renders Mermaid diagram definitions into SVG, PNG, or PDF, including from Markdown files.",
+    "auth_methods": [
+      "None"
+    ],
+    "auth_notes": "Local tool with no hosted service and no authentication.",
+    "access": "self_serve_free",
+    "access_notes": "Free MIT-licensed npm package (@mermaid-js/mermaid-cli), also available as Docker/Podman images. No credentials needed. It runs locally; the README references puppeteer config and chromium known issues, indicating a headless browser dependency, so an agent toolkit needs Node plus a headless browser rather than calling a remote API.",
+    "api_types": [
+      "CLI / library only"
+    ],
+    "api_breadth": "narrow",
+    "mcp": "community",
+    "mcp_url": "https://github.com/hustcc/mcp-mermaid",
+    "verdict": "ready_with_caveats",
+    "blocker": "No hosted REST API. It is a local CLI and Node library, and the Node API is not covered by semver. An agent toolkit has to run it in a sandbox or container. No official MCP server was found; community servers exist.",
+    "evidence": {
+      "auth": "https://github.com/mermaid-js/mermaid-cli (README: no authentication described; local CLI)",
+      "access": "https://github.com/mermaid-js/mermaid-cli (npm install, Docker/Podman, MIT license)",
+      "api": "https://github.com/mermaid-js/mermaid-cli (CLI mmdc and Node.js run() API, stated as not covered by semver)",
+      "mcp": "https://github.com/hustcc/mcp-mermaid (independent community MCP server by hustcc, no stated mermaid-js affiliation); mermaid-cli README has no MCP mention"
+    },
+    "confidence": "medium"
+  }
+}

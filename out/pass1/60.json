@@ -1,0 +1,39 @@
+{
+  "id": "60",
+  "input": {
+    "id": "60",
+    "category": "Data, SEO and Scraping",
+    "app": "Clay",
+    "hint": "clay.com"
+  },
+  "meta": {
+    "cost_usd": 0.10138062500000002,
+    "turns": 10
+  },
+  "record": {
+    "app": "Clay",
+    "category": "GTM data enrichment / sales prospecting",
+    "one_liner": "Clay is a go-to-market data platform that finds and enriches company and contact data from many providers and AI research, and runs it in tables, routines and workflows.",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "The Public API uses a personal Clay API key in the `clay-api-key` header. The key is tied to a user and workspace. Create it in the app under API and CLI \u2192 API keys, or with `clay api-keys create`. The docs mention no OAuth for third-party apps. The Clay MCP connector uses its own login in ChatGPT and Claude, but I did not find a documented OAuth flow for third-party API apps.",
+    "access": "paid_plan",
+    "access_notes": "Per the pricing page, the Free plan includes CLI/API search at 100 results per 30 days. It excludes HTTP API integrations, custom functions and signals. Launch gets 1M search results per 30 days. Growth and Enterprise add HTTP API integrations. The docs say Tables are Enterprise only. I did not find which plan is needed for the Routines API, and the docs do not clearly state API-key creation by plan. A free key may work for limited search, which I did not verify by creating a key. Pricing page figures contain internal inconsistencies, so treat plan details as unconfirmed.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://www.clay.com/guides/clay-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API is oriented to search, routines, tables, credits and workflow runs, not full CRUD on tables and rows. Meaningful use needs a paid plan: the Free plan allows only 100 search results per 30 days, and Tables are Enterprise only. The rate limit values are not published in what I fetched. The official MCP server URL was not confirmed on a vendor page. A directory listing gave https://api.clay.com/v3/mcp, which is unverified.",
+    "evidence": {
+      "auth": "https://developers.clay.com/public-api/authentication.md",
+      "access": "https://www.clay.com/pricing",
+      "api": "https://developers.clay.com/llms.txt",
+      "mcp": "https://www.clay.com/guides/clay-mcp"
+    },
+    "confidence": "medium"
+  }
+}

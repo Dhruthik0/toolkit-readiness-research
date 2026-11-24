@@ -1,0 +1,72 @@
+{
+  "id": "94",
+  "input": {
+    "id": "94",
+    "category": "AI, Research and Media-native",
+    "app": "Consensus",
+    "hint": "consensus.app (OAuth requested)"
+  },
+  "meta": {
+    "cost_usd": 0.06283625500000001,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "llms-full.txt states MCP uses OAuth 2.1 Authorization Code with PKCE, discovery metadata and dynamic client registration. REST uses API key as Authorization: Bearer, scoped to one organization. OAuth is for third-party/agent API access, not just login. Key issuance page is at consensus.app/subscription/api/ (403 to me).",
+      "url": "https://consensus.app/llms-full.txt"
+    },
+    {
+      "field": "access",
+      "status": "contradicted",
+      "note": "llms-full.txt shows a Free account works on the MCP server (1 QPS, default 10 papers), plus an anonymous evaluation tier, so the cheapest path to working credentials is self-serve free, not paid_plan. REST key plan requirement is not stated in any fetched page; a search result claims keys are granted after an application, which I could not verify (subscription/api page returned 403).",
+      "url": "https://consensus.app/llms-full.txt"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "llms-full.txt describes a REST API exposing search, paper detail, synthesis and Consensus Meter as versioned JSON endpoints. consensus.app/home/mcp mentions GET /v1/search. Narrow breadth is consistent with read-only search. Base URL not stated in fetched pages.",
+      "url": "https://consensus.app/llms-full.txt"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "llms-full.txt lists https://mcp.consensus.app/mcp as the vendor's MCP server, with ChatGPT and Claude directory apps wrapping it. The consensus.app/home/mcp page links to Consensus-NLP GitHub and docs.",
+      "url": "https://consensus.app/llms-full.txt"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits: usable via free MCP OAuth today; narrow read-only API; REST key plan/approval unconfirmed; 429 on limits is stated in llms-full.txt.",
+      "url": "https://consensus.app/llms-full.txt"
+    }
+  ],
+  "corrected": {
+    "app": "Consensus",
+    "category": "Academic research search",
+    "one_liner": "AI-powered search engine over 400M+ peer-reviewed papers that returns summaries, study metadata, citations and a Consensus Meter of supporting vs. refuting findings.",
+    "auth_methods": [
+      "OAuth2",
+      "API key"
+    ],
+    "auth_notes": "Per Consensus's llms-full.txt: the MCP server uses OAuth 2.1 Authorization Code with PKCE and dynamic client registration (recommended for multi-user agents). The REST API uses an API key sent as a bearer token, issued at consensus.app/subscription/api/ and scoped to one organization. There is also an anonymous, heavily rate-limited MCP tier for evaluation. The key-issuance page and docs.consensus.app returned 403, so the issuance flow is unverified.",
+    "access": "self_serve_free",
+    "access_notes": "Cheapest path: MCP via OAuth with a Free account (limited quota, 1 QPS, default 10 papers per search) or the anonymous evaluation tier. REST API: key is scoped to an organization; which plan includes it, and whether it is self-serve or application-based (one third-party source says application/approval), is unverified. Treat REST access as unconfirmed.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "narrow",
+    "mcp": "official",
+    "mcp_url": "https://mcp.consensus.app/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "API is read-only search (search, paper detail, synthesis, Consensus Meter), so narrow. REST key plan/approval status unverified. Free MCP quotas are limited; exceeding limits returns HTTP 429 with Retry-After. Official docs returned 403, so endpoint details and base URL are unconfirmed.",
+    "evidence": {
+      "auth": "https://consensus.app/llms-full.txt",
+      "access": "https://consensus.app/llms-full.txt",
+      "api": "https://consensus.app/llms-full.txt",
+      "mcp": "https://consensus.app/llms-full.txt"
+    },
+    "confidence": "low"
+  }
+}

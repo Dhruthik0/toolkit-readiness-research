@@ -1,0 +1,40 @@
+{
+  "id": "95",
+  "input": {
+    "id": "95",
+    "category": "AI, Research and Media-native",
+    "app": "Reducto",
+    "hint": "reducto.ai (document parsing)"
+  },
+  "meta": {
+    "cost_usd": 0.07012760999999999,
+    "turns": 8
+  },
+  "record": {
+    "app": "Reducto",
+    "category": "Document parsing / AI document processing",
+    "one_liner": "Reducto is an API and visual Studio platform that parses, extracts structured data from, splits, classifies and edits PDFs and other documents for AI pipelines.",
+    "auth_methods": [
+      "API key",
+      "Bearer token"
+    ],
+    "auth_notes": "API key created in Studio (studio.reducto.ai/api-keys) and sent as 'Authorization: Bearer $REDUCTO_API_KEY'. No OAuth flow for third-party apps found. The local MCP server also supports a browser device-code login that saves a key locally.",
+    "access": "self_serve_free",
+    "access_notes": "Pricing page: Standard plan is \"free to start\" with $150 free usage, then pay-as-you-go. Sign up via Studio and create a key. The pricing page's FAQ on key access and credit eligibility was blank. A search snippet said the key-creation role may be limited to Owners; I did not verify that on a fetched page. Rate limits on Standard: 500 concurrent pages (r-1) and 50 (r-1 mini), column mapping inferred.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://mcp.reducto.ai/mcp",
+    "verdict": "ready",
+    "blocker": "none. Minor: free credits are limited ($150), the base URL was only seen in a cURL example (platform.reducto.ai), and key-creation permissions are unverified.",
+    "evidence": {
+      "auth": "https://docs.reducto.ai/quickstart \u2014 Authorization: Bearer $REDUCTO_API_KEY; key created in Studio API Keys",
+      "access": "https://reducto.ai/pricing \u2014 Standard plan free to start with $150 in free usage; Parse/Extract/Edit/Split included",
+      "api": "https://docs.reducto.ai \u2014 lists /parse, /extract, /split, /classify, /edit endpoints",
+      "mcp": "https://docs.reducto.ai/mcp-server \u2014 hosted server at https://mcp.reducto.ai/mcp with bearer key; local uvx mcp-server-reducto; 9 tools"
+    },
+    "confidence": "medium"
+  }
+}

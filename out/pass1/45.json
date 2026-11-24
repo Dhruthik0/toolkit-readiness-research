@@ -1,0 +1,42 @@
+{
+  "id": "45",
+  "input": {
+    "id": "45",
+    "category": "Ecommerce",
+    "app": "Magento (Adobe Commerce)",
+    "hint": "developer.adobe.com/commerce"
+  },
+  "meta": {
+    "cost_usd": 0.05773531,
+    "turns": 7
+  },
+  "record": {
+    "app": "Magento (Adobe Commerce)",
+    "category": "E-commerce platform",
+    "one_liner": "Adobe Commerce (formerly Magento) is an e-commerce platform for catalog, orders, customers and storefronts, available as open source, self-hosted/PaaS, or SaaS.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token",
+      "Other"
+    ],
+    "auth_notes": "PaaS/on-prem/Open Source: admin and customer tokens (Bearer), integrations using OAuth 1.0a (consumer key/secret plus access token/secret; this is not OAuth2), session cookies, and anonymous endpoints. SaaS (Commerce as a Cloud Service): Adobe IMS access tokens required, with user-based and server-to-server flows. I did not fetch the IMS pages, so the exact IMS flow (likely OAuth2-style) is unverified. 'OAuth2' is listed for IMS only. 'Other' is OAuth 1.0a.",
+    "access": "paid_plan",
+    "access_notes": "Magento Open Source is free to self-host, and you create an integration or admin token yourself, but you must run your own instance. Adobe Commerce PaaS and SaaS are paid, and I did not verify pricing or any trial or sandbox. The 'paid_plan' value is an inference. Credentials are self-created per store by an admin. There is no central developer signup.",
+    "api_types": [
+      "REST",
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "community",
+    "mcp_url": "https://developer.adobe.com/commerce/extensibility/developer-agent/tools-overview",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API is per-store: each merchant has its own host and credentials, and there is no central OAuth app for third parties. PaaS uses OAuth 1.0a or admin tokens. SaaS requires Adobe IMS and exposes fewer REST endpoints, with customer and guest REST endpoints missing. Adobe's MCP servers are developer/IDE tooling, not runtime store-data access. The breadth rating is based on the full PaaS REST framework, and I did not fetch the REST reference itself.",
+    "evidence": {
+      "auth": "https://developer.adobe.com/commerce/webapi/get-started/authentication/ (PaaS: token-based, OAuth 1.0a integrations, session, anonymous) and https://developer.adobe.com/commerce/webapi/rest/ (SaaS requires IMS access tokens)",
+      "access": "https://developer.adobe.com/commerce/webapi/get-started/authentication/ (credentials created by admins via System > Extension > Integration). Pricing and trial were not fetched.",
+      "api": "https://developer.adobe.com/commerce/webapi/ (REST and GraphQL) and https://developer.adobe.com/commerce/webapi/rest/ (full REST on PaaS, subset on SaaS)",
+      "mcp": "https://developer.adobe.com/commerce/extensibility/developer-agent/tools-overview (Adobe's MCP servers are for development tasks, not store data). Community store-data servers (CData, StackOne, Cequence) appeared only in search results and were not fetched."
+    },
+    "confidence": "medium"
+  }
+}

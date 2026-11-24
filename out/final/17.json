@@ -1,0 +1,73 @@
+{
+  "id": "17",
+  "input": {
+    "id": "17",
+    "category": "Support and Helpdesk",
+    "app": "Plain",
+    "hint": "plain.com"
+  },
+  "meta": {
+    "cost_usd": 0.05990511,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page confirms API keys (machine user, per-key permissions) sent as Bearer. It also says OAuth apps exist as an alternative for calling the API as a workspace user, though the flow isn't described. OAuth2 is kept, with the caveat that the flow is undocumented on this page.",
+      "url": "https://www.plain.com/docs/graphql/authentication"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Pricing page confirms a 7-day trial with no credit card, and Foundation $45, Horizon $99, Frontier custom, billed annually. API/Webhooks/MCP are listed under Developer platform with no plan mapping. Post-trial API access is unverified. The page's struck-through $55 was not noted in the record, which is immaterial.",
+      "url": "https://www.plain.com/pricing"
+    },
+    {
+      "field": "api",
+      "status": "contradicted",
+      "note": "Intro page confirms GraphQL only (POST to core-api.uk.plain.com/graphql/v1). WebSocket is not documented for external API users; it is used only by Plain's own web app internally (per its engineering blog). Removed WebSocket. 'Broad' is supported by the vendor's claim of no limitations vs the UI and by nearly 400 MCP tools, but no object list was fetched.",
+      "url": "https://www.plain.com/docs/graphql/introduction"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "MCP docs page on plain.com documents the hosted server at https://mcp.plain.com/mcp with OAuth (openid and offline_access scopes) and nearly 400 tools. It is vendor-hosted, so it is official, though the page doesn't use the word 'official' for it.",
+      "url": "https://www.plain.com/docs/agents/mcp-server"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits: a self-serve trial, a documented GraphQL API with Bearer keys, and an official MCP server. Caveats are that the plan mapping for API access is undocumented and rate limits were not found. The blocker text should drop the WebSocket claim.",
+      "url": "https://www.plain.com/docs/graphql/introduction"
+    }
+  ],
+  "corrected": {
+    "app": "Plain",
+    "category": "Helpdesk",
+    "one_liner": "Plain is an API-first customer support platform for B2B and SaaS teams, with threads, customers, and AI agent tooling across Slack, email, and chat.",
+    "auth_methods": [
+      "API key",
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "The GraphQL API takes an API key, created for a machine user with per-key permissions, sent as a Bearer token in the Authorization header (plainApiKey_...). The auth page also says OAuth apps can call the API as a workspace user but does not describe the flow. The official MCP server uses OAuth with openid and offline_access scopes.",
+    "access": "self_serve_trial",
+    "access_notes": "The pricing page offers a 7-day free trial with no credit card. Paid tiers are Foundation at $45/user/month (annual billing), Horizon at $99/user/month, and Frontier at custom pricing. The pricing page lists \"API, Webhooks, Events, MCP\" under Developer platform but does not say which plans include them. The docs state no plan restriction. Whether API access continues after the trial on Foundation is unverified. No free tier was found.",
+    "api_types": [
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.plain.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Credentials are self-serve, but only via a 7-day trial. Continued API access likely needs a paid plan, and the plan mapping is not documented. Rate limits were not found. The API is GraphQL only (POST); no external WebSocket API is documented. Breadth is inferred from the vendor's 'no limitations vs the UI' claim and the roughly 400 MCP tools, not from an object list. Webhooks are listed on the pricing page, and the subscriptionEventTypes query exists in the reference.",
+    "evidence": {
+      "auth": "https://www.plain.com/docs/graphql/authentication",
+      "access": "https://www.plain.com/pricing",
+      "api": "https://www.plain.com/docs/graphql/introduction",
+      "mcp": "https://www.plain.com/docs/agents/mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

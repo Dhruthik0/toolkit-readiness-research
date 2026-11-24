@@ -1,0 +1,73 @@
+{
+  "id": "83",
+  "input": {
+    "id": "83",
+    "category": "Finance and Fintech",
+    "app": "Binance",
+    "hint": "binance-docs.github.io"
+  },
+  "meta": {
+    "cost_usd": 0.11444201000000001,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "General API info page states X-MBX-APIKEY header, signature+timestamp on signed endpoints, HMAC/RSA/Ed25519 keys (Ed25519 highly recommended), TRADE/USER_DATA/USER_STREAM, trading off by default. No OAuth described. The page does NOT say HMAC is deprecated and does not state RSA 2048/4096 (testnet page gives 2048-4096); 'deprecated' is unsupported. 'Other' is unnecessary.",
+      "url": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Testnet page: log in at testnet.binance.vision, generate key, virtual balances provided. Production KYC not checked; self_serve_free stands for testnet/market data, production KYC unverified.",
+      "url": "https://developers.binance.com/docs/binance-spot-api-docs/testnet/general-info"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "REST confirmed on general info page; WebSocket API page confirms trading/account requests over wss with signing and session logon. Original cite did not cover WebSocket, so evidence URL updated.",
+      "url": "https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api"
+    },
+    {
+      "field": "mcp",
+      "status": "contradicted",
+      "note": "Binance announced an official MCP server (Agent OS, Aug 2026) at https://agent.binance.com/mcp/agentic, Streamable HTTP, per PR Newswire release. Record said community only and cited no evidence. Auth method of official server not stated in release.",
+      "url": "https://www.prnewswire.com/news-releases/binance-introduces-agent-os-to-connect-ai-applications-to-financial-infrastructure-302856306.html"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent: self-serve keys, broad REST/WS, official MCP now exists. Rate limit 429/418 per IP confirmed. Blocker text claimed HMAC deprecated (unsupported) and no OAuth (not found on the page, though sidebar lists 'Binance OAuth', so unresolved).",
+      "url": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information"
+    }
+  ],
+  "corrected": {
+    "app": "Binance",
+    "category": "Crypto exchange / Trading",
+    "one_liner": "Binance is a cryptocurrency exchange offering spot, margin, futures, wallet and account services, with public trading APIs.",
+    "auth_methods": [
+      "API key",
+      "HMAC signature"
+    ],
+    "auth_notes": "API key is sent in the X-MBX-APIKEY header. Signed endpoints also need a timestamp and a signature parameter. Three key types are documented: Ed25519 (highly recommended), RSA (PKCS#8; testnet page states 2048-4096 bit) and HMAC-SHA256. Security types are TRADE, USER_DATA and USER_STREAM (plus NONE for public data); keys cannot TRADE by default. WebSocket API supports session.logon with Ed25519 keys only. The docs sidebar lists a 'Binance OAuth' section that was not examined, so third-party OAuth is unresolved. The claim that HMAC is deprecated was not found on fetched pages.",
+    "access": "self_serve_free",
+    "access_notes": "The testnet needs only a login at testnet.binance.vision, and virtual balances are provided. Production keys are created in API Management in a Binance account; KYC requirements for production keys were not verified. Market data endpoints work without keys.",
+    "api_types": [
+      "REST",
+      "WebSocket"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://agent.binance.com/mcp/agentic",
+    "verdict": "ready_with_caveats",
+    "blocker": "Financial actions carry real risk; use a subaccount and restricted permissions. Users must create and hand over their own API key and secret for the REST/WebSocket APIs (third-party OAuth not confirmed). Rate limits apply per IP, with escalating bans (HTTP 429, then 418). The official MCP server's auth method and regional availability were not verified. Binance.US and regional restrictions were not checked.",
+    "evidence": {
+      "auth": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information",
+      "access": "https://developers.binance.com/docs/binance-spot-api-docs/testnet/general-info",
+      "api": "https://developers.binance.com/docs/binance-spot-api-docs/web-socket-api",
+      "mcp": "https://www.prnewswire.com/news-releases/binance-introduces-agent-os-to-connect-ai-applications-to-financial-infrastructure-302856306.html"
+    },
+    "confidence": "medium"
+  }
+}

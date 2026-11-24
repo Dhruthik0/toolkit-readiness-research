@@ -1,0 +1,42 @@
+{
+  "id": "17",
+  "input": {
+    "id": "17",
+    "category": "Support and Helpdesk",
+    "app": "Plain",
+    "hint": "plain.com"
+  },
+  "meta": {
+    "cost_usd": 0.050471535000000005,
+    "turns": 7
+  },
+  "record": {
+    "app": "Plain",
+    "category": "Helpdesk",
+    "one_liner": "Plain is an API-first customer support platform for B2B and SaaS teams, with threads, customers, and AI agent tooling across Slack, email, and chat.",
+    "auth_methods": [
+      "API key",
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "The GraphQL API takes an API key, created for a machine user (API User or Agent) with per-key permissions, sent as a Bearer token in the Authorization header. The auth page mentions an OAuth app for calling the API as a workspace user but does not describe the flow. The OAuth page was not fetched. The official MCP server uses OAuth with openid and offline_access scopes.",
+    "access": "self_serve_trial",
+    "access_notes": "The pricing page offers a 7-day free trial with no credit card. Paid tiers are Foundation at $45/user/month (annual billing), Horizon at $99/user/month, and Frontier at custom pricing. The pricing page lists \"API, Webhooks, Events, MCP\" under Developer platform but does not say which plans include them. The docs state no plan restriction. Whether API access continues after the trial on Foundation is unverified. No free tier was found.",
+    "api_types": [
+      "GraphQL",
+      "WebSocket"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.plain.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Credentials are self-serve, but only via a 7-day trial. Continued API access likely needs a paid plan, and the plan mapping is not documented. Rate limits were not found. The API is GraphQL only. I inferred \"broad\" from the MCP tool count and the schema pointer rather than from an object list. Webhooks are listed on the pricing page, but I did not fetch their docs.",
+    "evidence": {
+      "auth": "https://www.plain.com/docs/graphql/authentication",
+      "access": "https://www.plain.com/pricing",
+      "api": "https://www.plain.com/docs/graphql/introduction",
+      "mcp": "https://www.plain.com/docs/agents/mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

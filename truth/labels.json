@@ -1,0 +1,661 @@
+{
+ "75": {
+  "app": "Asana",
+  "auth": [
+   [
+    true,
+    true
+   ]
+  ],
+  "access": [
+   "self_serve_free"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "official"
+  ],
+  "verdict": [
+   "ready"
+  ],
+  "sources": [
+   "https://developers.asana.com/docs/authentication",
+   "https://developers.asana.com/docs/rate-limits",
+   "https://developers.asana.com/docs/integrating-with-asanas-mcp-server"
+  ],
+  "notes": "PAT + OAuth2; free plan has API (150 rpm); official MCP mcp.asana.com/v2/mcp"
+ },
+ "81": {
+  "app": "Stripe",
+  "auth": [
+   [
+    true,
+    true
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "access": [
+   "self_serve_free"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "official"
+  ],
+  "verdict": [
+   "ready"
+  ],
+  "sources": [
+   "https://docs.stripe.com/api/authentication",
+   "https://docs.stripe.com/connect/oauth-reference",
+   "https://docs.stripe.com/sandboxes",
+   "https://docs.stripe.com/mcp"
+  ],
+  "notes": "Secret API key (Basic or Bearer). Connect OAuth exists but is legacy/platform-only, so either OAuth answer accepted. Free test mode/sandbox. Official MCP mcp.stripe.com"
+ },
+ "84": {
+  "app": "Paygent Connect",
+  "auth": [
+   [
+    false,
+    true
+   ],
+   [
+    false,
+    false
+   ]
+  ],
+  "access": [
+   "no_public_api",
+   "partner_gated"
+  ],
+  "api": [
+   [],
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "none_found"
+  ],
+  "verdict": [
+   "blocked"
+  ],
+  "sources": [
+   "https://docs.nmi.com/reference/authentication",
+   "https://docs.nmi.com/docs/mcp-api"
+  ],
+  "notes": "No vendor page ties 'Paygent Connect' to a public developer API; several unrelated 'Paygent' companies exist. Underlying NMI gateway has API-key REST + its own MCP, but that is NMI's, not Paygent's. Correct finding: no identifiable public API -> blocked, needs outreach."
+ },
+ "92": {
+  "app": "Otter AI",
+  "auth": [
+   [
+    false,
+    true
+   ],
+   [
+    true,
+    true
+   ]
+  ],
+  "access": [
+   "partner_gated",
+   "paid_plan"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "official"
+  ],
+  "verdict": [
+   "ready_with_caveats",
+   "blocked"
+  ],
+  "sources": [
+   "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+   "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server"
+  ],
+  "notes": "Public API is Enterprise-workspace only ('contact your Otter account manager'). Official MCP (mcp.otter.ai, OAuth). Verdict depends on API vs MCP path, both accepted. Browser check: article states 'Plan required ... Otter Enterprise plan', Bearer API key, ~8 endpoints (channels, conversations, workspace).",
+  "checked_in_browser": true
+ },
+ "96": {
+  "app": "Devin",
+  "auth": [
+   [
+    false,
+    true
+   ]
+  ],
+  "access": [
+   "paid_plan"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "official"
+  ],
+  "verdict": [
+   "ready_with_caveats"
+  ],
+  "sources": [
+   "https://docs.devin.ai/api-reference/authentication",
+   "https://docs.devin.ai/work-with-devin/devin-mcp",
+   "https://devin.ai/pricing"
+  ],
+  "notes": "Bearer service-user keys / PATs; official MCP mcp.devin.ai. Browser check of devin.ai/pricing compare table: 'Devin API' is x on Free, check on Pro ($20) and above -> paid_plan.",
+  "checked_in_browser": true
+ },
+ "59": {
+  "app": "Waterfall.io",
+  "auth": [
+   [
+    false,
+    true
+   ]
+  ],
+  "access": [
+   "approval_required",
+   "partner_gated"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "none_found"
+  ],
+  "verdict": [
+   "blocked"
+  ],
+  "sources": [
+   "https://docs.waterfall.io/v1/authentication.md",
+   "https://docs.waterfall.io/v1/faq.md",
+   "https://docs.waterfall.io/v1/evaluate-waterfall.md"
+  ],
+  "notes": "x-api-key header. 'API access is available by approval' + 'Talk to our team about ... API access, and pricing'. No vendor MCP (publishes agent skills repo instead)."
+ },
+ "60": {
+  "app": "Clay",
+  "auth": [
+   [
+    false,
+    true
+   ],
+   [
+    true,
+    true
+   ]
+  ],
+  "access": [
+   "self_serve_free",
+   "self_serve_trial"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "official"
+  ],
+  "verdict": [
+   "ready",
+   "ready_with_caveats"
+  ],
+  "sources": [
+   "https://developers.clay.com/quickstart.md",
+   "https://www.clay.com/pricing",
+   "https://university.clay.com/docs/connect-to-clay-mcp"
+  ],
+  "notes": "Public REST API (api.clay.com/public/v0) with clay-api-key; OAuth only for MCP clients. Free plan lists CLI/API (100 results/30d); HTTP-API columns need Growth; Tables Enterprise. Official MCP api.clay.com/v3/mcp. Older sources say 'no public API': a likely trap."
+ },
+ "67": {
+  "app": "Snowflake",
+  "auth": [
+   [
+    true,
+    true
+   ]
+  ],
+  "access": [
+   "self_serve_trial"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "official"
+  ],
+  "verdict": [
+   "ready",
+   "ready_with_caveats"
+  ],
+  "sources": [
+   "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+   "https://docs.snowflake.com/en/user-guide/admin-trial-account",
+   "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp"
+  ],
+  "notes": "Key-pair JWT, OAuth (custom clients), PAT. 30-day trial, no card. SQL API + REST APIs. Snowflake-managed MCP server GA Nov 2025."
+ },
+ "69": {
+  "app": "Datadog",
+  "auth": [
+   [
+    true,
+    true
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "access": [
+   "self_serve_free",
+   "self_serve_trial"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "official"
+  ],
+  "verdict": [
+   "ready",
+   "ready_with_caveats"
+  ],
+  "sources": [
+   "https://docs.datadoghq.com/api/latest/",
+   "https://docs.datadoghq.com/developers/authorization/oauth2_in_datadog/",
+   "https://www.datadoghq.com/pricing/",
+   "https://docs.datadoghq.com/mcp_server/setup/"
+  ],
+  "notes": "DD-API-KEY + application key, PATs; OAuth2 exists but partner-oriented, so either accepted. Free tier (5 hosts) + 14-day trial. Official remote MCP."
+ },
+ "72": {
+  "app": "Airtable",
+  "auth": [
+   [
+    true,
+    true
+   ]
+  ],
+  "access": [
+   "self_serve_free"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "official"
+  ],
+  "verdict": [
+   "ready"
+  ],
+  "sources": [
+   "https://airtable.com/developers/web/api/authentication",
+   "https://support.airtable.com/docs/airtable-plans",
+   "https://airtable.com/developers/agents/mcp/getting-started"
+  ],
+  "notes": "PAT (Bearer) + OAuth2 PKCE; Free plan 1000 API calls/month; official MCP mcp.airtable.com/mcp on all plans."
+ },
+ "9": {
+  "app": "Copper",
+  "auth": [
+   [
+    true,
+    true
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "access": [
+   "paid_plan",
+   "self_serve_trial"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "none_found",
+   "community"
+  ],
+  "verdict": [
+   "ready_with_caveats"
+  ],
+  "sources": [
+   "https://developer.copper.com/introduction/authentication.html",
+   "https://developer.copper.com/introduction/oauth/index.html",
+   "https://copper.com/pricing"
+  ],
+  "notes": "API key + user email headers; OAuth2 for partner apps (register via partners@copper.com). Pricing table: API on Professional/Business, not Basic. No official MCP."
+ },
+ "10": {
+  "app": "DealCloud",
+  "auth": [
+   [
+    true,
+    false
+   ],
+   [
+    true,
+    true
+   ]
+  ],
+  "access": [
+   "partner_gated"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "official"
+  ],
+  "verdict": [
+   "blocked"
+  ],
+  "sources": [
+   "https://api.docs.dealcloud.com/docs/token",
+   "https://api.docs.dealcloud.com/docs/apikeys",
+   "https://api.docs.dealcloud.com/mcp"
+  ],
+  "notes": "OAuth2 client-credentials -> Bearer, keys enabled per user by the customer's admin/CSM. Intapp customers only, demo-request sales. Official DealCloud MCP (OAuth, endpoint per tenant)."
+ },
+ "12": {
+  "app": "Intercom",
+  "auth": [
+   [
+    true,
+    true
+   ]
+  ],
+  "access": [
+   "self_serve_free",
+   "approval_required"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "official"
+  ],
+  "verdict": [
+   "ready",
+   "ready_with_caveats"
+  ],
+  "sources": [
+   "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication/",
+   "https://developers.intercom.com/docs/build-an-integration/getting-started/",
+   "https://developers.intercom.com/docs/publish-to-the-app-store/review-publish-your-app",
+   "https://developers.intercom.com/docs/guides/mcp"
+  ],
+  "notes": "Access token (Bearer) + OAuth for public apps. Free development workspace; public apps need Intercom review (both accepted). Official MCP mcp.intercom.com."
+ },
+ "18": {
+  "app": "Help Scout",
+  "auth": [
+   [
+    true,
+    true
+   ]
+  ],
+  "access": [
+   "paid_plan",
+   "self_serve_trial"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "official"
+  ],
+  "verdict": [
+   "ready_with_caveats"
+  ],
+  "sources": [
+   "https://developer.helpscout.com/mailbox-api/overview/authentication",
+   "https://docs.helpscout.com/article/1140-mailbox-api",
+   "https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports"
+  ],
+  "notes": "OAuth2 (auth code + client credentials) for Inbox API; API key Basic for Docs API. 'The Free plan does not include access to the API'. Official read-only MCP on Standard+ (GA Jul 2026)."
+ },
+ "22": {
+  "app": "Twilio",
+  "auth": [
+   [
+    true,
+    true
+   ],
+   [
+    false,
+    true
+   ]
+  ],
+  "access": [
+   "self_serve_trial",
+   "self_serve_free"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "official"
+  ],
+  "verdict": [
+   "ready",
+   "ready_with_caveats"
+  ],
+  "sources": [
+   "https://www.twilio.com/docs/usage/requests-to-twilio",
+   "https://www.twilio.com/en-us/changelog/oauth-apis-ga",
+   "https://www.twilio.com/docs/usage/trials",
+   "https://www.twilio.com/docs/mcp"
+  ],
+  "notes": "Basic auth with API key SID/secret; OAuth GA Apr 2026 (third-party use unclear, so both accepted). Free 30-day trial, no card. Official MCPs (docs MCP + twilio-labs alpha)."
+ },
+ "24": {
+  "app": "Lark (Larksuite)",
+  "auth": [
+   [
+    true,
+    true
+   ],
+   [
+    true,
+    false
+   ]
+  ],
+  "access": [
+   "self_serve_free"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "official"
+  ],
+  "verdict": [
+   "ready",
+   "ready_with_caveats"
+  ],
+  "sources": [
+   "https://open.larksuite.com/document/ukTMukTMukTM/ukDNz4SO0MjL5QzM/auth-v3/auth/tenant_access_token_internal.md",
+   "https://open.larksuite.com/llms.txt",
+   "https://www.larksuite.com/en_us/plans",
+   "https://github.com/larksuite/lark-openapi-mcp"
+  ],
+  "notes": "App ID/secret -> tenant_access_token; OAuth2 for user_access_token. Developer platform 'Included in every plan' incl. $0 Starter. Official lark-openapi-mcp (beta). Custom-app scopes approved by tenant admin, not Lark."
+ },
+ "32": {
+  "app": "Meta Ads",
+  "auth": [
+   [
+    true,
+    false
+   ],
+   [
+    true,
+    true
+   ]
+  ],
+  "access": [
+   "approval_required"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "official"
+  ],
+  "verdict": [
+   "ready_with_caveats"
+  ],
+  "sources": [
+   "https://developers.facebook.com/docs/marketing-api/get-started/authentication",
+   "https://developers.facebook.com/documentation/ads-commerce/marketing-api/get-started/authorization.md",
+   "https://developers.facebook.com/blog/post/2026/07/16/meta-ads-mcp-server/"
+  ],
+  "notes": "OAuth (Facebook Login) user tokens + system user tokens. Limited access is dev-only; managing others' ad accounts needs App Review for Full/Advanced access. Official Ads MCP (mcp.facebook.com/ads) opened to all developers Jul 2026."
+ },
+ "40": {
+  "app": "SendGrid",
+  "auth": [
+   [
+    false,
+    true
+   ]
+  ],
+  "access": [
+   "self_serve_trial",
+   "paid_plan"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "community"
+  ],
+  "verdict": [
+   "ready_with_caveats"
+  ],
+  "sources": [
+   "https://www.twilio.com/docs/sendgrid/api-reference/how-to-use-the-sendgrid-v3-api/authentication",
+   "https://www.twilio.com/en-us/changelog/changes-coming-to-sendgrid-s-free-plans",
+   "https://www.twilio.com/docs/ai/mcp.md"
+  ],
+  "notes": "API key as Bearer. Free plan retired May 2025 -> 60-day trial, then paid. Twilio's hosted MCP only searches docs and cannot act on an account, so account-capable MCPs are community only."
+ },
+ "48": {
+  "app": "Gumroad",
+  "auth": [
+   [
+    true,
+    true
+   ]
+  ],
+  "access": [
+   "self_serve_free"
+  ],
+  "api": [
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "official"
+  ],
+  "verdict": [
+   "ready"
+  ],
+  "sources": [
+   "https://gumroad.com/api",
+   "https://gumroad.com/pricing",
+   "https://gumroad.com/mcp"
+  ],
+  "notes": "OAuth2 app + self-generated access token. Free account (no monthly fee). Official Gumroad MCP in Claude's connector directory."
+ },
+ "50": {
+  "app": "fanbasis",
+  "auth": [
+   [
+    true,
+    true
+   ],
+   [
+    true,
+    false
+   ],
+   [
+    false,
+    true
+   ],
+   [
+    false,
+    false
+   ]
+  ],
+  "access": [
+   "no_public_api",
+   "partner_gated"
+  ],
+  "api": [
+   [],
+   [
+    "REST"
+   ]
+  ],
+  "mcp": [
+   "none_found",
+   "official"
+  ],
+  "verdict": [
+   "blocked"
+  ],
+  "sources": [
+   "https://commas.com/fanbasis-is-now-commas",
+   "https://commas.com/payments",
+   "https://commas.com/enterprises"
+  ],
+  "notes": "Renamed Commas on 2026-07-14. Marketing pages claim a REST API, SDKs and an 'MCP beta', but no public docs, key page or server URL exist (/developers, /api, /docs 404). Auth is undeterminable, so it is not scored. Correct finding: blocked, needs outreach."
+ }
+}

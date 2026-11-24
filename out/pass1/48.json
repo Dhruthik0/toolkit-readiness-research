@@ -1,0 +1,40 @@
+{
+  "id": "48",
+  "input": {
+    "id": "48",
+    "category": "Ecommerce",
+    "app": "Gumroad",
+    "hint": "gumroad.com/api"
+  },
+  "meta": {
+    "cost_usd": 0.07965175000000001,
+    "turns": 11
+  },
+  "record": {
+    "app": "Gumroad",
+    "category": "E-commerce / Creator Commerce",
+    "one_liner": "Gumroad is a platform for creators to sell digital products, memberships and subscriptions directly to customers.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "Third-party sources say Gumroad supports OAuth2 for apps and a personal access token generated for a registered application, both sent as a Bearer token. Scopes reported by third parties: view_public, view_profile, edit_products, view_sales, mark_sales_as_shipped, refund_sales. I could not read the vendor's API page, which renders empty to my fetcher, so this is not verified from Gumroad directly.",
+    "access": "self_serve_free",
+    "access_notes": "Apps are registered from Gumroad's Advanced settings page. Nango's page links to help article 280 for this. I found no mention of a paid tier or an approval step, but Nango marks those fields as unknown. I could not read the help article.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://gumroad.com/claude/v1/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The official API docs (gumroad.com/api and help article 280) returned no body text, so auth, scopes, endpoints and rate limits are unverified against the vendor. The API is likely limited to products, sales, subscribers, licenses, offer codes, variants and webhook subscriptions. Rate limits are unknown.",
+    "evidence": {
+      "auth": "https://nango.dev/docs/integrations/all/gumroad.md (third party; says OAuth and points to Gumroad's scope list). gumroad.com/api was fetched but returned only the title 'API.'",
+      "access": "https://nango.dev/docs/integrations/all/gumroad.md (third party; says apps are registered in Advanced settings and lists app review and paid-plan requirements as unknown). Help article 280 was fetched but returned only its title.",
+      "api": "https://gumroad.com/api was fetched but returned only the title 'API.' REST is inferred from search results, not from a fetched page.",
+      "mcp": "https://gumroad.com/mcp (fetched; official Gumroad page; OAuth-based connector that reads products, sales and payouts and can create or publish products). The server URL https://gumroad.com/claude/v1/mcp comes from a search result summary and was not stated on the fetched page."
+    },
+    "confidence": "low"
+  }
+}

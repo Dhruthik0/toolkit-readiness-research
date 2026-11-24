@@ -1,0 +1,71 @@
+{
+  "id": "89",
+  "input": {
+    "id": "89",
+    "category": "Finance and Fintech",
+    "app": "Ramp",
+    "hint": "docs.ramp.com"
+  },
+  "meta": {
+    "cost_usd": 0.061369639999999996,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Authorization page states OAuth2 grants: Client Credentials (10-day tokens, no refresh token), Authorization Code (third-party, user consent), Refresh Token; resource:permission scopes; cards:read_vault limited to approved integrators; some endpoints 403 without plan feature; sandbox and production need separate apps.",
+      "url": "https://docs.ramp.com/llms-guides/authorization.txt"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "Getting-started page confirms admin creates app at Company > Developer and gets client ID/secret, and admin/Business Owner approval for whole-business apps (authorization page). It states no plan requirement either way, and sandbox access is by separate request. Free self-serve cannot be settled from the docs.",
+      "url": "https://docs.ramp.com/llms-guides/getting-started.txt"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Rate-limit page confirms 200 calls/10s per IP, but does not say REST. The API reference (llms-api.txt) shows /developer/v1/ resource paths across accounting, bills, bank accounts, banking, approvals, audit logs, applications etc. Resource-style HTTP paths with an OpenAPI spec are consistent with REST. Breadth 'broad' is supported by this resource list (cards, users, transactions, reimbursements not seen in the portion read).",
+      "url": "https://docs.ramp.com/llms-api.txt"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Ramp MCP page is in Ramp's own developer docs and gives https://mcp.ramp.com/mcp; the authorization page also describes Ramp MCP and CLI connections. The page does not use the word 'official'; it is vendor-hosted, so official is a reasonable inference.",
+      "url": "https://docs.ramp.com/llms-guides/ramp-mcp.txt"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent: OAuth2 and a vendor MCP exist, but credentials need an admin, sandbox is by request, and some scopes and endpoints are restricted. The rate-limit figure of 200/10s per IP is verified; token issuance has a separate 100/10s cap, which is worth adding.",
+      "url": "https://docs.ramp.com/llms-guides/rate-limiting.txt"
+    }
+  ],
+  "corrected": {
+    "app": "Ramp",
+    "category": "Spend management / corporate cards & AP",
+    "one_liner": "Ramp is a corporate card and spend management platform covering cards, transactions, reimbursements, bill pay, and accounting sync.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "auth_notes": "OAuth 2.0 with Client Credentials (internal server-to-server, 10-day tokens, no refresh), Authorization Code (third-party/public apps, user consent) and Refresh Token (default 1-hour access tokens). Access tokens are sent as bearers. Scopes are resource:permission (e.g. transactions:read). Sandbox and production need separate apps. cards:read_vault is limited to approved integrators, some scopes are partner-only, and some endpoints return 403 without a specific plan feature.",
+    "access": "self_serve_free",
+    "access_notes": "An admin of a Ramp account creates an app in Company > Developer and gets a client ID and secret. Ramp's docs state no plan requirement, but whether a paid plan is needed is not confirmed. The sandbox (demo-api.ramp.com) is requested through a separate access request page whose approval terms are unknown. Apps that access a whole business need Admin or Business Owner approval; apps acting as an individual user need an admin to enable the app in Manage Access. Whether third-party Authorization Code apps need Ramp review before listing is not documented.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.ramp.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Credentials need an admin on a Ramp account. Sandbox access is by request. Rate limit is 200 requests per 10 seconds per IP (token issuance capped separately at 100 per 10 seconds). Some endpoints need specific plan features, and some scopes are limited to approved integrators or partners.",
+    "evidence": {
+      "auth": "https://docs.ramp.com/llms-guides/authorization.txt",
+      "access": "https://docs.ramp.com/llms-guides/getting-started.txt",
+      "api": "https://docs.ramp.com/llms-api.txt",
+      "mcp": "https://docs.ramp.com/llms-guides/ramp-mcp.txt"
+    },
+    "confidence": "low"
+  }
+}

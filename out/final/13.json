@@ -1,0 +1,71 @@
+{
+  "id": "13",
+  "input": {
+    "id": "13",
+    "category": "Support and Helpdesk",
+    "app": "Freshdesk",
+    "hint": "freshdesk.com"
+  },
+  "meta": {
+    "cost_usd": 0.09205619999999999,
+    "turns": 9
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "API docs confirm API key via HTTP Basic. Per-endpoint OAuth scopes are listed but no third-party OAuth flow is described, so omitting OAuth2 is defensible. Service-accounts claim was not re-verified.",
+      "url": "https://developers.freshdesk.com/api/"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Pricing page states 14-day trial, no credit card. The API key help article shows the API is unavailable on Sprout and the Free plan in the table, so paid/trial is needed. Trial 50/min limit is confirmed on the API page. The old evidence URL did not state the free-plan claim, so the key article replaces it.",
+      "url": "https://support.freshdesk.com/en/support/solutions/articles/225435-where-can-i-find-my-api-key-"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "REST with per-plan rate limits and a broad resource set. Only the first 100k of 243k characters were read, but breadth is consistent.",
+      "url": "https://developers.freshdesk.com/api/"
+    },
+    {
+      "field": "mcp",
+      "status": "contradicted",
+      "note": "Freshworks has its own MCP server, documented in a Freshworks help article. Endpoint is https://<subdomain>.freshdesk.com/mcp, API-key auth, GA September 10, 2026. The record said no official server exists. The effytech repo is community, but its license and auth could not be verified from the page.",
+      "url": "https://support.freshdesk.com/support/solutions/articles/50000012670"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats still fits. The blocker text must change because an official MCP exists. It has plan-based action limits: 25, 50 and 100 per minute for Growth, Pro and Enterprise. API key is the only auth.",
+      "url": "https://support.freshdesk.com/support/solutions/articles/50000012670"
+    }
+  ],
+  "corrected": {
+    "app": "Freshdesk",
+    "category": "Helpdesk",
+    "one_liner": "Freshworks' cloud customer-support helpdesk for ticketing, contacts, SLAs, automations and knowledge base.",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "Personal API key sent via HTTP Basic (key as username, any placeholder as password). The API reference lists OAuth 2.0 scopes per endpoint (e.g. freshdesk.tickets.view), but no OAuth flow for third-party apps is described, so OAuth2 is not listed. The official MCP server also uses an API key in the Authorization header.",
+    "access": "self_serve_trial",
+    "access_notes": "14-day trial, no credit card required. Trial API limit is 50 calls/min. The API key help article says the API key and API functionality are not available on the Sprout plan, and its table marks Free as unavailable. Paid plans (Growth/Pro/Enterprise) have API access. Rate limits are per plan with per-endpoint sublimits. The API page is inconsistent between per-minute and per-hour figures.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://support.freshdesk.com/support/solutions/articles/50000012670",
+    "verdict": "ready_with_caveats",
+    "blocker": "No free tier with API access: it needs a 14-day trial or a paid plan. Rate limits are plan-based with per-endpoint sublimits. The official MCP server is rate-limited by plan (25/50/100 actions per minute for Growth/Pro/Enterprise) and has yearly action quotas. It uses API key auth only, with no third-party OAuth flow, so users must supply their own API key and subdomain.",
+    "evidence": {
+      "auth": "https://developers.freshdesk.com/api/ - API key via HTTP Basic auth. Per-endpoint OAuth 2.0 scopes are listed but no flow is described.",
+      "access": "https://www.freshworks.com/freshdesk/pricing/free/ - 14-day trial, no credit card. https://support.freshdesk.com/en/support/solutions/articles/225435-where-can-i-find-my-api-key- - API key not available on Sprout, and Free marked unavailable. https://developers.freshdesk.com/api/ - trial limit of 50 calls/min.",
+      "api": "https://developers.freshdesk.com/api/ - REST reference with a broad resource set and per-plan rate limits. Only the first 100k of 243k characters were read.",
+      "mcp": "https://support.freshdesk.com/support/solutions/articles/50000012670 - Freshworks help article for the Freshworks MCP server at https://<subdomain>.freshdesk.com/mcp. API key auth, GA September 10, 2026. A community alternative is https://github.com/effytech/freshdesk_mcp."
+    },
+    "confidence": "medium"
+  }
+}

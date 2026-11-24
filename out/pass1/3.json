@@ -1,0 +1,40 @@
+{
+  "id": "3",
+  "input": {
+    "id": "3",
+    "category": "CRM and Sales",
+    "app": "Pipedrive",
+    "hint": "pipedrive.com"
+  },
+  "meta": {
+    "cost_usd": 0.079447425,
+    "turns": 9
+  },
+  "record": {
+    "app": "Pipedrive",
+    "category": "CRM",
+    "one_liner": "Sales CRM for managing deals, contacts, organizations, activities and pipelines.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "Per-user personal API token (found in Settings > Personal preferences > API; one active token per user per company) for own-account integrations. OAuth 2.0 authorization-code flow (oauth.pipedrive.com/oauth/authorize and /oauth/token, Bearer access tokens, refresh tokens with 60-day expiry when unused) for apps. I did not fetch a page showing how the API token is passed (header vs query string), so it is classed as API key by inference.",
+    "access": "self_serve_free",
+    "access_notes": "The getting-started page says a developer sandbox account is available by signing up at developers.pipedrive.com. The page doesn't say if it is free or has time limits. I did not verify whether API tokens are available on every paid plan or trial, and I did not fetch any trial or pricing page. A regular account's token is in Settings. Whether OAuth apps need Marketplace review before installs outside the developer's own account was not confirmed (the registration page was not fetched). The page says OAuth is required for Marketplace apps.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.pipedrive.ai/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Unverified: sandbox terms, plan requirements for API tokens, rate limits, and whether OAuth apps need Marketplace review for use by other customers. The official MCP server URL comes only from a third-party blog. Pipedrive's own page doesn't state it, and says MCP usage is subject to plan token limits.",
+    "evidence": {
+      "auth": "https://pipedrive.readme.io/docs/marketplace-oauth-authorization (OAuth flow); https://pipedrive.readme.io/docs/getting-started (API token and OAuth 2.0 named as the methods)",
+      "access": "https://pipedrive.readme.io/docs/getting-started (developer sandbox account via developers.pipedrive.com); https://pipedrive.readme.io/docs/how-to-find-the-api-token (token location)",
+      "api": "https://developers.pipedrive.com/docs/api/v1 (REST, JSON, OpenAPI 3 for v1 and v2, 48 endpoint categories including Deals, Persons, Organizations, Activities, Leads, Webhooks)",
+      "mcp": "https://www.pipedrive.com/en/features/mcp-server (page calls it an official connector built and maintained by Pipedrive, OAuth login, all plans; it does not state the server URL, which came from a tldv.io blog via search)"
+    },
+    "confidence": "medium"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "76",
+  "input": {
+    "id": "76",
+    "category": "Productivity and Project Management",
+    "app": "Monday.com",
+    "hint": "developer.monday.com"
+  },
+  "meta": {
+    "cost_usd": 0.042438340000000005,
+    "turns": 8
+  },
+  "record": {
+    "app": "Monday.com",
+    "category": "Work management / CRM",
+    "one_liner": "Cloud work-management platform for boards, items, projects, and workflows, with CRM and service products built on the same platform.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Personal V2 API token goes in the Authorization header to https://api.monday.com/v2. It acts as the user and has all scopes. OAuth2 is documented for apps: auth.monday.com/oauth2/authorize and /token. The page notes a newer OAuth 2.1 flow with expiring tokens.",
+    "access": "self_serve_free",
+    "access_notes": "The personal token is available from the Developers section of any account. The authentication page also describes a free developer account for testing. The rate-limits page lists a Free-plan cap of 200 API calls/day, and says the cap can be raised with a paid API add-on. I did not find a page stating which plan tiers can use the API. App review for public marketplace distribution is not covered by the pages I fetched.",
+    "api_types": [
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://github.com/mondaycom/monday-ai/tree/master/packages/monday-api-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Free plan is limited to 200 API calls/day. Personal tokens, private apps and non-marketplace public apps all count against it. Higher limits need a paid add-on. Breadth is inferred from the GraphQL schema and examples, because I did not fetch a full object list. Marketplace/public distribution review requirements are unconfirmed.",
+    "evidence": {
+      "auth": "https://developer.monday.com/api-reference/docs/authentication",
+      "access": "https://developer.monday.com/api-reference/docs/rate-limits",
+      "api": "https://developer.monday.com/api-reference/docs/introduction-to-graphql",
+      "mcp": "https://developer.monday.com/apps/docs/mondaycom-mcp-integration"
+    },
+    "confidence": "medium"
+  }
+}

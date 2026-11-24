@@ -1,0 +1,73 @@
+{
+  "id": "69",
+  "input": {
+    "id": "69",
+    "category": "Developer, Infra and Data platforms",
+    "app": "Datadog",
+    "hint": "docs.datadoghq.com/api"
+  },
+  "meta": {
+    "cost_usd": 0.08575461499999999,
+    "turns": 9
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "DD-API-KEY/DD-APPLICATION-KEY confirmed on the API page. Scoped application keys confirmed on the api-app-keys page. OAuth2 auth code + PKCE confirmed for partner integrations, with the client created in a Partner Sandbox Account. The PAT doc states that PATs can be sent as 'Authorization: Bearer' on REST calls (example GET /api/v2/users, no API key needed). So the record's doubt about Bearer on the REST API is resolved: it works, and SATs use the same header. The record's evidence URL for bearer was missing.",
+      "url": "https://docs.datadoghq.com/account_management/personal-access-tokens/"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "The pricing page confirms a Free tier (Infrastructure Monitoring, 5 Basic hosts, 1-day retention) and 'Start Free Trial' buttons. It does not state the trial length, no-card terms, or whether Free tier accounts get API/app keys. 'paid_plan' is not supported, because a self-serve trial exists. Closest supported value: self_serve_trial.",
+      "url": "https://www.datadoghq.com/pricing/"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The API page describes an HTTP REST API returning JSON, with v1 and v2 endpoint groups. The 'broad' rating is a judgment: it is consistent with the many resource groups, but I did not count them. The page does not mention GraphQL.",
+      "url": "https://docs.datadoghq.com/api/latest/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The Datadog-hosted MCP setup docs list https://mcp.datadoghq.com/v1/mcp for US1, with per-site endpoints for US3, US5, EU1, AP1, AP2 and UK1. They list OAuth 2.0, PAT/SAT bearer and API+app key auth. US1-FED and US2-FED are unsupported. The docs do not state overall GA vs Preview status and say the server is 'under significant development'.",
+      "url": "https://docs.datadoghq.com/mcp_server/setup.md"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is reasonable: REST, scoped keys, bearer tokens and an official MCP server all exist. The caveats are an org requirement, per-site endpoints, and unscoped keys inheriting full user permissions (confirmed). Rate limits are not stated on the pages fetched, so that remains unverified. The Free-tier API access caveat is unresolved.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Datadog",
+    "category": "Observability / Monitoring",
+    "one_liner": "Cloud observability and security platform for infrastructure metrics, logs, APM traces, monitors, dashboards, and incidents.",
+    "auth_methods": [
+      "API key",
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "REST API: API key in DD-API-KEY header, plus an application key in DD-APPLICATION-KEY for endpoints that read data or manage resources. Application keys can be scoped (user- or service-account-owned); unscoped keys get all of the creator's permissions. Personal access tokens and service access tokens can be sent as 'Authorization: Bearer' on REST calls with no API key (documented example: GET /api/v2/users; scopes and expiry apply; some calls such as creating application keys return 403). OAuth2 (authorization code with PKCE) is documented for partner integrations, with the client created in a Partner Sandbox Account. The same OAuth 2.0 and PAT/SAT methods work with the MCP server.",
+    "access": "self_serve_trial",
+    "access_notes": "Keys are created in any org by users with the right permissions. The pricing page confirms a Free tier (Infrastructure Monitoring, up to 5 Basic hosts, 1-day retention) and a self-serve free trial. Trial length, card requirement and whether the Free tier includes API/app key access were not confirmed on fetched pages. Third-party OAuth requires a Partner Sandbox Account.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.datadoghq.com/v1/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Users need a Datadog org (trial or paid; Free tier is limited to Infra Monitoring, 5 hosts, and API access on it is unconfirmed). Per-site regional endpoints are required, and the MCP server does not support US1-FED/US2-FED. Third-party OAuth is tied to the partner sandbox/integration program. Rate limits were not confirmed. Unscoped application keys inherit the creator's full permissions.",
+    "evidence": {
+      "auth": "https://docs.datadoghq.com/account_management/personal-access-tokens/ (PAT as Bearer on REST); https://docs.datadoghq.com/account_management/api-app-keys/ (API keys, scoped application keys); https://docs.datadoghq.com/api/latest/ (DD-API-KEY / DD-APPLICATION-KEY headers); https://docs.datadoghq.com/developers/authorization/oauth2_in_datadog/ (OAuth2 auth code + PKCE, partner sandbox)",
+      "access": "https://www.datadoghq.com/pricing/ (Free tier: Infrastructure Monitoring, up to 5 Basic hosts, 1-day retention; Start Free Trial; API access on free tier not stated)",
+      "api": "https://docs.datadoghq.com/api/latest/ (HTTP REST API, v1 and v2 endpoint groups)",
+      "mcp": "https://docs.datadoghq.com/mcp_server/setup.md (per-site endpoints, OAuth 2.0, PAT/SAT bearer, API+app keys; US1-FED/US2-FED unsupported)"
+    },
+    "confidence": "low"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "79",
+  "input": {
+    "id": "79",
+    "category": "Productivity and Project Management",
+    "app": "Smartsheet",
+    "hint": "smartsheet.com/developers"
+  },
+  "meta": {
+    "cost_usd": 0.041213070000000004,
+    "turns": 5
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "OpenAPI Security section lists OAuth2 and API token as HTTP bearer. OAuth guide describes 3rd-party auth-code flow, ~7-day access tokens, refresh via POST /token.",
+      "url": "https://developers.smartsheet.com/api/smartsheet/guides/advanced-topics/oauth"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "OpenAPI says API restricted to Business and Enterprise plans; OAuth guide says Developer Tools registration may be denied and recommends a service account. Free sandbox not stated (correctly flagged unverified).",
+      "url": "https://developers.smartsheet.com/api/smartsheet/openapi"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Page does not use the word REST but documents HTTP verbs, resource URLs, JSON, OpenAPI; REST is a reasonable inference. Breadth broad is plausible, not fully verified.",
+      "url": "https://developers.smartsheet.com/api/smartsheet/openapi"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Smartsheet's own help/developer docs describe its MCP server at mcp.smartsheet.com (also .eu, .au regional URLs). Page doesn't say 'official' but it is vendor-hosted docs. Requires Business, Enterprise, or Advanced Work Management plan.",
+      "url": "https://developers.smartsheet.com/ai-mcp/smartsheet/install-the-smartsheet-mcp-server"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent: paid plan required, registration can be denied, Events needs Enterprise/AWM premium add-on. Blocker text slightly imprecise: Events is for Enterprise/AWM only.",
+      "url": "https://developers.smartsheet.com/api/smartsheet/openapi"
+    }
+  ],
+  "corrected": {
+    "app": "Smartsheet",
+    "category": "Work management / spreadsheets",
+    "one_liner": "Smartsheet is a cloud work-management platform built around spreadsheet-style sheets, reports, dashboards and automation for teams to plan and track work.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "Personal API access token sent as a Bearer token in the Authorization header. OAuth 2.0 authorization-code flow for third-party apps: register an app in Developer Tools to get a client ID and secret, authorize at app.smartsheet.com/b/authorize with scopes, POST /token. Access tokens last about 7 days and are refreshable.",
+    "access": "paid_plan",
+    "access_notes": "The OpenAPI reference says the API is limited to Business and Enterprise plans. OAuth app registration needs Developer Tools registration, which requires accepting the Developer Agreement and can be denied by Smartsheet. The OAuth guide advises a separate service account. A free sandbox or free developer account is not documented in the pages checked. No app-review step before production use was found.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.smartsheet.com",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API needs a paid Business or Enterprise plan, and no free tier or free sandbox is documented. OAuth app registration under Developer Tools can be denied by Smartsheet. Some endpoints need higher tiers or add-ons: Events (Event Reporting add-on) is Enterprise/Advanced Work Management only, and governance endpoints need Enterprise with Safeguard. The MCP server requires Business, Enterprise, or Advanced Work Management. Regional MCP URLs exist (.eu, .au).",
+    "evidence": {
+      "auth": "https://developers.smartsheet.com/api/smartsheet/guides/advanced-topics/oauth",
+      "access": "https://developers.smartsheet.com/api/smartsheet/openapi",
+      "api": "https://developers.smartsheet.com/api/smartsheet/openapi",
+      "mcp": "https://developers.smartsheet.com/ai-mcp/smartsheet/install-the-smartsheet-mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "24",
+  "input": {
+    "id": "24",
+    "category": "Communications and Messaging",
+    "app": "Lark (Larksuite)",
+    "hint": "open.larksuite.com"
+  },
+  "meta": {
+    "cost_usd": 0.09571667,
+    "turns": 12
+  },
+  "record": {
+    "app": "Lark (Larksuite)",
+    "category": "Collaboration suite (messaging, docs, calendar, approvals)",
+    "one_liner": "Lark is ByteDance's international workplace suite combining chat, calendar, docs, email, video meetings, approvals and a developer platform.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token",
+      "Other"
+    ],
+    "auth_notes": "Custom apps POST app_id and app_secret to /open-apis/auth/v3/tenant_access_token/internal and get a tenant_access_token (valid up to 2 hours). Calls send it as \"Authorization: Bearer <token>\". user_access_token is obtained through an OAuth authorization-code flow, which the MCP README describes with a redirect URL and offline_access scope. I could not fetch the OAuth doc pages, so the user-token flow details are not verified from Lark docs. Marketplace apps use app_access_token, which I did not verify.",
+    "access": "approval_required",
+    "access_notes": "Creating a custom app in the developer console is self-serve and free, but I did not fetch a page that states the cost. Scopes can be tested without review in a test enterprise, or without review for scopes that support user_access_token. For production, the app version must be submitted and approved by an admin, and per the scopes doc, API permissions take effect only after approval. Some scopes are no-review. Marketplace (store) apps additionally go through Lark review. The doc is inconsistent about whether the app admin or the tenant admin approves.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://github.com/larksuite/lark-openapi-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Production use needs tenant admin approval of the app version and its scopes. Message sending is rate limited (1,000/min and 50/sec per API, 5 QPS per user or group). Feishu (China) and Lark (international) are separate tenants and apps are not interchangeable. The official MCP is in Beta and does not support file upload/download or direct document editing.",
+    "evidence": {
+      "auth": "https://open.larksuite.com/document/ukTMukTMukTM/ukDNz4SO0MjL5QzM/auth-v3/auth/tenant_access_token_internal.md (fetched: POST with app_id and app_secret, token valid up to 2 hours). Bearer format from https://open.larksuite.com/document/uAjLw4CM/ukTMukTMukTM/reference/im-v1/message/create. OAuth user-token login from https://github.com/larksuite/lark-openapi-mcp.",
+      "access": "https://open.larksuite.com/document/server-docs/getting-started/overview-of-app-scopes.md (fetched: test without review; production versions need approval before API permissions take effect).",
+      "api": "https://open.larksuite.com/document/uAjLw4CM/ukTMukTMukTM/reference/im-v1/message/create (fetched: POST /open-apis/im/v1/messages; rate limits 1,000/min, 50/sec). Breadth is inferred from the scopes doc, the MCP preset tools and the SDKs. I did not fetch an API list page.",
+      "mcp": "https://github.com/larksuite/lark-openapi-mcp (fetched: README calls it the Feishu/Lark official OpenAPI MCP, under the larksuite org, Beta; transport not stated on the page)."
+    },
+    "confidence": "medium"
+  }
+}

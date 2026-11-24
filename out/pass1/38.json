@@ -1,0 +1,40 @@
+{
+  "id": "38",
+  "input": {
+    "id": "38",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "Pinterest",
+    "hint": "developers.pinterest.com"
+  },
+  "meta": {
+    "cost_usd": 0.08566867500000001,
+    "turns": 13
+  },
+  "record": {
+    "app": "Pinterest",
+    "category": "Social media / Visual discovery & advertising",
+    "one_liner": "Pinterest is a visual discovery platform where users save and organize Pins on boards, with advertising and catalog tools for businesses.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "Documented OAuth 2 authorization-code flow (redirect URI must match app profile; code exchanged for access token, refreshed as needed). Product-limited test tokens (expire after 24h) skip the OAuth flow and are usable only after Trial approval. Scopes page returned 404, so scope list and token lifetimes for OAuth tokens not verified.",
+    "access": "approval_required",
+    "access_notes": "Developer account is free, but the app must be approved by Pinterest for Trial access before credentials/test tokens work. Trial is limited (sandbox-style: Pins/boards visible only to creator; daily per-app rate limits). Production use requires an upgrade to Standard via video demo of the OAuth flow plus live integration; no published review timeline. Community posts report multi-week waits and rejections (unverified by vendor page). Apps registered on or after Sept 14, 2026 may get 403 PINNER_DATA_ACCESS_DENIED on boards/Pins for non-business users without Pinterest authorization.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://api.pinterest.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Manual app approval for Trial, then manual Standard-upgrade review (video demo) needed for real production use; Trial is rate limited and restricted. Official MCP is announced but not confirmed live/launched.",
+    "evidence": {
+      "auth": "https://developers.pinterest.com/docs/getting-started/connect-app/",
+      "access": "https://developers.pinterest.com/docs/key-concepts/access-tiers/",
+      "api": "https://developers.pinterest.com/docs/key-concepts/access-tiers/",
+      "mcp": "https://developers.pinterest.com/about-pinterest-mcp/"
+    },
+    "confidence": "medium"
+  }
+}

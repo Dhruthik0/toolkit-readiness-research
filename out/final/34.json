@@ -1,0 +1,72 @@
+{
+  "id": "34",
+  "input": {
+    "id": "34",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "GoHighLevel",
+    "hint": "highlevel.stoplight.io"
+  },
+  "meta": {
+    "cost_usd": 0.08063234,
+    "turns": 9
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "OAuth2 auth-code flow for Marketplace apps confirmed (agency/location tokens, ~24h access token, rotating refresh token, PKCE not supported for install flow). PIT confirmed as Bearer token, shown once, scope-limited, on the PIT page. V1 end-of-support 2025-12-31 confirmed via search. The cited OAuth page does not itself cover PIT or V1, so the PIT URL is added.",
+      "url": "https://marketplace.gohighlevel.com/docs/Authorization/PrivateIntegrationsToken"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "The cited article lists API access on Starter $97, Unlimited $297 and Founder $497, with OAuth and PIT on all three. It also confirms the Founder-only endpoints and the rate limits. It mentions no free tier or trial. The search surfaced a help.gohighlevel.com URL titled 'highlevel-free-trial' for the same article ID, but its content was not fetched, so a trial path remains unconfirmed. Marketplace approval criteria not verified.",
+      "url": "https://gohighlevelassist.freshdesk.com/support/solutions/articles/48001060529-highlevel-api-documentation"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The cited FAQ page does not state REST, but the docs home describes a 'Complete REST API'. It covers contacts, conversations, calendars, opportunities, payments and webhooks. The 'broad' rating is an inference from the listed areas. Per-endpoint write support was not verified.",
+      "url": "https://marketplace.gohighlevel.com/docs/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "HighLevel's own docs describe an official remote MCP server. The Claude endpoint is https://services.leadconnectorhq.com/mcp/anthropic/v2. Auth is HighLevel login sign-in with no token or API key. It has four tools: list_locations, search_operations, describe_operation, execute_operation.",
+      "url": "https://marketplace.gohighlevel.com/docs/other/mcp.md"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent with the verified facts: a paid plan is needed, some endpoints are plan-restricted, and rate limits apply. Auth, API and MCP are all usable. One correction to the blocker: the claim that public distribution needs Marketplace approval is not confirmed by a fetched page.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "GoHighLevel",
+    "category": "CRM / Marketing automation",
+    "one_liner": "All-in-one CRM and marketing automation platform for agencies and small businesses (contacts, conversations, calendars, pipelines, payments, funnels, white-label SaaS).",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "OAuth 2.0 authorization-code flow for Marketplace apps (access token about 24h, refresh token rotates on each use and is valid one year if unused, agency and location token types, no PKCE for the install flow). Private Integration Tokens (static, scope-limited, shown once) for internal use, sent as a Bearer token with a Version header (e.g. 2021-07-28). Legacy V1 API keys reached end-of-support on 2025-12-31 and new V1 keys can no longer be generated. The remote MCP server uses HighLevel login sign-in, with no token.",
+    "access": "paid_plan",
+    "access_notes": "The API is listed on Starter ($97/mo), Unlimited ($297/mo) and Founder ($497/mo). OAuth and PIT are available on all three. Higher-tier endpoints are restricted on Starter and Unlimited, and Create Sub-Account and Enable SaaS are Founder-only. Endpoint access also depends on scopes and permissions. The cited article mentions no free tier or trial. I did not confirm whether a free trial exists. A developer account for building Marketplace apps is a sign-up, but I did not verify its requirements. Public Marketplace listing approval criteria were not verified. Rate limits: 100 requests per 10 seconds and 200,000 per day, per Marketplace app per resource (Location or Company).",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://services.leadconnectorhq.com/mcp/anthropic/v2",
+    "verdict": "ready_with_caveats",
+    "blocker": "API access needs a paid HighLevel plan (Starter or higher). I could not confirm a free or trial path. Higher-tier endpoints are restricted by plan, and scopes and permissions also limit access. Rate limits apply. Legacy V1 and API keys are end-of-support. Marketplace approval for public apps was not verified.",
+    "evidence": {
+      "auth": "https://marketplace.gohighlevel.com/docs/Authorization/OAuth2.0 ; https://marketplace.gohighlevel.com/docs/Authorization/PrivateIntegrationsToken",
+      "access": "https://gohighlevelassist.freshdesk.com/support/solutions/articles/48001060529-highlevel-api-documentation",
+      "api": "https://marketplace.gohighlevel.com/docs/",
+      "mcp": "https://marketplace.gohighlevel.com/docs/other/mcp.md"
+    },
+    "confidence": "medium"
+  }
+}

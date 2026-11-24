@@ -1,0 +1,42 @@
+{
+  "id": "4",
+  "input": {
+    "id": "4",
+    "category": "CRM and Sales",
+    "app": "Attio",
+    "hint": "attio.com"
+  },
+  "meta": {
+    "cost_usd": 0.06368908499999999,
+    "turns": 7
+  },
+  "record": {
+    "app": "Attio",
+    "category": "CRM",
+    "one_liner": "Attio is a customizable, data-model-flexible CRM for managing contacts, companies, deals and custom objects, with lists, notes, tasks and email/meeting sync.",
+    "auth_methods": [
+      "OAuth2",
+      "API key",
+      "Bearer token",
+      "Basic"
+    ],
+    "auth_notes": "OAuth 2.0 Authorization Code (workspace-level tokens by default; user-level tokens need PKCE) for multi-workspace apps. A single-workspace access token (API key) generated in developer settings. Both sent as Bearer; Basic (token as username) is also accepted but Bearer is recommended.",
+    "access": "self_serve_free",
+    "access_notes": "Attio's help center says API access is available on all plans, including Free (up to 3 seats). Per search snippets (not fetched from the vendor), a token is created in Settings > Developers. Publishing shared OAuth apps uses the build.attio.com developer dashboard. I did not fetch that page or sign up. Third-party sources conflict on whether a separate developer workspace must be requested.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.attio.com/mcp",
+    "verdict": "ready",
+    "blocker": "none. Minor caveats: rate limits apply (the MCP docs list 100 read/s and 25 write/s per workspace, and the REST limits page was not fetched). The MCP SQL tool is not on every plan. Breadth is rated broad based on the MCP coverage list; the REST endpoint reference was not fetched.",
+    "evidence": {
+      "auth": "https://docs.attio.com/rest-api/guides/authentication",
+      "access": "https://attio.com/help/reference/workspace-settings-billing/attio-plans-and-features",
+      "api": "https://docs.attio.com/rest-api/overview",
+      "mcp": "https://docs.attio.com/mcp/overview"
+    },
+    "confidence": "medium"
+  }
+}

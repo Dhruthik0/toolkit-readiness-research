@@ -1,0 +1,74 @@
+{
+  "id": "61",
+  "input": {
+    "id": "61",
+    "category": "Developer, Infra and Data platforms",
+    "app": "GitHub",
+    "hint": "docs.github.com/rest"
+  },
+  "meta": {
+    "cost_usd": 0.057086429999999994,
+    "turns": 9
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page lists PATs, GitHub App tokens, OAuth app tokens, GITHUB_TOKEN, Bearer header, and mentions JWT must use Bearer. JWT step for GitHub Apps confirmed on the JWT page. OAuth app page confirms third-party OAuth tokens for API access. Basic auth (client ID/secret) is also needed for some app endpoints, minor omission.",
+      "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "No fetched page states free accounts can create PATs/apps with no review. Rate-limit page lists limits by auth method and does not mention plan requirements; org approval not covered. Evidence URL was null.",
+      "url": "https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Cited REST page does not mention GraphQL beyond a link and does not state breadth. GraphQL confirmed on the GraphQL overview page. Breadth 'broad' is only inferred from endpoints categorized by resource; not directly stated.",
+      "url": "https://docs.github.com/en/graphql/overview/about-the-graphql-api"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Repo is under the github org and self-describes as GitHub's official MCP server; remote server at api.githubcopilot.com/mcp/ supports OAuth or PAT.",
+      "url": "https://github.com/github/github-mcp-server"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "Verdict 'ready' is consistent with confirmed auth, REST+GraphQL, and official MCP. Since access is unverified, 'ready_with_caveats' would be more cautious, but rate limits are documented and org approval is the only open caveat; keep the verdict, add rate-limit detail to the blocker.",
+      "url": "https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api"
+    }
+  ],
+  "corrected": {
+    "app": "GitHub",
+    "category": "Developer platform / source control",
+    "one_liner": "Hosted Git repository platform with issues, pull requests, CI (Actions), and collaboration tools for software teams.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2",
+      "JWT / service account"
+    ],
+    "auth_notes": "Fine-grained and classic PATs, GitHub App tokens, OAuth app tokens, and GITHUB_TOKEN for Actions, sent as 'Authorization: Bearer TOKEN'. GitHub Apps sign an RS256 JWT to authenticate as the app and obtain installation tokens. OAuth apps support web and device flows for user tokens. Basic auth (client ID/secret) is needed for some app endpoints. Username/password is not supported.",
+    "access": "self_serve_free",
+    "access_notes": "Not verified on a fetched page: that a free account can create a PAT, GitHub App, or OAuth app without review. Rate-limit docs show limits by auth method (60/hr unauthenticated, 5,000/hr authenticated) and do not mention a paid-plan requirement.",
+    "api_types": [
+      "REST",
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://github.com/github/github-mcp-server",
+    "verdict": "ready",
+    "blocker": "none. Rate limits apply (5,000/hr authenticated; 15,000/hr for Enterprise Cloud orgs). Org-owner approval of apps or tokens for org resources was not verified.",
+    "evidence": {
+      "auth": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+      "access": "https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api",
+      "api": "https://docs.github.com/en/graphql/overview/about-the-graphql-api",
+      "mcp": "https://github.com/github/github-mcp-server"
+    },
+    "confidence": "low"
+  }
+}

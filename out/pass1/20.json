@@ -1,0 +1,39 @@
+{
+  "id": "20",
+  "input": {
+    "id": "20",
+    "category": "Support and Helpdesk",
+    "app": "Gladly",
+    "hint": "gladly.com"
+  },
+  "meta": {
+    "cost_usd": 0.056688520000000006,
+    "turns": 7
+  },
+  "record": {
+    "app": "Gladly",
+    "category": "Customer service platform / Helpdesk",
+    "one_liner": "Gladly is a customer service platform that manages customer conversations across channels around a unified customer profile, with AI assistance for support teams.",
+    "auth_methods": [
+      "Basic"
+    ],
+    "auth_notes": "HTTP Basic Auth: username is the agent's email, password is an API token, sent over HTTPS (e.g. curl -u user@org.com:$GLADLY_API_TOKEN https://org.gladly.com/api/v1/organization). The token is static, tied to an agent profile and unscoped (\"can be used to perform any API request without restriction\"). Public Answers endpoints need no token. No OAuth documented for third-party apps (not found on the page I fetched).",
+    "access": "partner_gated",
+    "access_notes": "A token requires a Gladly tenant (org.gladly.com). An admin gives an agent the \"API User\" permission, then that agent creates a token under More settings > API Tokens. The pricing page shows no free trial or self-serve signup, only \"Get a Demo\" and \"Contact sales\". The cheapest path is therefore a sales-led Gladly customer account. I did not find a free developer sandbox, and I could not verify whether API access depends on plan tier.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "none_found",
+    "mcp_url": null,
+    "verdict": "blocked",
+    "blocker": "There is no self-serve signup, free tier or trial. Credentials need an existing paying Gladly tenant, which means going through sales. Once a tenant exists, the API is documented and usable. The token is unscoped and rate limits are enforced (values not found).",
+    "evidence": {
+      "auth": "https://developer.gladly.com/rest/ (Basic Auth with agent email + API token; unrestricted token; no OAuth mentioned)",
+      "access": "https://www.gladly.ai/pricing/ (no trial or pricing listed; Get a Demo / Contact sales); https://developer.gladly.com/rest/ (token created by an agent with API User permission)",
+      "api": "https://developer.gladly.com/rest/ (about 20 resource groups: Agents, Conversations, Customers, Tasks, Reports, Webhooks, Topics, etc.)",
+      "mcp": "No official Gladly MCP server found in search. Third-party hosted options (StackOne, Truto) exist. Truto page fetched at https://truto.one/blog/connect-gladly-to-chatgpt-manage-customers-tasks-and-support-data but it does not itself confirm that no official server exists."
+    },
+    "confidence": "medium"
+  }
+}

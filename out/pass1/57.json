@@ -1,0 +1,41 @@
+{
+  "id": "57",
+  "input": {
+    "id": "57",
+    "category": "Data, SEO and Scraping",
+    "app": "Bright Data",
+    "hint": "brightdata.com"
+  },
+  "meta": {
+    "cost_usd": 0.06635506499999999,
+    "turns": 10
+  },
+  "record": {
+    "app": "Bright Data",
+    "category": "Web data / scraping platform",
+    "one_liner": "Web data platform offering proxies, Web Unlocker, SERP and Web Scraper APIs, browser automation, and datasets for collecting public web data.",
+    "auth_methods": [
+      "API key",
+      "Bearer token",
+      "Basic"
+    ],
+    "auth_notes": "REST API uses an account API key sent as `Authorization: Bearer <token>`. Keys are created in the control panel (admin only) with a permission level and expiry, one per user. Proxy access uses a zone username:password (native access). No OAuth documented. The remote MCP passes the token as a URL query parameter.",
+    "access": "self_serve_free",
+    "access_notes": "A new account gets a free tier of 5,000 credits per month, reset on the 1st, covering Web Unlocker, SERP, Web Scraper API, Scraper Studio, Browser API, and MCP. Residential, ISP and datacenter proxies are not covered; they get only a one-time $2 trial, plus a $5 bonus after adding a payment method. Unfunded accounts are limited to 1,000 requests/min. The docs are inconsistent on whether a card is needed (intro says no card; a later note calls adding a card a verification step), so this is unresolved.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://github.com/brightdata/brightdata-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Free tier is limited to 5,000 credits/month, and paid proxy products need funds. API keys are admin-created in the dashboard, with no OAuth for delegated per-user access. I fetched only one endpoint spec (POST /request); other product endpoints (SERP, Web Scraper, datasets, Browser API) and account-management endpoints were not verified. Per-endpoint rate limits are not stated in the pages I fetched.",
+    "evidence": {
+      "auth": "https://docs.brightdata.com/api-reference/authentication",
+      "access": "https://docs.brightdata.com/general/account/billing-and-pricing/free-tier",
+      "api": "https://docs.brightdata.com/api-reference/introduction",
+      "mcp": "https://docs.brightdata.com/products/mcp-server/remote/quickstart.md"
+    },
+    "confidence": "medium"
+  }
+}

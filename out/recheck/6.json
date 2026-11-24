@@ -1,0 +1,22 @@
+{
+  "id": "6",
+  "input": {
+    "id": "6",
+    "category": "CRM and Sales",
+    "app": "Podio",
+    "hint": "podio.com"
+  },
+  "meta": {
+    "cost_usd": 0.06461528500000001,
+    "turns": 7
+  },
+  "recheck": {
+    "vendor_docs_url": "https://developers.podio.com/",
+    "access": "self_serve_free",
+    "api_types": [
+      "REST"
+    ],
+    "evidence_quote": "You just have to sign in or sign up with Podio, and go to the API key tab in your settings.",
+    "notes": "Verified by fetch: developers.podio.com/api-key says a developer signs in or up and generates an API key in settings. It mentions no approval step and no paid-plan requirement. developers.podio.com/index/api says the API is RESTful, uses JSON, uses GET/POST/PUT/DELETE, and has the base URL https://api.podio.com (SSL required). The home page says the API is a \"complete programmable interface to all Podio functionality\". It offers wrappers for PHP, .NET, Ruby, Java, Python, Android and Objective-C, and supports webhooks. So 'REST' is now stated by the vendor, not inferred.\n\nFree plan: the Progress free-version page confirms a free tier with up to 5 employees and 5 external members, and a cap of 100 items per organization (tasks and attachments excluded). That page does not mention the API. A search summary of the pricing page said free accounts get API access at 1000 calls/hour, and that an API Add-on (about $23/month billed annually) raises limits. I did not fetch the pricing page, so treat those figures as unverified. Keep 'self_serve_free', but note the 100-item cap limits real use. API Terms of Use were not read. The WebSocket removal still stands, since no vendor page shows it. Webhooks are documented, but they are not WebSocket. Confidence can rise from low to medium."
+  }
+}

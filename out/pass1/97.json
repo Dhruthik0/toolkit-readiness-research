@@ -1,0 +1,41 @@
+{
+  "id": "97",
+  "input": {
+    "id": "97",
+    "category": "AI, Research and Media-native",
+    "app": "higgsfield",
+    "hint": "higgsfield.ai/cli (content suite)"
+  },
+  "meta": {
+    "cost_usd": 0.077174985,
+    "turns": 8
+  },
+  "record": {
+    "app": "higgsfield",
+    "category": "Generative AI (image/video)",
+    "one_liner": "Higgsfield is an AI image and video generation platform offering 50+ models, with a pay-as-you-go REST API, a CLI, and a hosted MCP server.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "REST API: key ID plus secret sent as `Authorization: Key KEY_ID:KEY_SECRET`. Legacy `hf-api-key` and `hf-secret` headers are still accepted. The MCP server and CLI use a browser sign-in with a Higgsfield account and no API key. I did not confirm whether that sign-in is a documented OAuth flow for third-party apps. It appears to be the MCP client login. The OAuth2 listing is inferred and uncertain.",
+    "access": "paid_plan",
+    "access_notes": "API: create an API account at the Console, register a payment method, and fund a balance (minimum $5 top-up, pay-as-you-go). There is no free tier mentioned and no plan requirement. The API balance is separate from higgsfield.ai plan credits. Each key allows 20 concurrent requests. Output files are kept at least 7 days. MCP and CLI use plan credits on the user's own account, and I could not confirm which plan tier they need. The console host is given as console.higgsfield.ai in the docs and open.higgsfield.ai in the help center, so the two sources disagree.",
+    "api_types": [
+      "REST",
+      "CLI / library only"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://mcp.higgsfield.ai/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API needs a funded pay-as-you-go balance (minimum $5), with no free tier found. It is generation-focused and asynchronous (poll or webhook). The MCP and CLI route runs on the user's plan credits through a browser login. I did not read the full endpoint list.",
+    "evidence": {
+      "auth": "https://docs.higgsfield.ai/docs/authentication",
+      "access": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api",
+      "api": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api",
+      "mcp": "https://higgsfield.ai/mcp"
+    },
+    "confidence": "medium"
+  }
+}

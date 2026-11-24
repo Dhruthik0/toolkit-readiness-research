@@ -1,0 +1,41 @@
+{
+  "id": "68",
+  "input": {
+    "id": "68",
+    "category": "Developer, Infra and Data platforms",
+    "app": "MongoDB Atlas",
+    "hint": "mongodb.com/docs/atlas/api"
+  },
+  "meta": {
+    "cost_usd": 0.059137840000000004,
+    "turns": 8
+  },
+  "record": {
+    "app": "MongoDB Atlas",
+    "category": "Cloud database / DBaaS",
+    "one_liner": "MongoDB Atlas is a managed cloud database service whose Administration API manages organizations, projects, clusters, users and related settings.",
+    "auth_methods": [
+      "OAuth2",
+      "API key"
+    ],
+    "auth_notes": "Service accounts use the OAuth 2.0 Client Credentials flow (client ID plus secret, 1-hour tokens, no refresh). This is the recommended method. Programmatic API keys use HTTP Digest and are described as legacy. Both are org-scoped, not per-end-user OAuth for third-party apps, so a multi-tenant integration would have each customer create and share its own credentials. Neither method reaches cluster data; that needs a database user.",
+    "access": "self_serve_free",
+    "access_notes": "Anyone with an Atlas account and the Organization Owner role can create a service account or API key. I did not fetch a page that confirms free-tier or Flex clusters can use the Admin API, and the docs I read don't state any plan requirement. An account is free to create, so I've assumed self-serve and left this unverified. An IP access list entry is required.",
+    "api_types": [
+      "REST",
+      "CLI / library only"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://www.mongodb.com/docs/mcp-server/",
+    "verdict": "ready_with_caveats",
+    "blocker": "Credentials are org- or project-scoped service accounts or API keys, not per-user OAuth for third-party apps. An IP access list is required, and the API is not reachable over private networking. The Admin API does not read or write cluster data. The Data API was not covered by the pages I fetched. Rate limits were not checked.",
+    "evidence": {
+      "auth": "https://www.mongodb.com/docs/atlas/api/api-authentication/ (fetched): service account OAuth 2.0 client credentials (recommended) and API keys with HTTP Digest (legacy).",
+      "access": "https://www.mongodb.com/docs/atlas/configure-api-access/ (fetched): Organization Owner creates service accounts or API keys; IP access list required. It says nothing on free tier.",
+      "api": "https://www.mongodb.com/docs/atlas/api/ (fetched): Atlas Administration API for projects, users and clusters, plus Go SDK, CLI and Terraform. Base URL https://cloud.mongodb.com/api/atlas/<version> is from the configure-api-access page.",
+      "mcp": "https://www.mongodb.com/docs/mcp-server/ (fetched): MongoDB docs page for the MCP server, covering Atlas management and data queries. The repo github.com/mongodb-js/mongodb-mcp-server was also fetched and describes Atlas service account credentials."
+    },
+    "confidence": "medium"
+  }
+}

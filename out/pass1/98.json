@@ -1,0 +1,39 @@
+{
+  "id": "98",
+  "input": {
+    "id": "98",
+    "category": "AI, Research and Media-native",
+    "app": "Mermaid CLI",
+    "hint": "github.com/mermaid-js/mermaid-cli"
+  },
+  "meta": {
+    "cost_usd": 0.038970665,
+    "turns": 4
+  },
+  "record": {
+    "app": "Mermaid CLI",
+    "category": "Developer tool / diagram rendering",
+    "one_liner": "Open-source command-line tool (mmdc) that renders Mermaid diagram definitions into SVG, PNG, or PDF, including from Markdown files.",
+    "auth_methods": [
+      "None"
+    ],
+    "auth_notes": "Local tool with no hosted service and no authentication.",
+    "access": "self_serve_free",
+    "access_notes": "Free MIT-licensed npm package (@mermaid-js/mermaid-cli), also available as Docker/Podman images. No credentials needed. It runs locally, so an agent toolkit would need a runtime (Node plus a headless browser) rather than calling a remote API. I did not verify the browser dependency on the fetched page.",
+    "api_types": [
+      "CLI / library only"
+    ],
+    "api_breadth": "narrow",
+    "mcp": "community",
+    "mcp_url": "https://github.com/hustcc/mcp-mermaid",
+    "verdict": "ready_with_caveats",
+    "blocker": "No hosted REST API. It is a local CLI and Node library, and the Node API is not covered by semver. An agent toolkit has to run it in a sandbox or container. No official MCP server was found; community servers exist.",
+    "evidence": {
+      "auth": "https://github.com/mermaid-js/mermaid-cli (README: no authentication described; local CLI)",
+      "access": "https://github.com/mermaid-js/mermaid-cli (npm install, Docker/Podman, MIT license)",
+      "api": "https://github.com/mermaid-js/mermaid-cli (CLI mmdc and Node.js run() API, which is not covered by semver)",
+      "mcp": "https://github.com/mermaid-js/mermaid-cli (no MCP mention); the web search showed only community MCP servers (hustcc/mcp-mermaid, peng-shawn/mermaid-mcp-server). I did not fetch those pages."
+    },
+    "confidence": "medium"
+  }
+}

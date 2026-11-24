@@ -1,0 +1,41 @@
+{
+  "id": "11",
+  "input": {
+    "id": "11",
+    "category": "Support and Helpdesk",
+    "app": "Zendesk",
+    "hint": "zendesk.com"
+  },
+  "meta": {
+    "cost_usd": 0.101907735,
+    "turns": 11
+  },
+  "record": {
+    "app": "Zendesk",
+    "category": "Helpdesk / Customer Support",
+    "one_liner": "Zendesk is a customer service platform covering ticketing, help center, messaging, voice, chat and sales CRM, with APIs for each.",
+    "auth_methods": [
+      "OAuth2",
+      "API key",
+      "Basic"
+    ],
+    "auth_notes": "Per the Zendesk security-and-auth page: OAuth access tokens are sent as Bearer. Global OAuth tokens are required if distributing an app to multiple Zendesk customers. API tokens use Basic auth as {email}/token:{api_token}; the page labels this method deprecated and recommends migrating to OAuth. End-user email/password works on closed instances only, and anonymous access on open instances only. A third-party report (Workato) says new Basic auth connections were blocked from 2026-03-31; I did not verify that on a Zendesk page.",
+    "access": "self_serve_trial",
+    "access_notes": "Zendesk's developer docs offer a free 14-day trial. Sandboxes are an Enterprise-plan feature, found via search only and not fetched from a vendor page. Free sponsored accounts (up to 5 agents, no expiry) are for Marketplace partner developers only and need an application. I found no permanent free developer tier. The fetched pages do not state which plan a standard trial uses, and they do not say outright that a trial includes API access. After the trial, API use needs a paid Zendesk subscription (plan not verified).",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "none_found",
+    "mcp_url": null,
+    "verdict": "ready_with_caveats",
+    "blocker": "There is no permanent free tier, only a 14-day trial, and the API token (Basic) method is deprecated, so a multi-customer toolkit should use OAuth (global OAuth tokens). There is no general-purpose official MCP server that I could verify.",
+    "evidence": {
+      "auth": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+      "access": "https://developer.zendesk.com/documentation/api-basics/getting-started/getting-a-trial-or-sponsored-account-for-development/",
+      "api": "https://developer.zendesk.com/api-reference/",
+      "mcp": null
+    },
+    "confidence": "medium"
+  }
+}

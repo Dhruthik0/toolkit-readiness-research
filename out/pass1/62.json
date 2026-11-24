@@ -1,0 +1,40 @@
+{
+  "id": "62",
+  "input": {
+    "id": "62",
+    "category": "Developer, Infra and Data platforms",
+    "app": "Vercel",
+    "hint": "vercel.com/docs/rest-api"
+  },
+  "meta": {
+    "cost_usd": 0.15318919999999997,
+    "turns": 10
+  },
+  "record": {
+    "app": "Vercel",
+    "category": "Cloud hosting / deployment platform",
+    "one_liner": "Vercel is a frontend cloud platform for deploying, hosting and managing web projects, with deployments, domains, env vars, logs and analytics.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Access tokens (prefix vcp_) are created on the Account Tokens page, or via API/CLI. They can be scoped to full account, a team, or a single project, with an expiration, and are sent as \"Authorization: Bearer\". OAuth 2.0 / OIDC via \"Sign in with Vercel\" (PKCE, authorization code, 1-hour access token, 30-day rotating refresh token) lets a third-party app obtain a bearer token to call the REST API. The docs say the token is for REST API calls \"for the permissions the user grants\". The scopes page I did not fetch, so how broad the REST coverage is for OAuth tokens is unverified. The official MCP server uses OAuth.",
+    "access": "self_serve_free",
+    "access_notes": "A Vercel account is enough to create a token, and the docs don't mention a paid tier for the API. I did not check the Hobby plan terms or REST API rate limits (/docs/limits#rate-limits, a 429 is documented). Some teams require 2FA or SAML before a token can be scoped to them. OAuth apps are created from the dashboard, and the docs list no review step. For MCP, clients need to use CIMD or be reviewed and approved by Vercel.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.vercel.com",
+    "verdict": "ready",
+    "blocker": "none. Minor caveats: per-user OAuth scope coverage of the REST API is unverified, and rate limits were not reviewed.",
+    "evidence": {
+      "auth": "https://vercel.com/docs/accounts/access-tokens",
+      "access": "https://vercel.com/docs/accounts/access-tokens",
+      "api": "https://vercel.com/docs/rest-api",
+      "mcp": "https://vercel.com/docs/mcp/vercel-mcp"
+    },
+    "confidence": "medium"
+  }
+}

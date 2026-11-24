@@ -1,0 +1,72 @@
+{
+  "id": "95",
+  "input": {
+    "id": "95",
+    "category": "AI, Research and Media-native",
+    "app": "Reducto",
+    "hint": "reducto.ai (document parsing)"
+  },
+  "meta": {
+    "cost_usd": 0.03872496,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Quickstart confirms API key sent as Bearer token, created in Studio. No OAuth for API. Device-code login is for local MCP only (page doesn't call it OAuth).",
+      "url": "https://docs.reducto.ai/quickstart"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Pricing page: Standard plan labeled Free with one-time $150 usage, then standard rates. No gating stated; eligibility FAQ and key-role limits not visible, so unverified.",
+      "url": "https://reducto.ai/pricing"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Docs home lists /parse, /extract, /split, /classify, /edit. REST inferred from the cURL example; breadth 'moderate' is a judgment.",
+      "url": "https://docs.reducto.ai"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Hosted server at mcp.reducto.ai/mcp with bearer key, local uvx package, 9 tools, documented on vendor docs. The page doesn't say 'official', but it is vendor-hosted on Reducto's domain and docs.",
+      "url": "https://docs.reducto.ai/mcp-server"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "Self-serve key, documented REST API and vendor MCP. Caveats: free credit is one-time $150, and key-creation permissions and base URL are unconfirmed. Verdict is better as ready_with_caveats than ready.",
+      "url": "https://reducto.ai/pricing"
+    }
+  ],
+  "corrected": {
+    "app": "Reducto",
+    "category": "Document parsing / AI document processing",
+    "one_liner": "Reducto is an API and visual Studio platform that parses, extracts structured data from, splits, classifies and edits PDFs and other documents for AI pipelines.",
+    "auth_methods": [
+      "API key",
+      "Bearer token"
+    ],
+    "auth_notes": "API key created in Studio (studio.reducto.ai/api-keys) and sent as 'Authorization: Bearer $REDUCTO_API_KEY'. No OAuth flow for third-party apps documented. The local MCP server also supports a browser login (--login) that saves a key locally.",
+    "access": "self_serve_free",
+    "access_notes": "Pricing page: Standard plan is labeled Free with a one-time $150 in free usage, then standard pay-as-you-go rates. Sign up via Studio and create a key. The pricing FAQ on key access and credit eligibility is not visible. Key-creation role limits are unverified. Standard rate limits: 500 concurrent pages (r-1), 50 (r-1 mini, table partly garbled).",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://mcp.reducto.ai/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Free credit is one-time ($150). Base URL only seen in a cURL example (platform.reducto.ai). Key-creation permissions and credit eligibility unverified. Hosted MCP cannot read local file paths.",
+    "evidence": {
+      "auth": "https://docs.reducto.ai/quickstart \u2014 Authorization: Bearer $REDUCTO_API_KEY; key created in Studio API Keys",
+      "access": "https://reducto.ai/pricing \u2014 Standard plan free to start with $150 in free usage; Parse/Extract/Edit/Split included",
+      "api": "https://docs.reducto.ai \u2014 lists /parse, /extract, /split, /classify, /edit endpoints",
+      "mcp": "https://docs.reducto.ai/mcp-server \u2014 hosted server at https://mcp.reducto.ai/mcp with bearer key; local uvx mcp-server-reducto; 9 tools"
+    },
+    "confidence": "medium"
+  }
+}

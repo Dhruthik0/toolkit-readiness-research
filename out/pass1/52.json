@@ -1,0 +1,39 @@
+{
+  "id": "52",
+  "input": {
+    "id": "52",
+    "category": "Data, SEO and Scraping",
+    "app": "SE Ranking",
+    "hint": "seranking.com/api"
+  },
+  "meta": {
+    "cost_usd": 0.059472785,
+    "turns": 7
+  },
+  "record": {
+    "app": "SE Ranking",
+    "category": "SEO platform",
+    "one_liner": "SE Ranking is an SEO and AI-search visibility platform covering keyword research, rank tracking, backlinks, site audits and competitor analysis.",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "Data API key is sent as `Authorization: Token YOUR_API_KEY` (or an `apikey` query parameter, which is discouraged). The key is copied from Settings > API. The hosted MCP server also supports OAuth 2.1 with dynamic client registration, but I found no documented OAuth flow for third-party apps on the REST API. API keys have full account access, and read-only keys aren't available yet.",
+    "access": "self_serve_trial",
+    "access_notes": "The API page says API access is included in every plan (Core $129/mo, Growth $279/mo). A free trial account can test the API with no credit card. There is a pay-as-you-go option with a $50 minimum deposit, and an API add-on from $149/mo. The page also links a \"100K free credits\" offer whose terms I did not verify. Pricing is from the marketing page and I did not check it against the pricing page. Cheapest ongoing access is likely pay-as-you-go at $50, not confirmed beyond the API page.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://api.seranking.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "There is no free tier. Access needs a trial, a paid plan, or a $50 pay-as-you-go deposit. API keys are full-account with no read-only scope. Default rate limits are low and I did not see the actual numbers. Sub-accounts can't use OAuth on MCP. There is no documented OAuth for third-party REST apps, so users must paste in their own keys.",
+    "evidence": {
+      "auth": "https://seranking.com/api/data/getting-started/",
+      "access": "https://seranking.com/api/",
+      "api": "https://seranking.com/api/data/",
+      "mcp": "https://seranking.com/api/integrations/mcp/"
+    },
+    "confidence": "medium"
+  }
+}

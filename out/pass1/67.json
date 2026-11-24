@@ -1,0 +1,42 @@
+{
+  "id": "67",
+  "input": {
+    "id": "67",
+    "category": "Developer, Infra and Data platforms",
+    "app": "Snowflake",
+    "hint": "docs.snowflake.com"
+  },
+  "meta": {
+    "cost_usd": 0.04074706,
+    "turns": 6
+  },
+  "record": {
+    "app": "Snowflake",
+    "category": "Cloud data platform / data warehouse",
+    "one_liner": "Cloud data platform for storing, querying, and analyzing data with SQL, plus Cortex AI services, running on AWS, Azure, and GCP.",
+    "auth_methods": [
+      "OAuth2",
+      "JWT / service account",
+      "Bearer token",
+      "Other"
+    ],
+    "auth_notes": "SQL API docs list OAuth, key-pair JWT, and workload identity federation (all sent as Authorization: Bearer). PAT is a documented token type and the MCP docs say a PAT can be sent as a bearer token (needs a network policy allowing the client's IPs). OAuth uses Snowflake security integrations the account admin creates (CUSTOM client); External OAuth via Okta or Entra ID is also supported. Not verified: whether the SQL API itself accepts PATs, since that page didn't describe it.",
+    "access": "self_serve_trial",
+    "access_notes": "Trial account lasts 30 days or until the free usage balance runs out. The page didn't state the credit amount or whether API access is available on trial. The trial page notes that external network access is unavailable. I did not confirm whether a permanent free tier exists, and I did not confirm paid-plan requirements. Treat the trial as the cheapest path found. After it ends, a paid account is needed.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Credentials are per-account and admin-configured (security integration, key pair, or PAT with a network policy). Free access is trial-only, and each customer needs their own Snowflake account. The REST API doesn't fully match SQL command coverage. The trial's API availability and credit amount were not confirmed.",
+    "evidence": {
+      "auth": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+      "access": "https://docs.snowflake.com/en/user-guide/admin-trial-account",
+      "api": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/snowflake-rest-api",
+      "mcp": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp"
+    },
+    "confidence": "medium"
+  }
+}

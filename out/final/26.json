@@ -1,0 +1,74 @@
+{
+  "id": "26",
+  "input": {
+    "id": "26",
+    "category": "Communications and Messaging",
+    "app": "Discord",
+    "hint": "discord.com"
+  },
+  "meta": {
+    "cost_usd": 0.060172655000000005,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "OAuth2 page lists authorization code, implicit (discouraged), client credentials, bot authorization and webhook flows. The reference page states `Authorization: Bot/Bearer/Basic` headers, with Basic applying only to OAuth2 token endpoints. OAuth2 is real API access for third-party apps, not just login. The bot-token header comes from the reference page, not the OAuth2 page.",
+      "url": "https://docs.discord.com/developers/reference"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "The OAuth2 page mentions neither free account creation nor cost or app review. It does confirm the partner-only scopes (applications.builds.upload, dm_channels.read, identify.premium, rpc*, voice), the relationships.read form, and a Verified bots mention with no details. The free self-serve claim is plausible but is not stated on a fetched page.",
+      "url": "https://docs.discord.com/developers/topics/oauth2"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The reference page describes an HTTP REST API and a Gateway WebSocket API. The breadth rating of broad is a judgment call that the page does not contradict.",
+      "url": "https://docs.discord.com/developers/reference"
+    },
+    {
+      "field": "mcp",
+      "status": "unsupported",
+      "note": "A search result points to docs.discord.com/mcp, described as an official docs-search/read-only filesystem MCP. A direct fetch returned HTTP 405 (consistent with an MCP endpoint but not a confirmation). I could not verify vendor ownership. Even if official, it only searches the docs and does not operate Discord. The community discord-mcp repos appear in third-party listings but I did not fetch the repo. The best-supported classification is community for agent actions.",
+      "url": "https://docs.discord.com/mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent with the verified facts. The caveats are: bots only work in guilds they are installed in, some scopes are partner-gated, the DiscordBot User-Agent is required, and the rate-limit revocation statement is on the reference page.",
+      "url": "https://docs.discord.com/developers/reference"
+    }
+  ],
+  "corrected": {
+    "app": "Discord",
+    "category": "Messaging / Community platform",
+    "one_liner": "Discord is a chat, voice and community platform organized into servers (guilds) and channels, with a developer platform for bots and apps.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2",
+      "Other"
+    ],
+    "auth_notes": "Bot token sent as `Authorization: Bot <token>` (from app settings; a static credential). OAuth2 for user-delegated access: authorization code (with PKCE), implicit (not recommended), client credentials (bearer for bot owner), bot authorization flow, and webhook flow. Access tokens are sent as `Authorization: Bearer`. Basic auth (client_id:client_secret) applies only to the OAuth2 token endpoints. Incoming webhooks are an additional URL-based mechanism.",
+    "access": "self_serve_free",
+    "access_notes": "Anyone with a free Discord account can create an application and bot in the developer portal. This is inferred and not stated on a fetched page; the OAuth2 and reference pages mention neither cost nor app review. Some scopes need partner approval: dm_channels.read, rpc*, voice, identify.premium and applications.builds.upload. relationships.read needs an access request via the Social SDK form. Verified-bot status is referenced for growing past the guild cap, but the docs page doesn't state the cap number or the criteria.",
+    "api_types": [
+      "REST",
+      "WebSocket"
+    ],
+    "api_breadth": "broad",
+    "mcp": "community",
+    "mcp_url": "https://github.com/SaseQ/discord-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Bot actions work only in guilds where the bot is installed, and the user must add it. User-token actions are limited by OAuth scopes. Some scopes (DM channel reads, RPC, voice) are partner-only. Rate limits apply, and the docs say API users who regularly ignore them will have their API keys revoked. Bots must send a DiscordBot User-Agent. A docs.discord.com/mcp endpoint appears to be a docs-search-only MCP (not confirmed; it returned HTTP 405 to a plain GET) and does not operate Discord, so MCP for actions is classed as community.",
+    "evidence": {
+      "auth": "https://docs.discord.com/developers/reference",
+      "access": "https://docs.discord.com/developers/topics/oauth2",
+      "api": "https://docs.discord.com/developers/reference",
+      "mcp": "https://github.com/SaseQ/discord-mcp"
+    },
+    "confidence": "low"
+  }
+}

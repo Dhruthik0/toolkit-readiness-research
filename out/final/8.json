@@ -1,0 +1,72 @@
+{
+  "id": "8",
+  "input": {
+    "id": "8",
+    "category": "CRM and Sales",
+    "app": "Close",
+    "hint": "close.com"
+  },
+  "meta": {
+    "cost_usd": 0.04447924,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "API keys (Basic auth, Settings > Developer > API Keys, per user/org) and OAuth2 for integrations confirmed. Default all.full_access/offline_access scopes and support contact for narrower scopes confirmed. MCP Close-API-Key header confirmed.",
+      "url": "https://developer.close.com/integrations/create-an-oauth-app.md"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "14-day trial, no card, no free plan, prices Solo $9/$19, Essentials $35, Growth $99, Scale $139 confirmed. High-volume API not on Solo. No plan requirement stated for API keys or OAuth. Publishing is a request via a publish link, and the review process is not described.",
+      "url": "https://www.close.com/pricing"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "REST API covering leads, contacts, activities, custom data, webhooks, event log, reporting, pipeline, sequences, bulk actions and email/SMS. Broad is a reasonable reading.",
+      "url": "https://developer.close.com/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Official remote MCP server at https://mcp.close.com/mcp, hosted by Close, with OAuth (DCR) and API key header.",
+      "url": "https://developer.close.com/mcp.md"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent. Blocker is accurate. Rate-limit numbers were not verified from the fetched pages, and the publishing review is described only as a request link.",
+      "url": "https://www.close.com/pricing"
+    }
+  ],
+  "corrected": {
+    "app": "Close",
+    "category": "CRM",
+    "one_liner": "Close is a sales CRM for SMB teams that combines leads, contacts, calling, email/SMS, sequences and pipeline reporting.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "API keys are sent via HTTP Basic Auth (key as username, empty password) and are created in Settings > Developer > API Keys (tied to a user and organization). OAuth 2.0 is documented for user-facing integrations. You create an OAuth app in Settings > Developer > OAuth Apps and receive a Client ID and Secret. Apps get all.full_access and offline_access scopes by default; narrower scopes need support contact. The hosted MCP server supports OAuth 2.0 (DCR) or a Close-API-Key header plus a Close-Scope header.",
+    "access": "self_serve_trial",
+    "access_notes": "Close offers a 14-day free trial with no credit card and has no free plan. Pricing page lists Solo $9/mo annual ($19 monthly), Essentials $35, Growth $99 and Scale $139 per user per month on annual billing. High-volume API access is included on Essentials and above and not on Solo. The pricing FAQ says API access is generally included, so what Solo gets is unclear. Which plan the trial covers is unstated. No docs fetched state a plan requirement for API keys. OAuth app creation is self-serve and private by default. Making an app public goes through a publish request; the review process is not described.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.close.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "No permanent free tier: the trial lasts 14 days, then a paid plan is needed. Solo's API limits are unclear. Rate-limit numbers were not found in the fetched docs. Publishing a public OAuth app requires a request and review whose process is not described. Non-default OAuth scopes require contacting support.",
+    "evidence": {
+      "auth": "https://developer.close.com/integrations/create-an-oauth-app.md",
+      "access": "https://www.close.com/pricing",
+      "api": "https://developer.close.com/",
+      "mcp": "https://developer.close.com/mcp.md"
+    },
+    "confidence": "high"
+  }
+}

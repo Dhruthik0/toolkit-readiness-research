@@ -1,0 +1,44 @@
+{
+  "id": "1",
+  "input": {
+    "id": "1",
+    "category": "CRM and Sales",
+    "app": "Salesforce",
+    "hint": "salesforce.com"
+  },
+  "meta": {
+    "cost_usd": 0.08478638,
+    "turns": 12
+  },
+  "record": {
+    "app": "Salesforce",
+    "category": "CRM",
+    "one_liner": "Cloud CRM and application platform covering sales, service, marketing and custom apps, with a metadata-driven data model exposed through APIs.",
+    "auth_methods": [
+      "OAuth2",
+      "JWT / service account",
+      "Other"
+    ],
+    "auth_notes": "OAuth 2.0 through an External Client App (newer) or Connected App (legacy). Flows include authorization code with PKCE, JWT bearer, client credentials, and refresh token. A session ID from SOAP login() is also accepted as a bearer. The search summary of Salesforce docs mentioned OAuth flows and SOAP session ID, but I could not fetch the developer pages (403), so I did not confirm the full flow list myself. The hosted MCP FAQ page (fetched) confirms MCP auth is External Client Apps only, with scopes mcp_api and refresh_token.",
+    "access": "self_serve_free",
+    "access_notes": "A free Developer Edition org (developer.salesforce.com/signup) includes API access, per search-result summaries. I could not fetch the signup or edition pages (403), so I did not verify this directly. Production API access depends on edition: Enterprise, Unlimited and Performance include it, and other editions may need an add-on. The signup details for my verdict are from search snippets, so treat them as unverified. Hosted MCP servers: sources conflict on whether they are GA for Enterprise and above or still Beta limited to Developer Edition, sandbox and scratch orgs. Billing (Flex Credits) is unclear.",
+    "api_types": [
+      "REST",
+      "SOAP",
+      "GraphQL",
+      "WebSocket"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide",
+    "verdict": "ready_with_caveats",
+    "blocker": "Each customer org must create and approve an External Client App (OAuth) and an admin must enable the API and any MCP servers. Production API access depends on edition, and per-org API call limits apply. The vendor developer docs returned 403 to my fetches, so most claims are not verified from vendor pages.",
+    "evidence": {
+      "auth": "https://raw.githubusercontent.com/wiki/forcedotcom/mcp-hosted/FAQ.md (fetched: MCP uses External Client Apps only, scopes mcp_api and refresh_token). REST OAuth flow details not fetched.",
+      "access": null,
+      "api": null,
+      "mcp": "https://github.com/forcedotcom/mcp-hosted (fetched: README says hosted MCP servers are GA; servers are disabled by default and enabled by an admin in Setup)"
+    },
+    "confidence": "low"
+  }
+}

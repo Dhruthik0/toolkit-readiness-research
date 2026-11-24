@@ -1,0 +1,39 @@
+{
+  "id": "22",
+  "input": {
+    "id": "22",
+    "category": "Communications and Messaging",
+    "app": "Twilio",
+    "hint": "twilio.com"
+  },
+  "meta": {
+    "cost_usd": 0.056150335,
+    "turns": 8
+  },
+  "record": {
+    "app": "Twilio",
+    "category": "Communications API (CPaaS)",
+    "one_liner": "Cloud communications platform with APIs for SMS, voice, WhatsApp, email, verification and related messaging/voice services.",
+    "auth_methods": [
+      "Basic"
+    ],
+    "auth_notes": "Both are HTTP Basic auth: API key SID + secret (recommended) or Account SID + Auth Token (required by some endpoints). No documented OAuth for third-party apps on the fetched page; Twilio also has short-lived Access Tokens for client SDKs, but I did not verify that from a fetched page.",
+    "access": "self_serve_trial",
+    "access_notes": "Free trial account (expires 30 days after sign-up) gives the same Account SID/Auth Token and API key management. Limits: send only to up to 5 verified numbers, sign-up country only, Twilio templates only; free units 100 SMS, 100 WhatsApp, 3,000 emails, 75 voice minutes. Upgrading to paid removes restrictions. Production use is pay-as-you-go; SMS in the US also requires sender registration (A2P 10DLC), which I did not verify from a fetched page.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.twilio.com/docs",
+    "verdict": "ready_with_caveats",
+    "blocker": "Trial is time-limited and restricted. Production needs a paid account, and likely sender/number registration. The official MCP server is a docs-search server only (public beta, read-only, no API calls). The community/alpha twilio-labs MCP (@twilio-alpha/mcp) wraps the public API but is unsupported. OAuth-based API MCP tools are listed as planned.",
+    "evidence": {
+      "auth": "https://www.twilio.com/docs/usage/requests-to-twilio",
+      "access": "https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account",
+      "api": "https://www.twilio.com/docs/usage/requests-to-twilio",
+      "mcp": "https://www.twilio.com/docs/mcp"
+    },
+    "confidence": "medium"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "50",
+  "input": {
+    "id": "50",
+    "category": "Ecommerce",
+    "app": "fanbasis",
+    "hint": "fanbasis.com"
+  },
+  "meta": {
+    "cost_usd": 0.06236419,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "unsupported",
+      "note": "Vendor API page returned 403. No fetched page confirms the x-api-key header. Emergent only mentions 'API credentials'. No OAuth evidence found either.",
+      "url": "https://emergent.sh/integrations/fanbasis"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "No fetched page says how keys are issued or whether a paid plan or approval is needed. self_serve_free is a guess.",
+      "url": null
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "Emergent mentions an SDK, member data retrieval APIs and webhook events (sales, subscriptions, disputes, member joins, cancellations). It lists no endpoints, so REST and 'moderate' breadth are unconfirmed.",
+      "url": "https://emergent.sh/integrations/fanbasis"
+    },
+    {
+      "field": "mcp",
+      "status": "unsupported",
+      "note": "zapier.com/mcp/fanbasis returned 404 on fetch. A search snippet describes a Zapier-hosted FanBasis MCP server, but I could not fetch the page. No official vendor MCP found.",
+      "url": "https://zapier.com/mcp/fanbasis"
+    },
+    {
+      "field": "verdict",
+      "status": "unsupported",
+      "note": "Nothing contradicts ready_with_caveats, but it depends on unverified auth and access claims. Low confidence is appropriate.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "fanbasis",
+    "category": "Creator payments / checkout",
+    "one_liner": "Fanbasis is a payments and checkout platform for creators and online businesses, with an API/SDK for checkout, member data and webhook events.",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "Unverified. Search snippets suggest an x-api-key header against https://www.fanbasis.com/public-api/, but the vendor page returned 403. Emergent only says 'API credentials'. No OAuth flow found.",
+    "access": "self_serve_free",
+    "access_notes": "Unverified. No fetched page states how keys are issued or whether a paid plan or approval is required. Emergent says only that a FanBasis account is needed.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "community",
+    "mcp_url": "https://zapier.com/mcp/fanbasis",
+    "verdict": "ready_with_caveats",
+    "blocker": "No vendor documentation could be fetched (403/404). Key issuance, plan requirements, rate limits and the endpoint list are unconfirmed. The Zapier MCP page returned 404 on fetch, though a search snippet describes it.",
+    "evidence": {
+      "auth": "https://emergent.sh/integrations/fanbasis",
+      "access": null,
+      "api": "https://emergent.sh/integrations/fanbasis",
+      "mcp": "https://zapier.com/mcp/fanbasis"
+    },
+    "confidence": "low"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "68",
+  "input": {
+    "id": "68",
+    "category": "Developer, Infra and Data platforms",
+    "app": "MongoDB Atlas",
+    "hint": "mongodb.com/docs/atlas/api"
+  },
+  "meta": {
+    "cost_usd": 0.09703546,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Fetched page confirms service account OAuth 2.0 Client Credentials (recommended, 1-hour tokens, no refresh) and API keys over HTTP Digest (legacy). Correction to auth_notes: the record says there is no per-end-user OAuth for third-party apps. Search results from the app-connections pages describe delegated access for partner apps via OAuth 2.1 Authorization Code with PKCE, but only for approved design partners.",
+      "url": "https://www.mongodb.com/docs/atlas/api/api-authentication/"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "The configure-api-access page confirms Organization Owner creates credentials and that the IP access list is required by default (it can be turned off in org settings). It says nothing about free-tier or plan requirements, so self_serve_free is unverified. The record's own note says the same. Delegated partner access additionally needs approved design partner status.",
+      "url": "https://www.mongodb.com/docs/atlas/configure-api-access/"
+    },
+    {
+      "field": "api",
+      "status": "contradicted",
+      "note": "Administration API is broad (projects, users, clusters, plus Go SDK, CLI, Terraform). 'CLI / library only' is wrong: the API is HTTP-based with base URL https://cloud.mongodb.com/api/atlas/<version>. The CLI and SDKs are wrappers, so the type should be REST only. The Data API was not found on the fetched page. One search result says the Clusters API cannot modify free-tier clusters.",
+      "url": "https://www.mongodb.com/docs/atlas/api/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The mongodb.com/docs page for the MCP server describes it as MongoDB's own, covering Atlas management and data queries, with Local MCP and Atlas Managed MCP modes. GA or preview status was not stated on the page.",
+      "url": "https://www.mongodb.com/docs/mcp-server/"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is reasonable. Blocker text needs fixing: the API is public-internet only (confirmed), the IP list can be disabled by an owner, and rate limits exist (HTTP 429, per-endpoint-set limits, not part of the contract). The claim that per-user OAuth for third-party apps is unavailable is too strong. It exists but only for design partners.",
+      "url": "https://www.mongodb.com/docs/atlas/configure-api-access/"
+    }
+  ],
+  "corrected": {
+    "app": "MongoDB Atlas",
+    "category": "Cloud database / DBaaS",
+    "one_liner": "MongoDB Atlas is a managed cloud database service whose Administration API manages organizations, projects, clusters, users and related settings.",
+    "auth_methods": [
+      "OAuth2",
+      "API key"
+    ],
+    "auth_notes": "Service accounts use the OAuth 2.0 Client Credentials flow (client ID plus secret, 1-hour tokens, no refresh). This is the recommended method. Programmatic API keys use HTTP Digest and are described as legacy. Both are org-scoped, so a multi-tenant integration would have each customer create and share its own credentials. Per-user delegated access (OAuth 2.1 Authorization Code with PKCE, with refresh tokens) exists for partner apps and MCP clients, but partner apps need approved design partner status, and it is off by default in existing orgs. Neither credential method reaches cluster data; that needs a database user.",
+    "access": "self_serve_free",
+    "access_notes": "Anyone with an Atlas account and the Organization Owner role can create a service account or API key. Fetched docs do not state any plan requirement or confirm free-tier eligibility, so self-serve is assumed but unverified. An IP access list is required by default (an org owner can disable it). Delegated partner OAuth requires approved design partner status.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://www.mongodb.com/docs/mcp-server/",
+    "verdict": "ready_with_caveats",
+    "blocker": "Credentials are org-scoped service accounts or API keys. Per-user OAuth for third-party apps is limited to approved design partners. An IP access list is required by default. The API is reachable only over the public internet, not private networking. The Admin API does not read or write cluster data. The Clusters API cannot modify free-tier clusters (per search results). Rate limits exist (HTTP 429, per endpoint set, queryable via the rateLimits resource). The Data API was not verified.",
+    "evidence": {
+      "auth": "https://www.mongodb.com/docs/atlas/api/api-authentication/ (fetched): service account OAuth 2.0 client credentials (recommended) and API keys with HTTP Digest (legacy). Delegated access: https://www.mongodb.com/docs/atlas/app-connections/partner-integration-guide/ (from search results, not fetched in full).",
+      "access": "https://www.mongodb.com/docs/atlas/configure-api-access/ (fetched): Organization Owner creates service accounts or API keys; IP access list required by default. It says nothing on free tier or plan requirements.",
+      "api": "https://www.mongodb.com/docs/atlas/api/ (fetched): Atlas Administration API for projects, users and clusters, plus Go SDK, CLI and Terraform. Base URL https://cloud.mongodb.com/api/atlas/<version> is from https://www.mongodb.com/docs/atlas/configure-api-access/ (fetched).",
+      "mcp": "https://www.mongodb.com/docs/mcp-server/ (fetched): MongoDB's own docs page for the MCP server, covering Atlas management and data queries."
+    },
+    "confidence": "low"
+  }
+}

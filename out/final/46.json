@@ -1,0 +1,72 @@
+{
+  "id": "46",
+  "input": {
+    "id": "46",
+    "category": "Ecommerce",
+    "app": "Squarespace",
+    "hint": "developers.squarespace.com"
+  },
+  "meta": {
+    "cost_usd": 0.07610218499999999,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page confirms API keys and OAuth tokens; making-requests page confirms Bearer for both and that User-Agent is required. Webhook Subscriptions is OAuth-only. OAuth is real third-party API access, not just SSO.",
+      "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Page ties custom-app API keys to the Commerce Advanced plan (now called Advanced), though not in those exact words. OAuth registration must be reviewed and approved; this is separate from Extensions listing. Some third-party sources also mention a Premium plan, which is unverified.",
+      "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Overview confirms REST. It lists Analytics, Contacts, Discounts, Inventory, Orders, Products, Profiles (maintenance mode, use Contacts instead), Transactions and Webhook Subscriptions. 'Moderate' breadth is reasonable. No Commerce API for page or content editing.",
+      "url": "https://developers.squarespace.com/commerce-apis/overview"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "No official Squarespace MCP server was found. The cited GitHub issue is a request for an official connector and doesn't point to any server, so it is a weak citation. The glama directory page lists third-party servers, which supports 'community'.",
+      "url": "https://glama.ai/mcp/servers/integrations/squarespace"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits: REST API with API key or OAuth, but it needs a paid Advanced plan or OAuth approval, covers commerce data only, and rate-limit numbers are unverified.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Squarespace",
+    "category": "Website builder / Ecommerce",
+    "one_liner": "Hosted website builder and ecommerce platform whose Commerce APIs expose store data (products, orders, inventory, contacts, transactions, discounts, webhooks).",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "Both sent as Authorization: Bearer. Merchant-generated API key (Settings > Advanced > Developer API Keys) for custom single-site apps; OAuth client (account.squarespace.com/developer-apps) for multi-site/commercial apps. Webhook Subscriptions API is OAuth-only. User-Agent header required; requests without it are rejected.",
+    "access": "paid_plan",
+    "access_notes": "API keys for custom apps require a site on the Commerce Advanced plan (now called Advanced). OAuth client registration must be reviewed and approved by Squarespace; approval allows OAuth connections but is separate from Extensions listing. OAuth plan requirement for developers not stated.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "community",
+    "mcp_url": "https://glama.ai/mcp/servers/integrations/squarespace",
+    "verdict": "ready_with_caveats",
+    "blocker": "API-key access needs the Advanced (formerly Commerce Advanced) plan on the user's site; OAuth (needed for webhooks and a multi-tenant toolkit) needs Squarespace approval. Rate-limit numbers not verified. API covers commerce data, not page/content editing. Profiles API is in maintenance mode (use Contacts).",
+    "evidence": {
+      "auth": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+      "access": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+      "api": "https://developers.squarespace.com/commerce-apis/overview",
+      "mcp": "https://glama.ai/mcp/servers/integrations/squarespace"
+    },
+    "confidence": "medium"
+  }
+}

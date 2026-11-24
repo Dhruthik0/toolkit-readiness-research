@@ -1,0 +1,72 @@
+{
+  "id": "3",
+  "input": {
+    "id": "3",
+    "category": "CRM and Sales",
+    "app": "Pipedrive",
+    "hint": "pipedrive.com"
+  },
+  "meta": {
+    "cost_usd": 0.09367819,
+    "turns": 9
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Getting-started page names API token and OAuth 2.0; the OAuth page confirms authorization-code flow at oauth.pipedrive.com, Bearer access tokens, and 60-day unused refresh-token expiry. The API docs page says requests are validated by API token. Header vs query placement was not stated on any fetched page.",
+      "url": "https://pipedrive.readme.io/docs/marketplace-oauth-authorization"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "The token page confirms the token location and that API access may have to be enabled first. The sandbox page doesn't state cost. It says the sandbox is deleted if no app is created within 45 days, or if no public app is published or private app made live within 6 months. No page checked states plan requirements or Marketplace review for external installs. self_serve_free is not established, so the value is downgraded to self_serve_trial.",
+      "url": "https://pipedrive.readme.io/docs/developer-sandbox-account"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The API docs page confirms REST, JSON, OpenAPI 3 for v1 and v2, and 48 endpoint categories covering Deals, Persons, Organizations, Activities, Leads and Webhooks. Read/write coverage is not stated on the page, but breadth is clearly broad.",
+      "url": "https://developers.pipedrive.com/docs/api/v1"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Pipedrive's own page calls it an official connector in Claude and ChatGPT, built and maintained by Pipedrive, with OAuth login, on all plans, with plan token limits. The page doesn't give the server URL. https://mcp.pipedrive.ai/mcp comes only from a third-party blog, so the URL is unverified.",
+      "url": "https://www.pipedrive.com/en/features/mcp-server"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is reasonable given the unverified access terms and MCP URL. The blocker text is accurate as written, and I added the sandbox deletion rules.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Pipedrive",
+    "category": "CRM",
+    "one_liner": "Sales CRM for managing deals, contacts, organizations, activities and pipelines.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "Per-user personal API token (Settings > Personal preferences > API; one active token per user per company; API access may need to be enabled first) for own-account integrations. OAuth 2.0 authorization-code flow (oauth.pipedrive.com/oauth/authorize and /oauth/token, Basic auth for client credentials at token exchange, Bearer access tokens, refresh tokens expire after 60 days unused) for apps; OAuth is required for Marketplace apps. How the API token is passed (header vs query) was not confirmed on a fetched page, so API key is by inference.",
+    "access": "self_serve_trial",
+    "access_notes": "Regular accounts have a token in Settings (API access may need enabling). Developer sandbox account via developers.pipedrive.com. The sandbox page doesn't state cost. The sandbox is deleted if no app is created within 45 days of sign-up, or if no public app is published or private app made live within 6 months. A Pipedrive account is needed for a token, and its trial or plan requirements were not verified. Whether OAuth apps need Marketplace review for installs by other customers was not confirmed. Other customers can install outside the Marketplace via the authorize URL.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.pipedrive.ai/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Unverified: whether API tokens are available on every plan or trial, sandbox cost, rate limits, and whether OAuth apps need Marketplace review for other customers. The MCP server URL comes only from a third-party blog (tldv.io), because Pipedrive's page doesn't state it. MCP usage is subject to plan token limits.",
+    "evidence": {
+      "auth": "https://pipedrive.readme.io/docs/marketplace-oauth-authorization (OAuth flow, Bearer tokens, 60-day refresh expiry); https://pipedrive.readme.io/docs/getting-started (API token and OAuth 2.0 named)",
+      "access": "https://pipedrive.readme.io/docs/developer-sandbox-account (sandbox sign-up and deletion rules); https://pipedrive.readme.io/docs/how-to-find-the-api-token (token location, API access may need enabling)",
+      "api": "https://developers.pipedrive.com/docs/api/v1 (REST, JSON, OpenAPI 3 for v1 and v2, 48 endpoint categories)",
+      "mcp": "https://www.pipedrive.com/en/features/mcp-server (official connector built and maintained by Pipedrive, OAuth login, all plans; server URL not stated there)"
+    },
+    "confidence": "low"
+  }
+}

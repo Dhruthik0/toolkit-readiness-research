@@ -1,0 +1,72 @@
+{
+  "id": "76",
+  "input": {
+    "id": "76",
+    "category": "Productivity and Project Management",
+    "app": "Monday.com",
+    "hint": "developer.monday.com"
+  },
+  "meta": {
+    "cost_usd": 0.04830854,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Authentication page confirms personal V2 token in Authorization header at api.monday.com/v2. OAuth page confirms auth.monday.com/oauth2/authorize and /token for apps, plus a newer OAuth 2.1 with expiring tokens. The cited auth URL itself does not mention OAuth, so the OAuth page is the better evidence for that part.",
+      "url": "https://developer.monday.com/apps/docs/oauth"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Rate-limits page: Free 200/day, with a paid API add-on to raise it. It also calls the API a free feature across all plans. The authentication page confirms a free developer account. Plan tiers are not stated on the Basics page, but the rate-limits page covers it. No app review was found for personal-token use.",
+      "url": "https://developer.monday.com/api-reference/docs/rate-limits"
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "GraphQL is confirmed as the only API described, with one endpoint and a schema at /v2/get_schema. The pages fetched give no object list, so 'broad' is inferred and cannot be confirmed from the pages fetched.",
+      "url": "https://developer.monday.com/api-reference/docs/introduction-to-graphql"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The MCP docs page lists the mondaycom/monday-ai GitHub repo, runs locally via npx @mondaydotcomorg/monday-api-mcp, and is labeled Beta. It is hosted in vendor docs under the mondaycom org, so it is vendor-published. The page does not use the word 'official'.",
+      "url": "https://developer.monday.com/apps/docs/mondaycom-mcp-integration"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent with the verified facts: self-serve token, 200 calls/day on Free, GraphQL only, MCP in beta. The 'breadth inferred' caveat is correct.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Monday.com",
+    "category": "Work management / CRM",
+    "one_liner": "Cloud work-management platform for boards, items, projects, and workflows, with CRM and service products built on the same platform.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Personal V2 API token goes in the Authorization header to https://api.monday.com/v2. It acts as the user. OAuth2 for apps: auth.monday.com/oauth2/authorize and /token (legacy tokens do not expire). A newer OAuth 2.1 flow adds expiring access tokens, refresh tokens and revocation. Guests cannot use personal API keys but can use OAuth.",
+    "access": "self_serve_free",
+    "access_notes": "Personal token is available from the Developers section of any account. A free developer account is available for testing. The API is described as a free feature across all plans. Daily call caps: Free 200, Standard/Basic 1,000, Pro/Trial 10,000, Enterprise 25,000. A paid API add-on can raise the cap. Marketplace app review requirements were not verified.",
+    "api_types": [
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://github.com/mondaycom/monday-ai/tree/master/packages/monday-api-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Free plan is limited to 200 API calls/day; higher limits need a higher plan or a paid add-on. MCP server is labeled Beta and runs locally. Breadth is inferred from the GraphQL schema and examples, not from a full object list. Marketplace distribution review requirements are unconfirmed.",
+    "evidence": {
+      "auth": "https://developer.monday.com/apps/docs/oauth",
+      "access": "https://developer.monday.com/api-reference/docs/rate-limits",
+      "api": "https://developer.monday.com/api-reference/docs/introduction-to-graphql",
+      "mcp": "https://developer.monday.com/apps/docs/mondaycom-mcp-integration"
+    },
+    "confidence": "low"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "88",
+  "input": {
+    "id": "88",
+    "category": "Finance and Fintech",
+    "app": "Brex",
+    "hint": "developer.brex.com"
+  },
+  "meta": {
+    "cost_usd": 0.04415456,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page confirms admin-created scoped user token (90-day inactivity expiry). Partner page confirms OAuth2 authorization code and client credentials grants, with client ID/secret issued via developer support. MCP page confirms OAuth and a Bearer API key.",
+      "url": "https://developer.brex.com/guides/partner_authentication"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "Page confirms account/card admin, developer API agreement, and a production-only server. It says nothing about cost or plan tiers. The 'free' claim and whether a Brex account needs approval/underwriting are not settled by any page I fetched. The record itself admits this.",
+      "url": "https://developer.brex.com/docs/authentication/"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Developer home confirms REST/JSON with OpenAPI and the listed areas (Accounting, Budgets, Expenses, Fields, Onboarding, Payments, Team, Transactions, Travel, Webhooks). No GraphQL. 'Broad' is a reasonable judgment.",
+      "url": "https://developer.brex.com"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "MCP docs show a vendor-hosted server at api.brex.com/mcp, labeled Beta, with 44 tools (one deprecated), OAuth or Bearer API key, and no approvals or card management. The page doesn't use the word 'official', but it is Brex's own docs and host.",
+      "url": "https://developer.brex.com/docs/mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats follows from the fields: production-only, admin and agreement needed, support-issued OAuth credentials, 90-day token expiry, and a Beta MCP. The blocker text is consistent with the fetched pages.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Brex",
+    "category": "Spend management / Corporate cards & fintech",
+    "one_liner": "Brex is a spend platform combining corporate cards, expense management, reimbursements, travel, and bill pay/payments for businesses.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Customer-side: user token (created in dashboard Developer settings, scoped, sent as Bearer; expires after 90 days without use). Third-party/partner apps: OAuth2 authorization code grant (client credentials grant for the onboarding API), but client ID/secret and scopes are issued by Brex developer support, not self-serve. The MCP server also supports OAuth (browser login) and the Bearer API token.",
+    "access": "self_serve_free",
+    "access_notes": "An account admin or card admin of an existing Brex company accepts the Developer API agreement and creates a user token in dashboard Developer settings. This is self-serve for a customer's own account. It requires being a Brex customer; the docs state no plan-tier gate and no sandbox (production only, api.brex.com). Not verified: whether a Brex account is free or needs an application/approval to open, so the 'free' label is unconfirmed. Multi-tenant OAuth for a public integration requires contacting Brex developer support for a client ID/secret.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://api.brex.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Requires a Brex customer account with an admin to accept the developer agreement; no sandbox (production only); OAuth for multi-user third-party apps requires Brex-issued client credentials via support; tokens expire after 90 days of inactivity; the official MCP is Beta.",
+    "evidence": {
+      "auth": "https://developer.brex.com/docs/authentication/ (user token as Bearer; admin creates in Developer settings; 90-day inactivity expiry; production-only server). https://developer.brex.com/guides/partner_authentication (OAuth2 auth code + client credentials; client ID/secret from developer support).",
+      "access": "https://developer.brex.com/docs/authentication/ (account/card admin, accept developer API agreement, Create Token; no pricing or plan information on the page).",
+      "api": "https://developer.brex.com (REST, OpenAPI; Accounting, Budgets, Expenses, Fields, Onboarding, Payments, Team, Transactions, Travel, Webhooks).",
+      "mcp": "https://developer.brex.com/docs/mcp (hosted at api.brex.com/mcp, Beta, OAuth or API key, 44 tools; approvals and card management not available)."
+    },
+    "confidence": "low"
+  }
+}

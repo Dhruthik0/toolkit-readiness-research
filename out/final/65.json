@@ -1,0 +1,73 @@
+{
+  "id": "65",
+  "input": {
+    "id": "65",
+    "category": "Developer, Infra and Data platforms",
+    "app": "Supabase",
+    "hint": "supabase.com/docs"
+  },
+  "meta": {
+    "cost_usd": 0.05123076000000001,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Reference intro page lists PATs (scoped and legacy) and OAuth2 for third-party apps, sent in the Authorization header. The api-keys page confirms sb_publishable_/sb_secret_ in the apikey header and legacy anon/service_role deprecation planned by end of 2026. The OAuth page confirms the authorization code flow, refresh via /v1/oauth/token, and PKCE, but PKCE is recommended, not required. I corrected that detail in auth_notes.",
+      "url": "https://supabase.com/docs/guides/integrations/build-a-supabase-oauth-integration"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "None of the fetched pages state plan requirements for the Management API or the OAuth app approval process. The 'free tier gives API access' claim stays unconfirmed. Only the branching paid-plan requirement (MCP page) is confirmed.",
+      "url": "https://supabase.com/docs/guides/getting-started/mcp"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The Management API is a REST-style HTTP API on /v1 paths with a published OpenAPI spec. The page does not use the word 'REST', so this is an inference. Breadth is broad (projects, orgs, config, migrations, api-keys, etc.), plus the per-project data APIs.",
+      "url": "https://supabase.com/docs/reference/api/introduction"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The Supabase docs MCP page documents the hosted server at https://mcp.supabase.com/mcp and the supabase/mcp repo. It also covers browser OAuth login, PAT bearer for CI, and branching as paid-plan only.",
+      "url": "https://supabase.com/docs/guides/getting-started/mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits. The rate limit is 120/min per user per project or org per endpoint, with stricter limits on some endpoints (30/min for analytics, 10/min for custom hostnames). Legacy keys are being deprecated. Plan and approval requirements are undocumented.",
+      "url": "https://supabase.com/docs/reference/api/introduction"
+    }
+  ],
+  "corrected": {
+    "app": "Supabase",
+    "category": "Backend-as-a-Service / Postgres database platform",
+    "one_liner": "Supabase is a hosted Postgres development platform that provides a database, auth, storage, Edge Functions, realtime and auto-generated REST APIs, plus a Management API for administering projects.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2",
+      "API key"
+    ],
+    "auth_notes": "Management API: personal access token (scoped or legacy) or OAuth2 access token, sent in the Authorization header over HTTPS. Third-party OAuth2 apps are registered in org settings (authorization code flow, PKCE recommended with S256, refresh tokens via POST api.supabase.com/v1/oauth/token). Per-project data APIs (REST, Auth, Storage): publishable (sb_publishable_) and secret (sb_secret_) keys sent in the apikey header, plus legacy anon/service_role JWTs (planned deprecation by end of 2026), plus end-user JWTs.",
+    "access": "self_serve_free",
+    "access_notes": "PATs are created in account settings and OAuth apps in org settings. No fetched page states plan requirements for the Management API or any OAuth app approval/review step; free-tier API access is an unconfirmed assumption. Branching via the MCP server requires a paid plan. API-created resources are subject to normal pricing.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.supabase.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Management API rate limit is 120 requests per minute per user per project or organization per endpoint, with stricter limits on some endpoints (e.g. 30/min analytics, 10/min custom hostnames). Legacy API keys are being deprecated. Plan requirements and the OAuth app publishing/approval process are not documented. The project data API is per-project, so an agent needs per-project keys.",
+    "evidence": {
+      "auth": "https://supabase.com/docs/reference/api/introduction ; https://supabase.com/docs/guides/api/api-keys ; https://supabase.com/docs/guides/integrations/build-a-supabase-oauth-integration",
+      "access": "https://supabase.com/docs/guides/integrations/build-a-supabase-oauth-integration",
+      "api": "https://supabase.com/docs/reference/api/introduction",
+      "mcp": "https://supabase.com/docs/guides/getting-started/mcp"
+    },
+    "confidence": "low"
+  }
+}

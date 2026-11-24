@@ -1,0 +1,40 @@
+{
+  "id": "31",
+  "input": {
+    "id": "31",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "Google Ads",
+    "hint": "developers.google.com/google-ads"
+  },
+  "meta": {
+    "cost_usd": 0.06193963499999999,
+    "turns": 9
+  },
+  "record": {
+    "app": "Google Ads",
+    "category": "Advertising",
+    "one_liner": "Google's online advertising platform; the Google Ads API lets developers manage accounts, campaigns, budgets, assets and run GAQL reporting programmatically.",
+    "auth_methods": [
+      "OAuth2",
+      "JWT / service account"
+    ],
+    "auth_notes": "OAuth 2.0 (single-user or multi-user) or service account. Credentials must be created in the same Google Cloud project where the Google Ads API is enabled. Per the dev-token page, developer tokens were sunset on 2026-09-09 and access is now tied to the Cloud project (App Conversion Tracking API is the exception). Required request headers were not confirmed from a fetched page.",
+    "access": "approval_required",
+    "access_notes": "Enabling the API in a Cloud project gives Test access (test accounts only, 15,000 ops/day). Production accounts need Explorer (apply, automated review, usually approved, up to 2,880 ops/day), Basic (brand verification, automated review) or Standard (manual Compliance review). Free-trial or suspended-billing projects are reported as being rejected. Rate limits for Basic and Standard were not stated on the fetched page.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://github.com/googleads/google-ads-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Production use requires applying for an access level (Explorer/Basic/Standard) per Cloud project, with brand verification for Basic/Standard. Explorer is capped at about 2,880 ops/day. Free-trial billing projects may be rejected. The official MCP server is only read plus partial mutate (assets, labels).",
+    "evidence": {
+      "auth": "https://developers.google.com/google-ads/api/docs/oauth/overview",
+      "access": "https://developers.google.com/google-ads/api/docs/get-started/dev-token",
+      "api": "https://developers.google.com/google-ads/api/docs/start",
+      "mcp": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

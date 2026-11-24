@@ -1,0 +1,71 @@
+{
+  "id": "20",
+  "input": {
+    "id": "20",
+    "category": "Support and Helpdesk",
+    "app": "Gladly",
+    "hint": "gladly.com"
+  },
+  "meta": {
+    "cost_usd": 0.05609198,
+    "turns": 5
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "developer.gladly.com/rest/ states Basic auth with agent email + API token over HTTPS. OAuth is not mentioned. The 'unscoped token' quote was not visible in the fetched text, but the Basic-only claim holds.",
+      "url": "https://developer.gladly.com/rest/"
+    },
+    {
+      "field": "access",
+      "status": "contradicted",
+      "note": "Token steps (API User permission, More settings > API Tokens) are confirmed. The pricing page shows no trial or self-serve signup, only Get a Demo and Contact sales. 'partner_gated' is the wrong category, since no partner program is cited. This is a sales-led paid customer tenant, so 'paid_plan' fits. Whether API access depends on plan tier is not stated.",
+      "url": "https://www.gladly.ai/pricing/"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "REST with about 21 tag groups (Agents, Conversations, Customers, Tasks, Reports, Webhooks, Topics, Events, Export and others), which fits 'broad'.",
+      "url": "https://developer.gladly.com/rest/"
+    },
+    {
+      "field": "mcp",
+      "status": "unsupported",
+      "note": "No vendor page was found announcing or denying an official MCP server. Search found only third-party hosted options (StackOne, Truto). A third-party report says Gladly publishes none. 'none_found' is the best-supported value, but the cited Truto page does not settle it. I changed the evidence URL to the StackOne page.",
+      "url": "https://www.stackone.com/connectors/gladly/mcp/"
+    },
+    {
+      "field": "verdict",
+      "status": "contradicted",
+      "note": "With a documented, broad REST API and a paid tenant requirement, the verdict follows from the other fields as 'ready_with_caveats', not 'blocked'. The caveats are that a developer needs a sales-led tenant, the token is unscoped, and rate-limit values are unknown.",
+      "url": "https://developer.gladly.com/rest/"
+    }
+  ],
+  "corrected": {
+    "app": "Gladly",
+    "category": "Customer service platform / Helpdesk",
+    "one_liner": "Gladly is a customer service platform that manages customer conversations across channels around a unified customer profile, with AI assistance for support teams.",
+    "auth_methods": [
+      "Basic"
+    ],
+    "auth_notes": "HTTP Basic Auth: username is the agent's email, password is an API token, sent over HTTPS (e.g. curl -u user@org.com:$GLADLY_API_TOKEN https://org.gladly.com/api/v1/organization). The token is tied to an agent profile. Public Answers endpoints need no token. No OAuth is documented for third-party API access. The claim that the token is unscoped was not visible in the fetched text.",
+    "access": "paid_plan",
+    "access_notes": "A token requires a Gladly tenant (org.gladly.com). An admin gives an agent the \"API User\" permission, then that agent creates a token under More settings > API Tokens. The pricing page shows no free trial, self-serve signup or prices, only \"Get a Demo\" and \"Contact sales\". The path is a sales-led Gladly customer account. No free developer sandbox was found, and whether API access depends on plan tier is not stated.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "none_found",
+    "mcp_url": null,
+    "verdict": "ready_with_caveats",
+    "blocker": "No self-serve signup, free tier or trial, so credentials need an existing paying Gladly tenant obtained through sales. Once a tenant exists, the API is documented and usable. Tokens are static and appear unscoped, and rate limits exist but their values were not found.",
+    "evidence": {
+      "auth": "https://developer.gladly.com/rest/",
+      "access": "https://www.gladly.ai/pricing/ (no trial or pricing; Get a Demo / Contact sales); https://developer.gladly.com/rest/ (token creation requires API User permission)",
+      "api": "https://developer.gladly.com/rest/ (about 21 tag groups: Agents, Conversations, Customers, Tasks, Reports, Webhooks, Topics, Events, Export, etc.)",
+      "mcp": "https://www.stackone.com/connectors/gladly/mcp/ (third-party hosted MCP; no official Gladly server found in search)"
+    },
+    "confidence": "low"
+  }
+}

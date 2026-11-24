@@ -1,0 +1,72 @@
+{
+  "id": "22",
+  "input": {
+    "id": "22",
+    "category": "Communications and Messaging",
+    "app": "Twilio",
+    "hint": "twilio.com"
+  },
+  "meta": {
+    "cost_usd": 0.079488195,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "contradicted",
+      "note": "Requests page documents only HTTP Basic (API key SID/secret, or Account SID/Auth Token). But Twilio docs show OAuth 2.0 client-credentials: POST oauth.twilio.com/v2/token returns a Bearer access token for REST calls (OAuth APIs GA per Apr 2026 changelog). The record omitted OAuth2. I saw this via search results, not a full page fetch.",
+      "url": "https://www.twilio.com/docs/iam/oauth-apps/oauth-access-token"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Trial page confirms 30-day expiry, 5 verified numbers, free units (100 SMS, 100 WhatsApp, 3,000 emails, 75 voice min), upgrade path, and that A2P 10DLC needs a paid account.",
+      "url": "https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Requests page documents a RESTful HTTP API (POST/GET/DELETE, JSON responses). Breadth 'broad' is consistent with the multi-product API surface, but the page does not enumerate it.",
+      "url": "https://www.twilio.com/docs/usage/requests-to-twilio"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The MCP page confirms an official Twilio-hosted server at mcp.twilio.com/docs. It is docs and API-reference search only, read-only, public beta, no auth. OAuth API tools are planned. The twilio-labs alpha MCP is described as experimental and unsupported by Twilio Support.",
+      "url": "https://www.twilio.com/docs/mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats still fits. The API is usable via a self-serve trial, and the caveats are the trial limits, A2P registration needing a paid account, and the docs-only official MCP. The blocker text needs a small fix to mention OAuth.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Twilio",
+    "category": "Communications API (CPaaS)",
+    "one_liner": "Cloud communications platform with APIs for SMS, voice, WhatsApp, email, verification and related messaging/voice services.",
+    "auth_methods": [
+      "Basic",
+      "OAuth2"
+    ],
+    "auth_notes": "HTTP Basic with API key SID + secret (recommended) or Account SID + Auth Token (required by some endpoints). OAuth 2.0 client-credentials is also available: an OAuth app's client ID and secret are exchanged at oauth.twilio.com/v2/token for a Bearer access token (GA per Apr 2026 changelog). Verified from search results, not a full page fetch.",
+    "access": "self_serve_trial",
+    "access_notes": "Free trial account (expires 30 days after sign-up) gives the same Account SID/Auth Token and API key management. Limits: send only to up to 5 verified numbers, sign-up country only, Twilio templates only; free units 100 SMS, 100 WhatsApp, 3,000 emails, 75 voice minutes. Upgrading to paid removes restrictions. Production use is pay-as-you-go; US A2P 10DLC registration requires a paid account.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.twilio.com/docs",
+    "verdict": "ready_with_caveats",
+    "blocker": "Trial is time-limited and restricted. Production needs a paid account, and US SMS needs A2P 10DLC registration. The official MCP server is docs-search only (public beta, read-only, no API calls). OAuth-authenticated API tools are planned for it. The twilio-labs alpha MCP (@twilio-alpha/mcp) wraps the public API but is experimental and unsupported.",
+    "evidence": {
+      "auth": "https://www.twilio.com/docs/iam/oauth-apps/oauth-access-token",
+      "access": "https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account",
+      "api": "https://www.twilio.com/docs/usage/requests-to-twilio",
+      "mcp": "https://www.twilio.com/docs/mcp"
+    },
+    "confidence": "high"
+  }
+}

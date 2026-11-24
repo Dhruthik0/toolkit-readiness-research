@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["app", "category", "one_liner", "auth_methods", "auth_notes", "access", "access_notes", "api_types", "api_breadth", "mcp", "mcp_url", "verdict", "blocker", "evidence", "confidence"],
+  "properties": {
+    "app": {"type": "string"},
+    "category": {"type": "string", "description": "Short functional category, e.g. 'CRM', 'Helpdesk', 'Payments'"},
+    "one_liner": {"type": "string", "description": "What the product does, one sentence"},
+    "auth_methods": {"type": "array", "minItems": 1, "items": {"enum": ["OAuth2", "API key", "Basic", "Bearer token", "JWT / service account", "HMAC signature", "None", "Other"]}},
+    "auth_notes": {"type": "string", "description": "Specifics, e.g. 'personal access token sent as Bearer; OAuth2 for public apps'"},
+    "access": {"enum": ["self_serve_free", "self_serve_trial", "paid_plan", "approval_required", "partner_gated", "no_public_api"], "description": "Cheapest path for a developer to get working credentials"},
+    "access_notes": {"type": "string"},
+    "api_types": {"type": "array", "items": {"enum": ["REST", "GraphQL", "SOAP", "gRPC", "WebSocket", "CLI / library only", "None"]}},
+    "api_breadth": {"enum": ["broad", "moderate", "narrow", "none"], "description": "broad = most product objects readable+writable; moderate = core objects; narrow = a handful of endpoints"},
+    "mcp": {"enum": ["official", "community", "none_found"]},
+    "mcp_url": {"type": ["string", "null"]},
+    "verdict": {"enum": ["ready", "ready_with_caveats", "blocked"], "description": "Could this be an agent toolkit today"},
+    "blocker": {"type": "string", "description": "Main blocker or caveat; 'none' if ready"},
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["auth", "access", "api", "mcp"],
+      "properties": {
+        "auth": {"type": ["string", "null"]},
+        "access": {"type": ["string", "null"]},
+        "api": {"type": ["string", "null"]},
+        "mcp": {"type": ["string", "null"]}
+      }
+    },
+    "confidence": {"enum": ["high", "medium", "low"]}
+  }
+}

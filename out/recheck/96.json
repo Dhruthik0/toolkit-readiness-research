@@ -1,0 +1,22 @@
+{
+  "id": "96",
+  "input": {
+    "id": "96",
+    "category": "AI, Research and Media-native",
+    "app": "Devin",
+    "hint": "docs.devin.ai (MCP)"
+  },
+  "meta": {
+    "cost_usd": 0.05994957500000001,
+    "turns": 8
+  },
+  "recheck": {
+    "vendor_docs_url": "https://docs.devin.ai/api-reference/overview",
+    "access": "paid_plan",
+    "api_types": [
+      "REST"
+    ],
+    "evidence_quote": "Both scopes use service user credentials (`cog_` prefix).",
+    "notes": "Verified on vendor docs (docs.devin.ai, fetched as .md): the v3 REST API has an Organization API (https://api.devin.ai/v3/organizations/*) and an Enterprise API (https://api.devin.ai/v3/enterprise/*, \"Available to enterprise customers\"). You authenticate with a service user key (cog_ prefix) created under Settings > Devin API > Service users, or with a personal access token. Legacy v1/v2 are deprecated. The docs list OpenAPI specs for v1, v2 and v3. The Teams quickstart (\"for teams and standard organizations\") names no plan requirement. The Enterprise quickstart covers RBAC and multi-org.\n\nNot verified: which plans include API access. The devin.ai/pricing comparison table has a \"Devin API\" row, but the checkmarks did not render. docs.devin.ai/admin/billing/self-serve does not mention the API. Search results show Free $0, Pro $20, Max $200 and Teams $80 per month. I chose paid_plan as an inference: the docs target Teams and Enterprise orgs and no free-tier API path is documented. Pro and Free may also include the API, so check the live pricing page. The Enterprise API is not self-serve. It is tied to Enterprise accounts, which are sales-led. A 2024 release note citing a $500/month beta subscription is outdated.\n\nOther points: the record's rate-limit caveat still stands, as only HTTP 429 is documented. No third-party OAuth flow was found. The MCP server at mcp.devin.ai/mcp was not re-checked here."
+  }
+}

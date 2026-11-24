@@ -1,0 +1,25 @@
+{
+  "id": "1",
+  "input": {
+    "id": "1",
+    "category": "CRM and Sales",
+    "app": "Salesforce",
+    "hint": "salesforce.com"
+  },
+  "meta": {
+    "cost_usd": 0.06256603999999999,
+    "turns": 6
+  },
+  "recheck": {
+    "vendor_docs_url": "https://developer.salesforce.com/docs/platform/api-rest/guide/intro-rest-compatible-editions.html",
+    "access": "self_serve_free",
+    "api_types": [
+      "REST",
+      "SOAP",
+      "GraphQL",
+      "WebSocket"
+    ],
+    "evidence_quote": "The following Salesforce editions include API access by default: Enterprise, Unlimited, Developer, and Performance (Salesforce Help article 000385436)",
+    "notes": "Verified: developer.salesforce.com returns 403 to the fetcher, including llms.txt, so the developer docs pages were not read directly. The Salesforce Help article (help.salesforce.com, id 000385436) did load. It states that Enterprise, Unlimited, Developer and Performance editions include API access by default. Search results from the vendor domain say the same for the free Developer Edition org, which is available at developer.salesforce.com/signup. That makes self_serve_free correct for getting working credentials: sign up for a Developer Edition org, then create an External Client App or Connected App for OAuth. The per-user \"API Enabled\" permission is also required.\n\nInferred, from search snippets only: Professional Edition can add API access as a paid add-on. Essentials and Group editions do not get API access. Developer Edition limits are about 5 MB of data storage and few users.\n\nAPI types: the vendor docs titles in search results show REST API (developer.salesforce.com/docs/platform/api-rest), SOAP API (docs/platform/api) and Metadata API. The record already lists GraphQL and WebSocket (Streaming/Pub/Sub). Those two were not re-verified in this pass, but the REST, SOAP and Metadata pages are confirmed to exist.\n\nThe record's existing caveat still holds: production orgs need an admin to create and approve the OAuth app, and API call limits apply per org."
+  }
+}

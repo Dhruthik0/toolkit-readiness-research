@@ -1,0 +1,41 @@
+{
+  "id": "70",
+  "input": {
+    "id": "70",
+    "category": "Developer, Infra and Data platforms",
+    "app": "Sentry",
+    "hint": "docs.sentry.io/api"
+  },
+  "meta": {
+    "cost_usd": 0.035624859999999994,
+    "turns": 7
+  },
+  "record": {
+    "app": "Sentry",
+    "category": "Error monitoring / Observability",
+    "one_liner": "Sentry is an application monitoring platform that captures errors, performance traces, session replays and cron checks for developers.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2",
+      "Basic"
+    ],
+    "auth_notes": "Bearer auth tokens (personal tokens with scopes, or internal integration tokens, which also work on self-hosted) go in the Authorization: Bearer header. OAuth2 for third-party apps uses the authorization code grant (PKCE recommended) plus a device flow for CLIs; access tokens last 30 days and are refreshable, and each token is scoped to one organization. Legacy API keys use Basic auth and are disabled for new accounts. DSN auth works only on a few endpoints.",
+    "access": "self_serve_free",
+    "access_notes": "A personal token or internal integration token can be created in a Sentry account. The fetched pages do not state plan requirements for API access, and I did not verify whether the free plan includes it. The free-tier conclusion is an inference. Not verified.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.sentry.dev/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Per-endpoint rate limits apply (the docs say polling is likely to trigger them). Plan requirements for API access are not stated in the fetched docs. OAuth tokens are scoped to a single organization. Some endpoints are beta and may change.",
+    "evidence": {
+      "auth": "https://docs.sentry.io/api/auth/",
+      "access": "https://docs.sentry.io/api/ratelimits/",
+      "api": "https://docs.sentry.io/api/",
+      "mcp": "https://mcp.sentry.dev/"
+    },
+    "confidence": "medium"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "28",
+  "input": {
+    "id": "28",
+    "category": "Communications and Messaging",
+    "app": "WhatsApp Business",
+    "hint": "developers.facebook.com/docs/whatsapp"
+  },
+  "meta": {
+    "cost_usd": 0.04396757,
+    "turns": 5
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "get-started confirms Bearer tokens (temporary token in API Setup; permanent system-user token with business_management, whatsapp_business_messaging, whatsapp_business_management). It says OAuth is not covered. The overview says 'OAuth (not 2.0) access tokens', which does not confirm OAuth2 for API access. The MCP page documents OAuth for the MCP server. OAuth2 is kept as a caveat, with the REST API itself using Bearer tokens.",
+      "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/overview"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "A self-serve developer app plus test number is confirmed. Business verification is not described as required; the overview only says verified portfolios get higher throughput and OBA status. App Review is only mentioned as 'if applicable'. Pricing and free status are not covered. approval_required is an inference that the fetched pages do not settle.",
+      "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The overview describes Graph API over HTTP (POST graph.facebook.com/<PHONE_NUMBER_ID>/messages), Cloud API, Business Management API (phone numbers, templates, subscribed_apps), and Webhooks. Rate limits (200 and 5,000 req/hr, 80 msg/s) match. Breadth is broad.",
+      "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/overview"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Meta's MCP documentation lists an official WhatsApp Business Tools remote MCP server at https://mcp.facebook.com/whatsapp_business_tools, with OAuth-based authentication.",
+      "url": "https://developers.facebook.com/documentation/mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent with the fetched pages. The blocker's 24-hour window and rate-limit figures are confirmed. The business verification and pricing caveats are unverified, and the record already says so.",
+      "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started"
+    }
+  ],
+  "corrected": {
+    "app": "WhatsApp Business",
+    "category": "Business messaging",
+    "one_liner": "Meta's WhatsApp Business Platform (Cloud API) lets businesses send and receive WhatsApp messages, manage templates and phone numbers, and receive webhooks programmatically.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Graph API calls use a Bearer access token in the Authorization header. Permanent tokens come from a Business Settings system user with business_management, whatsapp_business_messaging and whatsapp_business_management. A temporary token (expires quickly) is in API Setup. The overview describes 'OAuth (not 2.0) access tokens', so OAuth2 is not confirmed for direct API use. OAuth-based authentication is documented for the official MCP server.",
+    "access": "approval_required",
+    "access_notes": "Self-serve developer app plus test phone number in API Setup. The fetched pages do not state that business verification is required; the overview says only that verified portfolios get higher throughput and Official Business Account status. App Review is mentioned only as 'if applicable'. Pricing and free status of the test setup are not covered on the fetched pages. The approval_required classification is inferred and unverified.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.facebook.com/whatsapp_business_tools",
+    "verdict": "ready_with_caveats",
+    "blocker": "Production may need business verification and possibly App Review (unverified). Per-message pricing is unverified. Rate limits: 200 req/hr per app per account by default on management endpoints, 5,000 for active accounts, 80 msg/s per number. Non-template messages are allowed only inside the 24-hour customer service window.",
+    "evidence": {
+      "auth": "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started",
+      "access": "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started",
+      "api": "https://developers.facebook.com/docs/whatsapp/cloud-api/overview",
+      "mcp": "https://developers.facebook.com/documentation/mcp"
+    },
+    "confidence": "low"
+  }
+}

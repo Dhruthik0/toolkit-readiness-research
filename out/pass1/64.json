@@ -1,0 +1,43 @@
+{
+  "id": "64",
+  "input": {
+    "id": "64",
+    "category": "Developer, Infra and Data platforms",
+    "app": "Cloudflare",
+    "hint": "developers.cloudflare.com/api"
+  },
+  "meta": {
+    "cost_usd": 0.06934249,
+    "turns": 9
+  },
+  "record": {
+    "app": "Cloudflare",
+    "category": "CDN / Edge Platform & Security",
+    "one_liner": "Cloudflare provides CDN, DNS, security, zero trust networking and developer platform (Workers, R2, etc.) services managed through a single account and API.",
+    "auth_methods": [
+      "Bearer token",
+      "API key",
+      "OAuth2",
+      "Other"
+    ],
+    "auth_notes": "API tokens (user or account-owned, scoped permissions, cfut_ prefix) sent as 'Authorization: Bearer'. Legacy Global API key (less secure; required for some endpoints such as organization read/update/delete). Origin CA keys for a separate purpose. Self-managed OAuth 2.0 clients for third-party apps (launched 2026-06-03 per search-result changelog; not fully verified from a fetched page: grant types and public-app approval requirements).",
+    "access": "self_serve_free",
+    "access_notes": "Tokens are created in the dashboard (My Profile > API Tokens); the token docs state no plan requirement, and the OAuth page says OAuth is available on all plans including Free. Individual products may need paid plans (not checked per product). Free-plan API signup itself was not explicitly stated on a fetched page, so this is inferred from the absence of a plan requirement.",
+    "api_types": [
+      "REST",
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.cloudflare.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Rate limit of 1,200 requests per 5 minutes per user/token, with a 5-minute block on exceeding it. Some endpoints (e.g. organizations) need the legacy Global API key. Many endpoints are deprecated. OAuth grant types and public-app approval were not verified.",
+    "evidence": {
+      "auth": "https://developers.cloudflare.com/fundamentals/api/get-started/create-token/",
+      "access": "https://developers.cloudflare.com/fundamentals/oauth/",
+      "api": "https://developers.cloudflare.com/api/",
+      "mcp": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/"
+    },
+    "confidence": "medium"
+  }
+}

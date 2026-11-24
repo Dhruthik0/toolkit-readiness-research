@@ -1,0 +1,71 @@
+{
+  "id": "60",
+  "input": {
+    "id": "60",
+    "category": "Data, SEO and Scraping",
+    "app": "Clay",
+    "hint": "clay.com"
+  },
+  "meta": {
+    "cost_usd": 0.06729446,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page says an API key goes in the `clay-api-key` header, keys are tied to user and workspace, and OAuth is not mentioned. Keys are created in the app under API and CLI \u2192 API keys, or with `clay api-keys create`.",
+      "url": "https://developers.clay.com/public-api/authentication.md"
+    },
+    {
+      "field": "access",
+      "status": "contradicted",
+      "note": "Pricing page shows the Free plan includes CLI/API search (100 results per 30 days), so a developer can likely get working credentials without paying. HTTP API integrations (an outbound feature) need Growth or higher. The page shows unlimited tables on every plan, so 'Tables are Enterprise only' is not supported there. Pricing figures conflict internally (Launch $167 vs $185; Growth $446 vs $495). I did not create a key, so key creation on Free is not verified.",
+      "url": "https://www.clay.com/pricing"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "llms.txt lists HTTP method/path endpoints and an OpenAPI spec, which fits REST (the word 'REST' is not used). Coverage is Audiences privacy deletion, Credits, Me, Routines, Search, a Tables query, and Workflow runs (beta). That is moderate breadth, not full CRUD. Rate-limit values are not in the fetched content.",
+      "url": "https://developers.clay.com/llms.txt"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The clay.com guide describes 'Clay's MCP server' with ChatGPT, Claude and Codex connectors, so it is vendor-published. It does not state a server URL. The https://api.clay.com/v3/mcp URL appears only on a third-party site and is unverified.",
+      "url": "https://www.clay.com/guides/clay-mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats still fits: the API is limited to search, routines, a tables query, credits and runs, and it has quotas. The blocker text needs correcting, since the Free plan has limited API search access and the Tables-Enterprise claim is unsupported.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Clay",
+    "category": "GTM data enrichment / sales prospecting",
+    "one_liner": "Clay is a go-to-market data platform that finds and enriches company and contact data from many providers and AI research, and runs it in tables, routines and workflows.",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "The Public API uses a personal Clay API key in the `clay-api-key` header. The key is tied to a user and workspace. Create it in the app under API and CLI \u2192 API keys, or with `clay api-keys create`. The auth page does not mention OAuth for third-party apps. The Clay MCP connector uses its own login in ChatGPT and Claude.",
+    "access": "self_serve_free",
+    "access_notes": "The pricing page shows the Free plan includes CLI/API search at 100 results per 30 days, so a free key likely works for limited search (key creation on Free not verified). Launch and Growth get 1M results per 30 days and Enterprise gets 10M. HTTP API integrations need Growth or higher, and custom functions are not on Free. The docs do not say which plan the Routines API or Tables query needs. Pricing page figures conflict (Launch $167 vs $185; Growth $446 vs $495), so treat plan details as unconfirmed.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://www.clay.com/guides/clay-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API covers search, routines, a tables query, credits, audiences privacy deletion and workflow runs (beta), not full CRUD on tables and rows. The Free plan is capped at 100 search results per 30 days, so real use needs a paid plan. Rate-limit values were not found. The MCP server URL is not stated on a vendor page; https://api.clay.com/v3/mcp comes only from a third-party listing and is unverified.",
+    "evidence": {
+      "auth": "https://developers.clay.com/public-api/authentication.md",
+      "access": "https://www.clay.com/pricing",
+      "api": "https://developers.clay.com/llms.txt",
+      "mcp": "https://www.clay.com/guides/clay-mcp"
+    },
+    "confidence": "medium"
+  }
+}

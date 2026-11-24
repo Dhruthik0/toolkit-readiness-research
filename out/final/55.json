@@ -1,0 +1,72 @@
+{
+  "id": "55",
+  "input": {
+    "id": "55",
+    "category": "Data, SEO and Scraping",
+    "app": "Apify",
+    "hint": "docs.apify.com"
+  },
+  "meta": {
+    "cost_usd": 0.03874676,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "API v2 page confirms Bearer header (recommended) and ?token= query param (less secure); no OAuth for API described. Hosted MCP supports OAuth sign-in (MCP page).",
+      "url": "https://docs.apify.com/api/v2"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "Pricing confirms $0/mo, $5 usage, no card, 5 concurrent runs, 16 GB, blocked after usage. Neither the pricing page nor the API integrations page states that free plans can create API tokens (no plan requirement is stated either). The record already flags this as inferred.",
+      "url": "https://apify.com/pricing"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "REST/JSON with OpenAPI schema; covers Actors, builds, runs, tasks, webhooks, schedules, datasets, KV stores, request queues, users, etc. Rate limits match the record (250k/min global, 60/s per resource).",
+      "url": "https://docs.apify.com/api/v2"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Apify docs describe the Apify MCP server at https://mcp.apify.com as the platform's own interface; OAuth or Bearer token.",
+      "url": "https://docs.apify.com/platform/integrations/mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "Verdict 'ready' is reasonable given token auth, broad REST API and official MCP. The free-tier API token access remains unverified, so confidence is lowered.",
+      "url": "https://docs.apify.com/platform/integrations/api"
+    }
+  ],
+  "corrected": {
+    "app": "Apify",
+    "category": "Web scraping / automation platform",
+    "one_liner": "Apify is a cloud platform for running web scrapers and automation programs (\"Actors\"), with storage, scheduling, proxies and a store of prebuilt Actors.",
+    "auth_methods": [
+      "Bearer token",
+      "API key"
+    ],
+    "auth_notes": "API token sent as `Authorization: Bearer <token>` (recommended) or as a `?token=` query parameter (less secure). Personal and organization tokens are created in Console under Settings > API & Integrations. The API v2 page doesn't document an OAuth flow for third-party apps. The hosted MCP server does support OAuth sign-in. The API docs also describe agentic payment auth (x402, Skyfire) and temporary capped tokens.",
+    "access": "self_serve_free",
+    "access_notes": "The free plan is $0/month with $5 of platform usage, no credit card, 5 concurrent runs and 16 GB max RAM. Runs are blocked once the $5 is used until the next cycle. Neither the pricing page nor the API docs explicitly state that the free plan includes API token access (it says 'most of the features'), so this is inferred, not verified.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.apify.com",
+    "verdict": "ready",
+    "blocker": "none. Minor caveats: no documented OAuth for third-party apps on the REST API (user tokens only), a free-tier usage cap, and rate limits (250k requests/min global, 60/s per resource by default).",
+    "evidence": {
+      "auth": "https://docs.apify.com/api/v2",
+      "access": "https://apify.com/pricing",
+      "api": "https://docs.apify.com/api/v2",
+      "mcp": "https://docs.apify.com/platform/integrations/mcp"
+    },
+    "confidence": "low"
+  }
+}

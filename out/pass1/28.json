@@ -1,0 +1,40 @@
+{
+  "id": "28",
+  "input": {
+    "id": "28",
+    "category": "Communications and Messaging",
+    "app": "WhatsApp Business",
+    "hint": "developers.facebook.com/docs/whatsapp"
+  },
+  "meta": {
+    "cost_usd": 0.07012274499999999,
+    "turns": 8
+  },
+  "record": {
+    "app": "WhatsApp Business",
+    "category": "Business messaging",
+    "one_liner": "Meta's WhatsApp Business Platform (Cloud API) lets businesses send and receive WhatsApp messages, manage templates and phone numbers, and receive webhooks programmatically.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Graph API calls use a Bearer access token. Permanent tokens come from a Business Settings system user with business_management, whatsapp_business_messaging and whatsapp_business_management. A temporary token (expires quickly) is in API Setup. The overview mentions OAuth access tokens; OAuth is documented for the official MCP server. A third-party OAuth/Embedded Signup flow was not confirmed on the fetched pages.",
+    "access": "approval_required",
+    "access_notes": "Self-serve developer app plus test phone number in API Setup. Production use likely needs business verification and possibly App Review; fetched pages only say App Review applies \"if applicable\" and do not describe verification. Pricing was not covered on fetched pages (separate pricing page not fetched), so whether the test setup is free is unverified. The approval_required classification is partly inferred.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.facebook.com/whatsapp_business_tools",
+    "verdict": "ready_with_caveats",
+    "blocker": "Production likely needs business verification and possibly App Review; per-message pricing (unverified); rate limits (200 req/hr per app per account by default, 5,000 for active accounts; 80 msg/s per number); non-template messages only inside the 24-hour customer service window.",
+    "evidence": {
+      "auth": "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started",
+      "access": "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started",
+      "api": "https://developers.facebook.com/docs/whatsapp/cloud-api/overview",
+      "mcp": "https://developers.facebook.com/documentation/mcp"
+    },
+    "confidence": "medium"
+  }
+}

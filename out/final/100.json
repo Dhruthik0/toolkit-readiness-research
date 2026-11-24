@@ -1,0 +1,72 @@
+{
+  "id": "100",
+  "input": {
+    "id": "100",
+    "category": "AI, Research and Media-native",
+    "app": "Grain",
+    "hint": "grain.com (meeting notes)"
+  },
+  "meta": {
+    "cost_usd": 0.06438641,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Support article lists PAT, Workspace Access Token and OAuth2, all consistent with Bearer/OAuth2. The article doesn't state the PKCE or Authorization Code details. The developers.grain.com page confirms PAT as a Bearer token and says other methods exist.",
+      "url": "https://support.grain.com/en/articles/15507288-grain-api"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "The article says PATs are 'Available on every plan, including Free'. The Workspace Access Token needs Business or Enterprise plus admin. No app review is mentioned. The Scalekit conflict is not resolved by any vendor page.",
+      "url": "https://support.grain.com/en/articles/15507288-grain-api"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The developer docs describe an HTTP/JSON API at /_/public-api/v2 with recordings, highlights, uploads and hooks, and a required Public-Api-Version header. REST is not named explicitly but fits. 'Moderate' breadth is reasonable. The record's cited version 2025-10-31 matches the support article. The dev-docs example shows 2026-10-01.",
+      "url": "https://developers.grain.com"
+    },
+    {
+      "field": "mcp",
+      "status": "contradicted",
+      "note": "An official MCP server exists at https://api.grain.com/_/mcp. The cited developers.grain.com/mcp page doesn't state the URL, so the evidence is repointed to the claude-setup page. The record's claim 'MCP server is OAuth-only' is wrong. The setup page says OAuth is used for Claude, and a PAT sent as a Bearer header also works for developers and headless use. Workspace Access Tokens are not accepted.",
+      "url": "https://developers.grain.com/claude-setup.html"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats holds. Caveats: the Free-plan conflict from a third party, Workspace tokens needing Business or Enterprise, and an incomplete endpoint reference. The 'MCP OAuth-only' part of the blocker is corrected. The claim that the MCP server has tools the REST API lacks, and the reverse, was not verified on a vendor page.",
+      "url": "https://support.grain.com/en/articles/15507288-grain-api"
+    }
+  ],
+  "corrected": {
+    "app": "Grain",
+    "category": "Meeting recorder / conversation intelligence",
+    "one_liner": "Grain records, transcribes and summarizes video meetings, and offers search, clips, CRM deal and coaching features on top of the recordings.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Per Grain's support article, three credentials, all sent as Authorization: Bearer: Personal Access Token (acts as the user), Workspace Access Token (admin only, all workspace data), and OAuth2 for integrations distributed to other users. Every request also needs a Public-Api-Version header (support article cites 2025-10-31). Rate limit 300 req/min per token. The v1 beta was sunset in September 2026. The developers.grain.com authentication page was not fetched, so OAuth endpoints, PKCE details and app registration steps are unverified.",
+    "access": "self_serve_free",
+    "access_notes": "Grain's support article says PATs are available on every plan including Free. A third-party page (Scalekit) says Free plans get no API access, which conflicts. This follows the vendor article, but confirm with a real Free account. The Workspace Access Token needs a Business or Enterprise plan with admin rights. No documented OAuth app review was found.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://api.grain.com/_/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The Free-plan API access claim conflicts across sources. The full endpoint reference was not verified. Rate limit is 300 req/min. Workspace-wide access needs a Business or Enterprise plan. The MCP server accepts OAuth (for Claude and other clients) or a PAT as a Bearer header, but not Workspace Access Tokens. mcp-remote is flagged for deprecation.",
+    "evidence": {
+      "auth": "https://support.grain.com/en/articles/15507288-grain-api",
+      "access": "https://support.grain.com/en/articles/15507288-grain-api",
+      "api": "https://developers.grain.com",
+      "mcp": "https://developers.grain.com/claude-setup.html"
+    },
+    "confidence": "medium"
+  }
+}

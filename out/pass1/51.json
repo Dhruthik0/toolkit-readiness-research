@@ -1,0 +1,39 @@
+{
+  "id": "51",
+  "input": {
+    "id": "51",
+    "category": "Data, SEO and Scraping",
+    "app": "DataForSEO",
+    "hint": "docs.dataforseo.com"
+  },
+  "meta": {
+    "cost_usd": 0.06462843500000001,
+    "turns": 7
+  },
+  "record": {
+    "app": "DataForSEO",
+    "category": "SEO data API",
+    "one_liner": "Pay-as-you-go REST API provider for SEO data: SERP results, keyword data, backlinks, on-page analysis, domain analytics, and related datasets.",
+    "auth_methods": [
+      "Basic"
+    ],
+    "auth_notes": "HTTP Basic only, with an API login and an auto-generated API password (separate from the account password) taken from the dashboard's API Access tab. The docs say it is the only way to access the API. No OAuth or tokens documented.",
+    "access": "paid_plan",
+    "access_notes": "A free account gives a $1 trial credit that works for paid API functions, and the sandbox is free and returns sample data only. Real use needs a prepaid balance with a $50 minimum top-up. There are no subscriptions and funds don't expire. I did not fetch the help article on the \"free unlimited trial\", so its terms are unverified.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://github.com/dataforseo/mcp-server-typescript",
+    "verdict": "ready_with_caveats",
+    "blocker": "Basic auth with a single account-level credential, so no per-user OAuth. Real data needs a $50 minimum prepaid top-up; the free tier is only $1 of credit plus a sandbox with sample data. Costs are metered per request.",
+    "evidence": {
+      "auth": "https://docs.dataforseo.com/v3/auth/",
+      "access": "https://dataforseo.com/pricing",
+      "api": "https://docs.dataforseo.com/v3/",
+      "mcp": "https://dataforseo.com/model-context-protocol"
+    },
+    "confidence": "medium"
+  }
+}

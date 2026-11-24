@@ -1,0 +1,42 @@
+{
+  "id": "83",
+  "input": {
+    "id": "83",
+    "category": "Finance and Fintech",
+    "app": "Binance",
+    "hint": "binance-docs.github.io"
+  },
+  "meta": {
+    "cost_usd": 0.058185060000000004,
+    "turns": 7
+  },
+  "record": {
+    "app": "Binance",
+    "category": "Crypto exchange / Trading",
+    "one_liner": "Binance is a cryptocurrency exchange offering spot, margin, futures, wallet and account services, with public trading APIs.",
+    "auth_methods": [
+      "API key",
+      "HMAC signature",
+      "Other"
+    ],
+    "auth_notes": "API key is sent in the X-MBX-APIKEY header. Signed endpoints also need a timestamp and a signature parameter. Three key types are documented: Ed25519 (recommended), RSA (2048 or 4096-bit) and HMAC-SHA256 (marked deprecated). Key permissions are TRADE, USER_DATA and USER_STREAM, and trading is off by default. No OAuth flow for third-party apps was found in the pages I fetched.",
+    "access": "self_serve_free",
+    "access_notes": "The testnet needs only a login at testnet.binance.vision, and virtual balances are provided. Production keys are created in API Management in a Binance account. I did not fetch a page on KYC requirements for production keys, so that is unverified. Market data endpoints work without keys.",
+    "api_types": [
+      "REST",
+      "WebSocket"
+    ],
+    "api_breadth": "broad",
+    "mcp": "community",
+    "mcp_url": "https://pypi.org/project/binance-mcp-server",
+    "verdict": "ready_with_caveats",
+    "blocker": "Users must create and hand over their own API key and secret, because there is no OAuth. The actions are financial, so trading carries real risk. Rate limits apply per IP, with escalating bans (HTTP 429, then 418). HMAC keys are deprecated, so signing must support Ed25519 or RSA. Binance.US and regional restrictions were not checked.",
+    "evidence": {
+      "auth": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information",
+      "access": "https://developers.binance.com/docs/binance-spot-api-docs/testnet/general-info",
+      "api": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information",
+      "mcp": null
+    },
+    "confidence": "medium"
+  }
+}

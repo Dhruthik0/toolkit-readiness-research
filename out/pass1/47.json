@@ -1,0 +1,40 @@
+{
+  "id": "47",
+  "input": {
+    "id": "47",
+    "category": "Ecommerce",
+    "app": "Ecwid",
+    "hint": "api-docs.ecwid.com"
+  },
+  "meta": {
+    "cost_usd": 0.10127260500000002,
+    "turns": 14
+  },
+  "record": {
+    "app": "Ecwid",
+    "category": "E-commerce",
+    "one_liner": "Ecwid (by Lightspeed) is a hosted e-commerce platform that adds an online store to existing websites and social/marketplace channels.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "Custom app (single store): copy the secret token from the app dashboard and send it as a Bearer token in the Authorization header. A public token exists for public store data only. Public/external apps use OAuth 2.0: authorization code exchanged via POST to https://my.ecwid.com/api/oauth/token with client_id, client_secret, code, redirect_uri and grant_type=authorization_code. Token passing in query params was discontinued March 2025. Tokens are reported not to expire; that comes from a search snippet and I did not fetch the page.",
+    "access": "paid_plan",
+    "access_notes": "The setup page says \"Only stores on paid plans can access API.\" Ecwid offers a free upgrade to a paid plan for integration testing on a non-production store, store customization projects, public App Market apps and Instant Site templates. For a test store, you email Ecwid support. A custom app is created automatically the first time you open the app dashboard.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "none_found",
+    "mcp_url": null,
+    "verdict": "ready_with_caveats",
+    "blocker": "API needs a paid store plan (a free upgrade for testing can be requested from support). Rate limit is 600 requests/min per token. The only vendor MCP found is a docs-search MCP (https://docs.ecwid.com/~gitbook/mcp), not a store-operations server. Third-party MCP connectors exist (Zapier, Pipedream and others), which I did not verify.",
+    "evidence": {
+      "auth": "https://docs.ecwid.com/get-started/make-your-first-api-request (Bearer secret token from custom app Details page); https://docs.ecwid.com/changelog/march-2025/march-20/oauth-for-public-apps-get-request-type-changed-to-post (OAuth POST token endpoint)",
+      "access": "https://docs.ecwid.com/get-started/set-up-your-dev-environment-in-ecwid.md (\"Only stores on paid plans can access API\"; free upgrade for testing)",
+      "api": "https://docs.ecwid.com/api-reference (REST API covering store profile, orders, products, customers, categories, discounts; 600 req/min per token)",
+      "mcp": "https://docs.ecwid.com/llms.txt (only a docs-search MCP at docs.ecwid.com/~gitbook/mcp; no store-data MCP found in search)"
+    },
+    "confidence": "medium"
+  }
+}

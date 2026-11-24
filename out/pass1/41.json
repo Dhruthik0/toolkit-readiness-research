@@ -1,0 +1,43 @@
+{
+  "id": "41",
+  "input": {
+    "id": "41",
+    "category": "Ecommerce",
+    "app": "Shopify",
+    "hint": "shopify.dev"
+  },
+  "meta": {
+    "cost_usd": 0.05960523,
+    "turns": 10
+  },
+  "record": {
+    "app": "Shopify",
+    "category": "E-commerce platform",
+    "one_liner": "Shopify is a commerce platform for merchants to run online and retail stores, with APIs for products, orders, customers, inventory and checkout.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token",
+      "API key",
+      "Other"
+    ],
+    "auth_notes": "Admin API: access token sent in X-Shopify-Access-Token. Tokens come from authorization code grant (standalone apps), token exchange (embedded apps), or client credentials (client secret for your own org's stores, 24h token; client assertion JWT for public apps). Offline tokens are expiring (1h + 90-day refresh token) and are required for apps created on or after Dec 1, 2026. Legacy admin-created custom app tokens (shpat_) can no longer be created, only maintained. Storefront API uses public/private storefront tokens or tokenless access. Customer Account API uses OAuth 2.0 with PKCE. Partner API uses a token created in Organization settings.",
+    "access": "self_serve_free",
+    "access_notes": "Create an app in the Dev Dashboard and install it on a development store, or on stores in your own organization via the client credentials grant. Custom distribution needs no review. Public App Store distribution requires approval and a one-time registration fee (amount not stated). I did not confirm from fetched docs that Partner accounts and dev stores are free. This is from general knowledge, not a fetched page. Dev stores are test-only, with test payments only.",
+    "api_types": [
+      "GraphQL",
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://shopify.dev/docs/apps/build/devmcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Each merchant store must install the app. Public distribution needs App Store approval, and the legacy admin-created custom app route is closed. Tokens are expiring and need refresh handling. Query-cost rate limits apply (about 1000 points max, 50/s restore in the sample). Official MCP servers are for dev docs and storefront/customer use, not Admin API store management.",
+    "evidence": {
+      "auth": "https://shopify.dev/docs/apps/build/authentication-authorization/access-tokens",
+      "access": "https://shopify.dev/docs/apps/launch/distribution",
+      "api": "https://shopify.dev/docs/api/admin-graphql",
+      "mcp": "https://shopify.dev/docs/apps/build/devmcp"
+    },
+    "confidence": "medium"
+  }
+}

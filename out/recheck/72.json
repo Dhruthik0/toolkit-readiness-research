@@ -1,0 +1,22 @@
+{
+  "id": "72",
+  "input": {
+    "id": "72",
+    "category": "Productivity and Project Management",
+    "app": "Airtable",
+    "hint": "airtable.com/developers"
+  },
+  "meta": {
+    "cost_usd": 0.060735330000000004,
+    "turns": 5
+  },
+  "recheck": {
+    "vendor_docs_url": "https://airtable.com/developers/web/api/introduction",
+    "access": "self_serve_free",
+    "api_types": [
+      "REST"
+    ],
+    "evidence_quote": "Free plan: 1000 calls per workspace per month (Team: 100,000; Business/Enterprise: unlimited, subject to rate limits). \u2014 Airtable support, \"Managing API call limits in Airtable\"",
+    "notes": "Verified on vendor pages: the dev docs intro describes a REST-style JSON API (\"closely follows REST semantics\"). Personal access tokens are created self-serve at airtable.com/create/tokens (pick scopes and bases, token shown once, sent as Authorization: Bearer). The PAT page doesn't state plan requirements. Free-plan access comes from the support article https://support.airtable.com/docs/managing-api-call-limits-in-airtable, via a search summary. I did not fetch that article directly, so re-check the exact wording. The summary says the free plan gets 1,000 API calls per workspace per month, with a one-time 30-day grace period. Team gets 100,000. Business and Enterprise are unlimited, subject to rate limits. Integration traffic counts against the same quota. Rate limits (5 req/s per base, 50 req/s per token/user) are from the earlier record and the search summary, and Airtable says they may change. A newer vendor page, https://airtable.com/developers/web/api/billing-plans, and a rule effective Aug 10, 2026 (Viewer (Restricted) users can't write via the API, including with PATs) were seen only in search results, not read. The old record's \"free-plan access inferred\" caveat can be replaced with the 1,000-call monthly cap, which is the practical limit for free users. Not checked: GraphQL, webhooks, and the full endpoint list. Webhooks are likely but unverified."
+  }
+}

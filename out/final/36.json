@@ -1,0 +1,72 @@
+{
+  "id": "36",
+  "input": {
+    "id": "36",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "Klaviyo",
+    "hint": "developers.klaviyo.com"
+  },
+  "meta": {
+    "cost_usd": 0.06459536,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page: private key (Klaviyo-API-Key header, pk_, scopes) and OAuth for server-side /api endpoints, recommended for tech partners and required for App Marketplace listing; public key for /client. OAuth is real API access, not just SSO. The revision header is not confirmed on this page but is standard.",
+      "url": "https://developers.klaviyo.com/en/docs/authenticate_"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "The Stripe Projects page confirms a free account gets a private key and 250 profile cap, but it describes Stripe-provisioned projects, not general free signup. No page states that every free account has full API access. Key creation needs Owner/Admin/Manager role. No evidence of a paid-plan requirement either. Also the 500 emails/month free allowance is stated, so 'no sending' applies only to the CRM service.",
+      "url": "https://developers.klaviyo.com/en/docs/klaviyo_stripe_projects_context"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "REST, JSON:API, 27 categories, 436 endpoints (summed from per-category counts). Read/write breadth not broken out, but scopes include read and write across many resources, so 'broad' is reasonable.",
+      "url": "https://developers.klaviyo.com/en/reference/api_overview"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Remote server at https://mcp.klaviyo.com/mcp, hosted on Klaviyo's developer docs, OAuth, Owner/Admin/Manager only. The page does not use the word 'official' and does not state beta/GA, but it is vendor-documented and vendor-hosted.",
+      "url": "https://developers.klaviyo.com/en/docs/connect_to_the_klaviyo_mcp_server.md"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "Verdict 'ready' depends on the access claim, which is unproven for ordinary free accounts. Key plus broad REST API plus official MCP make it usable, so ready_with_caveats is more accurate than ready with blocker 'none'.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Klaviyo",
+    "category": "Marketing automation / CRM",
+    "one_liner": "Klaviyo is a customer data and marketing automation platform for email, SMS, flows, segmentation and analytics, mainly for ecommerce brands.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "Private API key (pk_...) is sent as `Authorization: Klaviyo-API-Key <key>` plus a `revision` header, with scopes (read-only, full, custom) chosen at creation and not editable afterward. The public 6-character company ID is passed as the company_id query parameter for client-side /client endpoints. OAuth is for server-side /api endpoints, recommended for tech partners and required for App Marketplace listing. The auth page does not state the OAuth token header format or whether approval is required (see set_up_oauth page).",
+    "access": "self_serve_free",
+    "access_notes": "Private keys are created in Settings > API Keys by an Owner, Admin or Manager. The Klaviyo Stripe Projects page says a free account (Stripe-provisioned) gets a private API key with broad scopes, can ingest profiles and events, is capped at 250 profiles, and lists 500 emails/month and 150 mobile credits on the free plan. Email needs a verified sending domain; SMS needs a registered sender. No page states directly that every ordinary free signup can call the full API, so confirm this. OAuth apps are for partners; the review process is not documented on the pages fetched.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.klaviyo.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Free-tier API access for ordinary (non-Stripe) signups is not explicitly documented. Free plan is capped (250 profiles; sending requires a verified domain or sender). Rate limits are per account with burst and steady windows. OAuth approval process is undocumented on the pages fetched. MCP server is not labeled GA or beta.",
+    "evidence": {
+      "auth": "https://developers.klaviyo.com/en/docs/authenticate_",
+      "access": "https://developers.klaviyo.com/en/docs/klaviyo_stripe_projects_context",
+      "api": "https://developers.klaviyo.com/en/reference/api_overview",
+      "mcp": "https://developers.klaviyo.com/en/docs/connect_to_the_klaviyo_mcp_server.md"
+    },
+    "confidence": "low"
+  }
+}

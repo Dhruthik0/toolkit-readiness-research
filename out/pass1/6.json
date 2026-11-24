@@ -1,0 +1,41 @@
+{
+  "id": "6",
+  "input": {
+    "id": "6",
+    "category": "CRM and Sales",
+    "app": "Podio",
+    "hint": "podio.com"
+  },
+  "meta": {
+    "cost_usd": 0.054219775,
+    "turns": 8
+  },
+  "record": {
+    "app": "Podio",
+    "category": "Work management / no-code database",
+    "one_liner": "Podio is a customizable work-management platform (now under Progress/ShareFile) where teams build apps, workspaces, tasks and workflows.",
+    "auth_methods": [
+      "OAuth2",
+      "Other"
+    ],
+    "auth_notes": "Four OAuth2-style flows: server-side, client-side, username/password, and app authentication (single-app, no user). Requires a client ID/secret (\"API key\") from account settings. Header: `Authorization: OAuth2 ACCESS_TOKEN`. Access tokens last 8 hours, refresh tokens 28 days.",
+    "access": "self_serve_free",
+    "access_notes": "An API key is generated from the API key tab in a Podio account's settings. The page does not mention approval or a paid-plan requirement. I did not verify whether a free Podio plan is still offered, or what the API Terms of Use say. Rate limits exist; higher limits require contacting Podio. Figures are on /index/limits, which I did not fetch.",
+    "api_types": [
+      "REST",
+      "WebSocket"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.podio.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Rate limits apply and need a contact to raise. The official MCP server is in beta. The username/password flow is discouraged. I could not confirm that free accounts still exist, or the API terms. \"REST\" and \"WebSocket\" are inferred, not stated on the pages I fetched.",
+    "evidence": {
+      "auth": "https://developers.podio.com/authentication",
+      "access": "https://developers.podio.com/api-key",
+      "api": "https://developers.podio.com/",
+      "mcp": "https://www.progress.com/podio/documentation/using-podio/podio-mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

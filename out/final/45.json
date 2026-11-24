@@ -1,0 +1,74 @@
+{
+  "id": "45",
+  "input": {
+    "id": "45",
+    "category": "Ecommerce",
+    "app": "Magento (Adobe Commerce)",
+    "hint": "developer.adobe.com/commerce"
+  },
+  "meta": {
+    "cost_usd": 0.06795886,
+    "turns": 7
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page confirms Bearer tokens, OAuth 1.0a (not OAuth2), and session; page is PaaS-only. REST page confirms SaaS requires IMS access tokens (user-based and server-to-server). The page doesn't describe IMS as OAuth2, so listing OAuth2 for IMS is an unverified inference. It is kept because the record flags it as an inference.",
+      "url": "https://developer.adobe.com/commerce/webapi/rest/"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "Auth page confirms integrations and tokens are created per store by the merchant or admin. Pricing, trial and sandbox were not fetched. The Open Source free self-host claim wasn't shown on a fetched page, so paid_plan remains an inference.",
+      "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The webapi page lists REST and GraphQL and doesn't mention SOAP. The REST page says PaaS offers a wide range of endpoints (admin, customer, guest, integrations) and SaaS a smaller subset. The broad rating holds for PaaS.",
+      "url": "https://developer.adobe.com/commerce/webapi/rest/"
+    },
+    {
+      "field": "mcp",
+      "status": "contradicted",
+      "note": "The cited URL is Adobe's own developer tooling (App Builder MCP server, Dropins AI tools, agent skills), not a community store-data server. It supports the claim that no official store-data server exists. The community servers found in search (CData, StackOne, Cequence, Codexpect, Marketplace modules) are third-party. The mcp value 'community' is plausible, but mcp_url pointed at the wrong thing. It now points to a community store-data server listing.",
+      "url": "https://www.cdata.com/drivers/adobecommerce/docs/mcp/"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent with the verified facts. Credentials are per-store, PaaS uses OAuth 1.0a or tokens, SaaS requires IMS with fewer endpoints, and there is no official store-data MCP. The blocker text is accurate. Its statement that Adobe's MCP servers are developer tooling is now confirmed.",
+      "url": "https://developer.adobe.com/commerce/webapi/rest/"
+    }
+  ],
+  "corrected": {
+    "app": "Magento (Adobe Commerce)",
+    "category": "E-commerce platform",
+    "one_liner": "Adobe Commerce (formerly Magento) is an e-commerce platform for catalog, orders, customers and storefronts, available as open source, self-hosted/PaaS, or SaaS.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token",
+      "Other"
+    ],
+    "auth_notes": "PaaS/on-prem/Open Source: admin and customer tokens (Bearer), integrations using OAuth 1.0a (consumer key/secret plus access token/secret; this is not OAuth2), session cookies, and anonymous endpoints. SaaS (Commerce as a Cloud Service): Adobe IMS access tokens required on every request, with user-based and server-to-server flows. The fetched pages do not say IMS is OAuth2, so 'OAuth2' is listed for IMS as an inference. 'Other' is OAuth 1.0a.",
+    "access": "paid_plan",
+    "access_notes": "Magento Open Source is free to self-host, and you create an integration or admin token yourself, but you must run your own instance. Adobe Commerce PaaS and SaaS are paid, and I did not verify pricing or any trial or sandbox. The 'paid_plan' value is an inference. Credentials are self-created per store by an admin. There is no central developer signup.",
+    "api_types": [
+      "REST",
+      "GraphQL"
+    ],
+    "api_breadth": "broad",
+    "mcp": "community",
+    "mcp_url": "https://www.cdata.com/drivers/adobecommerce/docs/mcp/",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API is per-store: each merchant has its own host and credentials, and there is no central OAuth app for third parties. PaaS uses OAuth 1.0a or admin tokens. SaaS requires Adobe IMS and exposes fewer REST endpoints, with customer and guest REST endpoints missing (GraphQL covers similar functionality). Adobe's own MCP servers are developer/IDE tooling, not runtime store-data access. Store-data MCP servers are third-party only (CData, which may need a driver license, plus Marketplace modules and others).",
+    "evidence": {
+      "auth": "https://developer.adobe.com/commerce/webapi/get-started/authentication/ (PaaS: token, OAuth 1.0a, session) and https://developer.adobe.com/commerce/webapi/rest/ (SaaS requires IMS access tokens)",
+      "access": "https://developer.adobe.com/commerce/webapi/get-started/authentication/ (credentials created per store by admins/merchants). Pricing and trial not verified.",
+      "api": "https://developer.adobe.com/commerce/webapi/ (REST and GraphQL) and https://developer.adobe.com/commerce/webapi/rest/ (wide PaaS REST, smaller SaaS subset)",
+      "mcp": "https://developer.adobe.com/commerce/extensibility/developer-agent/tools-overview (Adobe's MCP is development tooling only). Community store-data servers: https://www.cdata.com/drivers/adobecommerce/docs/mcp/ (appeared in search results; not fetched)."
+    },
+    "confidence": "low"
+  }
+}

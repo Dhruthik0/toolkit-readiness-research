@@ -1,0 +1,71 @@
+{
+  "id": "82",
+  "input": {
+    "id": "82",
+    "category": "Finance and Fintech",
+    "app": "Plaid",
+    "hint": "plaid.com/docs"
+  },
+  "meta": {
+    "cost_usd": 0.07054483,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "API reference states client_id and secret in body or PLAID-CLIENT-ID/PLAID-SECRET headers; OAuth not mentioned for the main API. OAuth client_credentials applies only to the Dashboard MCP server. Link/public_token exchange not stated on fetched pages (already flagged in notes).",
+      "url": "https://plaid.com/docs/api/"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Sandbox free with Dashboard keys; Payment Initiation needs enablement; Trial plans for teams created on/after April 15, 2026 (US/Canada); Limited Production deprecated; full Production by application; BofA/Chase/Wells Fargo need full Production plus OAuth registration.",
+      "url": "https://plaid.com/docs/sandbox/"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "JSON over HTTPS POST with OpenAPI spec; REST label is an inference but reasonable. Docs home lists a broad product set (Auth, Balance, Identity, Transactions, Investments, Liabilities, Transfer, Income, Assets, Identity Verification, Monitor, Layer, etc.), supporting 'broad'.",
+      "url": "https://plaid.com/docs/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Dashboard MCP at https://api.dashboard.plaid.com/mcp/, hosted by Plaid, OAuth client_credentials with mcp:dashboard scope, limited support, Production-only. Official but Dashboard-scoped. A local AI coding toolkit (sandbox) also exists in plaid's GitHub.",
+      "url": "https://plaid.com/docs/resources/mcp/"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent: self-serve sandbox, real data gated by Trial/Production, Link UI needed per user, MCP not covering data APIs.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Plaid",
+    "category": "Financial data / Open banking",
+    "one_liner": "Plaid is a financial data network and API platform that lets apps connect to users' bank accounts for account data, transactions, identity, balances, and payments.",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "Per Plaid's API docs, almost all endpoints take a client_id and secret, in the request body or in the PLAID-CLIENT-ID and PLAID-SECRET headers. Per-user bank access goes through Plaid Link, which produces a public_token that is exchanged for an access_token. That Link and token exchange flow is not described on the fetched pages. The API reference page does not mention OAuth. The Dashboard MCP server uses OAuth client_credentials tokens, a separate mechanism from the main API.",
+    "access": "approval_required",
+    "access_notes": "Sandbox is free and fully featured, and keys come from the Dashboard. Some products, such as UK/EU Payment Initiation, need a request for access. For real data, teams created on or after 2026-04-15 (US and Canada only) get a Trial plan. Older teams may be on Limited Production, which is deprecated and has caps. Full Production is applied for through the Dashboard. The fetched pages do not state the approval criteria. Pricing was not checked.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://api.dashboard.plaid.com/mcp/",
+    "verdict": "ready_with_caveats",
+    "blocker": "The Sandbox is self-serve, but real bank data needs a Trial plan or Production approval. Each end user must also complete Plaid Link in a client UI before the agent has an access_token. Some bank connections (Chase, Bank of America, Wells Fargo) require full Production access plus OAuth registration. The official MCP server only covers Dashboard diagnostics and analytics, not the data APIs. It is production-only and has limited support.",
+    "evidence": {
+      "auth": "https://plaid.com/docs/api/ - client_id and secret sent in the body or in PLAID-CLIENT-ID / PLAID-SECRET headers; OAuth not mentioned",
+      "access": "https://plaid.com/docs/sandbox/ - Sandbox is free and keys come from the Dashboard; Trial plan for teams created on or after April 15, 2026; Limited Production deprecated; full Production applied for in the Dashboard",
+      "api": "https://plaid.com/docs/api/ - JSON over HTTPS POST, OpenAPI spec; https://plaid.com/docs/ - lists the broad product set (Auth, Balance, Identity, Transactions, Investments, Liabilities, Transfer, Income, Assets, Identity Verification, Monitor, Layer)",
+      "mcp": "https://plaid.com/docs/resources/mcp/ - Dashboard MCP server hosted by Plaid at https://api.dashboard.plaid.com/mcp/, OAuth client_credentials with mcp:dashboard scope; limited support; Production-only"
+    },
+    "confidence": "medium"
+  }
+}

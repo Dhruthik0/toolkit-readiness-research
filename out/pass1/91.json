@@ -1,0 +1,39 @@
+{
+  "id": "91",
+  "input": {
+    "id": "91",
+    "category": "AI, Research and Media-native",
+    "app": "NotebookLM",
+    "hint": "cloud.google.com/gemini (Enterprise API)"
+  },
+  "meta": {
+    "cost_usd": 0.09743383,
+    "turns": 7
+  },
+  "record": {
+    "app": "NotebookLM",
+    "category": "AI research assistant / knowledge management",
+    "one_liner": "NotebookLM Enterprise (Gemini Notebook Enterprise) is Google Cloud's source-grounded AI notebook for summarizing and querying uploaded documents, with a Discovery Engine REST API for managing notebooks and sources.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "auth_notes": "Docs show only a Google user access token (gcloud auth login, then Authorization: Bearer $(gcloud auth print-access-token)). That is a Google OAuth2 user token. Docs require an authenticated user account with a Gemini Notebook Enterprise license. Service accounts are not mentioned, and no third-party OAuth app flow or scopes are documented on the pages I fetched. Drive sources need gcloud auth login --enable-gdrive-access. A standard Google OAuth client could probably mint the same token, but the docs do not state that, so this is an inference.",
+    "access": "paid_plan",
+    "access_notes": "Requires a Google Cloud project with Gemini Notebook Enterprise set up, a purchased license assigned to the calling user, and the roles/discoveryengine.notebookLmUser role. Pricing was not verified, so I cannot say which tier or price applies. The consumer NotebookLM has no documented public API. The API is Preview (Pre-GA, v1alpha). I found no allowlist mention, but that is not confirmed.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "narrow",
+    "mcp": "community",
+    "mcp_url": "https://pypi.org/project/notebooklm-enterprise-mcp/",
+    "verdict": "ready_with_caveats",
+    "blocker": "Paid license required (per-user Gemini Notebook Enterprise). The API is Pre-GA v1alpha with limited support and may change. Auth is a per-user Google token, and service accounts are not documented, which makes unattended agents harder. Coverage is notebooks (create, get, list recently viewed, batchDelete, share) and sources (batchCreate, uploadFile, get, batchDelete), plus an audio overview page I did not read. No documented chat or query endpoint was confirmed.",
+    "evidence": {
+      "auth": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+      "access": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+      "api": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks-sources",
+      "mcp": null
+    },
+    "confidence": "medium"
+  }
+}

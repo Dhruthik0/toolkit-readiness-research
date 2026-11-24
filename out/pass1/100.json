@@ -1,0 +1,40 @@
+{
+  "id": "100",
+  "input": {
+    "id": "100",
+    "category": "AI, Research and Media-native",
+    "app": "Grain",
+    "hint": "grain.com (meeting notes)"
+  },
+  "meta": {
+    "cost_usd": 0.07736178500000002,
+    "turns": 10
+  },
+  "record": {
+    "app": "Grain",
+    "category": "Meeting recorder / conversation intelligence",
+    "one_liner": "Grain records, transcribes and summarizes video meetings, and offers search, clips, CRM deal and coaching features on top of the recordings.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Per Grain's support article, three credentials, all sent as Authorization: Bearer: Personal Access Token (acts as the user), Workspace Access Token (admin only, all workspace data), and OAuth2 Authorization Code with PKCE for integrations distributed to other users. Every request also needs a Public-Api-Version header (current 2025-10-31). Rate limit 300 req/min per token. The v1 beta was sunset in September 2026. I could not fetch the developers.grain.com authentication page (403), so OAuth endpoints and app registration steps are unverified.",
+    "access": "self_serve_free",
+    "access_notes": "Grain's support article says PATs are available on every plan including Free. A third-party page (Scalekit) says Free plans get no API access, which conflicts. I followed the vendor article, but this is worth confirming with a real Free account. The Workspace Access Token needs a Business or Enterprise plan with admin rights. I found no documented OAuth app review.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://api.grain.com/_/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The Free-plan API access claim conflicts across sources. The full endpoint reference was not fetchable (403). Rate limit is 300 req/min. Workspace-wide access needs a Business or Enterprise plan. The MCP server is OAuth-only and has tools the REST API lacks, and the reverse.",
+    "evidence": {
+      "auth": "https://support.grain.com/en/articles/15507288-grain-api",
+      "access": "https://support.grain.com/en/articles/15507288-grain-api",
+      "api": "https://developers.grain.com",
+      "mcp": "https://developers.grain.com/mcp"
+    },
+    "confidence": "medium"
+  }
+}

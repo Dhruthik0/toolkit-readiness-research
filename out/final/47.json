@@ -1,0 +1,72 @@
+{
+  "id": "47",
+  "input": {
+    "id": "47",
+    "category": "Ecommerce",
+    "app": "Ecwid",
+    "hint": "api-docs.ecwid.com"
+  },
+  "meta": {
+    "cost_usd": 0.06471375,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Fetched page confirms Bearer secret token for custom apps, public token for public data only, and OAuth 2.0 for public apps (a real API-access flow). The changelog confirms the POST token endpoint with the listed params and that the GET query-param method no longer works. The page does not mention token expiry, so the 'tokens do not expire' remark is unverified; I removed it from the notes.",
+      "url": "https://docs.ecwid.com/get-started/make-your-first-api-request"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Page says 'Only stores on paid plans can access API' and offers a free upgrade for a test store via Ecwid support. paid_plan is correct. The 'custom app is created automatically' detail was not checked.",
+      "url": "https://docs.ecwid.com/get-started/set-up-your-dev-environment-in-ecwid.md"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "REST API reference covers store profile, orders, products, customers, categories and discounts, and states a 600 requests/min per token limit. No GraphQL is mentioned. Breadth is broad.",
+      "url": "https://docs.ecwid.com/api-reference"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "llms.txt states only that the docs can be searched through an MCP server. A search found only third-party store MCPs (Zapier, viaSocket, Vinkius, Truto, Unified.to) and no official store-operations MCP. none_found stands.",
+      "url": "https://docs.ecwid.com/llms.txt"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats follows from the paid-plan requirement and the lack of an official store MCP. The blocker text is accurate.",
+      "url": "https://docs.ecwid.com/get-started/set-up-your-dev-environment-in-ecwid.md"
+    }
+  ],
+  "corrected": {
+    "app": "Ecwid",
+    "category": "E-commerce",
+    "one_liner": "Ecwid (by Lightspeed) is a hosted e-commerce platform that adds an online store to existing websites and social/marketplace channels.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer token"
+    ],
+    "auth_notes": "Custom app (single store): copy the secret token from the app dashboard and send it as a Bearer token in the Authorization header. A public token exists for public store data only. Public/external apps use OAuth 2.0: authorization code exchanged via POST to https://my.ecwid.com/api/oauth/token with client_id, client_secret, code, redirect_uri and grant_type=authorization_code. The old GET/query-param method no longer works (changed March 2025). Token expiry is not documented on the pages checked.",
+    "access": "paid_plan",
+    "access_notes": "The setup page says \"Only stores on paid plans can access API.\" Ecwid offers a free upgrade to a paid plan for integration testing on a non-production store, store customization projects, public App Market apps and Instant Site templates. For a test store, you email Ecwid support.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "none_found",
+    "mcp_url": null,
+    "verdict": "ready_with_caveats",
+    "blocker": "API needs a paid store plan (a free upgrade for testing can be requested from support). Rate limit is 600 requests/min per token. The only vendor MCP is a docs-search MCP (https://docs.ecwid.com/~gitbook/mcp), not a store-operations server. Third-party MCP connectors exist (Zapier, viaSocket, Vinkius, Truto, Unified.to), unverified.",
+    "evidence": {
+      "auth": "https://docs.ecwid.com/get-started/make-your-first-api-request (Bearer secret token, public token, OAuth 2.0 for public apps); https://docs.ecwid.com/changelog/march-2025/march-20/oauth-for-public-apps-get-request-type-changed-to-post (OAuth POST token endpoint)",
+      "access": "https://docs.ecwid.com/get-started/set-up-your-dev-environment-in-ecwid.md",
+      "api": "https://docs.ecwid.com/api-reference",
+      "mcp": "https://docs.ecwid.com/llms.txt (docs-search MCP only); third-party: https://zapier.com/mcp/ecwid"
+    },
+    "confidence": "high"
+  }
+}

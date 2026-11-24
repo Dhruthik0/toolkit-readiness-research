@@ -1,0 +1,72 @@
+{
+  "id": "14",
+  "input": {
+    "id": "14",
+    "category": "Support and Helpdesk",
+    "app": "Front",
+    "hint": "front.com"
+  },
+  "meta": {
+    "cost_usd": 0.049729340000000004,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page confirms Bearer tokens from either API tokens or OAuth (OAuth required for public integrations unless an exception is granted). MCP page confirms OAuth 2.1 with PKCE, read/write/send scopes, no DCR, per-user tokens. The auth page also says MCP is not available for API tokens.",
+      "url": "https://dev.frontapp.com/docs/authentication"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "Confirmed: admin-only token creation, 14-day no-card trial with Professional features, $25/$65/$105 per seat annual, and rate limits of 50/100/200 per minute per company. No page says which plan includes API access, or whether the trial includes it. The pricing page lists 'Integrations & API' without mapping it to a plan. The rate-limit add-on is 'available on all plans', and the rate-limit page says increases need Professional or higher. The paid_plan classification is therefore not settled, though a free trial exists.",
+      "url": "https://front.com/pricing"
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "The intro says the API controls 'all entities in Front from Contacts to Comments', which supports broad. The page never uses the word REST, so REST is inferred from the HTTP/JSON description.",
+      "url": "https://dev.frontapp.com/reference/introduction"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Front publishes the server at https://mcp.frontapp.com/mcp (Streamable HTTP). Claude and ChatGPT directory listings are official. Release status (beta/GA) is not stated.",
+      "url": "https://dev.frontapp.com/docs/mcp-server"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent with the verified facts. The blocker text is accurate, including per-company rate limits and the DCR caveat. It could also mention that API tokens cannot be used with MCP, which is stated on the auth page.",
+      "url": "https://dev.frontapp.com/docs/rate-limiting"
+    }
+  ],
+  "corrected": {
+    "app": "Front",
+    "category": "Shared inbox / customer communication platform",
+    "one_liner": "Front is a customer communication platform that combines email, SMS, chat and social channels into shared inboxes with team collaboration and workflow automation.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Core API uses Bearer tokens, obtained either as company-level API tokens (generated in Front settings by an admin) or via OAuth (required for public integrations unless Front grants an exception). The MCP server uses OAuth 2.1 with PKCE, scopes read/write/send, no Dynamic Client Registration, per-user tokens. API tokens cannot be used with the MCP server, and application triggers are not available with OAuth tokens.",
+    "access": "paid_plan",
+    "access_notes": "Creating API tokens requires an admin. A 14-day no-credit-card trial (Professional-level features) is offered per the pricing page. Paid plans: Starter $25, Professional $65, Enterprise $105 per seat/month (annual billing). No free tier found. No fetched page states which plan is the minimum for API access, or whether the trial includes API access. The rate-limit add-on is 'available on all plans', but that does not confirm the API itself is on all plans. Developer apps are created under Settings > Company > Developer.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.frontapp.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "No free tier (trial or paid seat needed). Token creation requires a Front admin. The rate limit is per company, not per token: 50/100/200 requests per minute on Starter/Professional/Enterprise. The MCP server needs a client ID and secret because DCR is unsupported, and it does not accept API tokens. Its release status (beta or GA) is not stated in the docs. The docs call the API a 'Core API' and do not use the word REST, so REST is inferred from the HTTP/JSON description.",
+    "evidence": {
+      "auth": "https://dev.frontapp.com/docs/authentication ; https://dev.frontapp.com/docs/mcp-server",
+      "access": "https://front.com/pricing ; https://dev.frontapp.com/docs/create-and-revoke-api-tokens ; https://dev.frontapp.com/docs/rate-limiting",
+      "api": "https://dev.frontapp.com/reference/introduction",
+      "mcp": "https://dev.frontapp.com/docs/mcp-server"
+    },
+    "confidence": "low"
+  }
+}

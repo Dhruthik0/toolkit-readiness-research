@@ -1,0 +1,76 @@
+{
+  "id": "1",
+  "input": {
+    "id": "1",
+    "category": "CRM and Sales",
+    "app": "Salesforce",
+    "hint": "salesforce.com"
+  },
+  "meta": {
+    "cost_usd": 0.08317264499999999,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "JWT bearer and External Client App/Connected App confirmed via search-result docs (sfdx JWT flow page); MCP FAQ confirms OAuth via External Client App, scopes mcp_api and refresh_token. REST pages returned 403, so the full flow list, client credentials and SOAP session ID are not confirmed. OAuth2 and JWT are supported; 'Other' (session ID) is unverified.",
+      "url": "https://raw.githubusercontent.com/wiki/forcedotcom/mcp-hosted/FAQ.md"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "Signup page returned 403 and no fetched page confirms a free Developer Edition with API access. Edition requirements for production and MCP are not stated on any fetched page. The record has no access evidence URL.",
+      "url": null
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "No vendor API page could be fetched (403). REST, SOAP, GraphQL and WebSocket types and 'broad' are plausible but not confirmed by any fetched page.",
+      "url": null
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The forcedotcom/mcp-hosted README (Salesforce GitHub org) says hosted MCP servers are GA, and the FAQ confirms GA (endpoint moved from v1-beta.2 to v1) and admin enablement in Setup. This resolves the record's GA/Beta conflict in favor of GA. The record's mcp_url is a developer docs page that I did not fetch. Editions and billing are not stated.",
+      "url": "https://github.com/forcedotcom/mcp-hosted"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent with the verified pieces: OAuth with a per-org External Client App, admin enablement, and an official GA MCP. Edition and access details are unverified, so confidence stays low.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Salesforce",
+    "category": "CRM",
+    "one_liner": "Cloud CRM and application platform covering sales, service, marketing and custom apps, with a metadata-driven data model exposed through APIs.",
+    "auth_methods": [
+      "OAuth2",
+      "JWT / service account",
+      "Other"
+    ],
+    "auth_notes": "OAuth 2.0 through an External Client App (newer) or Connected App (legacy). The JWT bearer flow is confirmed via Salesforce docs search results (needs a pre-approved integration user and an uploaded certificate). Authorization code with PKCE, client credentials and refresh token are not confirmed by a fetched page. A SOAP login() session ID is also reportedly accepted as a bearer (unverified). MCP auth is External Client Apps only, with scopes mcp_api and refresh_token (confirmed from the hosted MCP FAQ).",
+    "access": "self_serve_free",
+    "access_notes": "A free Developer Edition org (developer.salesforce.com/signup) reportedly includes API access, but the signup page returned 403 and this is unverified. Production API access depends on edition (Enterprise, Unlimited and Performance include it; other editions may need an add-on), also unverified. Hosted MCP servers are GA per the Salesforce GitHub README and FAQ, are disabled by default and are enabled by an admin in Setup > API Catalog > MCP Servers. Edition requirements and billing for MCP are not stated on fetched pages.",
+    "api_types": [
+      "REST",
+      "SOAP",
+      "GraphQL",
+      "WebSocket"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://github.com/forcedotcom/mcp-hosted",
+    "verdict": "ready_with_caveats",
+    "blocker": "Each customer org must create and approve an External Client App (OAuth), and an admin must enable the API and any MCP servers. Production API access depends on edition, and per-org API call limits apply. Vendor developer docs returned 403, so access, edition and API-type claims are unverified.",
+    "evidence": {
+      "auth": "https://raw.githubusercontent.com/wiki/forcedotcom/mcp-hosted/FAQ.md (MCP: External Client Apps only, scopes mcp_api and refresh_token). https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_jwt_flow.htm (JWT bearer flow, seen in search results only)",
+      "access": null,
+      "api": null,
+      "mcp": "https://github.com/forcedotcom/mcp-hosted (README: hosted MCP servers are GA, in the forcedotcom org). https://raw.githubusercontent.com/wiki/forcedotcom/mcp-hosted/FAQ.md (GA, disabled by default, enabled in Setup)"
+    },
+    "confidence": "low"
+  }
+}

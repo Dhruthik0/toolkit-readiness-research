@@ -1,0 +1,39 @@
+{
+  "id": "16",
+  "input": {
+    "id": "16",
+    "category": "Support and Helpdesk",
+    "app": "LiveAgent",
+    "hint": "liveagent.com"
+  },
+  "meta": {
+    "cost_usd": 0.071472535,
+    "turns": 8
+  },
+  "record": {
+    "app": "LiveAgent",
+    "category": "Helpdesk",
+    "one_liner": "Help desk and live chat software that manages tickets, calls, chat, email and social channels in one agent panel.",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "API v3 uses an admin-created key sent in the `apikey` header. Keys can have per-key permissions, and v1 and v3 keys are separate. No OAuth for the REST API is documented. OAuth 2.1 (Authorization Code + PKCE) and bearer tokens are documented only for the MCP endpoint, not the REST API.",
+    "access": "self_serve_trial",
+    "access_notes": "No free plan. There is a 30-day free trial on every plan with no credit card required. Every plan includes API keys (Starter 1, Team 5, Business 10, Enterprise unlimited), so the lowest paid tier (Starter, about $9-15 per agent per month) is enough after the trial. An admin must create the key. Rate limits apply on all plans.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official",
+    "mcp_url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+    "verdict": "ready_with_caveats",
+    "blocker": "No permanent free tier, so credentials come from a 30-day trial and then a paid plan. The API docs sit inside each customer account (/docs/api/v3/), so I could not verify the endpoint list publicly. Rate limits apply. The official MCP endpoint is per-tenant and its tool calls draw on a shared AI budget.",
+    "evidence": {
+      "auth": "https://support.liveagent.com/741982-API-key",
+      "access": "https://www.liveagent.com/pricing/",
+      "api": "https://support.liveagent.com/567924-Documentation",
+      "mcp": "https://support.liveagent.com/647358-MCP-Integration-for-Agents"
+    },
+    "confidence": "medium"
+  }
+}

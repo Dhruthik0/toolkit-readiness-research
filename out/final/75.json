@@ -1,0 +1,73 @@
+{
+  "id": "75",
+  "input": {
+    "id": "75",
+    "category": "Productivity and Project Management",
+    "app": "Asana",
+    "hint": "developers.asana.com"
+  },
+  "meta": {
+    "cost_usd": 0.06741382500000001,
+    "turns": 8
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page lists PAT, service account (Enterprise tier, super admins only), OAuth, OIDC (login on top of OAuth 2.0). OAuth page confirms authorization code grant, PKCE (S256), 1-hour access tokens, refresh tokens, resource:action scopes. PKCE is required only for localhost/native redirects. PAT-as-Bearer is not stated on the fetched pages. It is a standard detail but unverified here.",
+      "url": "https://developers.asana.com/docs/oauth"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "The overview does not say free accounts get API access. It only mentions testing in a free account and a developer sandbox for premium features. The rate-limits page lists a free-domain tier (150/min), which implies free-tier use. Distribution rules for other workspaces were not verified. Service accounts need Enterprise.",
+      "url": "https://developers.asana.com/docs/rate-limits"
+    },
+    {
+      "field": "api",
+      "status": "contradicted",
+      "note": "Overview names REST and webhooks. WebSockets are not mentioned and searches of the docs found none. Event delivery is by polling /events and HTTP webhooks. Breadth 'broad' is plausible (Work Graph) but the page does not list coverage.",
+      "url": "https://developers.asana.com/docs/webhooks-guide"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Asana's own developer docs describe the hosted server at mcp.asana.com, with v2 at https://mcp.asana.com/v2/mcp. The page does not use the word 'official', but it is vendor-hosted and vendor-documented. The beta SSE endpoint is deprecated and shuts down 05/11/2026. Admin allow/block controls exist.",
+      "url": "https://developers.asana.com/docs/using-asanas-mcp-server"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats fits. Rate limits (150, 1,500 and 60 per minute) are confirmed. The MCP admin-block and SSE shutdown claims are confirmed. Caveat: self-service MCP client management is only for Enterprise+ or Legacy Enterprise. Remove the WebSocket reference. The OAuth distribution rules are still unverified.",
+      "url": "https://developers.asana.com/docs/rate-limits"
+    }
+  ],
+  "corrected": {
+    "app": "Asana",
+    "category": "Work management / project management",
+    "one_liner": "Asana is a work management platform for organizing tasks, projects, and goals across teams.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2",
+      "Other"
+    ],
+    "auth_notes": "Personal access token (long-lived, acts as the generating user). OAuth 2.0 authorization code flow with refresh tokens (access token valid 1 hour), with resource:action scopes registered in the developer console. PKCE (S256) is supported and is required only for localhost or native redirect URIs. Service accounts (Enterprise tier only, created by super admins) are listed under Other. OIDC is for sign-in only.",
+    "access": "self_serve_free",
+    "access_notes": "PATs and OAuth apps are created in the developer console. The overview page says you can test with a free account and offers a developer sandbox for premium features. No page fetched states outright that free accounts get full API access. The rate-limits page lists a free-domain tier (150 req/min), which implies free-tier API use. Service accounts need Enterprise. Whether OAuth apps need approval to be used in other workspaces was not verified (the 'manage distribution' page was not read). The OAuth page says the app must be available in a user's workspace before that user can authorize it.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.asana.com/v2/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Rate limits: 150 req/min on free domains, 1,500 on paid, 60 req/min for search (per token). Self-service MCP client allow/block controls are for Enterprise+ or Legacy Enterprise, and other tiers must contact Support. OAuth app distribution rules for other workspaces are unverified. Premium-only endpoints may need a paid plan. Events are by polling or webhooks, with no WebSocket. The deprecated v1 MCP SSE endpoint shuts down 05/11/2026.",
+    "evidence": {
+      "auth": "https://developers.asana.com/docs/oauth",
+      "access": "https://developers.asana.com/docs/rate-limits",
+      "api": "https://developers.asana.com/docs/webhooks-guide",
+      "mcp": "https://developers.asana.com/docs/using-asanas-mcp-server"
+    },
+    "confidence": "low"
+  }
+}

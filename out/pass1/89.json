@@ -1,0 +1,39 @@
+{
+  "id": "89",
+  "input": {
+    "id": "89",
+    "category": "Finance and Fintech",
+    "app": "Ramp",
+    "hint": "docs.ramp.com"
+  },
+  "meta": {
+    "cost_usd": 0.07651113499999998,
+    "turns": 12
+  },
+  "record": {
+    "app": "Ramp",
+    "category": "Spend management / corporate cards & AP",
+    "one_liner": "Ramp is a corporate card and spend management platform covering cards, transactions, reimbursements, bill pay, and accounting sync.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "auth_notes": "OAuth 2.0 with Client Credentials (internal server-to-server, 10-day tokens, no refresh), Authorization Code (third-party/public apps, user consent) and Refresh Token. Access tokens are sent as bearers. Scopes are resource:permission (e.g. transactions:read). Sandbox and production need separate apps. cards:read_vault is limited to approved integrators, and some endpoints return 403 without a specific plan feature.",
+    "access": "self_serve_free",
+    "access_notes": "An admin of a Ramp account creates an app in Company > Developer and gets a client ID and secret. Ramp's docs state no plan requirement, but I could not confirm whether a paid plan is needed; Ramp accounts themselves are free to open, which I did not verify here. The sandbox (demo-api.ramp.com) is requested through a separate access request page that I could not read, so its approval terms are unknown. Apps that access a whole business need Admin or Business Owner approval. Whether third-party Authorization Code apps need Ramp review before listing is not documented in the pages I fetched.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.ramp.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Credentials need an admin on a Ramp account. Sandbox access is by request. Rate limit is 200 requests per 10 seconds per IP. Some endpoints need specific plan features, and some scopes are limited to approved integrators or partners. Breadth is rated from the OpenAPI spec's existence and scope names; I did not read the endpoint list.",
+    "evidence": {
+      "auth": "https://docs.ramp.com/llms-guides/authorization.txt",
+      "access": "https://docs.ramp.com/llms-guides/getting-started.txt",
+      "api": "https://docs.ramp.com/llms-guides/rate-limiting.txt",
+      "mcp": "https://docs.ramp.com/llms-guides/ramp-mcp.txt"
+    },
+    "confidence": "medium"
+  }
+}

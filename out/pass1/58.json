@@ -1,0 +1,39 @@
+{
+  "id": "58",
+  "input": {
+    "id": "58",
+    "category": "Data, SEO and Scraping",
+    "app": "Sherlock",
+    "hint": "github.com/sherlock-project/sherlock"
+  },
+  "meta": {
+    "cost_usd": 0.05238577000000001,
+    "turns": 6
+  },
+  "record": {
+    "app": "Sherlock",
+    "category": "OSINT / username search",
+    "one_liner": "Open-source (MIT) Python command-line tool that checks whether a username exists across 400+ social networks and sites.",
+    "auth_methods": [
+      "None"
+    ],
+    "auth_notes": "No API and no authentication. It is a local CLI that makes unauthenticated requests to the target sites. There are no vendor credentials.",
+    "access": "no_public_api",
+    "access_notes": "No hosted or public API. You install it yourself (pipx/pip/uv, Docker) and run it locally, which is free. The README does not mention a library API or a hosted service.",
+    "api_types": [
+      "CLI / library only"
+    ],
+    "api_breadth": "none",
+    "mcp": "community",
+    "mcp_url": "https://glama.ai/mcp/servers/Burnsedia/sherlock-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "There is no API. A toolkit would have to run the CLI as a subprocess, which a community MCP server (Burnsedia/sherlock-mcp) already does with a single search_username tool. This needs a runtime that can execute the CLI. Results depend on the CLI's per-site checks, which can produce false positives and negatives. Searching people by username is a privacy and ToS consideration. By the strict definition (a hosted API with credentials) this is no_public_api; I rated it ready_with_caveats only because a local-CLI wrapper is feasible. Switch it to blocked if you require a hosted API.",
+    "evidence": {
+      "auth": "https://github.com/sherlock-project/sherlock (fetched: CLI only, no authentication mentioned; absence only, not an explicit statement)",
+      "access": "https://github.com/sherlock-project/sherlock (fetched: install via pipx/pip/uv/Docker, MIT license, no hosted service mentioned)",
+      "api": "https://github.com/sherlock-project/sherlock (fetched: usage is `sherlock user123`; no API or library documentation on the page)",
+      "mcp": "https://glama.ai/mcp/servers/Burnsedia/sherlock-mcp (fetched: third-party server wrapping the Sherlock CLI, one search_username tool). No official MCP server found."
+    },
+    "confidence": "medium"
+  }
+}

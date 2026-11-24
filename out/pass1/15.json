@@ -1,0 +1,39 @@
+{
+  "id": "15",
+  "input": {
+    "id": "15",
+    "category": "Support and Helpdesk",
+    "app": "Pylon",
+    "hint": "usepylon.com"
+  },
+  "meta": {
+    "cost_usd": 0.06058145999999999,
+    "turns": 7
+  },
+  "record": {
+    "app": "Pylon",
+    "category": "B2B Helpdesk / Customer Support",
+    "one_liner": "Pylon is a B2B customer support platform that unifies issues from Slack, Teams, email and chat with account management, a knowledge base, and AI agents.",
+    "auth_methods": [
+      "Bearer token"
+    ],
+    "auth_notes": "REST API: static admin-created API token sent as Authorization Bearer. Tokens don't expire and have no scopes; access is set by the identity's role, with an optional IP allowlist. US and EU regions have separate base URLs. OAuth 2.0 is documented only for the official MCP server (interactive AI clients), not for third-party REST apps.",
+    "access": "paid_plan",
+    "access_notes": "Only Admins can create tokens (Settings > Integrations & dev > API). The pricing page lists REST API and API tokens for Professional ($89/seat), Advanced ($139/seat) and Enterprise, so the API is on paid tiers; this is my reading of the feature table. No free plan is listed. Free trials exist, but a sales rep sets them up, and I found no self-serve signup. A developer without an existing Pylon customer account will likely need to contact sales.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.usepylon.com (EU: https://mcp.eu.usepylon.com)",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API requires a paid Pylon workspace (Professional or higher by my reading of pricing). There is no self-serve or free signup, so a developer needs an existing customer or a sales-led trial. Tokens have no scopes, so each token carries its role's full access. The user must also pick the US or EU region.",
+    "evidence": {
+      "auth": "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
+      "access": "https://www.usepylon.com/pricing",
+      "api": "https://docs.usepylon.com/pylon-docs/developer/api",
+      "mcp": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp"
+    },
+    "confidence": "medium"
+  }
+}

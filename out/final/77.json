@@ -1,0 +1,72 @@
+{
+  "id": "77",
+  "input": {
+    "id": "77",
+    "category": "Productivity and Project Management",
+    "app": "ClickUp",
+    "hint": "clickup.com/api"
+  },
+  "meta": {
+    "cost_usd": 0.04300656,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page documents a personal token (pk_ prefix, raw Authorization header, never expires) and OAuth 2.0 Authorization Code for apps other people use (Bearer, currently non-expiring). Only workspace owners/admins can create OAuth apps. OAuth is for API access, not just SSO.",
+      "url": "https://developer.clickup.com/docs/authentication"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "The rate-limits page lists FreeForever at 100/min, so the API is usable on the free plan. The page doesn't say explicitly that no plan is excluded. The auth page mentions no app review. The personal token is under Settings > Apps.",
+      "url": "https://developer.clickup.com/docs/rate-limits"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "The gettasks page is a REST GET /v2/list/{list_id}/task under api.clickup.com/api, with a related single-task endpoint and nested list/folder/space objects. 'broad' was not checked against the full endpoint list and is an inference.",
+      "url": "https://developer.clickup.com/reference/gettasks"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The vendor's developer docs describe ClickUp's own MCP server at https://mcp.clickup.com/mcp. OAuth only; API tokens are not supported. Available on all plans, with per-plan call limits.",
+      "url": "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent with the other fields: self-serve token, REST API, official MCP. The caveats stated are accurate: per-token rate limits by plan (100/100/100/1,000/10,000), and the MCP server is OAuth-only. The MCP server also has its own daily call limits by plan, which the record omits.",
+      "url": "https://developer.clickup.com/docs/rate-limits"
+    }
+  ],
+  "corrected": {
+    "app": "ClickUp",
+    "category": "Project management",
+    "one_liner": "ClickUp is a work-management platform for tasks, docs, goals, time tracking and team collaboration.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "Personal API token (starts pk_, never expires) is sent raw in the Authorization header with no Bearer prefix. OAuth 2.0 Authorization Code grant is documented for third-party apps; its access token is sent as 'Authorization: Bearer', and currently doesn't expire (docs say this is subject to change). The personal token is classified as \"API key\" because it is sent as a raw header value.",
+    "access": "self_serve_free",
+    "access_notes": "Personal token is generated in Settings > Apps > API Token. Rate limits are listed for the FreeForever plan (100/min), which implies free-plan API use; the docs don't explicitly state whether any plan is excluded. Creating an OAuth app requires a Workspace owner or admin. The docs describe no app review step.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.clickup.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Rate limits are per token and depend on plan: 100/min on Free, Unlimited and Business; 1,000 on Business Plus; 10,000 on Enterprise. The official MCP server supports OAuth only (no personal tokens) and has separate per-plan daily call limits (100 per rolling 24h on Free without the Everything AI add-on). API breadth was not verified against the full endpoint list.",
+    "evidence": {
+      "auth": "https://developer.clickup.com/docs/authentication",
+      "access": "https://developer.clickup.com/docs/rate-limits",
+      "api": "https://developer.clickup.com/reference/gettasks",
+      "mcp": "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server"
+    },
+    "confidence": "medium"
+  }
+}

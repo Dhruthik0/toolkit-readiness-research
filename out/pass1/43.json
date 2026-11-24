@@ -1,0 +1,45 @@
+{
+  "id": "43",
+  "input": {
+    "id": "43",
+    "category": "Ecommerce",
+    "app": "BigCommerce",
+    "hint": "developer.bigcommerce.com"
+  },
+  "meta": {
+    "cost_usd": 0.08698161,
+    "turns": 11
+  },
+  "record": {
+    "app": "BigCommerce",
+    "category": "E-commerce platform",
+    "one_liner": "BigCommerce is a hosted SaaS e-commerce platform for building and running online stores, with catalog, cart, checkout, order, and customer management.",
+    "auth_methods": [
+      "OAuth2",
+      "API key",
+      "Bearer token",
+      "Basic",
+      "Other"
+    ],
+    "auth_notes": "Store-level API accounts give a static access token sent in the X-Auth-Token header. App-level credentials use an OAuth grant code flow (client ID, secret, code), and each installing store gets its own token. Account-level tokens reach all stores under a parent account. Storefront GraphQL uses a BigCommerce-generated JWT as a Bearer token. Legacy HTTP basic auth only works on existing legacy accounts. The Store Management MCP uses OAuth 2.1 with PKCE.",
+    "access": "self_serve_trial",
+    "access_notes": "A store-level API token is created in a store's control panel (Settings > Store-level API Tokens). That needs a store, and a search result describes a free trial store for this. I did not fetch a vendor page that confirms the trial terms. The sandbox page I fetched describes creation through the Partner Portal. It does not state whether sandboxes are free or how long they last. The docs auth page states no plan requirement for API access. Production use needs a paid store plan (inferred, not verified). Public marketplace apps need listing review (not verified).",
+    "api_types": [
+      "REST",
+      "GraphQL",
+      "WebSocket"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://api.bigcommerce.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The vendor pages I fetched do not confirm that a free sandbox or developer account exists. The trial route is only in a search result. Store-level token scopes can't be edited after creation. The official Store Management MCP is early access and needs the store owner to enable it.",
+    "evidence": {
+      "auth": "https://docs.bigcommerce.com/docs/start/authentication",
+      "access": "https://docs.bigcommerce.com/developer/docs/overview/sandboxes",
+      "api": "https://docs.bigcommerce.com/docs/api",
+      "mcp": "https://docs.bigcommerce.com/developer/api-reference/mcp/overview"
+    },
+    "confidence": "medium"
+  }
+}

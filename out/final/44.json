@@ -1,0 +1,71 @@
+{
+  "id": "44",
+  "input": {
+    "id": "44",
+    "category": "Ecommerce",
+    "app": "Salesforce Commerce Cloud",
+    "hint": "developer.salesforce.com/docs/commerce"
+  },
+  "meta": {
+    "cost_usd": 0.10370526000000001,
+    "turns": 10
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "OAuth2 client_credentials via Account Manager API client is stated on the fetched CLI authentication page (client credentials, JWT, PKCE sign-in; implicit deprecated). The record's auth_notes claim of 'only client_credentials' for Admin APIs rests on search snippets of developer.salesforce.com pages that returned 403. Cited guide page does not mention OAuth2, so the evidence URL was changed to the authentication page.",
+      "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.html"
+    },
+    {
+      "field": "access",
+      "status": "unsupported",
+      "note": "developer.salesforce.com returned 403 on fetch. Only search snippets say sandboxes need purchased credits via an Account Executive and that no free self-serve realm exists. No fetched page settles it. 'partner_gated' is also a loose label; 'paid_plan' (needs an existing contract/realm) may fit better, but neither is verified.",
+      "url": null
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "MCP page (fetched) says SCAPI code mode covers nearly 600 operations, and Shopper APIs run as a guest shopper via a SLAS client. Supports REST and broad. The record does not state that the endpoints are REST, but SCAPI/OCAPI are REST APIs.",
+      "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "@salesforce/b2c-dx-mcp is published under the @salesforce npm scope, hosted on Salesforce's docs site, and the repo is in the SalesforceCommerceCloud GitHub org. The GitHub README lists the MCP server as Generally Available with an as-is disclaimer. The record's 'Developer Preview' claim is contradicted for the MCP server; only the VS Code extension is labeled Developer Preview. 'Official' is inferred from ownership, not stated outright.",
+      "url": "https://github.com/SalesforceCommerceCloud/b2c-developer-tooling"
+    },
+    {
+      "field": "verdict",
+      "status": "unsupported",
+      "note": "'blocked' depends on the unverified access claim. The API, auth and MCP are fine, so the verdict turns on access, which is unsettled. Keeping 'blocked' as the best-supported value, with low confidence.",
+      "url": null
+    }
+  ],
+  "corrected": {
+    "app": "Salesforce Commerce Cloud",
+    "category": "E-commerce platform",
+    "one_liner": "Salesforce B2C Commerce (Commerce Cloud) is a hosted enterprise e-commerce platform whose storefront, catalog, basket, order and promotion data is exposed through SCAPI and OCAPI.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "auth_notes": "Admin APIs use an Account Manager API client with OAuth2 client_credentials; the CLI docs (fetched) also list JWT (private_key_jwt) and PKCE browser sign-in for a public client, with implicit deprecated. SCAPI admin APIs need a secret or JWT; browser sign-in is not yet supported for them. Shopper APIs use SLAS clients. Separate API clients are needed for SCAPI and OCAPI (from search snippets of developer.salesforce.com, which returned 403 on fetch). OCAPI is described as deprecated.",
+    "access": "partner_gated",
+    "access_notes": "Unverified; developer.salesforce.com returned 403. Search snippets say on-demand sandboxes need purchased sandbox credits via an Account Executive, and a community answer says there is no free self-serve realm. An Account Manager API client needs a realm and admin roles. Access appears to need an existing B2C Commerce contract or realm.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp",
+    "verdict": "blocked",
+    "blocker": "No self-serve credentials found. Access appears to need a B2C Commerce realm and contract, and sandboxes need purchased credits through an Account Executive. This is unverified because developer.salesforce.com blocked fetches. The API is broad (nearly 600 SCAPI operations in the MCP code mode). The MCP server (@salesforce/b2c-dx-mcp) is developer-focused and is listed as Generally Available in the repo README.",
+    "evidence": {
+      "auth": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.html (fetched): client credentials, JWT, PKCE sign-in, implicit deprecated; API client created in Account Manager.",
+      "access": null,
+      "api": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp (fetched): SCAPI code mode covers nearly 600 operations; Shopper APIs run as a guest shopper via a SLAS client.",
+      "mcp": "https://github.com/SalesforceCommerceCloud/b2c-developer-tooling (fetched): repo in the SalesforceCommerceCloud org; MCP server listed as GA (only the VS Code extension is Developer Preview). Package @salesforce/b2c-dx-mcp is shown on the MCP docs page. 'Official' is inferred from ownership."
+    },
+    "confidence": "low"
+  }
+}

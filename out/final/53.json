@@ -1,0 +1,72 @@
+{
+  "id": "53",
+  "input": {
+    "id": "53",
+    "category": "Data, SEO and Scraping",
+    "app": "Ahrefs",
+    "hint": "ahrefs.com/api"
+  },
+  "meta": {
+    "cost_usd": 0.08245670499999999,
+    "turns": 10
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Bearer header and owner/admin-only key creation confirmed. OAuth 2.0 Authorization Code with PKCE exists in Ahrefs Connect for apps calling the API on behalf of an Ahrefs user; web apps get a client secret; tokens last 1 year with no refresh tokens. The page mentions an approval process (separate approval-process page). The help-center search snippet suggests new Connect apps need Enterprise, which I did not verify directly.",
+      "url": "https://docs.ahrefs.com/ahrefs-connect/docs/oauth-guide.md"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "paid_plan is right. The help-center article states API v3 is available on Lite and higher (Lite 200k, Standard 800k, Advanced 2M units/month; Enterprise custom). This settles the open question: Enterprise is not required for the API, only for custom endpoints. Free test queries work on any paid plan with an API key and are limited to ahrefs.com/yep.com/firehose.com targets or the keywords ahrefs/yep/firehose, with limit capped at 100. The unit-purchase claim is not settled: a search summary said extra units are Enterprise-only, but the fetched article did not say this.",
+      "url": "https://help.ahrefs.com/en/articles/6559232-about-api-v3"
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "HTTP API v3 with an OpenAPI spec is confirmed, and the docs home calls it the REST API covering keyword research, backlinks, rank tracking and brand visibility. Endpoint categories were not listed on the pages fetched, so 'broad' is inferred and not verified.",
+      "url": "https://docs.ahrefs.com/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "Official hosted Streamable HTTP endpoint at https://api.ahrefs.com/mcp/mcp on docs.ahrefs.com. Requires Lite or higher. Auth is OAuth consent creating an MCP-scoped key, or a manually generated MCP key. Custom scripts, bridges and standalone HTTP/JSON-RPC clients are not permitted.",
+      "url": "https://docs.ahrefs.com/mcp/docs/introduction.md"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is reasonable. Caveats confirmed: paid plan, at least 50 units per request, 60 requests/min, MCP restrictions, v2 shut down Nov 1, 2025 (per search results). The 'Enterprise may be required' blocker is contradicted by the help center: Lite and higher qualify.",
+      "url": "https://help.ahrefs.com/en/articles/6559232-about-api-v3"
+    }
+  ],
+  "corrected": {
+    "app": "Ahrefs",
+    "category": "SEO analytics",
+    "one_liner": "Ahrefs is an SEO platform for backlink analysis, keyword research, site auditing, rank tracking and competitor analysis, with data exposed through a REST API (v3).",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "API v3 uses a workspace-level API key sent as \"Authorization: Bearer YOUR_API_KEY\". Only workspace owners and admins can create keys. Ahrefs Connect offers OAuth 2.0 (Authorization Code with PKCE) for apps calling the API on behalf of an Ahrefs user: you get a client ID and redirect URI from Account settings, web apps also get a client secret, and access tokens last 1 year with no refresh tokens. The OAuth guide mentions an approval process for secure token handling; the process itself is on a separate page I did not read. The MCP server uses OAuth-created or manually generated MCP-scoped keys.",
+    "access": "paid_plan",
+    "access_notes": "API v3 is available on Lite and higher paid plans per the Ahrefs help center (monthly unit allowance: Lite 200k, Standard 800k, Advanced 2M, Enterprise custom). Enterprise is needed only for custom endpoints. Free test queries work on any paid plan after you create an API key, limited to ahrefs.com, yep.com, firehose.com targets and the keywords ahrefs, yep, firehose, with limit capped at 100. No free tier found. Whether extra units can be bought on non-Enterprise plans is unconfirmed (a search summary suggested Enterprise-only). Ahrefs Connect (OAuth) plan requirements and app approval are unconfirmed; a search summary suggested new Connect apps need an Enterprise subscription.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://api.ahrefs.com/mcp/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "The API needs a paid plan (Lite or higher). Most requests use at least 50 API units from a monthly allowance, so Lite covers at most about 4,000 minimum-cost requests per month. The default rate limit is 60 requests per minute, and system-load throttling can also return 429. The official MCP server needs Lite or higher, and Ahrefs says custom scripts, bridges or standalone HTTP clients are not permitted against it; the public REST API is the route for programmatic use. Legacy API v2 was shut down on Nov 1, 2025. Third-party OAuth apps may need approval or an Enterprise plan (unverified).",
+    "evidence": {
+      "auth": "https://docs.ahrefs.com/api/docs/api-keys-creation-and-management.md (Bearer header; only owners and admins create keys). https://docs.ahrefs.com/ahrefs-connect/docs/oauth-guide.md (OAuth 2.0 PKCE, client registration, 1-year tokens, approval process mentioned).",
+      "access": "https://help.ahrefs.com/en/articles/6559232-about-api-v3 (Lite and higher; allowances; Enterprise only for custom endpoints). https://docs.ahrefs.com/api/docs/free-test-queries.md (free test queries on any paid plan). https://docs.ahrefs.com/api/docs/introduction.md (eligible paid plans, units, 60 requests/min).",
+      "api": "https://docs.ahrefs.com/ (REST API section, OpenAPI spec link). Endpoint list and openapi.json not fetched, so 'broad' is inferred.",
+      "mcp": "https://docs.ahrefs.com/mcp/docs/introduction.md (hosted Streamable HTTP endpoint at https://api.ahrefs.com/mcp/mcp, Lite or higher, OAuth or MCP-scoped keys, custom clients not permitted)."
+    },
+    "confidence": "medium"
+  }
+}

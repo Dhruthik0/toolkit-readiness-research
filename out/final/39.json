@@ -1,0 +1,71 @@
+{
+  "id": "39",
+  "input": {
+    "id": "39",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "Threads (Meta)",
+    "hint": "developers.facebook.com/docs/threads"
+  },
+  "meta": {
+    "cost_usd": 0.061859895000000005,
+    "turns": 6
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Get-started page states Threads user access tokens follow OAuth 2.0 via the Authorization Window, with a 1-hour code, 1-hour short-lived token, 60-day long-lived token, and GET /refresh_access_token. It also states the five core permissions and the Threads app ID/secret. threads_delete and threads_location_tagging appear on the overview page, not get-started.",
+      "url": "https://developers.facebook.com/docs/threads/get-started"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Get-started says testers can grant permissions at any time, and other users only after each permission passes App Review and the app is published. approval_required fits. Business verification is not mentioned on the page, which the record already flags. That the app is free to create was not stated on the fetched page.",
+      "url": "https://developers.facebook.com/docs/threads/get-started"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Overview shows Graph-style HTTP GET/POST endpoints on graph.threads.com and states the limits (250 posts, 1,000 replies, 500-char text). It does not use the term REST, so REST is an inference. The overview describes publishing and quotas, so the breadth claims (read profiles, search, insights, moderation) rest on the permissions list. Moderate breadth is plausible but not directly shown.",
+      "url": "https://developers.facebook.com/docs/threads/overview"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "The pegasusheavy repo is third-party (Pegasus Heavy Industries LLC, MIT), so community is right. A search found no official Meta Threads MCP server.",
+      "url": "https://github.com/pegasusheavy/threads-mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "ready_with_caveats is consistent: OAuth2 is available, and App Review is needed for non-tester users. Blocker figures match the overview page.",
+      "url": "https://developers.facebook.com/docs/threads/overview"
+    }
+  ],
+  "corrected": {
+    "app": "Threads (Meta)",
+    "category": "Social media",
+    "one_liner": "Meta's microblogging social network, whose API lets apps publish posts, read profiles and media, moderate replies, search, and pull insights on behalf of users.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "auth_notes": "Authorization-window flow: the authorization code is valid 1 hour and is exchanged for a short-lived token (1 hour), then a long-lived token (60 days). Refresh with GET /refresh_access_token. Tokens are app-scoped per app/user pair. Permissions: threads_basic, threads_content_publish, threads_manage_replies, threads_read_replies, threads_manage_insights, plus threads_delete and threads_location_tagging (named on the overview page). Use the Threads app ID and secret, not the generic Meta app ID and secret.",
+    "access": "approval_required",
+    "access_notes": "Create a Meta app with the Threads use case. Users with a Threads Tester role on the app can grant permissions without review. Other users can grant permissions only after each permission passes App Review and the app is published. Whether app creation is free and whether business verification is required were not confirmed on the fetched pages. One community server README does not mention business verification either.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "community",
+    "mcp_url": "https://github.com/pegasusheavy/threads-mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "App Review is required for each permission before users outside the app's tester roles can connect. Other limits: 60-day tokens that need refreshing, 250 API posts per profile per 24h, 1,000 replies per 24h, and 500-character text posts. The API is Graph-style HTTP, and the docs do not call it REST. Meta publishes no official MCP server that I could find.",
+    "evidence": {
+      "auth": "https://developers.facebook.com/docs/threads/get-started",
+      "access": "https://developers.facebook.com/docs/threads/get-started",
+      "api": "https://developers.facebook.com/docs/threads/overview",
+      "mcp": "https://github.com/pegasusheavy/threads-mcp"
+    },
+    "confidence": "medium"
+  }
+}

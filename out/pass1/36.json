@@ -1,0 +1,40 @@
+{
+  "id": "36",
+  "input": {
+    "id": "36",
+    "category": "Marketing, Ads, Email and Social",
+    "app": "Klaviyo",
+    "hint": "developers.klaviyo.com"
+  },
+  "meta": {
+    "cost_usd": 0.060088424999999994,
+    "turns": 8
+  },
+  "record": {
+    "app": "Klaviyo",
+    "category": "Marketing automation / CRM",
+    "one_liner": "Klaviyo is a customer data and marketing automation platform for email, SMS, flows, segmentation and analytics, mainly for ecommerce brands.",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "auth_notes": "Private API key (pk_...) is sent as `Authorization: Klaviyo-API-Key <key>` plus a `revision` header, with scopes (read-only, full, custom) chosen at creation. The public 6-character company ID is passed as a query parameter for client-side /client endpoints. OAuth is documented for tech partners building apps. The auth page does not state the token header format or whether approval is required.",
+    "access": "self_serve_free",
+    "access_notes": "Private keys are created in Settings > API Keys by an Owner, Admin or Manager. A Klaviyo page on Stripe-provisioned free accounts says a free account gets a private API key and can ingest profiles and events (250-profile cap, no sending). Sending email or SMS needs a verified domain or sender. No page states directly that every free account can call the full API, so confirm this. OAuth apps are for partners and can be listed in the App Marketplace, but the review process is not documented on the pages I fetched.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.klaviyo.com/mcp",
+    "verdict": "ready",
+    "blocker": "none. Minor caveats: the free plan is capped (250 profiles, no sending until a domain or sender is verified), rate limits are per account with burst and steady windows (exact numbers are listed per endpoint), and the OAuth approval process is undocumented on the pages I fetched.",
+    "evidence": {
+      "auth": "https://developers.klaviyo.com/en/docs/authenticate_ \u2014 private key (pk_), Klaviyo-API-Key header, public key, OAuth for tech partners, scopes",
+      "access": "https://developers.klaviyo.com/en/docs/klaviyo_stripe_projects_context \u2014 free account gets a private API key and can ingest profiles and events (250-profile cap)",
+      "api": "https://developers.klaviyo.com/en/reference/api_overview \u2014 REST/JSON:API, 27 resource categories, 436 endpoints, 429 rate limits",
+      "mcp": "https://developers.klaviyo.com/en/docs/connect_to_the_klaviyo_mcp_server.md \u2014 remote server at https://mcp.klaviyo.com/mcp, OAuth, Owner/Admin/Manager only"
+    },
+    "confidence": "medium"
+  }
+}

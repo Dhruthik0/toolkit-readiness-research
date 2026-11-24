@@ -1,0 +1,71 @@
+{
+  "id": "59",
+  "input": {
+    "id": "59",
+    "category": "Data, SEO and Scraping",
+    "app": "Waterfall.io",
+    "hint": "waterfall.io (contact/company intel)"
+  },
+  "meta": {
+    "cost_usd": 0.06192101500000001,
+    "turns": 9
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Authentication page confirms x-api-key header, host api.waterfall.io, master key needed for sub-keys; no OAuth mentioned. The homepage x-waterfall-api-key remark was not verified.",
+      "url": "https://docs.waterfall.io/v1/authentication.md"
+    },
+    {
+      "field": "access",
+      "status": "supported",
+      "note": "Authentication and Evaluate pages both say to contact support@waterfall.io for API access, test plan and pricing. They do not mention a free trial or self-serve signup. The skills page says installing a skill does not create an account or give API access. Whether a signup flow exists outside the docs is not settled.",
+      "url": "https://docs.waterfall.io/v1/evaluate-waterfall.md"
+    },
+    {
+      "field": "api",
+      "status": "supported",
+      "note": "Docs index lists 13 REST-style endpoints (async and sync) on api.waterfall.io: Prospector, enrichment, search, Job Change, Email Verification, webhooks, reporting and key management. Default rate limit of 50 requests per 60 seconds is confirmed on the rate-limit page. 'Moderate' is a judgment call.",
+      "url": "https://docs.waterfall.io"
+    },
+    {
+      "field": "mcp",
+      "status": "unsupported",
+      "note": "The cited skills page does not mention MCP. It describes two official API skills (waterfall-direct-api, waterfall-integration) in a GitHub repo. llms.txt and a web search found no official or community Waterfall.io MCP server. Workato's 'Waterfall Lead Enrichment' MCP is a different product. 'none_found' stands, but the cited URL should point to the skills page as context, not as proof of no MCP.",
+      "url": "https://docs.waterfall.io/v1/skills-overview.md"
+    },
+    {
+      "field": "verdict",
+      "status": "supported",
+      "note": "Blocked follows from no self-serve credentials. The blocker text is consistent with the pages, and the 13 endpoints and 50 per 60 seconds figures are confirmed.",
+      "url": "https://docs.waterfall.io/v1/rate-limit.md"
+    }
+  ],
+  "corrected": {
+    "app": "Waterfall.io",
+    "category": "Contact/company data enrichment",
+    "one_liner": "Waterfall aggregates 30+ B2B data vendors behind one API for contact, email, phone and company enrichment, prospecting, contact search and job-change tracking.",
+    "auth_methods": [
+      "API key"
+    ],
+    "auth_notes": "Static API key sent in the x-api-key header to https://api.waterfall.io. A master key can create sub-keys. No OAuth documented. The marketing homepage shows x-waterfall-api-key in some examples, but the docs say x-api-key.",
+    "access": "partner_gated",
+    "access_notes": "The docs do not describe self-serve key creation. The Authentication and Evaluate pages both say to contact support@waterfall.io for API access, a test plan and pricing. The homepage CTA is \"Book a Call\". Pricing is usage-based with no amounts published. No free tier, trial or sandbox is mentioned. It is not confirmed whether a signup flow exists outside the docs.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "none_found",
+    "mcp_url": null,
+    "verdict": "blocked",
+    "blocker": "No self-serve credentials. A developer must contact Waterfall sales/support to get an API key. The API itself is documented and agent-friendly: 13 endpoints, 50 requests per 60 seconds by default, async jobs with webhooks.",
+    "evidence": {
+      "auth": "https://docs.waterfall.io/v1/authentication.md",
+      "access": "https://docs.waterfall.io/v1/evaluate-waterfall.md",
+      "api": "https://docs.waterfall.io",
+      "mcp": "https://docs.waterfall.io/llms.txt"
+    },
+    "confidence": "low"
+  }
+}

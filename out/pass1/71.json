@@ -1,0 +1,40 @@
+{
+  "id": "71",
+  "input": {
+    "id": "71",
+    "category": "Productivity and Project Management",
+    "app": "Notion",
+    "hint": "developers.notion.com"
+  },
+  "meta": {
+    "cost_usd": 0.03756815,
+    "turns": 7
+  },
+  "record": {
+    "app": "Notion",
+    "category": "Workspace / Docs & Knowledge Management",
+    "one_liner": "Notion is a connected workspace for notes, documents, wikis, and databases/projects.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2"
+    ],
+    "auth_notes": "Internal connection API token (static, per-workspace, created by a workspace owner) and personal access tokens (static, acts with the user's permissions), both sent as Authorization: Bearer with a Notion-Version header. OAuth 2.0 for public/scoped integrations (code exchange for access and refresh tokens).",
+    "access": "self_serve_free",
+    "access_notes": "The docs name no plan requirement for the API. Internal tokens require a workspace owner to create the connection. OAuth public integrations need no marketplace review (\"Marketplace submission or review is not required\"). Free-plan API access is inferred from the absence of a plan requirement; it is not explicitly stated. Rate limit is 180 req/min per connection on non-Business/Enterprise plans, 600 req/min on Business/Enterprise. Data source queries are about 3 req/s. Whether PATs need admin approval is unclear.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.notion.com/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "Rate limits (180 req/min on lower plans, about 3 req/s for data source queries). Internal tokens require a workspace owner. Free-plan API access is not explicitly confirmed. The \"broad\" rating is based on the named resources (pages, databases, users, file uploads), not a full endpoint list.",
+    "evidence": {
+      "auth": "https://developers.notion.com/docs/authorization",
+      "access": "https://developers.notion.com/reference/request-limits",
+      "api": "https://developers.notion.com/reference/intro",
+      "mcp": "https://developers.notion.com/guides/mcp/get-started-with-mcp"
+    },
+    "confidence": "medium"
+  }
+}

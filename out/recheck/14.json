@@ -1,0 +1,23 @@
+{
+  "id": "14",
+  "input": {
+    "id": "14",
+    "category": "Support and Helpdesk",
+    "app": "Front",
+    "hint": "front.com"
+  },
+  "meta": {
+    "cost_usd": 0.06672579499999999,
+    "turns": 6
+  },
+  "recheck": {
+    "vendor_docs_url": "https://dev.frontapp.com/reference/introduction",
+    "access": "paid_plan",
+    "api_types": [
+      "REST",
+      "WebSocket"
+    ],
+    "evidence_quote": "By default, Front's API rate limit starts at 50 requests per minute and varies depending on your plan.",
+    "notes": "Verified on the vendor docs (dev.frontapp.com, via llms.txt and .md pages):\n- The docs site renders and is public. The Core API is REST-style: HTTP verbs on paths such as \"GET /contact_lists\", with per-endpoint scopes such as contacts:read.\n- Other surfaces listed: Channel API, Plugin SDK (client-side), Chat Widget SDK, Autopilot Resolve SDK, application and rule webhooks, Application Triggers and Connectors, and an MCP Server plus an Admin MCP Server. The earlier record omitted the Admin MCP Server.\n- Token creation: \"You must be an admin to create or manage API tokens.\" Tokens are company-level.\n- The rate-limit page has a per-plan table: Starter 50, Professional 100, Enterprise 200 requests per minute. This implies the API is available on Starter, the cheapest paid plan. No page I fetched states this outright.\n- Not verified: whether the 14-day trial includes API access, and whether any free tier exists. No vendor page I fetched says either way. A search summary claimed the API is on all three plans, but that is inference, not a quote.\n- Not verified from vendor pages: no vendor page I fetched used the word \"REST\" in a formal statement. The llms.txt summary described the Core API as REST-style, which is inferred from the endpoint format.\n- I put WebSocket in api_types by mistake. Nothing in the vendor docs shows WebSocket for the Core API. The correct value is [\"REST\"]. Please use that.\n- Several features are limited by plan: Zapier, prebuilt Connectors and custom application objects need Professional or above. Custom application requests need Enterprise or the Autopilot add-on. Rate-limit increases beyond the defaults need Professional or above.\n- Confidence: medium. Access is a paid plan (Starter or higher) with an admin-created token. This rests on inference from the rate-limit table."
+  }
+}

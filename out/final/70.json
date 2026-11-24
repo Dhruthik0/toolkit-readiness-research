@@ -1,0 +1,73 @@
+{
+  "id": "70",
+  "input": {
+    "id": "70",
+    "category": "Developer, Infra and Data platforms",
+    "app": "Sentry",
+    "hint": "docs.sentry.io/api"
+  },
+  "meta": {
+    "cost_usd": 0.066875725,
+    "turns": 9
+  },
+  "checks": [
+    {
+      "field": "auth",
+      "status": "supported",
+      "note": "Auth page lists bearer tokens (internal integration and personal), OAuth2 auth code with PKCE for third-party apps plus device flow, legacy Basic API keys disabled for new accounts, DSN auth on a few endpoints, 30-day OAuth tokens, single-org scope. Claim that internal integration tokens work on self-hosted was not on the page.",
+      "url": "https://docs.sentry.io/api/auth/"
+    },
+    {
+      "field": "access",
+      "status": "contradicted",
+      "note": "Sentry pricing page lists API as 'No' for the Developer (free) plan and 'Yes' for Team, Business and Enterprise. The cited ratelimits page says nothing about plans, so it did not support the claim. This comes from a summarized fetch of the pricing page. In practice, token creation may not be gated, so confirm on a free account.",
+      "url": "https://sentry.io/pricing/"
+    },
+    {
+      "field": "api",
+      "status": "unsupported",
+      "note": "API docs page lists 24 resource areas (Organizations, Projects, Releases, Events & Issues, Replays, Monitors, Seer), so 'broad' fits. It never says 'REST' or 'GraphQL'. REST is inferred from the endpoint paths and the v0 versioning. Beta endpoints are noted as subject to change.",
+      "url": "https://docs.sentry.io/api/"
+    },
+    {
+      "field": "mcp",
+      "status": "supported",
+      "note": "https://mcp.sentry.dev/mcp is the endpoint. The old docs.sentry.io/product/sentry-mcp/ page 301-redirects to mcp.sentry.dev. Search shows the server is built and maintained by Sentry in getsentry/sentry-mcp. The mcp.sentry.dev page itself does not say 'official'.",
+      "url": "https://github.com/getsentry/sentry-mcp"
+    },
+    {
+      "field": "verdict",
+      "status": "contradicted",
+      "note": "The free plan lacks API access per the pricing page, so a paid plan is the caveat. The original blocker said plan requirements were unstated, which is now wrong. Rate limits, single-org OAuth tokens and beta endpoints remain valid caveats. ready_with_caveats still holds.",
+      "url": "https://sentry.io/pricing/"
+    }
+  ],
+  "corrected": {
+    "app": "Sentry",
+    "category": "Error monitoring / Observability",
+    "one_liner": "Sentry is an application monitoring platform that captures errors, performance traces, session replays and cron checks for developers.",
+    "auth_methods": [
+      "Bearer token",
+      "OAuth2",
+      "Basic"
+    ],
+    "auth_notes": "Bearer auth tokens (personal tokens with scopes, or internal integration tokens) go in the Authorization: Bearer header. OAuth2 for third-party apps uses the authorization code grant (PKCE recommended) plus a device flow for CLIs; access tokens last 30 days and are refreshable, and each token is scoped to the one organization selected during the flow. Legacy API keys use Basic auth and are disabled for new accounts. DSN auth works only on a few endpoints.",
+    "access": "paid_plan",
+    "access_notes": "The Sentry pricing page lists API access as 'No' on the Developer (free) plan and 'Yes' on Team, Business and Enterprise. A paid plan (Team or higher) is therefore needed for the API. Personal and internal integration tokens are created in account or org settings. Confirm the gating on a free account, since the pricing finding comes from a summarized fetch.",
+    "api_types": [
+      "REST"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official",
+    "mcp_url": "https://mcp.sentry.dev/mcp",
+    "verdict": "ready_with_caveats",
+    "blocker": "API access appears to require a paid plan (Team or higher). Per-endpoint rate limits apply (docs say polling is likely to trigger them). OAuth tokens are scoped to a single organization. Some endpoints are beta and may change.",
+    "evidence": {
+      "auth": "https://docs.sentry.io/api/auth/",
+      "access": "https://sentry.io/pricing/",
+      "api": "https://docs.sentry.io/api/",
+      "mcp": "https://github.com/getsentry/sentry-mcp"
+    },
+    "confidence": "medium"
+  }
+}
